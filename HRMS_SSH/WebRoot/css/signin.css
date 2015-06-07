@@ -1,0 +1,98 @@
+* {
+    font-family: 'Glyphicons Halflings',"Microsoft YaHei" ! important;
+}
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-image: url("../img/bg.jpg");
+    background-color: #eeeeee;
+}
+.div-mid {
+    position: absolute;
+    width: 900px;
+    height: 440px;
+    left: 50%;
+    top: 50%;
+    margin-left: -450px;
+    margin-top: -220px;
+}
+.div-mid-logo {
+    float: left;
+    width: 530px;
+    height: 440px;
+}
+.div-mid-login {
+    float: left;
+    width: 330px;
+    height: 440px;
+}
+.div-mid-attend {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -200px;
+}
+.div-mid-finger{
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    left: 50%;
+    top: 50%;
+    margin-left: -200px;
+    margin-top: -150px;
+}
+.animation-finger{
+    height:220px;
+    width:180px;
+    position:absolute;
+    background:url("../img/fingerprint.png")no-repeat 0 0;
+    animation:figerprint 2s  infinite alternate;
+    -webkit-animation:figerprint 2s infinite alternate;
+}
+@-webkit-keyframes figerprint{
+    0% {
+        opacity:1.0;
+    }
+    100% {
+        opacity:0.2;
+    }
+
+}
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    opacity:0.8;
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+
+}
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
