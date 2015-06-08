@@ -8,4 +8,11 @@
 			<result name="success" type="redirect">/worker_attendancesearch.jsp</result>
 		</action>
 	</package>
+	<package name="default" extends="struts-default" namespace="/">
+		<action name="Login" class="LoginAction" method="login">
+			<result name="success" type="redirect">/index.jsp</result>
+			<result name="error" type="redirect">/login.jsp</result>
+			<result name="none" type="redirect">/login.jsp</result>
+		</action>
+	</package>
 </struts>    
