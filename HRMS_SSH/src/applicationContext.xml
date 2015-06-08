@@ -34,7 +34,16 @@
 				</prop>
 			</props>
 		</property>
-	</bean>
+		<property name="mappingResources">
+			<list>
+				<value>com/hrms/pojo/Rewardorpunishment.hbm.xml</value>
+				<value>com/hrms/pojo/Salary.hbm.xml</value>
+				<value>com/hrms/pojo/Worker.hbm.xml</value>
+				<value>com/hrms/pojo/Department.hbm.xml</value>
+				<value>com/hrms/pojo/Vacation.hbm.xml</value>
+				<value>com/hrms/pojo/Cultivation.hbm.xml</value>
+				<value>com/hrms/pojo/Attendance.hbm.xml</value></list>
+		</property></bean>
 	
 	<bean id="txManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager"> 
