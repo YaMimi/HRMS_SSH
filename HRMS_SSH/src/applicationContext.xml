@@ -51,5 +51,7 @@
 	</bean>
 	<tx:annotation-driven transaction-manager="txManager" />
 	
-	
+	<bean id="AttendanceAct" class="com.hrms.attendance.actions.AttendanceAction" scope="prototype"></bean>
+	<bean id="AttendanceSer" class="com.hrms.attendance.services.AttendanceServiceImpl" scope="prototype"></bean>
+	<bean id="AttendanceDao" class="com.hrms.attendance.dao.AttendanceDaoImpl" scope="prototype"></bean>
 </beans>

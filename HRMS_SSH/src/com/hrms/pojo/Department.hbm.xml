@@ -11,7 +11,7 @@
             <generator class="native" />
         </id>
         <many-to-one name="department" class="com.hrms.pojo.Department" fetch="select">
-            <column name="FatherDepartmentOid" not-null="true" />
+            <column name="FatherDepartmentOid" />
         </many-to-one>
         <property name="departmentNo" type="java.lang.String">
             <column name="DepartmentNo" length="45" not-null="true" />
@@ -27,7 +27,7 @@
         </set>
         <set name="departments" inverse="true">
             <key>
-                <column name="FatherDepartmentOid" not-null="true" />
+                <column name="FatherDepartmentOid" />
             </key>
             <one-to-many class="com.hrms.pojo.Department" />
         </set>

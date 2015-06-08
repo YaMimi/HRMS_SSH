@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
-
+	<!-- attendance包 -->
+	<package name="attendance" extends="struts-default" namespace="/">
+		<!-- 员工考勤查询 -->
+		<action name="WorkerAttendanceSearch" class="AttendanceAct" method="workerAttendanceSearch">
+			<result name="success" type="redirect">/worker_attendancesearch.jsp</result>
+		</action>
+	</package>
 </struts>    

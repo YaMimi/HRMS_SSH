@@ -129,7 +129,7 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-large icon-user"></i>  <i class="icon-large icon-sort-down"></i></a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="icon-user"></i> <%out.print("杨明杰"); %></a>
+                            <li><a href="#"><i class="icon-user"></i> <%out.print("王尼玛"); %></a>
                             </li>
                             <li><a href="#" data-toggle="modal" data-target="#aboutModal"><i class="icon-info-sign"></i> 关于</a>
                             </li>
@@ -150,7 +150,7 @@
                     <li><a href="#infoSystem" class="nav-header collapsed"  data-toggle="collapse"><i class="icon-large icon-user"></i> 信息系统<i class="pull-right icon-sidebar-collapse"></i></a>
                         <ul id="infoSystem" class="nav nav-sidebar nav-sec  collapse">
                             <li>
-                                <a href="#">个人信息</a>
+                                <a href="WorkerAttendanceSearch.action">个人信息</a>
                             </li>
                             <li>
                                 <a href="#">信息管理</a>
