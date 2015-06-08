@@ -25,9 +25,7 @@ public class Department implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Department(Department department, String departmentNo,
-			String departmentName) {
-		this.department = department;
+	public Department(String departmentNo, String departmentName) {
 		this.departmentNo = departmentNo;
 		this.departmentName = departmentName;
 	}
