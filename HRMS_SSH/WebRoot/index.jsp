@@ -43,7 +43,7 @@ state = (String)session.getAttribute("state");
                         <u><abbr title="如果您忘记了自己的登录密码，请带证件到人事部进行修改。">忘记密码？</abbr></u>
                         </label>
                     </div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">登录123</button>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
                 </form>
         </div>
     </div>
