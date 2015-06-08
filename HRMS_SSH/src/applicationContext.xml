@@ -51,5 +51,10 @@
 	</bean>
 	<tx:annotation-driven transaction-manager="txManager" />
 	
+	<!-- Login Part Begin -->
+	<bean id="LoginAction" class="com.hrms.login.action.LoginAction"></bean>
+	<bean id="LoginService" class="com.hrms.login.service.LoginServiceImpl"></bean>
+	<bean id="LoginDao" class="com.hrms.login.dao.LoginDaoImpl"></bean>
+	<!-- Login Part End -->
 	
 </beans>

@@ -24,16 +24,30 @@ state = (String)session.getAttribute("state");
             <div class="div-mid-login">
                 <form class="form-signin" action="checkLogin">
                     <img src="img/title.png">
-                    <%
-                    	if(state!=null)
-                    	{
-	                    	out.print("<div class='alert alert-danger' style='margin-top:0px; margin-bottom: 5px;' role='alert'><span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> 用户名或密码错误</div>");
-	                    	session.setAttribute("state",null);
-                    	}
-                    %>
-                    <label for="inputEmail" class="sr-only">账号</label>
+                    <%if(state!=null&&state.equals("LOGOUTSUCCESS")) {%>
+					<%session.setAttribute("state", null); %>
+			        <div class="alert alert-success alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
+			        	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<i class="icon-exclamation-sign icon-large"></i>　登出成功！
+					</div>
+			        <%} %>
+			       	<%if(state!=null&&state.equals("LOGINERROR")) {%>
+					<%session.setAttribute("state", null); %>
+			        <div class="alert alert-danger alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<i class="icon-remove-sign icon-large"></i>　密码错误，请检查后重新输入。 <a class="alert-link" href="./register.jsp"> 现在注册。</a>
+					</div>
+					<%} %>
+					<%if(state!=null&&state.equals("LOGINEMPTY")) {%>
+					<%session.setAttribute("state", null); %>
+			        <div class="alert alert-danger alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<i class="icon-remove-sign icon-large"></i>　用户名为空，请检查后重新输入。 <a class="alert-link" href="./register.jsp"> 现在注册。</a>
+					</div>
+					<%} %>
+                    <label for="inputEmail" class="sr-only">员工号</label>
                     <input type="text" id="inputEmail"  name="username" class="form-control" placeholder="账号" required="" autofocus="">
-                    <label for="inputPassword" class="sr-only">密码</label>
+                    <label for="inputPassword" class="sr-only">密　码</label>
                     <input type="password" id="inputPassword" name="password" class="form-control" placeholder="密码" required="">
                     <div class="checkbox">
                         <label >
@@ -50,4 +64,3 @@ state = (String)session.getAttribute("state");
 </div>
 </body>
 </html>
-<%session.invalidate();%>
