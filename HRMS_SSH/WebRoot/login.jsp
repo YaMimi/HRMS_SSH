@@ -4,7 +4,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String state = null;
-Worker worker = (Worker)session.getAttribute("activeWorker");
+Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 state = (String)session.getAttribute("state");
 %>
 
@@ -24,24 +24,18 @@ state = (String)session.getAttribute("state");
             <div class="div-mid-logo">
                 <img src="img/logo.png">
             </div>
-            <%if(worker!=null) {%>
+            <%if(activeWorker!=null) {%>
             <div class="div-mid-login">
+            	<form class="form-signin" action="Logout" method="post">
                     <img src="img/title.png">
-			        <div class="alert alert-success alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
+			        <div class="alert alert-danger alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
 			        	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<i class="icon-remove-sign icon-large"></i> 你已经登录，请勿重复操作！ <a class="alert-link" href="Logout"> 登出系统。</a>
+						<i class="icon-remove-sign icon-large"></i> 你已登录！请先<a class="alert-link" href="Logout"> 登出系统。</a>
 					</div>
-                    <input type="text" name="username" class="form-control" placeholder="员工号" disabled="disabled">
-                    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="密　码" disabled="disabled">
-                    <div class="checkbox">
-                        <label >
-                            <input type="checkbox" value="remember-me" disabled="disabled"> 记住我的登录状态
-                        </label>
-                        <label style="float:right">
-                        <u><abbr title="如果您忘记了自己的登录密码，请带证件到人事部进行修改。">忘记密码？</abbr></u>
-                        </label>
-                    </div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" disabled="disabled">登录</button>
+                    <input type="text" name="username" class="form-control" style="margin-bottom: 5px;" placeholder="当前账号：<%=activeWorker.getWorkerNo() %>" disabled="disabled">
+                    <a class="btn btn-lg btn-primary btn-block" href="./index.jsp">返回首页</a>
+                    <button class="btn btn-lg btn-danger btn-block" type="submit">登出系统</button>
+                 </form>
        		</div>
             <%} else {%>
             <div class="div-mid-login">
@@ -86,5 +80,11 @@ state = (String)session.getAttribute("state");
 	       <%} %>
     </div>
 </div>
+
+		<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	    <!-- Placed at the end of the document so the pages load faster -->
+	    <script src="./js/jquery-2.1.3.min.js"></script>
+	    <script src="./js/bootstrap.min.js"></script>
 </body>
 </html>
