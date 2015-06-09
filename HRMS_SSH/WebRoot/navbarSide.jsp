@@ -21,7 +21,7 @@
                 <li><a href="#attendanceSystem" class="nav-header collapsed"  data-toggle="collapse">　签到系统<i class="pull-right icon-sidebar-collapse"></i></a>
                     <ul id="attendanceSystem" class="nav nav-sidebar nav-sec  collapse">
                         <li<%if(path.equals("/attendanceCheck.jsp")) {%> class="active"<%} %>>
-                            <a href="#">签到查询</a>
+                            <a href="attendanceCheck.jsp">签到查询</a>
                         </li>
                         <li<%if(path.equals("/attendanceVct.jsp")) {%> class="active"<%} %>>
                             <a href="#">请假系统</a>

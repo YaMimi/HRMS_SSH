@@ -1,8 +1,9 @@
-<%@ page import="com.hrms.pojo.Attendance"%>
+<%@page import="com.hrms.pojo.*"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="com.opensymphony.xwork2.ActionContext"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
+Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 List<Attendance> attendancelist = (List<Attendance>)session.getAttribute("attendancelist");
 if(attendancelist==null)
 {
@@ -44,6 +45,9 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
   </head>
   
   <body>
+  
+  	<%@ include file="navbarTop.jsp"%>
+    <%@ include file="navbarSide.jsp"%>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
          <h1 class="page-header">签到查询</h1>
          <i>最近5个工作日的签到记录如下：</i>
@@ -53,7 +57,6 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
 	              <th><strong>日期</strong></th>
 	              <th><strong>上班</strong></th>
 	              <th><strong>下班</strong></th>
-	              <th><strong>特殊情况</strong></th>
               </tr>
               <%int i = 1; %>
               <%for(Attendance attendance : AttendanceList){ %>
@@ -62,7 +65,6 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
 	              <th><strong><%=sdf.format(attendance.getAttendanceDate()) %></strong></th>
 	              <th><strong><%=attendance.getAttendanceOnTime() %></strong></th>
 	              <th><strong><%=attendance.getAttendanceOffTime() %></strong></th>
-	              <th><strong>无</strong></th>
               </tr>
               <%i++; %>
               <%if(i>5){i=1;break;} %>
