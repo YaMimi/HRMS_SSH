@@ -37,6 +37,14 @@ public class LoginAction extends ActionSupport {
 		}
 		return this.NONE;
 	}
+	
+	public String logout() {
+		
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		session.put("activeWorker", null);
+		session.put("state", "LOGOUTSUCCESS");
+		return this.SUCCESS;
+	}
 
 	public Worker getWorker() {
 		return worker;

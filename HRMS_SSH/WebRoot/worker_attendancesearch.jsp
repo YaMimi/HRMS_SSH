@@ -3,12 +3,11 @@
 <%@ page import="com.opensymphony.xwork2.ActionContext"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%! List<Attendance> attendancelist;  %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-attendancelist = session.getAttribute("attendancelist");
+List<Attendance> attendancelist = (List<Attendance>)session.getAttribute("attendancelist");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -49,11 +48,12 @@ attendancelist = session.getAttribute("attendancelist");
 	              <th><strong>特殊情况</strong></th>
               </tr>
               <%for(Attendance attendance : attendancelist){ %>
+              <%int i = 1; %>
               <tr>
-	              <th><strong><s:property value="1"/></strong></th>
-	              <th><strong><s:property value="<%=attendance.getAttendanceDate() %>"/></strong></th>
-	              <th><strong><s:property value="<%=attendance.getAttendanceOnTime() %>"/></strong></th>
-	              <th><strong><s:property value="<%=attendance.getAttendanceOffTime() %>"/></strong></th>
+	              <th><strong><%=i++ %></strong></th>
+	              <th><strong><%=sdf.format(attendance.getAttendanceDate()) %></strong></th>
+	              <th><strong><%=attendance.getAttendanceOnTime() %></strong></th>
+	              <th><strong><%=attendance.getAttendanceOffTime() %></strong></th>
 	              <th><strong>无</strong></th>
               </tr>
               <%} %>
