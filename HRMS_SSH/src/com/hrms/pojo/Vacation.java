@@ -12,7 +12,8 @@ public class Vacation implements java.io.Serializable {
 
 	private Integer vacationOid;
 	private Worker worker;
-	private Date vacationDate;
+	private Date vacationStartDate;
+	private Date vacationEndDate;
 	private String vacationType;
 	private String vacationReason;
 	private Integer vacationResult;
@@ -24,10 +25,12 @@ public class Vacation implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Vacation(Worker worker, Date vacationDate, String vacationType,
-			String vacationReason, Integer vacationResult) {
+	public Vacation(Worker worker, Date vacationStartDate,
+			Date vacationEndDate, String vacationType, String vacationReason,
+			Integer vacationResult) {
 		this.worker = worker;
-		this.vacationDate = vacationDate;
+		this.vacationStartDate = vacationStartDate;
+		this.vacationEndDate = vacationEndDate;
 		this.vacationType = vacationType;
 		this.vacationReason = vacationReason;
 		this.vacationResult = vacationResult;
@@ -51,12 +54,20 @@ public class Vacation implements java.io.Serializable {
 		this.worker = worker;
 	}
 
-	public Date getVacationDate() {
-		return this.vacationDate;
+	public Date getVacationStartDate() {
+		return this.vacationStartDate;
 	}
 
-	public void setVacationDate(Date vacationDate) {
-		this.vacationDate = vacationDate;
+	public void setVacationStartDate(Date vacationStartDate) {
+		this.vacationStartDate = vacationStartDate;
+	}
+
+	public Date getVacationEndDate() {
+		return this.vacationEndDate;
+	}
+
+	public void setVacationEndDate(Date vacationEndDate) {
+		this.vacationEndDate = vacationEndDate;
 	}
 
 	public String getVacationType() {

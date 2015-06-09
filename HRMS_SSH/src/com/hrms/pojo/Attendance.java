@@ -16,6 +16,7 @@ public class Attendance implements java.io.Serializable {
 	private Date attendanceDate;
 	private Time attendanceOnTime;
 	private Time attendanceOffTime;
+	private Integer attendanceState;
 
 	// Constructors
 
@@ -25,11 +26,13 @@ public class Attendance implements java.io.Serializable {
 
 	/** full constructor */
 	public Attendance(Worker worker, Date attendanceDate,
-			Time attendanceOnTime, Time attendanceOffTime) {
+			Time attendanceOnTime, Time attendanceOffTime,
+			Integer attendanceState) {
 		this.worker = worker;
 		this.attendanceDate = attendanceDate;
 		this.attendanceOnTime = attendanceOnTime;
 		this.attendanceOffTime = attendanceOffTime;
+		this.attendanceState = attendanceState;
 	}
 
 	// Property accessors
@@ -72,6 +75,14 @@ public class Attendance implements java.io.Serializable {
 
 	public void setAttendanceOffTime(Time attendanceOffTime) {
 		this.attendanceOffTime = attendanceOffTime;
+	}
+
+	public Integer getAttendanceState() {
+		return this.attendanceState;
+	}
+
+	public void setAttendanceState(Integer attendanceState) {
+		this.attendanceState = attendanceState;
 	}
 
 }
