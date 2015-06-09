@@ -31,10 +31,13 @@ public class Worker implements java.io.Serializable {
 	private String workerPhone;
 	private String password;
 	private Set vacations = new HashSet(0);
+	private Set messagesForMessageFromWorkerOid = new HashSet(0);
+	private Set messagesForMessageToWorkerOid = new HashSet(0);
 	private Set rewardorpunishments = new HashSet(0);
 	private Set salaries = new HashSet(0);
 	private Set cultivations = new HashSet(0);
 	private Set attendances = new HashSet(0);
+	private Set affiches = new HashSet(0);
 
 	// Constructors
 
@@ -76,8 +79,10 @@ public class Worker implements java.io.Serializable {
 			String workerAddress, String workerBloodType,
 			String workerPolitical, String workerNationality,
 			String workerEthnic, String workerEducation, String workerPhone,
-			String password, Set vacations, Set rewardorpunishments,
-			Set salaries, Set cultivations, Set attendances) {
+			String password, Set vacations,
+			Set messagesForMessageFromWorkerOid,
+			Set messagesForMessageToWorkerOid, Set rewardorpunishments,
+			Set salaries, Set cultivations, Set attendances, Set affiches) {
 		this.department = department;
 		this.workerNo = workerNo;
 		this.workerName = workerName;
@@ -96,10 +101,13 @@ public class Worker implements java.io.Serializable {
 		this.workerPhone = workerPhone;
 		this.password = password;
 		this.vacations = vacations;
+		this.messagesForMessageFromWorkerOid = messagesForMessageFromWorkerOid;
+		this.messagesForMessageToWorkerOid = messagesForMessageToWorkerOid;
 		this.rewardorpunishments = rewardorpunishments;
 		this.salaries = salaries;
 		this.cultivations = cultivations;
 		this.attendances = attendances;
+		this.affiches = affiches;
 	}
 
 	// Property accessors
@@ -256,6 +264,24 @@ public class Worker implements java.io.Serializable {
 		this.vacations = vacations;
 	}
 
+	public Set getMessagesForMessageFromWorkerOid() {
+		return this.messagesForMessageFromWorkerOid;
+	}
+
+	public void setMessagesForMessageFromWorkerOid(
+			Set messagesForMessageFromWorkerOid) {
+		this.messagesForMessageFromWorkerOid = messagesForMessageFromWorkerOid;
+	}
+
+	public Set getMessagesForMessageToWorkerOid() {
+		return this.messagesForMessageToWorkerOid;
+	}
+
+	public void setMessagesForMessageToWorkerOid(
+			Set messagesForMessageToWorkerOid) {
+		this.messagesForMessageToWorkerOid = messagesForMessageToWorkerOid;
+	}
+
 	public Set getRewardorpunishments() {
 		return this.rewardorpunishments;
 	}
@@ -286,6 +312,14 @@ public class Worker implements java.io.Serializable {
 
 	public void setAttendances(Set attendances) {
 		this.attendances = attendances;
+	}
+
+	public Set getAffiches() {
+		return this.affiches;
+	}
+
+	public void setAffiches(Set affiches) {
+		this.affiches = affiches;
 	}
 
 }
