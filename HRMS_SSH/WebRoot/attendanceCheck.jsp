@@ -1,7 +1,20 @@
+<%@ page import="com.hrms.pojo.Attendance"%>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="com.opensymphony.xwork2.ActionContext"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
+List<Attendance> attendancelist = (List<Attendance>)session.getAttribute("attendancelist");
+if(attendancelist==null)
+{
+	%><jsp:forward page="/WorkerAttendanceSearch"/><% 
+}
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+List<Attendance> AttendanceList = attendancelist;
+attendancelist = null;
+session.setAttribute("attendancelist", attendancelist);
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -41,5 +54,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	              <th><strong>下班</strong></th>
 	              <th><strong>特殊情况</strong></th>
               </tr>
+              <%int i = 1; %>
+              <%for(Attendance attendance : AttendanceList){ %>
+              <tr>
+	              <th><strong><%=i %></strong></th>
+	              <th><strong><%=sdf.format(attendance.getAttendanceDate()) %></strong></th>
+	              <th><strong><%=attendance.getAttendanceOnTime() %></strong></th>
+	              <th><strong><%=attendance.getAttendanceOffTime() %></strong></th>
+	              <th><strong>无</strong></th>
+              </tr>
+              <%i++; %>
+              <%if(i>5)break; %>
+              <%} %>
+            </table>
   </body>
 </html>

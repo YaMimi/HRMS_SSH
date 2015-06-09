@@ -17,7 +17,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 	@Override
 	public List<Attendance> searchAttendance(String hql) {
 		// TODO Auto-generated method stub
-		return null;
+		return attendancedao.searchAttendance(hql);
 	}
 
 	@Override

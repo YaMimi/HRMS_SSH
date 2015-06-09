@@ -16,7 +16,8 @@ public class AttendanceDaoImpl implements AttendanceDao {
 	@Override
 	public List<Attendance> searchAttendance(String hql) {
 		// TODO Auto-generated method stub
-		return null;
+		List<Attendance> attendancelist = sessionFactory.getCurrentSession().createQuery(hql).list();
+		return attendancelist;
 	}
 
 	@Override

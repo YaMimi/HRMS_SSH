@@ -4,10 +4,19 @@
 <%@ page import="com.opensymphony.xwork2.ActionContext"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
+List<Department> departmentlist = (List<Department>)session.getAttribute("departmentlist");
+if(departmentlist==null)
+{
+	%><jsp:forward page="/DepartmentSearch"/><% 
+}
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-List<Department>departmentlist = (List<Department>)session.getDepartment("departmentlist");
+
+
+List<Department> DepartmentList = departmentlist;
+departmentlist = null;
+session.setAttribute("departmentlist", departmentlist);
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -44,7 +53,7 @@ List<Department>departmentlist = (List<Department>)session.getDepartment("depart
 	                <th>功能简介</th>
 				    <th><i class="icon-pencil"></i> 修改该部门信息</th>
 				    <th><i class="icon-remove"></i> 删除该部门（谨慎使用）</th>
-				 </tr> 
+				 </tr> </table>
             <table class="table table-bordered table-hover" >
               <tr>
 	              <th><strong>部门编号</strong></th>
@@ -54,31 +63,31 @@ List<Department>departmentlist = (List<Department>)session.getDepartment("depart
 	              <th><strong>部门人数</strong></th>
 	              <th colspan="2"><strong>操作</strong></th>
               </tr>
-              
-               <%for(Department department : departmentlist){ %>
               <%int i = 1; %>
+              <%for(Department department : departmentlist){ %>
+              
               <tr>
 	              <th><strong><%=department.getDepartmentNo() %></strong></th>
 	              <th><strong><%=department.getDepartmentName() %></strong></th>
 	              <th><strong><%=department.getDepartment().getDepartmentNo() %></strong></th>
 	              <th><strong><%=department.getDepartment().getDepartmentName() %></strong></th>
 	              <th><strong><%=department.getWorkers() %></strong></th>
-             			              <th style="width:10px;">
-				              <form action=''>
-			            			<input type='hidden' name='alter' value='<%=department.getDepartmentOid()%>'/>
-			            			<button class='crlbut editbut' type='submit' ><i class="icon-large icon-pencil"></i></button>
-			            	  </form>
-			              </th>
-			              <th style="width:10px;">  
-			            	  <form action=''>
-			            			<input type='hidden' name='delete' value='<%=department.getDepartmentOid()%>'/>
-			            			<button class='crlbut delbut' type='submit' ><i class="icon-large icon-remove"></i></button>
-			            	  </form>
-		            	  </th>
-			            </tr>
+             	  <th style="width:10px;">
+				      <form action=''>
+			             <input type='hidden' name='alter' value='<%=department.getDepartmentOid()%>'/>
+			             <button class='crlbut editbut' type='submit' ><i class="icon-large icon-pencil"></i></button>
+			          </form>
+			      </th>
+			      <th style="width:10px;">  
+			           <form action=''>
+			             <input type='hidden' name='delete' value='<%=department.getDepartmentOid()%>'/>
+			             <button class='crlbut delbut' type='submit' ><i class="icon-large icon-remove"></i></button>
+			           </form>
+		          </th>
+			  </tr>
+			  <%i++; %>
 	            <%
 	            	}
-	            }
 	             %>
                 </table>
   </body>
