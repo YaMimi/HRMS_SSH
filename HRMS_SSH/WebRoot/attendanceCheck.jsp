@@ -67,5 +67,30 @@ session.setAttribute("attendancelist", attendancelist);
               <%if(i>5)break; %>
               <%} %>
             </table>
+            
+            <h2 class="sub-header">详情查询</h2>
+
+				<i>输入详细日期查询当日考勤信息。</i>
+				<form class="form-inline" action="QueryAttendanceServlet">
+				  <div class="form-group">
+				    <div class="input-group">
+				      <input id="datepicker_start" type="text" class="form-control" name="date" style="width:291px">
+				    </div>
+				  </div>
+				  <button type="submit" class="btn btn-primary"><i class="icon-search"></i></button>
+				</form>
+				<br>
+				<table class="table table-bordered table-hover">
+					<tr>
+						<th>日期</th>
+						<th>上班时间</th>
+						<th>下班时间</th>
+						<th>请假状况</th>
+					</tr>
+					<tr>
+					
+					</tr>
+				</table>
+            
   </body>
 </html>
