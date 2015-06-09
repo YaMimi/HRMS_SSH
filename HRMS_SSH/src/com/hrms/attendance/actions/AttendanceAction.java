@@ -17,12 +17,11 @@ public class AttendanceAction extends ActionSupport {
 	private AttendanceService attendanceservice;
 	
 	public String workerAttendanceSearch(){
-		String hql = "from Attendance where attendanceOid = 1 order by attendanceDate desc";
+		String hql = "from Attendance where attendanceWorkerOid = 1 order by attendanceDate desc";
 		List<Attendance> attendancelist = attendanceservice.searchAttendance(hql);
 		Map session = ActionContext.getContext().getSession();
 		session.put("attendancelist", attendancelist);
 		ActionContext.getContext().setSession(session);
-		
 		return SUCCESS;
 		
 	}
