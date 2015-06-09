@@ -4,13 +4,16 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import com.hrms.pojo.Department;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.hrms.department.dao.DepartmentDao;
+import com.hrms.pojo.Department;
+@Transactional
 public class DepartmentServiceImpl implements DepartmentService{
 
 	
 	@Resource
-	Department departmentdao;
+	DepartmentDao departmentdao;
 	@Override
 	public List<Department> searchDepartment(String hql) {
 		// TODO Auto-generated method stub
