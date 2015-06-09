@@ -18,35 +18,32 @@ USE `hrms_ssh`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cultivation`
+-- Table structure for table `affiche`
 --
 
-DROP TABLE IF EXISTS `cultivation`;
+DROP TABLE IF EXISTS `affiche`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cultivation` (
-  `CultivationOid` int(11) NOT NULL AUTO_INCREMENT,
-  `CultivationBeginDate` date NOT NULL,
-  `CultivationEndDate` date NOT NULL,
-  `CultivationType` varchar(45) NOT NULL,
-  `CultivationProject` varchar(45) NOT NULL,
-  `CultivationInstruction` varchar(45) NOT NULL,
-  `CultivationMark` int(11) DEFAULT NULL,
-  `CultivationWorkerOid` int(11) NOT NULL,
-  PRIMARY KEY (`CultivationOid`),
-  UNIQUE KEY `CultivationOid_UNIQUE` (`CultivationOid`),
-  KEY `fk_Cultivation_Worker1_idx` (`CultivationWorkerOid`),
-  CONSTRAINT `fk_Cultivation_Worker1` FOREIGN KEY (`CultivationWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `affiche` (
+  `AfficheOid` int(11) NOT NULL AUTO_INCREMENT,
+  `AfficheDate` date NOT NULL,
+  `AfficheTitle` varchar(45) NOT NULL,
+  `AfficheContent` varchar(145) NOT NULL,
+  `AfficheWorkerOid` int(11) NOT NULL,
+  PRIMARY KEY (`AfficheOid`),
+  UNIQUE KEY `AfficheOid_UNIQUE` (`AfficheOid`),
+  KEY `fk_Affiche_Woker1_idx` (`AfficheWorkerOid`),
+  CONSTRAINT `fk_Affiche_Woker1` FOREIGN KEY (`AfficheWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cultivation`
+-- Dumping data for table `affiche`
 --
 
-LOCK TABLES `cultivation` WRITE;
-/*!40000 ALTER TABLE `cultivation` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cultivation` ENABLE KEYS */;
+LOCK TABLES `affiche` WRITE;
+/*!40000 ALTER TABLE `affiche` DISABLE KEYS */;
+/*!40000 ALTER TABLE `affiche` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -58,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-09 16:53:37
+-- Dump completed on 2015-06-09 16:53:36

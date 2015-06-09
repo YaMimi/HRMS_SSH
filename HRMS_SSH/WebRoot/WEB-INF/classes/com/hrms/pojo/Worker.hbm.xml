@@ -67,6 +67,18 @@
             </key>
             <one-to-many class="com.hrms.pojo.Vacation" />
         </set>
+        <set name="messagesForMessageFromWorkerOid" inverse="true">
+            <key>
+                <column name="MessageFromWorkerOid" not-null="true" />
+            </key>
+            <one-to-many class="com.hrms.pojo.Message" />
+        </set>
+        <set name="messagesForMessageToWorkerOid" inverse="true">
+            <key>
+                <column name="MessageToWorkerOid" not-null="true" />
+            </key>
+            <one-to-many class="com.hrms.pojo.Message" />
+        </set>
         <set name="rewardorpunishments" inverse="true">
             <key>
                 <column name="ROPWorkerOid" not-null="true" />
@@ -90,6 +102,12 @@
                 <column name="AttendanceWorkerOid" not-null="true" />
             </key>
             <one-to-many class="com.hrms.pojo.Attendance" />
+        </set>
+        <set name="affiches" inverse="true">
+            <key>
+                <column name="AfficheWorkerOid" not-null="true" />
+            </key>
+            <one-to-many class="com.hrms.pojo.Affiche" />
         </set>
     </class>
 </hibernate-mapping>
