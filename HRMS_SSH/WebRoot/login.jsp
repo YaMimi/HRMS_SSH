@@ -13,8 +13,9 @@ state = (String)session.getAttribute("state");
 <head lang="zh-CN">
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
-    <link  href="css/signin.css" rel="stylesheet"/>
-    <link  href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link  href="./css/signin.css" rel="stylesheet"/>
+    <link  href="./css/bootstrap.min.css" rel="stylesheet"/>
+    <link  href="./css/font-awesome.min.css" rel="stylesheet"/>
     <title>登录</title>
 </head>
 <body>
@@ -28,7 +29,7 @@ state = (String)session.getAttribute("state");
                     <img src="img/title.png">
 			        <div class="alert alert-success alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
 			        	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<i class="icon-remove-sign icon-large"></i>　你已经登录，请勿重复操作！ <a class="alert-link" href="Logout"> 登出系统。</a>
+						<i class="icon-remove-sign icon-large"></i> 你已经登录，请勿重复操作！ <a class="alert-link" href="Logout"> 登出系统。</a>
 					</div>
                     <input type="text" name="username" class="form-control" placeholder="员工号" disabled="disabled">
                     <input type="password" id="inputPassword" name="password" class="form-control" placeholder="密　码" disabled="disabled">
@@ -50,21 +51,21 @@ state = (String)session.getAttribute("state");
 					<%session.setAttribute("state", null); %>
 			        <div class="alert alert-success alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
 			        	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<i class="icon-exclamation-sign icon-large"></i>　登出成功！
+						<i class="icon-exclamation-sign icon-large"></i> 登出成功！
 					</div>
 			        <%} %>
 			       	<%if(state!=null&&state.equals("LOGINERROR")) {%>
 					<%session.setAttribute("state", null); %>
 			        <div class="alert alert-danger alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<i class="icon-remove-sign icon-large"></i>　密码错误，请检查后重新输入。 <a class="alert-link" href="./register.jsp"> 现在注册。</a>
+						<i class="icon-remove-sign icon-large"></i> 密码错误，请检查后重新输入。
 					</div>
 					<%} %>
 					<%if(state!=null&&state.equals("LOGINEMPTY")) {%>
 					<%session.setAttribute("state", null); %>
 			        <div class="alert alert-danger alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<i class="icon-remove-sign icon-large"></i>　用户名为空，请检查后重新输入。 <a class="alert-link" href="./register.jsp"> 现在注册。</a>
+						<i class="icon-remove-sign icon-large"></i> 用户名为空，请检查后重新输入。
 					</div>
 					<%} %>
                     <label for="inputEmail" class="sr-only">员工号</label>
