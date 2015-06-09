@@ -41,7 +41,7 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
   			$( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd"});
   		});
   	</script>
-    <title>主页</title>
+    <title>签到查询</title>
   </head>
   
   <body>
@@ -58,7 +58,9 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
 	              <th><strong>上班</strong></th>
 	              <th><strong>下班</strong></th>
               </tr>
+              
               <%int i = 1; %>
+              <%if(AttendanceList!=null){ %>
               <%for(Attendance attendance : AttendanceList){ %>
               <tr>
 	              <th><strong><%=i %></strong></th>
@@ -68,6 +70,7 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
               </tr>
               <%i++; %>
               <%if(i>5){i=1;break;} %>
+              <% } %>
               <%} %>
             </table>
             
@@ -102,7 +105,7 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
 	              <%i++; %>
 	             <% } %>
 	             <%} %>
-				<%i=1; %>
+				<%i=1; session.setAttribute("attendancelistdate", null);%>
 			</table>
             
   </body>

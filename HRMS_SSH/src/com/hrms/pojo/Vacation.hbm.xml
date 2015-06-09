@@ -13,8 +13,11 @@
         <many-to-one name="worker" class="com.hrms.pojo.Worker" fetch="select">
             <column name="VacationWorkerOid" not-null="true" />
         </many-to-one>
-        <property name="vacationDate" type="java.util.Date">
-            <column name="VacationDate" length="10" not-null="true" />
+        <property name="vacationStartDate" type="java.util.Date">
+            <column name="VacationStartDate" length="10" not-null="true" />
+        </property>
+        <property name="vacationEndDate" type="java.util.Date">
+            <column name="VacationEndDate" length="10" not-null="true" />
         </property>
         <property name="vacationType" type="java.lang.String">
             <column name="VacationType" length="45" not-null="true" />

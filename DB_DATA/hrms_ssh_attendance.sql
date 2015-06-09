@@ -1,8 +1,8 @@
 CREATE DATABASE  IF NOT EXISTS `hrms_ssh` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `hrms_ssh`;
--- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: hrms_ssh
+-- Host: 127.0.0.1    Database: hrms_ssh
 -- ------------------------------------------------------
 -- Server version	5.6.21-log
 
@@ -29,6 +29,7 @@ CREATE TABLE `attendance` (
   `AttendanceDate` date NOT NULL,
   `AttendanceOnTime` time NOT NULL,
   `AttendanceOffTime` time NOT NULL,
+  `AttendanceState` int(11) NOT NULL,
   `AttendanceWorkerOid` int(11) NOT NULL,
   PRIMARY KEY (`AttendanceOid`),
   UNIQUE KEY `AttendanceOid_UNIQUE` (`AttendanceOid`),
@@ -43,7 +44,7 @@ CREATE TABLE `attendance` (
 
 LOCK TABLES `attendance` WRITE;
 /*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
-INSERT INTO `attendance` VALUES (1,'2015-06-08','09:02:00','18:30:00',1),(2,'2015-06-09','08:30:00','18:20:00',1),(3,'2015-06-10','08:35:00','18:11:00',1),(4,'2015-06-11','08:00:00','18:00:00',1),(5,'2015-06-12','09:35:00','18:01:00',1),(6,'2015-06-13','08:05:00','18:13:00',1);
+INSERT INTO `attendance` VALUES (1,'2015-06-08','09:02:00','18:30:00',0,1),(2,'2015-06-09','09:10:00','18:20:00',0,1),(3,'2015-06-10','08:12:00','18:32:00',0,1),(4,'2015-06-11','08:55:00','18:15:00',0,1),(5,'2015-06-12','08:30:00','17:55:00',0,1),(6,'2015-06-13','09:00:00','18:06:00',0,1);
 /*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-09 16:53:36
+-- Dump completed on 2015-06-09 21:12:43

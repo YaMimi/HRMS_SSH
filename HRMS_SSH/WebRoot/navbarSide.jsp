@@ -24,7 +24,7 @@
                             <a href="attendanceCheck.jsp">签到查询</a>
                         </li>
                         <li<%if(path.equals("/attendanceVct.jsp")) {%> class="active"<%} %>>
-                            <a href="#">请假系统</a>
+                            <a href="attendanceVct.jsp">请假系统</a>
                         </li>
                         <li<%if(path.equals("/attendanceVctCheck.jsp")) {%> class="active"<%} %>>
                             <a href="#">请假审批</a>
