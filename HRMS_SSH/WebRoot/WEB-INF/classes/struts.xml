@@ -5,7 +5,7 @@
 	<package name="attendance" extends="struts-default" namespace="/">
 		<!-- 员工考勤查询 -->
 		<action name="WorkerAttendanceSearch" class="AttendanceAct" method="workerAttendanceSearch">
-			<result name="success" type="redirect">/worker_attendancesearch.jsp</result>
+			<result name="success" type="redirect">/attendanceCheck.jsp</result>
 		</action>
 	</package>
 
