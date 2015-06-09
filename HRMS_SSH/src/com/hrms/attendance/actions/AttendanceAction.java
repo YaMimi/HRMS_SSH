@@ -1,10 +1,13 @@
 package com.hrms.attendance.actions;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.hrms.attendance.services.AttendanceService;
 import com.hrms.pojo.Attendance;
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.xml.internal.fastinfoset.sax.Properties;
 
 public class AttendanceAction extends ActionSupport {
 	private Attendance attendance;
@@ -13,7 +16,8 @@ public class AttendanceAction extends ActionSupport {
 	
 	public String workerAttendanceSearch(){
 		String hql = "from Attendance where AttendanceOid = 1 order by AttendanceDate dec";
-		attendanceservice.searchAttendance(hql);
+		List<Attendance> attendancelist = attendanceservice.searchAttendance(hql);
+		
 		
 		return null;
 		
