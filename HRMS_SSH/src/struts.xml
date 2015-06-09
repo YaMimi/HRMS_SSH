@@ -24,4 +24,13 @@
 			<result name="success" type="redirect">/login.jsp</result>
 		</action>
 	</package>
+	
+	<!-- 杨铭    department包 -->
+	<package name="department" extends="struts-default" namespace="/">
+		<!-- 部门信息查询 -->
+		<action name="DepartmentSearch" class="DepartmentAction" method="DepartmentSearch">
+			<result name="success" type="redirect">/departmentCheck.jsp</result>
+		</action>
+	</package>
+	
 </struts>    
