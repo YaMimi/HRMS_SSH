@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
+            <ul class="nav nav-sidebar"> 
                 <li<%if(nav.equals("index")) {%> class="active"<%} %>><a href="#"><i class="icon-large icon-home"></i> 个人首页 <span class="sr-only">(current)</span></a></li>
                 <li><a href="#infoSystem" class="nav-header collapsed"  data-toggle="collapse"><i class="icon-large icon-user"></i> 信息系统<i class="pull-right icon-sidebar-collapse"></i></a>
                     <ul id="infoSystem" class="nav nav-sidebar nav-sec  collapse">
