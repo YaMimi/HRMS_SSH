@@ -18,6 +18,8 @@ public class DepartmentAction extends ActionSupport{
 		return null;
 		
 	}
+	
+	
 
 	public Department getDepartment() {
 		return department;
