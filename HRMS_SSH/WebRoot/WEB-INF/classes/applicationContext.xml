@@ -42,7 +42,9 @@
 				<value>com/hrms/pojo/Department.hbm.xml</value>
 				<value>com/hrms/pojo/Vacation.hbm.xml</value>
 				<value>com/hrms/pojo/Cultivation.hbm.xml</value>
-				<value>com/hrms/pojo/Attendance.hbm.xml</value></list>
+				<value>com/hrms/pojo/Attendance.hbm.xml</value>
+				<value>com/hrms/pojo/Message.hbm.xml</value>
+				<value>com/hrms/pojo/Affiche.hbm.xml</value></list>
 		</property></bean>
 	
 	<bean id="txManager"

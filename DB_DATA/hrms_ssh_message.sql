@@ -18,35 +18,34 @@ USE `hrms_ssh`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cultivation`
+-- Table structure for table `message`
 --
 
-DROP TABLE IF EXISTS `cultivation`;
+DROP TABLE IF EXISTS `message`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cultivation` (
-  `CultivationOid` int(11) NOT NULL AUTO_INCREMENT,
-  `CultivationBeginDate` date NOT NULL,
-  `CultivationEndDate` date NOT NULL,
-  `CultivationType` varchar(45) NOT NULL,
-  `CultivationProject` varchar(45) NOT NULL,
-  `CultivationInstruction` varchar(45) NOT NULL,
-  `CultivationMark` int(11) DEFAULT NULL,
-  `CultivationWorkerOid` int(11) NOT NULL,
-  PRIMARY KEY (`CultivationOid`),
-  UNIQUE KEY `CultivationOid_UNIQUE` (`CultivationOid`),
-  KEY `fk_Cultivation_Worker1_idx` (`CultivationWorkerOid`),
-  CONSTRAINT `fk_Cultivation_Worker1` FOREIGN KEY (`CultivationWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `message` (
+  `MessageOid` int(11) NOT NULL AUTO_INCREMENT,
+  `MessageContent` varchar(45) NOT NULL,
+  `MessageDate` varchar(145) NOT NULL,
+  `MessageFromWorkerOid` int(11) NOT NULL,
+  `MessageToWorkerOid` int(11) NOT NULL,
+  PRIMARY KEY (`MessageOid`),
+  UNIQUE KEY `MessageOid_UNIQUE` (`MessageOid`),
+  KEY `fk_Message_Worker1_idx` (`MessageFromWorkerOid`),
+  KEY `fk_Message_Worker2_idx` (`MessageToWorkerOid`),
+  CONSTRAINT `fk_Message_Worker1` FOREIGN KEY (`MessageFromWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_Message_Worker2` FOREIGN KEY (`MessageToWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cultivation`
+-- Dumping data for table `message`
 --
 
-LOCK TABLES `cultivation` WRITE;
-/*!40000 ALTER TABLE `cultivation` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cultivation` ENABLE KEYS */;
+LOCK TABLES `message` WRITE;
+/*!40000 ALTER TABLE `message` DISABLE KEYS */;
+/*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
