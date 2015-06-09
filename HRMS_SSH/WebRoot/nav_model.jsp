@@ -150,7 +150,7 @@
                     <li><a href="#infoSystem" class="nav-header collapsed"  data-toggle="collapse"><i class="icon-large icon-user"></i> 信息系统<i class="pull-right icon-sidebar-collapse"></i></a>
                         <ul id="infoSystem" class="nav nav-sidebar nav-sec  collapse">
                             <li>
-                                <a href="WorkerAttendanceSearch.action">个人信息</a>
+                                <a href="#">个人信息</a>
                             </li>
                             <li>
                                 <a href="#">信息管理</a>
@@ -162,7 +162,7 @@
                     <li><a href="#attendSystem" class="nav-header collapsed"  data-toggle="collapse"><i class="icon-large icon-check"></i> 签到系统<i class="pull-right icon-sidebar-collapse"></i></a>
                         <ul id="attendSystem" class="nav nav-sidebar nav-sec  collapse">
                             <li>
-                                <a href="#">签到查询</a>
+                                <a href="WorkerAttendanceSearch.action">签到查询</a>
                             </li>
                             <li>
                                 <a href="#">请假系统</a>

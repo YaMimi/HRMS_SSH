@@ -8,6 +8,7 @@
 			<result name="success" type="redirect">/worker_attendancesearch.jsp</result>
 		</action>
 	</package>
+
 	
 	<!-- Login Package -->
 	<package name="login" extends="struts-default" namespace="/">
