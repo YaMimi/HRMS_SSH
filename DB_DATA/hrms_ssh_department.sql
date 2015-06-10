@@ -1,8 +1,8 @@
 CREATE DATABASE  IF NOT EXISTS `hrms_ssh` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `hrms_ssh`;
--- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
 --
--- Host: 127.0.0.1    Database: hrms_ssh
+-- Host: localhost    Database: hrms_ssh
 -- ------------------------------------------------------
 -- Server version	5.6.21-log
 
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-09 21:31:32
+-- Dump completed on 2015-06-10 10:31:55
