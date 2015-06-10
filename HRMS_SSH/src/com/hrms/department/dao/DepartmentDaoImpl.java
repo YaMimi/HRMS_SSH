@@ -23,19 +23,20 @@ public class DepartmentDaoImpl implements DepartmentDao{
 	}
 
 	@Override
-	public Department insertAttendance(Department department) {
+	public Department insertDepartment(Department department) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().persist(department);
+		return department;
+	}
+
+	@Override
+	public Department updateDepartment(Department department) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Department updateAttendance(Department department) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteAttendance(Department department) {
+	public void deleteDepartment(Department department) {
 		// TODO Auto-generated method stub
 		
 	}

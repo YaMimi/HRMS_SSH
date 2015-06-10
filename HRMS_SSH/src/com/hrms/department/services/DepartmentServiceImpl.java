@@ -23,7 +23,7 @@ public class DepartmentServiceImpl implements DepartmentService{
 	@Override
 	public Department insertDepartment(Department department) {
 		// TODO Auto-generated method stub
-		return null;
+		return departmentdao.insertDepartment(department);
 	}
 
 	@Override
