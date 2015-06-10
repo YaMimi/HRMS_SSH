@@ -1,8 +1,8 @@
 CREATE DATABASE  IF NOT EXISTS `hrms_ssh` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `hrms_ssh`;
--- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: hrms_ssh
+-- Host: 127.0.0.1    Database: hrms_ssh
 -- ------------------------------------------------------
 -- Server version	5.6.21-log
 
@@ -27,15 +27,15 @@ DROP TABLE IF EXISTS `attendance`;
 CREATE TABLE `attendance` (
   `AttendanceOid` int(11) NOT NULL AUTO_INCREMENT,
   `AttendanceDate` date NOT NULL,
-  `AttendanceOnTime` time NOT NULL,
-  `AttendanceOffTime` time NOT NULL,
+  `AttendanceOnTime` time DEFAULT NULL,
+  `AttendanceOffTime` time DEFAULT NULL,
   `AttendanceState` int(11) NOT NULL DEFAULT '1',
   `AttendanceWorkerOid` int(11) NOT NULL,
   PRIMARY KEY (`AttendanceOid`),
   UNIQUE KEY `AttendanceOid_UNIQUE` (`AttendanceOid`),
   KEY `fk_Attendance_Worker1_idx` (`AttendanceWorkerOid`),
   CONSTRAINT `fk_Attendance_Worker1` FOREIGN KEY (`AttendanceWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-10 10:31:54
+-- Dump completed on 2015-06-10 23:07:58
