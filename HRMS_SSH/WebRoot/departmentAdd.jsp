@@ -50,14 +50,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            </tr>
 	            <form action='DepartmentInsert'>
 		            <tr>
-		              <th><input type="text" class="form-control" name="department_no" placeholder="新增部门编号 " required></th>
-		              <th><input type="text" class="form-control" name="department_name" placeholder="新增部门名称" required></th>
-		              <th><input type="text" class="form-control" name="father_department_no" placeholder="父部门编号（没有则填写本部门编号） " required></th>
-		              <th><input type="text" class="form-control" name="father_department_name" placeholder="父部门名称（没有则填写本部门名称） " required></th>
-		              <th style="width:10px;"><button class="crlbut editbut" type="submit"><i class="icon-large icon-ok"></i></button></th>
+		              <th><input type="text" class="form-control" name="department.DepartmentNo " placeholder="新增部门编号 " required></th>
+		              <th><input type="text" class="form-control" name="department.DepartmentName" placeholder="新增部门名称" required></th>
+		              <th><input type="text" class="form-control" name="department.getDepartment().DepartmentNo" placeholder="父部门编号（没有则填写本部门编号） " required></th>
+		              <th><input type="text" class="form-control" name="department.getDepartment().DepartmentName" placeholder="父部门名称（没有则填写本部门名称） " required></th>
+		              <th style="width:10px;"><button class="crlbut editbut" type="submit"><i class="icon-large icon-ok"></i></button></th>	        
+		              </form>
 		              <th style="width:10px;"><button class="crlbut delbut" type="reset"><i class="icon-large icon-repeat"></i></button></th>
 		            </tr>
-	            </form>
+
                 </table>
                 </div>
   </body>

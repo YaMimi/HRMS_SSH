@@ -46,7 +46,7 @@ public class DepartmentAction extends ActionSupport{
 			}
 		
 		/*
-		 * 添加新部门方法  2015.6.10（未完成）
+		 * 添加新部门方法  2015.6.10
 		 * 
 		 * */
 		public String DepartmentInsert(){
@@ -54,6 +54,10 @@ public class DepartmentAction extends ActionSupport{
 			Department department1;
 			department1=departmentservice.insertDepartment(department);
 			if(department1.getDepartmentNo()!=null&&department1.getDepartmentName()!=null){
+				System.out.println(department1.getDepartmentNo()+"aa");
+				System.out.println(department1.getDepartmentName()+"aaname");
+				System.out.println(department1.getDepartment().getDepartmentNo()+"fatherno");
+				System.out.println(department1.getDepartment().getDepartmentName()+"fathername");
 				return this.SUCCESS;
 			}
 			else return this.INPUT;
