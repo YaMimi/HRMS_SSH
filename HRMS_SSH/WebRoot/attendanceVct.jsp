@@ -1,9 +1,27 @@
+<%
+/**
+*页面：请假申请和查询界面
+*作者：杨明杰
+*更新时间：2015-6-10
+*/
+ %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page import="com.hrms.pojo.*" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 Worker activeWorker = (Worker)session.getAttribute("activeWorker");
+List<Vacation> vacationlist = (List<Vacation>)session.getAttribute("vacationlist");
+if(vacationlist==null)
+{
+	%><jsp:forward page="/WorkerVacationSearch"/><% 
+}
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+List<Vacation> VacationList = vacationlist;
+vacationlist = null;
+session.setAttribute("vacationlist", vacationlist);
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -44,21 +62,38 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 							<div class="panel-heading">请假申请</div>
 							<div class="panel-body">
 							<div style="padding-right: 15px; padding-left: 15px;">
-							  	<form action="" class="form-horizontal">
+							  	<div class="form-horizontal">
 							  		<div class="form-group">
-							  			<input type="text" class="form-control " readonly="readonly" name="" placeholder="员工姓名 " value="" required>
+							  			<input type="text" class="form-control " readonly="readonly" name="" placeholder="员工姓名 " value="<%=activeWorker.getWorkerName() %>" required>
 							  		</div>
 							  		<div class="form-group">
-							  			<input type="text" class="form-control" readonly="readonly" name="" placeholder="员工编号 " value="" required>
+							  			<input type="text" class="form-control" readonly="readonly" name="" placeholder="员工编号 " value="<%=activeWorker.getWorkerNo() %>" required>
+							  		</div>
+							  	<form action="WorkerVacationApply" method="post">
+							  		<div class="form-group">
+							  		<!-- ’病假’,’事假’’,’工伤假’,’婚假’,’产假’,’’年休假,’公假’,’丧假’,’其他’ -->
+							  			<th>
+							  				<select name="vacation.vacationType" class="form-control">
+							  					<option value="病假" selected='selected'>病假</option>
+							  					<option value="事假">事假</option>
+							  					<option value="工伤假">工伤假</option>
+							  					<option value="婚假">婚假</option>
+							  					<option value="产假">产假</option>
+							  					<option value="年休假">年休假</option>
+							  					<option value="公假">公假</option>
+							  					<option value="丧假">丧假</option>
+							  					<option value="其他">其他</option>
+							  				</select>
+							  			</th>
 							  		</div>
 							  		<div class="form-group ">
-							  			<textarea class="form-control" rows="3" name="" placeholder="请假原因" required  autofocus></textarea>
+							  			<textarea class="form-control" rows="3" name="vacation.vacationReason" placeholder="请假原因" required  autofocus></textarea>
 							  		</div>
 							  		<div class="form-group form-inline">
-							  			<input id="datepicker_start" class="form-control" type="text" name="" style="width:40%" placeholder="请假起始时间" required>
+							  			<input id="datepicker_start" class="form-control" type="text" name="vacation.vacationStartDate" style="width:40%" placeholder="请假起始时间" required>
 					  					<!--<input type="date" class="form-control"  name="" style="width:40%">-->
 					  					<label for="apply_start" class="control-label" style="width:10%">至</label>
-					  					<input id="datepicker_end" class="form-control pull-right" type="text" name="" style="width:40%" placeholder="请假结束时间" required>
+					  					<input id="datepicker_end" class="form-control pull-right" type="text" name="vacation.vacationEndDate" style="width:40%" placeholder="请假结束时间" required>
 					  					<!-- <input type="date" class="form-control pull-right" style="width:40%">-->
 							  		</div>
 							  		<div class="form-group form-inline ">
@@ -67,16 +102,14 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 							  		</div>
 							  	</form>
 							  	</div>
-							  	<%/*
+							  	</div>
+							  	<%
   					  		if(session.getAttribute("status")!=null){
-  					  			if(status==1){
+  					  			if(session.getAttribute("status").toString().equals("1")){
   					  				out.print("<div class='alert alert-success' style='margin-bottom:0px;' role='alert'><i class='icon-ok-sign' aria-hidden='true'></i> 申请成功，请等待审核！</div>");
   					  				session.setAttribute("status",null);
-  					  			}else{
-  					  				out.print("<div class='alert alert-danger' style='margin-bottom:0px;' role='alert'><i class='icon-remove-sign' aria-hidden='true'></i> 员工编号或姓名有误，请重新输入！</div>");
-  					  				session.setAttribute("status",null);
   					  			}
-  					  		}*/
+  					  		}
   					  		 %>
 							</div>
 						</div>
@@ -93,6 +126,21 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 						              <th><strong>请假原因</strong></th>
 						              <th><strong>请假结果</strong></th>
 						            </tr>
+						            <%int i = 1 ;%>
+						            <%if(VacationList.size()>0) {%>
+						            	<%for(Vacation vacation : VacationList) {%>
+						            	<tr>
+							              <th><strong><%=i++ %></strong></th>
+							              <th><strong><%=sdf.format(vacation.getVacationStartDate()) %></strong></th>
+							              <th><strong><%=sdf.format(vacation.getVacationEndDate()) %></strong></th>
+							              <th><strong><%=vacation.getVacationReason() %></strong></th>
+							              <%if(vacation.getVacationResult().toString().equals("0")) {%><th><strong>待审核</strong></th><%} %>
+							              <%if(vacation.getVacationResult().toString().equals("1")) {%><th><strong>批准</strong></th><%} %>
+							              <%if(vacation.getVacationResult().toString().equals("2")) {%><th><strong>驳回</strong></th><%} %>
+							            </tr>
+						            	<%} %>
+						            	<%i=1; %>
+						            <%} %>
 						            
 						        </table>
 							</div>

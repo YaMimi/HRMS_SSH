@@ -4,12 +4,20 @@
 	<!-- attendance包  2015-6-9 杨明杰-->
 	<package name="attendance" extends="struts-default" namespace="/">
 		<!-- 员工考勤查询 -->
-		<action name="WorkerAttendanceSearch" class="AttendanceAct" method="workerAttendanceSearch">
+		<action name="WorkerAttendanceSearch" class="AttendanceAction" method="workerAttendanceSearch">
 			<result name="success" type="redirect">/attendanceCheck.jsp</result>
 		</action>
 		<!-- 员工按日期考勤查询 -->
-		<action name="WorkerAttendanceSearchByDate" class="AttendanceAct" method="workerAttendanceSearchByDate">
+		<action name="WorkerAttendanceSearchByDate" class="AttendanceAction" method="workerAttendanceSearchByDate">
 			<result name="success" type="redirect">/attendanceCheck.jsp</result>
+		</action>
+		<!-- 员工请假申请 -->
+		<action name="WorkerVacationApply" class="VacationAction" method="workerVacationApply">
+			<result name="success" type="redirect">/attendanceVct.jsp</result>
+		</action>
+		<!-- 员工个人请假查询 -->
+		<action name="WorkerVacationSearch" class="VacationAction" method="workerVacationSearch">
+			<result name="success" type="redirect">/attendanceVct.jsp</result>
 		</action>
 	</package>
 
