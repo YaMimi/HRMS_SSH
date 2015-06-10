@@ -27,11 +27,11 @@
                             <a href="attendanceVct.jsp">请假系统</a>
                         </li>
                         <li<%if(path.equals("/attendanceVctCheck.jsp")) {%> class="active"<%} %>>
-                            <a href="#">请假审批</a>
+                            <a href="attendanceVctCheck.jsp">请假审批</a>
                         </li>
                         <%if(activeWorker.getWorkerPermission()>=2) {%>
                         <li<%if(path.equals("/attendanceDepartment.jsp")) {%> class="active"<%} %>>
-                            <a href="#">部门考勤</a>
+                            <a href="attendanceDepartment.jsp">部门考勤</a>
                         </li>
                         <%} %>
                     </ul>
