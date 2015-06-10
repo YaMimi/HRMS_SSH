@@ -24,6 +24,14 @@ public class Attendance implements java.io.Serializable {
 	public Attendance() {
 	}
 
+	/** minimal constructor */
+	public Attendance(Worker worker, Date attendanceDate,
+			Integer attendanceState) {
+		this.worker = worker;
+		this.attendanceDate = attendanceDate;
+		this.attendanceState = attendanceState;
+	}
+
 	/** full constructor */
 	public Attendance(Worker worker, Date attendanceDate,
 			Time attendanceOnTime, Time attendanceOffTime,
