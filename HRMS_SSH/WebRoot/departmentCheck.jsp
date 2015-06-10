@@ -1,4 +1,3 @@
-<%@page import="com.hrms.pojo.Attendance"%>
 <%@ page import="com.hrms.pojo.Department"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="com.opensymphony.xwork2.ActionContext"%>
@@ -17,6 +16,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 List<Department> DepartmentList = departmentlist;
 departmentlist = null;
 session.setAttribute("departmentlist", departmentlist);
+System.out.println(departmentlist+"进入check.jsp");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -64,16 +64,22 @@ session.setAttribute("departmentlist", departmentlist);
 	              <th colspan="2"><strong>操作</strong></th>
               </tr>
               <%int i = 1; %>
-              <%for(Department department : departmentlist){ %>
+              <%for(Department department : DepartmentList){ %>
               
               <tr>
 	              <th><strong><%=department.getDepartmentNo() %></strong></th>
 	              <th><strong><%=department.getDepartmentName() %></strong></th>
+	              <%if(department.getDepartment()!=null) {%>
 	              <th><strong><%=department.getDepartment().getDepartmentNo() %></strong></th>
 	              <th><strong><%=department.getDepartment().getDepartmentName() %></strong></th>
-	              <th><strong><%=department.getWorkers() %></strong></th>
+	              <%}
+	              else{ %>
+	              <th><strong></strong></th>
+	              <th><strong></strong></th>
+	              <%} %>
+	              <th><strong><%=department.getWorkers().size() %></strong></th>
              	  <th style="width:10px;">
-				      <form action=''>
+				      <form action='UpdateDepartmentImfo'>
 			             <input type='hidden' name='alter' value='<%=department.getDepartmentOid()%>'/>
 			             <button class='crlbut editbut' type='submit' ><i class="icon-large icon-pencil"></i></button>
 			          </form>
