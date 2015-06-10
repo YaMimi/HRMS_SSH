@@ -40,7 +40,7 @@ public class DepartmentAction extends ActionSupport{
 				Map session = ActionContext.getContext().getSession();
 				session.put("departmentlist", departmentlist);
 				ActionContext.getContext().setSession(session);
-			System.out.println(alter+"nihao");
+			//System.out.println(alter+"nihao");
 				return SUCCESS;
 			}
 		

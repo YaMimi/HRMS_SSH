@@ -59,9 +59,7 @@ public class VacationAction extends ActionSupport {
 		//查询请假表并且将数据保存到List
 		String hql = "from Vacation";
 		List<Vacation> vacationlist = vacationservice.searchVacation(hql);
-		for(Vacation vacation : vacationlist){
-			System.out.println(vacation.getWorker().getWorkerName());
-		}
+		
 		//设置session
 		Map session = ActionContext.getContext().getSession();
 		session.put("vacationlist", vacationlist);

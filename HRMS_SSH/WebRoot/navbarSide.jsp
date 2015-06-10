@@ -40,14 +40,14 @@
                 <li><a href="#departmentSystem" class="nav-header collapsed"  data-toggle="collapse">　部门系统<i class="pull-right icon-sidebar-collapse"></i></a>
                     <ul id="departmentSystem" class="nav nav-sidebar nav-sec  collapse">
                         <li<%if(path.equals("/departmentCheck.jsp")) {%> class="active"<%} %>>
-                            <a href="#">部门调整</a>
+                            <a href="departmentCheck.jsp">部门调整</a>
                         </li>
                         <li<%if(path.equals("/departmentAdd.jsp")) {%> class="active"<%} %>>
                             <a href="#">新增部门</a>
                         </li>
                         <%if(path.equals("/departmentEdit.jsp")) {%>
                         <li class="active">
-                            <a href="#">部门修改</a>
+                            <a href="departmentEdit.jsp">部门修改</a>
                         </li>
                         <%} %>
                     </ul>

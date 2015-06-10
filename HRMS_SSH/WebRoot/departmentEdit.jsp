@@ -1,8 +1,9 @@
-<%@ page import="com.hrms.pojo.Department"%>
+<%@ page import="com.hrms.pojo.*"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="com.opensymphony.xwork2.ActionContext"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
+Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 List<Department> departmentlist = (List<Department>)session.getAttribute("departmentlist");
 if(departmentlist==null)
 {
@@ -16,34 +17,31 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 List<Department> DepartmentList = departmentlist;
 departmentlist = null;
 session.setAttribute("departmentlist", departmentlist);
-System.out.println(departmentlist+"进入edit.jsp");
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
     <head>
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
-    <link  href="css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/font-awesome.min.css" rel="stylesheet"/>
-    <link  href="css/dashboard.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="plugin/jquery-ui-1.11.4.custom/jquery-ui.css">
+    <link  href="./css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="./css/font-awesome.min.css" rel="stylesheet"/>
+    <link  href="./css/dashboard.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="./css/jquery-ui.css">
     <script src="./js/jquery-2.1.3.min.js"></script>
-    <script src="plugin/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+    <script src="./js/jquery-ui.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <style>
+	<style>
         * {
             font-family: 'FontAwesome',"Microsoft YaHei" ! important;
         }
     </style>
-    <script>
-  		$(function() {
-  			$( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd"});
-  		});
-  	</script>
-    <title>主页</title>
+    <title>部门修改</title>
   </head>
   
   <body>
+  
+  	<%@ include file="navbarTop.jsp"%>
+    <%@ include file="navbarSide.jsp"%>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <h1 class="page-header">部门修改</h1>
                 
