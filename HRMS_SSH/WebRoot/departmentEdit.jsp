@@ -79,7 +79,7 @@ System.out.println(departmentlist+"进入edit.jsp");
 		               <%}%>
 		              <th style="width:10px;"><button class="crlbut editbut" type="submit"><i class="icon-large icon-ok"></i></button></th>
 		              </form> <%}%>
-			          <th style="width:10px;"><button class="crlbut delbut"><a class="delbut" href="AdjustDepartmentPermission"><i class="icon-large icon-remove"></i></a></button></th>
+			          <th style="width:10px;"><button class="crlbut delbut"><a class="delbut" href=""><i class="icon-large icon-remove"></i></a></button></th>
 		            </tr>
 	            </table>
   </body>
