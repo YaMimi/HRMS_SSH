@@ -57,6 +57,7 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
 	              <th><strong>日期</strong></th>
 	              <th><strong>上班</strong></th>
 	              <th><strong>下班</strong></th>
+	              <th><strong>请假状况</strong></th>
               </tr>
               
               <%int i = 1; %>
@@ -65,9 +66,17 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
               <tr>
 	              <th><%=i %></th>
 	              <th><%=sdf.format(attendance.getAttendanceDate()) %></th>
+	              <%if(attendance.getAttendanceState()==0) {%>
+	              <th>无考勤</th>
+	              <th>无考勤</th>
+	              <th>请假</th>
+	          	  <%} %>
+	          	  <%if(attendance.getAttendanceState()==1) {%>
 	              <th><%=attendance.getAttendanceOnTime() %></th>
 	              <th><%=attendance.getAttendanceOffTime() %></th>
-              </tr>
+	              <th>无请假</th>
+	          	  <%} %>
+	          </tr>
               <%i++; %>
               <%if(i>5){i=1;break;} %>
               <% } %>
@@ -98,8 +107,14 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
 				<%for(Attendance attendance : AttendanceListDate){ %>
 	              <tr>
 		              <th><%=sdf.format(attendance.getAttendanceDate()) %></th>
+		              <%if(attendance.getAttendanceState()==0) {%>
+		              <th>无考勤</th>
+		              <th>无考勤</th>
+		          	  <%} %>
+		          	  <%if(attendance.getAttendanceState()==1) {%>
 		              <th><%=attendance.getAttendanceOnTime() %></th>
 		              <th><%=attendance.getAttendanceOffTime() %></th>
+		          	  <%} %>
 		              <th><%if(attendance.getAttendanceState()==0)out.print("请假中"); else out.print("无请假"); %></th>
 	              </tr>
 	              <%i++; %>

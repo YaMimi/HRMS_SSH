@@ -5,6 +5,7 @@ package com.hrms.attendance.actions;
  * 更新日期：2015-6-10
  */
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Date;
 import java.util.Map;
@@ -56,6 +57,28 @@ public class AttendanceAction extends ActionSupport {
 		ActionContext.getContext().setSession(session);
 		
 		return SUCCESS;
+	}
+	
+	/**功能：部门考勤查询
+	 * 作者：杨明杰
+	 * 日期：2015-6-11
+	 */
+	public String departmentAttendanceSearch(){
+		Map session = ActionContext.getContext().getSession();
+		Worker worker = (Worker)session.get("activeWorker");
+		//获取当日日期
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		String checkDate = sdf.format(date);
+		System.out.println(checkDate);
+		//hql语句
+		String hql = "from Attendance a where a.attendanceDate = '" + checkDate +"' and a.worker.department.departmentOid = "+ worker.getDepartment().getDepartmentOid() +
+				" order by attendanceOid desc";
+		List<Attendance> departmentattendancelist = attendanceservice.searchAttendance(hql);
+		session.put("departmentattendancelist", departmentattendancelist);
+		ActionContext.getContext().setSession(session);
+		return SUCCESS;
+		
 	}
 	
 	/**功能：签到功能
