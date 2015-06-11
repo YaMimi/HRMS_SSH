@@ -70,7 +70,8 @@ public class AttendanceAction extends ActionSupport {
 		Map session = ActionContext.getContext().getSession();
 		worker = loginService.searchUser(worker);
 		if(worker==null) {
-			return this.NONE;
+			session.put("state", "WORKERNULL");
+			return this.ERROR;
 		}
 		Date date = new Date();
 		Time time = new Time(date.getTime());
@@ -84,24 +85,33 @@ public class AttendanceAction extends ActionSupport {
 			attendance.setAttendanceState(1);
 			attendance.setAttendanceOnTime(time);
 			if(attendanceservice.insertAttendance(attendance)!=null) {
+				session.put("state", "ATTENDSUCCESS");
 				return this.SUCCESS;
 			}
 			else {
+				session.put("state", "ATTENDFAILED");
 				return this.ERROR;
 			}
 		} else {
 			if(attendance1.getAttendanceState()!=0) {
 				if(attendance1.getAttendanceOffTime()==null) {
+					attendance = attendance1;
 					attendance.setAttendanceOffTime(time);
 					if(attendanceservice.updateAttendance(attendance)!=null) {
+						session.put("state", "ATTENDSUCCESS");
 						return this.SUCCESS;
 					}
 					else {
+						session.put("state", "ATTENDFAILED");
 						return this.ERROR;
 					}
 				}
+			} else {
+				session.put("state", "INVACATION");
+				return this.ERROR;
 			}
 		}
+		session.put("state", "ATTENDALREADY");
 		return this.ERROR;
 	}
 	
