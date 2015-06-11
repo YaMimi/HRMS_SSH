@@ -134,6 +134,7 @@ session.setAttribute("vacationlist", vacationlist);
 							              <th><%=i++ %></th>
 							              <th><%=sdf.format(vacation.getVacationStartDate()) %></th>
 							              <th><%=sdf.format(vacation.getVacationEndDate()) %></th>
+							              <th><%=vacation.getVacationType() %></th>
 							              <th><%=vacation.getVacationReason() %></th>
 							              <%if(vacation.getVacationResult().toString().equals("0")) {%><th>待审核</th><%} %>
 							              <%if(vacation.getVacationResult().toString().equals("1")) {%><th>批准</th><%} %>
