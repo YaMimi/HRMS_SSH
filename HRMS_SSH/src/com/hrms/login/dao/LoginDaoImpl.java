@@ -15,8 +15,8 @@ public class LoginDaoImpl implements LoginDao {
 	
 	@Override
 	public Worker searchUser(Worker worker) {
-		String sql = "select w.workerOid from Worker w where w.workerNo='" +worker.getWorkerNo()+ "'";
-		List list = sessionFactory.getCurrentSession().createQuery(sql).list();
+		String query = "select w.workerOid from Worker w where w.workerNo='" +worker.getWorkerNo()+ "'";
+		List list = sessionFactory.getCurrentSession().createQuery(query).list();
 		
 		if(!list.isEmpty()) {
             Iterator it = list.iterator();  
