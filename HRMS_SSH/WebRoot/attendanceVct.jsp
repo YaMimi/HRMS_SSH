@@ -130,13 +130,13 @@ session.setAttribute("vacationlist", vacationlist);
 						            <%if(VacationList.size()>0) {%>
 						            	<%for(Vacation vacation : VacationList) {%>
 						            	<tr>
-							              <th><strong><%=i++ %></strong></th>
-							              <th><strong><%=sdf.format(vacation.getVacationStartDate()) %></strong></th>
-							              <th><strong><%=sdf.format(vacation.getVacationEndDate()) %></strong></th>
-							              <th><strong><%=vacation.getVacationReason() %></strong></th>
-							              <%if(vacation.getVacationResult().toString().equals("0")) {%><th><strong>待审核</strong></th><%} %>
-							              <%if(vacation.getVacationResult().toString().equals("1")) {%><th><strong>批准</strong></th><%} %>
-							              <%if(vacation.getVacationResult().toString().equals("2")) {%><th><strong>驳回</strong></th><%} %>
+							              <th><%=i++ %></th>
+							              <th><%=sdf.format(vacation.getVacationStartDate()) %></th>
+							              <th><%=sdf.format(vacation.getVacationEndDate()) %></th>
+							              <th><%=vacation.getVacationReason() %></th>
+							              <%if(vacation.getVacationResult().toString().equals("0")) {%><th>待审核</th><%} %>
+							              <%if(vacation.getVacationResult().toString().equals("1")) {%><th>批准</th><%} %>
+							              <%if(vacation.getVacationResult().toString().equals("2")) {%><th>驳回</th><%} %>
 							            </tr>
 						            	<%} %>
 						            	<%i=1; %>
