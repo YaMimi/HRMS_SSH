@@ -20,7 +20,7 @@
 			<result name="success" type="redirect">/attendanceVct.jsp</result>
 		</action>
 		<!-- 签到系统 -->
-		<action name="workerAttendanceInsert" class="AttendanceAct" method="workerAttendanceInsert">
+		<action name="workerAttendanceInsert" class="AttendanceAction" method="workerAttendanceInsert">
 			<result name="success" type="redirect">/attendanceSubmit.jsp</result>
 			<result name="error" type="redirect">/attendanceSubmit.jsp</result>
 		</action>

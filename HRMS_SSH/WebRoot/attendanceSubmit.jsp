@@ -22,8 +22,8 @@
                 }
             </script>
             </div>
-        <form action="">
-            <input type="text" class="form-control" name="worker.workerNo" autofocus required placeholder="è¯·è¾å¥æ¨çåå·¥å·" style="width: 250px;margin-left: 5px;text-align: center;font-size: 15px;left: 50%">
+        <form action="workerAttendanceInsert" method="post">
+            <input type="text" class="form-control" name="attendWorkerNo" autofocus required placeholder="请输入您的员工号" style="width: 250px;margin-left: 5px;text-align: center;font-size: 15px;left: 50%">
             <input type="submit" id="attendSubmit" style="display: none;">
         </form>
         </div>

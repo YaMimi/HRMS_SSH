@@ -25,6 +25,7 @@ public class AttendanceAction extends ActionSupport {
 	private String attendWorkerNo;
 	@Resource
 	private AttendanceService attendanceservice;
+	@Resource
 	private LoginService loginService;
 	/**功能：个人考勤查询
 	 * 作者：杨明杰
@@ -63,19 +64,24 @@ public class AttendanceAction extends ActionSupport {
 	 */
 	public String workerAttendanceInsert(){
 		//System.out.println(Date);
-		Attendance attendance1;
-		Map session = ActionContext.getContext().getSession();
-		Worker worker = null;
+		Attendance attendance1 = new Attendance();
+		Worker worker = new Worker();
 		worker.setWorkerNo(attendWorkerNo);
+		Map session = ActionContext.getContext().getSession();
 		worker = loginService.searchUser(worker);
+		if(worker==null) {
+			return this.NONE;
+		}
 		Date date = new Date();
 		Time time = new Time(date.getTime());
 		
+		attendance = new Attendance();
 		attendance.setAttendanceDate(date);
 		attendance.setWorker(worker);
 		
 		attendance1 = attendanceservice.searchAttendance(attendance);
 		if(attendance1==null) {
+			attendance.setAttendanceState(1);
 			attendance.setAttendanceOnTime(time);
 			if(attendanceservice.insertAttendance(attendance)!=null) {
 				return this.SUCCESS;
@@ -84,13 +90,15 @@ public class AttendanceAction extends ActionSupport {
 				return this.ERROR;
 			}
 		} else {
-			if(attendance1.getAttendanceOffTime()==null) {
-				attendance.setAttendanceOffTime(time);
-				if(attendanceservice.updateAttendance(attendance)!=null) {
-					return this.SUCCESS;
-				}
-				else {
-					return this.ERROR;
+			if(attendance1.getAttendanceState()!=0) {
+				if(attendance1.getAttendanceOffTime()==null) {
+					attendance.setAttendanceOffTime(time);
+					if(attendanceservice.updateAttendance(attendance)!=null) {
+						return this.SUCCESS;
+					}
+					else {
+						return this.ERROR;
+					}
 				}
 			}
 		}

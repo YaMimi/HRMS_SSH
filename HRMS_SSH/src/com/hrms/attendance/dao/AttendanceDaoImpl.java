@@ -1,5 +1,6 @@
 package com.hrms.attendance.dao;
 
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,9 +24,10 @@ public class AttendanceDaoImpl implements AttendanceDao {
 	
 	@Override
 	public Attendance searchAttendance(Attendance attendance) {
-		String sql = "select a.attendanceOid from Attendance a where a.attendanceDate='" +attendance.getAttendanceDate()+ "' and a.worker.workerNo='"+attendance.getWorker().getWorkerNo()+"'";
-		List list = sessionFactory.getCurrentSession().createQuery(sql).list();
-		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String query = "select a.attendanceOid from Attendance a where a.attendanceDate='" +sdf.format(attendance.getAttendanceDate())+ "' and a.worker.workerNo='"+attendance.getWorker().getWorkerNo()+"'";
+		List list = sessionFactory.getCurrentSession().createQuery(query).list();
+
 		if(!list.isEmpty()) {
             Iterator it = list.iterator();  
             while(it.hasNext()) {
