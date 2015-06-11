@@ -46,7 +46,7 @@
                             <a href="departmentCheck.jsp">部门调整</a>
                         </li>
                         <li<%if(path.equals("/departmentAdd.jsp")) {%> class="active"<%} %>>
-                            <a href="#">新增部门</a>
+                            <a href="departmentAdd.jsp">新增部门</a>
                         </li>
                         <%if(path.equals("/departmentEdit.jsp")) {%>
                         <li class="active">

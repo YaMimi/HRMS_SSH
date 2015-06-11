@@ -34,6 +34,20 @@ public class DepartmentAction extends ActionSupport{
 		
 	}
 	
+	/*
+	 * 新添部门时查询部门信息  2015.6.11
+	 * 
+	 * */
+	public String allDepartmentSearch(){
+		String hql = "from Department ";
+		List<Department> departmentlist = departmentservice.searchDepartment(hql);
+		Map session = ActionContext.getContext().getSession();
+		session.put("departmentlist", departmentlist);
+		ActionContext.getContext().setSession(session);
+		return SUCCESS;
+		
+	}
+	
 	
 	/*
 	 * 修改部门信息方法  2015.6.10
@@ -50,15 +64,15 @@ public class DepartmentAction extends ActionSupport{
 				return SUCCESS;
 			}
 		
-		
-		
-		
+
 		/*
 		 * 添加新部门方法  2015.6.11
 		 * 
 		 * */
 		public String DepartmentInsert(){
 			Department department1;
+			
+			//department.setDepartment(department1);
 			department1=departmentservice.insertDepartment(department);
 			if(department1.getDepartmentNo()!=null&&department1.getDepartmentName()!=null){
 					return this.SUCCESS;
