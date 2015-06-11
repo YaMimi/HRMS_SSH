@@ -123,6 +123,7 @@ session.setAttribute("vacationlist", vacationlist);
 						              <th><strong>序号</strong></th>
 						              <th><strong>开始时间</strong></th>
 						              <th><strong>结束时间</strong></th>
+						              <th><strong>请假类型</strong></th>
 						              <th><strong>请假原因</strong></th>
 						              <th><strong>请假结果</strong></th>
 						            </tr>
@@ -133,6 +134,7 @@ session.setAttribute("vacationlist", vacationlist);
 							              <th><strong><%=i++ %></strong></th>
 							              <th><strong><%=sdf.format(vacation.getVacationStartDate()) %></strong></th>
 							              <th><strong><%=sdf.format(vacation.getVacationEndDate()) %></strong></th>
+							              <th><strong><%=vacation.getVacationType() %></strong></th>
 							              <th><strong><%=vacation.getVacationReason() %></strong></th>
 							              <%if(vacation.getVacationResult().toString().equals("0")) {%><th><strong>待审核</strong></th><%} %>
 							              <%if(vacation.getVacationResult().toString().equals("1")) {%><th><strong>批准</strong></th><%} %>
