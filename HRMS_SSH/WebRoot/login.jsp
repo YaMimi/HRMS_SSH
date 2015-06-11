@@ -34,7 +34,14 @@ state = (String)session.getAttribute("state");
 					</div>
                     <input type="text" name="username" class="form-control" style="margin-bottom: 5px;" placeholder="当前账号：<%=activeWorker.getWorkerNo() %>" disabled="disabled">
                     <a class="btn btn-lg btn-primary btn-block" href="./index.jsp">返回首页</a>
-                    <button class="btn btn-lg btn-danger btn-block" type="submit">登出系统</button>
+                    <button class="btn btn-lg btn-danger btn-block" onclick="logout()" id="logoutButton" data-loading-text="正在登出..." type="submit" autocomplete="off">登出系统</button>
+                    <script>
+					  function logout() {
+					      var btn = $("#logoutButton");
+					      btn.button("loading");
+					      setTimeout(function () { btn.button("reset"); },2000);
+					    }
+					</script>
                  </form>
        		</div>
             <%} else {%>
@@ -74,13 +81,19 @@ state = (String)session.getAttribute("state");
                         <u><abbr title="如果您忘记了自己的登录密码，请带证件到人事部进行修改。">忘记密码？</abbr></u>
                         </label>
                     </div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+                    <button class="btn btn-lg btn-primary btn-block" onclick="login()" id="loginButton" data-loading-text="正在登录..." type="submit" autocomplete="off">登录</button>
+                    <script>
+					  function login() {
+					      var btn = $("#loginButton");
+					      btn.button("loading");
+					      setTimeout(function () { btn.button("reset"); },2000);
+					    }
+					</script>
               </form>
 	       </div>
 	       <%} %>
     </div>
 </div>
-
 		<!-- Bootstrap core JavaScript
 	    ================================================== -->
 	    <!-- Placed at the end of the document so the pages load faster -->

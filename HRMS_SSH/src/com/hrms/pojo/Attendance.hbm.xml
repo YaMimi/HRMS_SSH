@@ -17,10 +17,10 @@
    <column length="10" name="AttendanceDate" not-null="true"/>
   </property>
   <property generated="never" lazy="false" name="attendanceOnTime" type="java.sql.Time">
-   <column length="8" name="AttendanceOnTime" not-null="true"/>
+   <column length="8" name="AttendanceOnTime"/>
   </property>
   <property generated="never" lazy="false" name="attendanceOffTime" type="java.sql.Time">
-   <column length="8" name="AttendanceOffTime" not-null="true"/>
+   <column length="8" name="AttendanceOffTime"/>
   </property>
   <property generated="never" lazy="false" name="attendanceState" type="java.lang.Integer">
    <column name="AttendanceState" not-null="true"/>
