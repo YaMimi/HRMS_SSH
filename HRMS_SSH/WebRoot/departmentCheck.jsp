@@ -31,6 +31,7 @@ session.setAttribute("departmentlist", departmentlist);
     <script src="./js/jquery-2.1.3.min.js"></script>
     <script src="./js/jquery-ui.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    
 	<style>
         * {
             font-family: 'FontAwesome',"Microsoft YaHei" ! important;
@@ -78,13 +79,13 @@ session.setAttribute("departmentlist", departmentlist);
              	  <th style="width:10px;">
 				      <form action='UpdateDepartmentImfo'>
 			             <input type='hidden' name='alter' value='<%=department.getDepartmentOid()%>'/>
-			             <button class='crlbut editbut' type='submit' ><i class="icon-large icon-pencil"></i></button>
+			             <button class='crlbut editbut' type='submit'  ><i class="icon-large icon-pencil"></i></button>
 			          </form>
 			      </th>
 			      <th style="width:10px;">  
-			           <form action=''>
+			           <form action='DepartmentDelete'>
 			             <input type='hidden' name='delete' value='<%=department.getDepartmentOid()%>'/>
-			             <button class='crlbut delbut' type='submit' ><i class="icon-large icon-remove"></i></button>
+			             <button class='crlbut delbut' type='submit'  ><i class="icon-large icon-remove"></i></button>
 			           </form>
 		          </th>
 			  </tr>

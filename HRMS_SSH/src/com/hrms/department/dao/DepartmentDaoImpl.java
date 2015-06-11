@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
 import com.hrms.pojo.Attendance;
@@ -36,8 +37,14 @@ public class DepartmentDaoImpl implements DepartmentDao{
 	}
 
 	@Override
-	public void deleteDepartment(Department department) {
+	public int deleteDepartment(int DepartmentOid) {
 		// TODO Auto-generated method stub
+		  String hql="delete Department where DepartmentOid=?";
+		  Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		  query.setInteger(0, DepartmentOid);
+		  int result=query.executeUpdate();
+		  return result;
+
 		
 	}
 

@@ -3,9 +3,13 @@
 <%@ page import="com.opensymphony.xwork2.ActionContext"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
+
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
 %>
+
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -44,16 +48,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr>
 	              <th><strong>部门编号</strong></th>
 	              <th><strong>部门名称</strong></th>
-	              <th><strong>父部门编号</strong></th>
 	              <th><strong>父部门名称</strong></th>
+
 	              <th colspan="2"><strong>操作</strong></th>
 	            </tr>
-	            <form action='DepartmentInsert'>
+	            <form action='DepartmentInsert' method='post'>
 		            <tr>
 		              <th><input type="text" class="form-control" name="department.DepartmentNo " placeholder="新增部门编号 " required></th>
 		              <th><input type="text" class="form-control" name="department.DepartmentName" placeholder="新增部门名称" required></th>
-		              <th><input type="text" class="form-control" name="department.getDepartment().DepartmentNo" placeholder="父部门编号（没有则填写本部门编号） " required></th>
-		              <th><input type="text" class="form-control" name="department.getDepartment().DepartmentName" placeholder="父部门名称（没有则填写本部门名称） " required></th>
+                      <th><input type="text" class="form-control" name="FatherDepartmentName" placeholder="父部门名称" required></th>
+		              <%-- <%int i = 1; %>
+                      <%for(Department department : DepartmentList){ %>
+		              <th>
+		              <select name="FatherDepartmentName" class="form-control">
+							  					<option selected='selected'>无</option>
+							  					<option value="<%=department.getDepartmentName()%>"><%=department.getDepartmentName()%></option>
+							  				</select></th>
+					  <%i++; %>
+	                  <%
+	            	      }
+	                  %> --%>
+	                  
+
 		              <th style="width:10px;"><button class="crlbut editbut" type="submit"><i class="icon-large icon-ok"></i></button></th>	        
 		              </form>
 		              <th style="width:10px;"><button class="crlbut delbut" type="reset"><i class="icon-large icon-repeat"></i></button></th>
