@@ -33,7 +33,8 @@ public class VacationDaoImpl implements VacationDao {
 	@Override
 	public Vacation updateVacation(Vacation vacation) {
 		// TODO Auto-generated method stub
-		return null;
+		sessionFactory.getCurrentSession().merge(vacation);
+		return vacation;
 	}
 
 	@Override

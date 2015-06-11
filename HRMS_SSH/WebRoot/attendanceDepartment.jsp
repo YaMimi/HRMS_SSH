@@ -34,8 +34,6 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
                 <table class="table table-bordered table-hover">
 		            <tr>
 		              <th><strong>序号</strong></th>
-		              <th><strong>部门名称</strong></th>
-		              <th><strong>部门编号</strong></th>
 		              <th><strong>姓名</strong></th>
 		              <th><strong>日期</strong></th>
 		              <th><strong>上班</strong></th>

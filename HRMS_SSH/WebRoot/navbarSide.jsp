@@ -31,7 +31,7 @@
                         <li<%if(path.equals("/attendanceVctCheck.jsp")) {%> class="active"<%} %>>
                             <a href="attendanceVctCheck.jsp">请假审批</a>
                         </li>
-                        <%if(activeWorker.getWorkerPermission()>=2) {%>
+                        <%if(activeWorker.getWorkerPermission()>2) {%>
                         <li<%if(path.equals("/attendanceDepartment.jsp")) {%> class="active"<%} %>>
                             <a href="attendanceDepartment.jsp">部门考勤</a>
                         </li>
@@ -39,7 +39,7 @@
                     </ul>
                 </li>
                 
-                <%if(activeWorker.getWorkerPermission()>=2||activeWorker.getDepartment().getDepartmentOid()!=2) {%>
+                <%if(activeWorker.getWorkerPermission()>2||activeWorker.getDepartment().getDepartmentOid()==2) {%>
                 <li><%if(path.equals("/departmentCheck.jsp")||path.equals("/departmentAdd.jsp")||path.equals("/departmentEdit.jsp")) {%><a href="#departmentSystem" class="nav-header"  data-toggle="collapse" aria-expanded="true"><%} else {%><a href="#departmentSystem" class="nav-header collapsed" data-toggle="collapse"><%} %>　部门系统<i class="pull-right icon-sidebar-collapse"></i></a>
                     <%if(path.equals("/departmentCheck.jsp")||path.equals("/departmentAdd.jsp")||path.equals("/departmentEdit.jsp")) {%><ul id="departmentSystem" class="nav nav-sidebar nav-sec collapse in" aria-expanded="true"><%} else {%><ul id="departmentSystem" class="nav nav-sidebar nav-sec  collapse"><%} %>
                         <li<%if(path.equals("/departmentCheck.jsp")) {%> class="active"<%} %>>
@@ -104,4 +104,3 @@
         </div>
     </div>
 </div>
-<%String nav = null; %>

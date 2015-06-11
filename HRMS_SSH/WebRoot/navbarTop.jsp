@@ -105,7 +105,7 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-large icon-user"></i>  <i class="icon-large icon-sort-down"></i></a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="icon-user"></i> <%=activeWorker.getWorkerName() %></a>
+                        <li><a href="#"><i class="icon-user"></i> <%=activeWorker.getWorkerName() %></a> 
                         </li>
                         <li><a href="#" data-toggle="modal" data-target="#aboutModal"><i class="icon-info-sign"></i> 关于</a>
                         </li>
