@@ -32,7 +32,7 @@ public class VacationServiceImpl implements VacationService {
 	@Override
 	public Vacation updateVacation(Vacation vacation) {
 		// TODO Auto-generated method stub
-		return null;
+		return vacationdao.updateVacation(vacation);
 	}
 
 	@Override

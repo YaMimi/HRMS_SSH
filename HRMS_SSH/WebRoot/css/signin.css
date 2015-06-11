@@ -28,14 +28,14 @@ body {
 }
 .div-mid-attend {
     position: absolute;
-    width: 300px;
-    height: 400px;
+    width: 260px;
+    height: 320px;
     left: 50%;
     top: 50%;
-    margin-left: -150px;
-    margin-top: -200px;
+    margin-left: -130px;
+    margin-top: -160px;
 }
-.div-mid-finger{
+.div-mid-loading{
     position: absolute;
     width: 400px;
     height: 300px;
@@ -44,22 +44,83 @@ body {
     margin-left: -200px;
     margin-top: -150px;
 }
-.animation-finger{
-    height:220px;
-    width:180px;
+.animation-attend-0{
+    height:260px;
+    width:260px;
     position:absolute;
-    background:url("../img/fingerprint.png")no-repeat 0 0;
-    animation:figerprint 2s  infinite alternate;
-    -webkit-animation:figerprint 2s infinite alternate;
+    border-width:0px;
+    background:url("../img/attend_0.png")no-repeat 0 0;
 }
-@-webkit-keyframes figerprint{
+.animation-attend-1{
+    height:260px;
+    width:260px;
+    position:absolute;
+    border-width:0px;
+    animation:attend-1 1.5s  forwards steps(1);
+    -webkit-animation:attend-1 1.5s forwards steps(1);
+}
+.animation-attend-2{
+    height:260px;
+    width:260px;
+    position:absolute;
+    border-width:0px;
+    animation:attend-2 1.5s  forwards steps(1);
+    -webkit-animation:attend-2 1.5s forwards steps(1);
+}
+.animation-loading{
+    height:260px;
+    width:260px;
+    position:absolute;
+    border-width:0px;
+    background:url("../img/attend_0_0.png")no-repeat 0 0;
+    animation:loading 1s linear infinite;
+    -webkit-animation:loading 1s linear infinite;
+}
+@-webkit-keyframes loading{
     0% {
-        opacity:1.0;
+        transform:rotate(0deg);
     }
     100% {
-        opacity:0.2;
+        transform:rotate(360deg);
     }
 
+}
+@-webkit-keyframes attend-1{
+    0% {
+        background:url("../img/attend_1_0.png")no-repeat 0 0;
+    }
+    40% {
+        background:url("../img/attend_1_1.png")no-repeat 0 0;
+    }
+    60% {
+        background:url("../img/attend_1_2.png")no-repeat 0 0;
+    }
+    80%{
+        background:url("../img/attend_1_3.png")no-repeat 0 0;
+    }
+    100% {
+        background:url("../img/attend_1.png")no-repeat 0 0;
+    }
+}
+@-webkit-keyframes attend-2{
+    0% {
+        background:url("../img/attend_2_0.png")no-repeat 0 0;
+    }
+    20% {
+        background:url("../img/attend_2_1.png")no-repeat 0 0;
+    }
+    40% {
+        background:url("../img/attend_2_0.png")no-repeat 0 0;
+    }
+    60%{
+        background:url("../img/attend_2_1.png")no-repeat 0 0;
+    }
+    80% {
+        background:url("../img/attend_2_0.png")no-repeat 0 0;
+    }
+    100% {
+        background:url("../img/attend_2.png")no-repeat 0 0;
+    }
 }
 .form-signin {
     max-width: 330px;

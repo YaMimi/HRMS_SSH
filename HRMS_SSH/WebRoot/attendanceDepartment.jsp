@@ -1,9 +1,20 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page import="com.hrms.pojo.*" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 Worker activeWorker = (Worker)session.getAttribute("activeWorker");
+List<Attendance> departmentattendancelist = (List<Attendance>)session.getAttribute("departmentattendancelist");
+if(departmentattendancelist==null)
+{
+	%><jsp:forward page="/DepartmentAttendanceSearch"/><% 
+}
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+List<Attendance> DepartmentAttendanceList = departmentattendancelist;
+departmentattendancelist = null;
+session.setAttribute("departmentattendancelist", departmentattendancelist);
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -34,15 +45,32 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
                 <table class="table table-bordered table-hover">
 		            <tr>
 		              <th><strong>序号</strong></th>
-		              <th><strong>部门名称</strong></th>
-		              <th><strong>部门编号</strong></th>
 		              <th><strong>姓名</strong></th>
 		              <th><strong>日期</strong></th>
 		              <th><strong>上班</strong></th>
 		              <th><strong>下班</strong></th>
 		              <th><strong>特殊情况</strong></th>
 		            </tr>
-		       		
+		       		<%int i = 1; %>
+		       		<%if(DepartmentAttendanceList.size()>0) {%>
+		       			<%for(Attendance attendance : DepartmentAttendanceList) {%>
+		       			<tr>
+			              <th><%=i %></th>
+			              <th><%=attendance.getWorker().getWorkerName() %></th>
+			              <th><%=sdf.format(attendance.getAttendanceDate())  %></th>
+			              <%if(attendance.getAttendanceState()==0) {%>
+			              <th>无考勤</th>
+			              <th>无考勤</th>
+			          	  <%} %>
+			          	  <%if(attendance.getAttendanceState()==1) {%>
+			              <th><%=attendance.getAttendanceOnTime() %></th>
+			              <th><%=attendance.getAttendanceOffTime() %></th>
+			          	  <%} %>
+			              <%if(Integer.parseInt(attendance.getAttendanceState().toString())==0 ) {%><th>请假</th><%} %>
+			              <%if(Integer.parseInt(attendance.getAttendanceState().toString())==1 ) {%><th>无</th><%} %>
+			            </tr>
+		       			<%} %>
+		       		<%} %>
 		        </table>
             </div>
   </body>
