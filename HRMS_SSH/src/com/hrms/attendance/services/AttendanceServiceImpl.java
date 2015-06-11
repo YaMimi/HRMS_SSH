@@ -19,17 +19,23 @@ public class AttendanceServiceImpl implements AttendanceService {
 		// TODO Auto-generated method stub
 		return attendancedao.searchAttendance(hql);
 	}
+	
+	@Override
+	public Attendance searchAttendance(Attendance attendance) {
+		// TODO Auto-generated method stub
+		return attendancedao.searchAttendance(attendance);
+	}
 
 	@Override
 	public Attendance insertAttendance(Attendance attendance) {
 		// TODO Auto-generated method stub
-		return null;
+		return attendancedao.insertAttendance(attendance);
 	}
 
 	@Override
 	public Attendance updateAttendance(Attendance attendance) {
 		// TODO Auto-generated method stub
-		return null;
+		return attendancedao.updateAttendance(attendance);
 	}
 
 	@Override
