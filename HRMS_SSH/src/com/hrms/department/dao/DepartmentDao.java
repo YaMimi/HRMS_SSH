@@ -7,7 +7,8 @@ import com.hrms.pojo.Department;
 public interface DepartmentDao {
 
 	public List<Department> searchDepartment(String hql);
-	public Department insertAttendance(Department department);
-	public Department updateAttendance(Department department);
-	public void deleteAttendance(Department department);
+	public List<Department> searchDepartmentOid(String hql);
+	public Department insertDepartment(Department department);
+	public Department updateDepartment(Department department);
+	public int deleteDepartment(int DepartmentOid);
 }

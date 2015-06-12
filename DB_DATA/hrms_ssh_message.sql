@@ -1,8 +1,8 @@
 CREATE DATABASE  IF NOT EXISTS `hrms_ssh` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `hrms_ssh`;
--- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: hrms_ssh
+-- Host: 127.0.0.1    Database: hrms_ssh
 -- ------------------------------------------------------
 -- Server version	5.6.21-log
 
@@ -26,16 +26,14 @@ DROP TABLE IF EXISTS `message`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `message` (
   `MessageOid` int(11) NOT NULL AUTO_INCREMENT,
-  `MessageContent` varchar(45) NOT NULL,
-  `MessageDate` varchar(145) NOT NULL,
-  `MessageFromWorkerOid` int(11) NOT NULL,
-  `MessageToWorkerOid` int(11) NOT NULL,
+  `MessageDate` date NOT NULL,
+  `MessageTitle` varchar(45) NOT NULL,
+  `MessageContent` varchar(145) NOT NULL,
+  `MessageWorkerOid` int(11) NOT NULL,
   PRIMARY KEY (`MessageOid`),
   UNIQUE KEY `MessageOid_UNIQUE` (`MessageOid`),
-  KEY `fk_Message_Worker1_idx` (`MessageFromWorkerOid`),
-  KEY `fk_Message_Worker2_idx` (`MessageToWorkerOid`),
-  CONSTRAINT `fk_Message_Worker1` FOREIGN KEY (`MessageFromWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_Message_Worker2` FOREIGN KEY (`MessageToWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `fk_Message_Woker1_idx` (`MessageWorkerOid`),
+  CONSTRAINT `fk_Message_Woker1` FOREIGN KEY (`MessageWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -57,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-09 16:53:37
+-- Dump completed on 2015-06-12 16:09:17

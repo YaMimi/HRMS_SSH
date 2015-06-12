@@ -44,7 +44,7 @@
 				<value>com/hrms/pojo/Cultivation.hbm.xml</value>
 				<value>com/hrms/pojo/Attendance.hbm.xml</value>
 				<value>com/hrms/pojo/Message.hbm.xml</value>
-				<value>com/hrms/pojo/Affiche.hbm.xml</value></list>
+			</list>
 		</property></bean>
 	
 	<bean id="txManager"
@@ -53,10 +53,17 @@
 	</bean>
 	<tx:annotation-driven transaction-manager="txManager" />
 	
-
-	<bean id="AttendanceAct" class="com.hrms.attendance.actions.AttendanceAction" scope="prototype"></bean>
-	<bean id="AttendanceSer" class="com.hrms.attendance.services.AttendanceServiceImpl" scope="prototype"></bean>
+	<!-- Attendance Part Begin -->
+	<bean id="AttendanceAction" class="com.hrms.attendance.actions.AttendanceAction" scope="prototype"></bean>
+	<bean id="AttendanceService" class="com.hrms.attendance.services.AttendanceServiceImpl" scope="prototype"></bean>
 	<bean id="AttendanceDao" class="com.hrms.attendance.dao.AttendanceDaoImpl" scope="prototype"></bean>
+	<!-- Attendance Part End -->
+	
+	<!-- Vacation Part Begin -->
+	<bean id="VacationAction" class="com.hrms.attendance.actions.VacationAction" scope="prototype"></bean>
+	<bean id="VacationService" class="com.hrms.attendance.services.VacationServiceImpl" scope="prototype"></bean>
+	<bean id="VacationDao" class="com.hrms.attendance.dao.VacationDaoImpl" scope="prototype"></bean>
+	<!-- Vacation Part End -->
 	
 	<!-- Login Part Begin -->
 	<bean id="LoginAction" class="com.hrms.login.action.LoginAction"></bean>

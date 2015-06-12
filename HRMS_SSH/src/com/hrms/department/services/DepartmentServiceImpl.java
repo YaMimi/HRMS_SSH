@@ -17,13 +17,13 @@ public class DepartmentServiceImpl implements DepartmentService{
 	@Override
 	public List<Department> searchDepartment(String hql) {
 		// TODO Auto-generated method stub
-		return null;
+		return departmentdao.searchDepartment(hql);
 	}
 
 	@Override
 	public Department insertDepartment(Department department) {
 		// TODO Auto-generated method stub
-		return null;
+		return departmentdao.insertDepartment(department);
 	}
 
 	@Override
@@ -33,9 +33,15 @@ public class DepartmentServiceImpl implements DepartmentService{
 	}
 
 	@Override
-	public void deleteDepartment(Department department) {
+	public int deleteDepartment(int DepartmentOid) {
 		// TODO Auto-generated method stub
-		
+		return departmentdao.deleteDepartment(DepartmentOid);
+	}
+
+	@Override
+	public List<Department> searchDepartmentOid(String hql) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

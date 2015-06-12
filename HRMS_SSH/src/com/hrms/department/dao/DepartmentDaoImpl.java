@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
+import com.hrms.pojo.Attendance;
 import com.hrms.pojo.Department;
 
 
@@ -17,25 +19,40 @@ public class DepartmentDaoImpl implements DepartmentDao{
 	@Override
 	public List<Department> searchDepartment(String hql) {
 		// TODO Auto-generated method stub
-		return null;
+		List<Department> departmentlist = sessionFactory.getCurrentSession().createQuery(hql).list();
+		return departmentlist;
 	}
 
 	@Override
-	public Department insertAttendance(Department department) {
+	public Department insertDepartment(Department department) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().persist(department);
+		return department;
+	}
+
+	@Override
+	public Department updateDepartment(Department department) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Department updateAttendance(Department department) {
+	public int deleteDepartment(int DepartmentOid) {
 		// TODO Auto-generated method stub
-		return null;
-	}
+		  String hql="delete Department where DepartmentOid=?";
+		  Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		  query.setInteger(0, DepartmentOid);
+		  int result=query.executeUpdate();
+		  return result;
 
-	@Override
-	public void deleteAttendance(Department department) {
-		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Department> searchDepartmentOid(String hql) {
+		// TODO Auto-generated method stub
+		List<Department> departmentlist = sessionFactory.getCurrentSession().createQuery(hql).list();
+		return departmentlist;
 	}
 
 }
