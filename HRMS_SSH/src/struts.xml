@@ -18,7 +18,12 @@
 	<package name="login" extends="struts-default" namespace="/">
 		<!-- LoginAction -->
 		<action name="Login" class="LoginAction" method="login">
-			<result name="success" type="redirect">/index.jsp</result>
+		<!-- 登录成功之后显示的员工信息添加页面 -->
+		<!-- 作者：徐新院
+		        时间：2015-6-9
+		         功能：用户登录成功之后自动获取部门名称并且显示workerAdd.jsp页面 
+		 -->
+			<result name="success" type="redirect">/test.jsp</result>
 			<result name="error" type="redirect">/login.jsp</result>
 			<result name="none" type="redirect">/login.jsp</result>
 		</action>
@@ -37,4 +42,57 @@
 		</action>
 	</package>
 	
+	
+	<!-- 徐新院                  功能：员工信息添加 -->
+	<package name="worker" extends="struts-default" namespace="/">
+	<!-- 员工信息添加 -->
+		<action name="Add" class="WorkerAddInformationAction" method="addInformation">
+			<result name="success" type="redirect">/workerAdd.jsp</result>
+			<result name="error" type="redirect">/workerAdd.jsp</result>
+		</action>
+
+		<!-- 员工信息修改 -->
+		<action name="Select" class="WorkerAddInformationAction" method="InitnInformation">
+			<result name="success" type="redirect">/workerCheck.jsp</result>
+		</action>
+		
+		<!-- 在所有员工表中点击超链接后修改员工信息 -->
+		<action name="ShowUpdateWorkerformation" class="WorkerAddInformationAction" method="ShowWorkerformation">
+			<result name="success" type="redirect">/workerCheck.jsp</result>
+		</action>
+		
+		
+		<!-- 修改相应员工信息 -->
+		<action name="UpdateWorkerformation" class="WorkerAddInformationAction" method="UpdateInformation">
+			<result name="success" type="redirect">/workerShow.jsp</result>
+		</action>
+		
+		
+    	<!-- 登录成功之后显示登录人员的个人信息 -->
+	  <action name="SelectManager" class="WorkerAddInformationAction" method="InitnInformation">
+			<result name="success" type="redirect">/workerShow.jsp</result>
+		</action>
+		
+		<!-- 信息管理界面 -->
+			<action name="SelectAllWorkersManager" class="WorkerAddInformationAction" method="SelectAllWorkers">
+			<result name="success" type="redirect">/workerManager.jsp</result>
+		</action>
+		<!-- 信息管理页面输入员工编号进行查询 -->
+		<action name="ResearchWorker" class="WorkerAddInformationAction" method="ResearchWorker">
+			<result name="success" type="redirect">/workerManager.jsp</result>
+		</action>
+		
+		
+		<!--在所有员工表中点击超链接后显示员工全部信息 -->
+		<action name="ShowWorkerformation" class="WorkerAddInformationAction" method="ShowWorkerformation">
+			<result name="success" type="redirect">/workerShow.jsp</result>
+		</action>
+		
+		
+		<!--在所有员工表中点击超链接后删除相应员工信息 -->
+		<action name="DeleteWorker" class="WorkerAddInformationAction" method="DeleteWorkerInformation">
+			<result name="success" type="redirect">/workerManager.jsp</result>
+			<result name="fail" type="redirect">/workerManager.jsp</result>
+		</action>
+	</package>
 </struts>    

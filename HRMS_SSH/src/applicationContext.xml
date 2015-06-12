@@ -20,7 +20,7 @@
 			value="jdbc:mysql://localhost:3306/hrms_ssh">
 		</property>
 		<property name="username" value="root"></property>
-		<property name="password" value="123456"></property>
+		<property name="password" value="1234"></property>
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
@@ -70,4 +70,11 @@
 	<bean id="DepartmentDao" class="com.hrms.department.dao.DepartmentDaoImpl"></bean>
 	<!-- Department Part End -->
 	
+	
+	
+	<!-- Worker Information add Begin -->
+	<bean id="WorkerService" class="com.hrms.worker.services.WorkerAddInformationServiceImpl"></bean>
+	<bean id="WorkerDao" class="com.hrms.worker.dao.WorkerAddInformationDaoImpl"></bean>
+	<bean id="WorkerAddInformationAction" class="com.hrms.worker.action.WorkerInformation" scope="prototype"></bean>
+	<!-- Worker Information add End -->
 </beans>
