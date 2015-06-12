@@ -33,9 +33,16 @@ public class AttendanceAction extends ActionSupport {
 	 * 日期：2015-6-9
 	 */
 	public String workerAttendanceSearch(){
+		//获取当日日期
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		String checkDate = sdf.format(date);
+		//获取员工session
 		Map session = ActionContext.getContext().getSession();
 		Worker worker = (Worker)session.get("activeWorker");
-		String hql = "from Attendance where attendanceWorkerOid = "+worker.getWorkerOid()+" order by attendanceDate desc";
+		//hql语句
+		String hql = "from Attendance where attendanceWorkerOid = "+worker.getWorkerOid()+" and attendanceDate <= '" + checkDate +
+				"' order by attendanceDate desc";
 		List<Attendance> attendancelist = attendanceservice.searchAttendance(hql);
 		
 		session.put("attendancelist", attendancelist);
@@ -70,7 +77,7 @@ public class AttendanceAction extends ActionSupport {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String checkDate = sdf.format(date);
-		System.out.println(checkDate);
+		//System.out.println(checkDate);
 		//hql语句
 		String hql = "from Attendance a where a.attendanceDate = '" + checkDate +"' and a.worker.department.departmentOid = "+ worker.getDepartment().getDepartmentOid() +
 				" order by attendanceOid desc";

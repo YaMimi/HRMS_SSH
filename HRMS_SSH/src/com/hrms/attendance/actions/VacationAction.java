@@ -88,7 +88,8 @@ public class VacationAction extends ActionSupport {
 		Map session = ActionContext.getContext().getSession();
 		Worker worker = (Worker)session.get("activeWorker");
 		//查询请假表并且将数据保存到List
-		String hql = "from Vacation v where v.worker.department.departmentOid = " + worker.getDepartment().getDepartmentOid();
+		String hql = "from Vacation v where v.worker.department.departmentOid = " + worker.getDepartment().getDepartmentOid() +" and v.worker.workerPermission < "+ worker.getWorkerPermission() +
+				" order by vacationOid desc";
 		List<Vacation> approvevacationlist = vacationservice.searchVacation(hql);
 		
 		//设置session
