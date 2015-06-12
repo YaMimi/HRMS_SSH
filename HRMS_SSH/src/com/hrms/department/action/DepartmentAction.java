@@ -20,7 +20,7 @@ public class DepartmentAction extends ActionSupport{
 	private String alter;//定义check页面获取的修改部门信息的oid。
 	private String delete;//定义check页面获取的删除部门信息的oid。
 	private String FatherDepartmentNo;
-	private String FatherDepartmentName;
+	private int FatherDepartmentOid;
 	@Resource
 	private DepartmentService departmentservice;
 	
@@ -48,40 +48,99 @@ public class DepartmentAction extends ActionSupport{
 		
 	}
 	
-	
 	/*
-	 * 修改部门信息方法  2015.6.10
+	 * 修改部门读取信息方法  2015.6.11
 	 * 
 	 * */
 		public String UpdateDepartmentImfo(){
 			int alter1=Integer.parseInt(alter);
 			String hql = "from Department where DepartmentOid='"+alter+"'";
 			List<Department> departmentlist=departmentservice.searchDepartment(hql);
-				Map session = ActionContext.getContext().getSession();
-				session.put("departmentlist", departmentlist);
-				ActionContext.getContext().setSession(session);
-			//System.out.println(alter+"nihao");
-				return SUCCESS;
+			Map session = ActionContext.getContext().getSession();
+			session.put("departmentlist", departmentlist);
+			ActionContext.getContext().setSession(session);
+			
+			
+			String hql1= "from Department ";
+			List<Department> departmentlist1 = departmentservice.searchDepartment(hql1);
+			//Map session1 = ActionContext.getContext().getSession();
+			session.put("departmentlist1", departmentlist1);
+			ActionContext.getContext().setSession(session);
+			
+			
+			return SUCCESS;
+				
+				
 			}
 		
 
+		
+		/*
+		 * 修改部门方法  2015.6.12
+		 * 
+		 * */
+		public String departmentUpdate(){
+			Department department1;
+			if(FatherDepartmentOid==0){
+				department1=departmentservice.insertDepartment(department);
+				department=null;
+				if(department1.getDepartmentNo()!=null&&department1.getDepartmentName()!=null){
+				
+						return this.SUCCESS;
+				}
+				else return this.INPUT;
+			}
+			else{
+			
+			String hql = "from Department where DepartmentOid='"+FatherDepartmentOid+"'";
+			List<Department> departmentlist=departmentservice.searchDepartment(hql);
+			Department department2=departmentlist.get(0);
+			department.setDepartment(department2);
+			department1=departmentservice.insertDepartment(department);
+			department=null;
+			if(department1.getDepartmentNo()!=null&&department1.getDepartmentName()!=null){
+			
+					return this.SUCCESS;
+			}
+			else return this.INPUT;
+			}
+			
+		}
+		
+		
+		
+		
 		/*
 		 * 添加新部门方法  2015.6.11
 		 * 
 		 * */
 		public String DepartmentInsert(){
 			Department department1;
+			if(FatherDepartmentOid==0){
+				department1=departmentservice.insertDepartment(department);
+				department=null;
+				if(department1.getDepartmentNo()!=null&&department1.getDepartmentName()!=null){
+				
+						return this.SUCCESS;
+				}
+				else return this.INPUT;
+			}
+			else{
 			
-			//department.setDepartment(department1);
+			String hql = "from Department where DepartmentOid='"+FatherDepartmentOid+"'";
+			List<Department> departmentlist=departmentservice.searchDepartment(hql);
+			Department department2=departmentlist.get(0);
+			department.setDepartment(department2);
 			department1=departmentservice.insertDepartment(department);
+			department=null;
 			if(department1.getDepartmentNo()!=null&&department1.getDepartmentName()!=null){
+			
 					return this.SUCCESS;
 			}
 			else return this.INPUT;
+			}
 			
 		}
-		
-		
 		
 		/*
 		 * 删除部门信息方法  2015.6.11
@@ -179,15 +238,14 @@ public class DepartmentAction extends ActionSupport{
 		FatherDepartmentNo = fatherDepartmentNo;
 	}
 
-
-	public String getFatherDepartmentName() {
-		return FatherDepartmentName;
+	public int getFatherDepartmentOid() {
+		return FatherDepartmentOid;
 	}
 
-
-	public void setFatherDepartmentName(String fatherDepartmentName) {
-		FatherDepartmentName = fatherDepartmentName;
+	public void setFatherDepartmentOid(int fatherDepartmentOid) {
+		FatherDepartmentOid = fatherDepartmentOid;
 	}
+
 
 
 
