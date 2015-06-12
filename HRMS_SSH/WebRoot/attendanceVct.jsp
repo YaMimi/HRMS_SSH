@@ -38,8 +38,8 @@ session.setAttribute("vacationlist", vacationlist);
     <script src="./js/bootstrap.min.js"></script>
     <script>
   				$(function() {
-  				   $( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd"});
-  				   $( "#datepicker_end" ).datepicker({dateFormat: "yy-mm-dd"});
+  				   $( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd", minDate:"-0D"});
+  				   $( "#datepicker_end" ).datepicker({dateFormat: "yy-mm-dd", minDate:"-0D"});
   				});
   	</script>
     <style>
