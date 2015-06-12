@@ -84,7 +84,7 @@ session.setAttribute("departmentlist1", departmentlist1);
 	                  %> 
 					  </select>
 					  </th>
-		              <%-- <th><input type="text" class="form-control" name="father_department_name" placeholder="父部门名称（没有则填写本部门名称） " value="<%=department.getDepartment().getDepartmentName() %>" required></th> --%>
+		              
 		              <%}
 	              else{ %>
 	                  
@@ -100,7 +100,7 @@ session.setAttribute("departmentlist1", departmentlist1);
 	                  %> 
 					  </select>
 					  </th>
-		              <!-- <th><input type="text" class="form-control" name="father_department_name" placeholder="父部门名称（没有则填写本部门名称） "  required></th> -->
+		              
 		               <%}%>
 		               
 			             <input type='hidden' name='alter' value='<%=department.getDepartmentOid()%>'/>
