@@ -50,7 +50,12 @@
 			<result name="success" type="redirect">/workerAdd.jsp</result>
 			<result name="error" type="redirect">/workerAdd.jsp</result>
 		</action>
-
+		
+		<!-- 在添加员工信息页面自动显示员工编号 -->
+          <action name="WorkerAdd" class="WorkerAddInformationAction" method="InitWorkerAdd">
+			<result name="success" type="redirect">/workerAdd.jsp</result>
+		</action>
+		
 		<!-- 员工信息修改 -->
 		<action name="Select" class="WorkerAddInformationAction" method="InitnInformation">
 			<result name="success" type="redirect">/workerCheck.jsp</result>

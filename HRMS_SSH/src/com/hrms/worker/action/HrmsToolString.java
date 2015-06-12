@@ -23,7 +23,8 @@ public class HrmsToolString {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-//		
+		
+		System.out.println(randomAccount(5));
 		
 	}
 	
@@ -114,4 +115,22 @@ public class HrmsToolString {
 			   return result;
 		
 	  }
+	 
+	 
+	 /*
+		 * 根据年份和员工数量自动生成员工账号
+		 * */
+		 public static String randomAccount(int num){
+			String tempAccout;
+			  Calendar c = Calendar.getInstance();
+				int year = c.get(Calendar.YEAR); 
+				if(num<=9){
+					tempAccout=year+"00"+num;
+				}else if(num>=10&&num<=99){
+					tempAccout=year+"0"+num;
+				}else{
+					tempAccout=year+""+num;
+				}
+				return tempAccout;
+		  }
 }

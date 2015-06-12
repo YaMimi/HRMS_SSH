@@ -35,7 +35,6 @@ public class WorkerInformation extends ActionSupport {
 	     Worker worker_1;
    String hqlDepart="FROM Department";
 ArrayList<Department> department1=workerAddInformationService.SelectAllDepartmen(hqlDepart);
-		
 
 for(int i=0;i<department1.size();i++){
 	if(department1.get(i).getDepartmentName().equals(department.getDepartmentName())){
@@ -50,6 +49,22 @@ department.setDepartmentOid(departmenInteger);
 		}
 		return "success";
  
+	}
+	
+	
+	/*
+	 * 编者：徐新院
+	 * 时间：2015年6月12日
+	 * 功能：根据数据库中员工的数量自动生成员工编号
+	 * 
+	 * */
+	public String InitWorkerAdd(){
+		String sql="from Worker";
+		ArrayList<Worker> workers=workerAddInformationService.SelectAllWorkers(sql);
+		int num=workers.size();
+		String WorkerAdmiNo=HrmsToolString.randomAccount(num+1);
+		ActionContext.getContext().getSession().put("WorkerAdmiNo",WorkerAdmiNo);
+		return "success";
 	}
 	
 	/*编者：徐新院

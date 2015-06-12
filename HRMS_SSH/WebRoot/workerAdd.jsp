@@ -56,7 +56,7 @@
 	            </tr>
 	            <tr>
 	              <th><input type="text" class="form-control " name="worker.workerName" placeholder="姓名" value="" required></th>
-	              <th><input type="text" class="form-control " name="worker.workerNo" placeholder="员工号" value="" required></th>
+	              <th><input type="text" class="form-control " name="worker.workerNo" placeholder="员工号" value="${WorkerAdmiNo }" required></th>
 	              <th><select name="worker.workerSex" class="form-control"><option value="男" >男</option><option value="女" >女</option></select></th>
 	            </tr>
 	            <tr>

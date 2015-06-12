@@ -38,7 +38,7 @@
         <div class="row">
             
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <h1 class="page-header">修改员工${workeroid }</h1>
+                <h1 class="page-header">修改员工</h1>
                 <div class="row">
                 <div class="col-sm-8">
                 <label>请填写员工信息然后点击添加员工按钮进行添加操作：</label>

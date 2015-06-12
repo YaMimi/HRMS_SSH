@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        }
          out.println("	</select>");
 	--%>
-    <a href="http://127.0.0.1:8080/HRMS_SSH/workerAdd.jsp">注册页面</a><br>
+    <a href="WorkerAdd">注册页面</a><br>
 	<a href="Select">修改页面</a><br>
 	<a href="SelectManager">显示页面</a>
 	<a href="SelectAllWorkersManager">管理页面</a>
