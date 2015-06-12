@@ -61,23 +61,14 @@
   <property generated="never" lazy="false" name="password" type="java.lang.String">
    <column length="45" name="Password" not-null="true"/>
   </property>
+  <property generated="never" lazy="false" name="workerUnreadMessage" type="java.lang.Integer">
+   <column name="WorkerUnreadMessage"/>
+  </property>
   <set inverse="true" name="vacations" sort="unsorted">
    <key>
     <column name="VacationWorkerOid" not-null="true"/>
    </key>
    <one-to-many class="com.hrms.pojo.Vacation"/>
-  </set>
-  <set inverse="true" name="messagesForMessageFromWorkerOid" sort="unsorted">
-   <key>
-    <column name="MessageFromWorkerOid" not-null="true"/>
-   </key>
-   <one-to-many class="com.hrms.pojo.Message"/>
-  </set>
-  <set inverse="true" name="messagesForMessageToWorkerOid" sort="unsorted">
-   <key>
-    <column name="MessageToWorkerOid" not-null="true"/>
-   </key>
-   <one-to-many class="com.hrms.pojo.Message"/>
   </set>
   <set inverse="true" name="rewardorpunishments" sort="unsorted">
    <key>
@@ -91,6 +82,12 @@
    </key>
    <one-to-many class="com.hrms.pojo.Salary"/>
   </set>
+  <set inverse="true" name="messages" sort="unsorted">
+   <key>
+    <column name="MessageWorkerOid" not-null="true"/>
+   </key>
+   <one-to-many class="com.hrms.pojo.Message"/>
+  </set>
   <set inverse="true" name="cultivations" sort="unsorted">
    <key>
     <column name="CultivationWorkerOid" not-null="true"/>
@@ -102,12 +99,6 @@
     <column name="AttendanceWorkerOid" not-null="true"/>
    </key>
    <one-to-many class="com.hrms.pojo.Attendance"/>
-  </set>
-  <set inverse="true" name="affiches" sort="unsorted">
-   <key>
-    <column name="AfficheWorkerOid" not-null="true"/>
-   </key>
-   <one-to-many class="com.hrms.pojo.Affiche"/>
   </set>
  </class>
 </hibernate-mapping>

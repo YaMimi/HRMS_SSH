@@ -1,5 +1,7 @@
 package com.hrms.pojo;
 
+import java.util.Date;
+
 /**
  * Message entity. @author MyEclipse Persistence Tools
  */
@@ -9,10 +11,10 @@ public class Message implements java.io.Serializable {
 	// Fields
 
 	private Integer messageOid;
-	private Worker workerByMessageToWorkerOid;
-	private Worker workerByMessageFromWorkerOid;
+	private Worker worker;
+	private Date messageDate;
+	private String messageTitle;
 	private String messageContent;
-	private String messageDate;
 
 	// Constructors
 
@@ -21,13 +23,12 @@ public class Message implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Message(Worker workerByMessageToWorkerOid,
-			Worker workerByMessageFromWorkerOid, String messageContent,
-			String messageDate) {
-		this.workerByMessageToWorkerOid = workerByMessageToWorkerOid;
-		this.workerByMessageFromWorkerOid = workerByMessageFromWorkerOid;
-		this.messageContent = messageContent;
+	public Message(Worker worker, Date messageDate, String messageTitle,
+			String messageContent) {
+		this.worker = worker;
 		this.messageDate = messageDate;
+		this.messageTitle = messageTitle;
+		this.messageContent = messageContent;
 	}
 
 	// Property accessors
@@ -40,21 +41,28 @@ public class Message implements java.io.Serializable {
 		this.messageOid = messageOid;
 	}
 
-	public Worker getWorkerByMessageToWorkerOid() {
-		return this.workerByMessageToWorkerOid;
+	public Worker getWorker() {
+		return this.worker;
 	}
 
-	public void setWorkerByMessageToWorkerOid(Worker workerByMessageToWorkerOid) {
-		this.workerByMessageToWorkerOid = workerByMessageToWorkerOid;
+	public void setWorker(Worker worker) {
+		this.worker = worker;
 	}
 
-	public Worker getWorkerByMessageFromWorkerOid() {
-		return this.workerByMessageFromWorkerOid;
+	public Date getMessageDate() {
+		return this.messageDate;
 	}
 
-	public void setWorkerByMessageFromWorkerOid(
-			Worker workerByMessageFromWorkerOid) {
-		this.workerByMessageFromWorkerOid = workerByMessageFromWorkerOid;
+	public void setMessageDate(Date messageDate) {
+		this.messageDate = messageDate;
+	}
+
+	public String getMessageTitle() {
+		return this.messageTitle;
+	}
+
+	public void setMessageTitle(String messageTitle) {
+		this.messageTitle = messageTitle;
 	}
 
 	public String getMessageContent() {
@@ -63,14 +71,6 @@ public class Message implements java.io.Serializable {
 
 	public void setMessageContent(String messageContent) {
 		this.messageContent = messageContent;
-	}
-
-	public String getMessageDate() {
-		return this.messageDate;
-	}
-
-	public void setMessageDate(String messageDate) {
-		this.messageDate = messageDate;
 	}
 
 }

@@ -10,17 +10,17 @@
    <column name="MessageOid"/>
    <generator class="native"/>
   </id>
-  <many-to-one class="com.hrms.pojo.Worker" fetch="select" name="workerByMessageToWorkerOid">
-   <column name="MessageToWorkerOid" not-null="true"/>
+  <many-to-one class="com.hrms.pojo.Worker" fetch="select" name="worker">
+   <column name="MessageWorkerOid" not-null="true"/>
   </many-to-one>
-  <many-to-one class="com.hrms.pojo.Worker" fetch="select" name="workerByMessageFromWorkerOid">
-   <column name="MessageFromWorkerOid" not-null="true"/>
-  </many-to-one>
-  <property generated="never" lazy="false" name="messageContent" type="java.lang.String">
-   <column length="45" name="MessageContent" not-null="true"/>
+  <property generated="never" lazy="false" name="messageDate" type="java.util.Date">
+   <column length="10" name="MessageDate" not-null="true"/>
   </property>
-  <property generated="never" lazy="false" name="messageDate" type="java.lang.String">
-   <column length="145" name="MessageDate" not-null="true"/>
+  <property generated="never" lazy="false" name="messageTitle" type="java.lang.String">
+   <column length="45" name="MessageTitle" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="messageContent" type="java.lang.String">
+   <column length="145" name="MessageContent" not-null="true"/>
   </property>
  </class>
 </hibernate-mapping>

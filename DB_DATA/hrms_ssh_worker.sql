@@ -1,6 +1,6 @@
 CREATE DATABASE  IF NOT EXISTS `hrms_ssh` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `hrms_ssh`;
--- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: hrms_ssh
 -- ------------------------------------------------------
@@ -43,12 +43,13 @@ CREATE TABLE `worker` (
   `WorkerEducation` varchar(45) NOT NULL,
   `WorkerPhone` varchar(45) NOT NULL,
   `Password` varchar(45) NOT NULL,
+  `WorkerUnreadMessage` int(11) DEFAULT '0',
   PRIMARY KEY (`WorkerOid`),
   UNIQUE KEY `WorkerOid_UNIQUE` (`WorkerOid`),
   UNIQUE KEY `WorkerNo_UNIQUE` (`WorkerNo`),
   KEY `fk_Worker_Department1_idx` (`WorkerDepart`),
   CONSTRAINT `fk_Worker_Department1` FOREIGN KEY (`WorkerDepart`) REFERENCES `department` (`DepartmentOid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,7 +58,7 @@ CREATE TABLE `worker` (
 
 LOCK TABLES `worker` WRITE;
 /*!40000 ALTER TABLE `worker` DISABLE KEYS */;
-INSERT INTO `worker` VALUES (1,'201201001','王尼玛','男',1,4,'2012-01-01','440303197806013134','1978-06-01','广东深圳','陕西省西安市唐延路25号','AB','群众','中国','汉族','本科','13800138000','123456'),(2,'201202001','杨明杰','男',1,3,'2012-02-01','440303199402060035','1994-02-06','广东广州','广东省广州市天河东路10号','O','共青团员','中国','侗族','本科','13631277700','123456');
+INSERT INTO `worker` VALUES (1,'201201001','王尼玛','男',1,5,'2012-01-01','440303197806013134','1978-06-01','广东深圳','陕西省西安市唐延路25号','AB','群众','中国','汉族','本科','13800138000','123456',NULL);
 /*!40000 ALTER TABLE `worker` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -70,4 +71,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-11 15:20:23
+-- Dump completed on 2015-06-12 13:05:35

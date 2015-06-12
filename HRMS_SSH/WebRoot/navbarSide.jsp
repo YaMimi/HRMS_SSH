@@ -85,21 +85,7 @@
                     </ul>
                  </li>
                  
-                 <li><%if(path.equals("/afficheCheck.jsp")||path.equals("/afficheManager.jsp")||path.equals("/afficheAdd.jsp")) {%><a href="#afficheSystem" class="nav-header"  data-toggle="collapse" aria-expanded="true"><%} else {%><a href="#afficheSystem" class="nav-header collapsed" data-toggle="collapse"><%} %>　公告系统<i class="pull-right icon-sidebar-collapse"></i></a>
-                    <%if(path.equals("/afficheCheck.jsp")||path.equals("/afficheManager.jsp")||path.equals("/afficheAdd.jsp")) {%><ul id="afficheSystem" class="nav nav-sidebar nav-sec collapse in" aria-expanded="true"><%} else {%><ul id="afficheSystem" class="nav nav-sidebar nav-sec  collapse"><%} %>
-                        <li<%if(path.equals("/afficheCheck.jsp")) {%> class="active"<%} %>>
-                            <a href="#">公告查询</a>
-                        </li>
-                        <li<%if(path.equals("/afficheManager.jsp")) {%> class="active"<%} %>>
-                            <a href="#">公告管理</a>
-                        </li>
-                        <li<%if(path.equals("/afficheAdd.jsp")) {%> class="active"<%} %>>
-                            <a href="#">新增公告</a>
-                        </li>
-                    </ul>
-                 </li>
-                 
-                 <li<%if(path.equals("/message.jsp")) {%> class="active"<%} %>><a href="#">　私信系统 </a></li>
+                 <li<%if(path.equals("/message.jsp")) {%> class="active"<%} %>><a href="#">　公告系统 </a></li>
             </ul>
         </div>
     </div>
