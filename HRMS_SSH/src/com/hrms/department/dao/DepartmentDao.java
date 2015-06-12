@@ -10,5 +10,6 @@ public interface DepartmentDao {
 	public List<Department> searchDepartmentOid(String hql);
 	public Department insertDepartment(Department department);
 	public Department updateDepartment(Department department);
+	public Department deleteDepartment(Department department);
 	public int deleteDepartment(int DepartmentOid);
 }

@@ -44,4 +44,10 @@ public class DepartmentServiceImpl implements DepartmentService{
 		return null;
 	}
 
+	@Override
+	public Department deleteDepartment(Department department) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

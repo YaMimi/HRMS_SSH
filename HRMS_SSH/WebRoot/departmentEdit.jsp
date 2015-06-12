@@ -3,20 +3,24 @@
 <%@ page import="com.opensymphony.xwork2.ActionContext"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
-Worker activeWorker = (Worker)session.getAttribute("activeWorker");
-List<Department> departmentlist = (List<Department>)session.getAttribute("departmentlist");
-if(departmentlist==null)
-{
-	%><jsp:forward page="/UpdateDepartmentImfo"/><% 
-}
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
+Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 
+List<Department> departmentlist = (List<Department>)session.getAttribute("departmentlist");
+List<Department> departmentlist1 = (List<Department>)session.getAttribute("departmentlist1");
+if(departmentlist==null)
+{
+	%><jsp:forward page="/UpdateDepartmentImfo"/><% 
+}
 List<Department> DepartmentList = departmentlist;
 departmentlist = null;
 session.setAttribute("departmentlist", departmentlist);
+List<Department> DepartmentList1 = departmentlist1;
+departmentlist1 = null;
+session.setAttribute("departmentlist1", departmentlist1);
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -57,26 +61,52 @@ session.setAttribute("departmentlist", departmentlist);
 				<tr>
 	              <th><strong>部门编号</strong></th>
 	              <th><strong>部门名称</strong></th>
-	              <th><strong>父部门编号</strong></th>
 	              <th><strong>父部门名称</strong></th>
 	              <th colspan="2"><strong>操作</strong></th>
 	            </tr>
                 <%for(Department department : DepartmentList){ %>
-	            <form action="">
+	             <form action='departmentUpdate' method='post'>
 		            <tr>
 		              <input type='hidden' name='department_oid' value='<%=department.getDepartmentOid()%>'/>
-		              <th><input type="text" class="form-control" name="department_no" placeholder="部门编号 " value="<%=department.getDepartmentNo() %>" required></th>
-		              <th><input type="text" class="form-control" name="department_name" placeholder="部门名称" value="<%=department.getDepartmentName() %>" required></th>
+		              <th><input type="text" class="form-control" name="department.DepartmentNo" placeholder="部门编号 " value="<%=department.getDepartmentNo() %>" required></th>
+		              <th><input type="text" class="form-control" name="department.DepartmentName" placeholder="部门名称" value="<%=department.getDepartmentName() %>" required></th>
 		              <%if(department.getDepartment()!=null) {%>
-		              <th><input type="text" class="form-control" name="father_department_no" placeholder="父部门编号（没有则填写本部门编号） " value="<%=department.getDepartment().getDepartmentNo() %>" required></th>
-		              <th><input type="text" class="form-control" name="father_department_name" placeholder="父部门名称（没有则填写本部门名称） " value="<%=department.getDepartment().getDepartmentName() %>" required></th>
+		              <th>
+		              <select name="FatherDepartmentOid" class="form-control">
+							 <option value="<%=department.getDepartment().getDepartmentOid()%>" selected='selected'><%=department.getDepartment().getDepartmentName() %></option>
+			                 <option value="0">无</option>
+			         <%int i = 1; %>
+                     <%for(Department department1 : DepartmentList1){ %>
+							 <option value="<%=department1.getDepartmentOid()%>"><%=department1.getDepartmentName() %></option>
+					  <%i++; %>
+	                  <%
+	            	      }
+	                  %> 
+					  </select>
+					  </th>
+		              
 		              <%}
 	              else{ %>
-	                  <th><input type="text" class="form-control" name="father_department_no" placeholder="父部门编号（没有则填写本部门编号） "  required></th>
-		              <th><input type="text" class="form-control" name="father_department_name" placeholder="父部门名称（没有则填写本部门名称） "  required></th>
+	                  
+	                   <th>
+		              <select name="FatherDepartmentOid" class="form-control">
+			                 <option value="0" selected='selected'>无</option>
+			         <%int i = 1; %>
+                     <%for(Department department1 : DepartmentList1){ %>
+							 <option value="<%=department1.getDepartmentOid()%>"><%=department1.getDepartmentName() %></option>
+					  <%i++; %>
+	                  <%
+	            	      }
+	                  %> 
+					  </select>
+					  </th>
+		              
 		               <%}%>
+		               
+			             <input type='hidden' name='alter' value='<%=department.getDepartmentOid()%>'/>
 		              <th style="width:10px;"><button class="crlbut editbut" type="submit"><i class="icon-large icon-ok"></i></button></th>
-		              </form> <%}%>
+		              </form>  
+		              <%}%>
 			          <th style="width:10px;"><button class="crlbut delbut"><a class="delbut" href="departmentCheck.jsp"><i class="icon-large icon-remove"></i></a></button></th>
 		            </tr>
 	            </table>
