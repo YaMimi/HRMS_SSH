@@ -66,10 +66,11 @@ public class MessageAction extends ActionSupport {
 					worker1.setWorkerUnreadMessage(worker1.getWorkerUnreadMessage()+1);
 					loginService.updateWorker(worker1);
 				}
-			
+			message = null;
 			session.put("state", "SENDMSGSUCCESS");
 			return this.SUCCESS;
 		}
+		message = null;
 		session.put("state", "SENDMSGFAILED");
 		return this.ERROR;
 	}
