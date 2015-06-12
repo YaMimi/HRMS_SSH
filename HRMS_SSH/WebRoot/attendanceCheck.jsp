@@ -38,7 +38,10 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
     </style>
     <script>
   		$(function() {
-  			$( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd"});
+  			$( "#datepicker_start" ).datepicker({
+	  				dateFormat: "yy-mm-dd", 
+	  				maxDate: "+0D"
+  				});
   		});
   	</script>
     <title>签到查询</title>

@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `hrms_ssh` /*!40100 DEFAULT CHARACTER SET utf8 */
 USE `hrms_ssh`;
 -- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: hrms_ssh
+-- Host: 127.0.0.1    Database: hrms_ssh
 -- ------------------------------------------------------
 -- Server version	5.6.21-log
 
@@ -45,7 +45,7 @@ CREATE TABLE `vacation` (
 
 LOCK TABLES `vacation` WRITE;
 /*!40000 ALTER TABLE `vacation` DISABLE KEYS */;
-INSERT INTO `vacation` VALUES (1,'2015-06-14','2015-06-15','病假','感冒',0,1),(2,'2015-06-18','2015-06-19','婚假','堂哥结婚',0,1),(3,'2015-06-22','2015-06-26','丧假','祖父过世',0,1),(4,'2015-06-16','2015-06-16','病假','牙痛',0,1);
+INSERT INTO `vacation` VALUES (1,'2015-06-14','2015-06-15','病假','感冒',0,1),(2,'2015-06-18','2015-06-19','婚假','堂哥结婚',0,1),(3,'2015-06-22','2015-06-26','丧假','祖父过世',0,1),(4,'2015-06-16','2015-06-16','病假','牙痛',0,2);
 /*!40000 ALTER TABLE `vacation` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-12 13:05:35
+-- Dump completed on 2015-06-12 16:09:16
