@@ -60,6 +60,11 @@
 			<result name="success" type="redirect">/departmentCheck.jsp</result>
 		</action>
 		
+		<!-- 添加部门时部门信息查询 -->
+		<action name="allDepartmentSearch" class="DepartmentAction" method="allDepartmentSearch">
+			<result name="success" type="redirect">/departmentAdd.jsp</result>
+		</action>
+		
 		<!-- 部门信息查询(根据Oid查询) -->
 		<action name="UpdateDepartmentImfo" class="DepartmentAction" method="UpdateDepartmentImfo">
 			<result name="success" type="redirect">/departmentEdit.jsp</result>
@@ -70,6 +75,12 @@
 			<result name="success" type="redirect">/departmentCheck.jsp</result>
 			<result name="input" type="redirect">/departmentAdd.jsp</result>
 		</action>
+		
+		<!-- 删除部门 2015-6-11杨铭 -->
+		<action name="DepartmentDelete" class="DepartmentAction" method="DepartmentDelete">
+			<result name="success" type="redirect">/departmentCheck.jsp</result>
+		</action>
+
 	</package>
 	
 </struts>    

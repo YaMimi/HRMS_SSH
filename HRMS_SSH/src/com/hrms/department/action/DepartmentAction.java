@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+
+import org.hibernate.Query;
+
 import com.hrms.department.services.DepartmentService;
 import com.hrms.pojo.Attendance;
 import com.hrms.pojo.Department;
@@ -16,10 +19,26 @@ public class DepartmentAction extends ActionSupport{
 	private Department department;
 	private String alter;//定义check页面获取的修改部门信息的oid。
 	private String delete;//定义check页面获取的删除部门信息的oid。
+	private String FatherDepartmentNo;
+	private String FatherDepartmentName;
 	@Resource
 	private DepartmentService departmentservice;
 	
 	public String DepartmentSearch(){
+		String hql = "from Department ";
+		List<Department> departmentlist = departmentservice.searchDepartment(hql);
+		Map session = ActionContext.getContext().getSession();
+		session.put("departmentlist", departmentlist);
+		ActionContext.getContext().setSession(session);
+		return SUCCESS;
+		
+	}
+	
+	/*
+	 * 新添部门时查询部门信息  2015.6.11
+	 * 
+	 * */
+	public String allDepartmentSearch(){
 		String hql = "from Department ";
 		List<Department> departmentlist = departmentservice.searchDepartment(hql);
 		Map session = ActionContext.getContext().getSession();
@@ -45,40 +64,75 @@ public class DepartmentAction extends ActionSupport{
 				return SUCCESS;
 			}
 		
+
 		/*
-		 * 添加新部门方法  2015.6.10
+		 * 添加新部门方法  2015.6.11
 		 * 
 		 * */
 		public String DepartmentInsert(){
-
 			Department department1;
+			
+			//department.setDepartment(department1);
 			department1=departmentservice.insertDepartment(department);
 			if(department1.getDepartmentNo()!=null&&department1.getDepartmentName()!=null){
-				System.out.println(department1.getDepartmentNo()+"aa");
-				System.out.println(department1.getDepartmentName()+"aaname");
-				System.out.println(department1.getDepartment().getDepartmentNo()+"fatherno");
-				System.out.println(department1.getDepartment().getDepartmentName()+"fathername");
-				return this.SUCCESS;
+					return this.SUCCESS;
 			}
 			else return this.INPUT;
 			
 		}
+		
+		
+		
 		/*
-		 * 删除部门信息方法  2015.6.10（未完成）
+		 * 删除部门信息方法  2015.6.11
 		 * 
 		 * */
 		public String DepartmentDelete(){
 			int delete1=Integer.parseInt(delete);
-			String hql = "from Department where DepartmentOid='"+delete+"'";
-//			List<Department> departmentlist = departmentservice.searchDepartment(hql);
-//			Map session = ActionContext.getContext().getSession();
-//			session.put("departmentlist", departmentlist);
-//			ActionContext.getContext().setSession(session);
+			departmentservice.deleteDepartment(delete1);
 			return SUCCESS;
 			
 		}
 		
+
+		/*
+		 * 检查部门编号是否存在  2015.6.11
+		 * 
+		 * */
+		public boolean DepartmentNoExist(String departmentNo){
+			Map session = ActionContext.getContext().getSession();
+			boolean flag=true;
+			String hql = "from Department where DepartmentNo='"+departmentNo+"'";
+			try{
+				List<Department> departmentlist=departmentservice.searchDepartment(hql);
+				if(departmentlist.size()==0){
+					flag=false;
+				}
+				return flag;
+			}catch(RuntimeException re){
+				throw re;
+			}
+		}
 		
+		
+		/*
+		 * 检查部门名称是否存在  2015.6.11
+		 * 
+		 * */
+		public boolean DepartmentNameExist(String departmentName){
+			Map session = ActionContext.getContext().getSession();
+			boolean flag=true;
+			String hql = "from Department where DepartmentNo='"+departmentName+"'";
+			try{
+				List<Department> departmentlist=departmentservice.searchDepartment(hql);
+				if(departmentlist.size()==0){
+					flag=false;
+				}
+				return flag;
+			}catch(RuntimeException re){
+				throw re;
+			}
+		}
 
 	public String getAlter() {
 			return alter;
@@ -114,5 +168,28 @@ public class DepartmentAction extends ActionSupport{
 	public void setDepartmentservice(DepartmentService departmentservice) {
 		this.departmentservice = departmentservice;
 	}
+
+
+	public String getFatherDepartmentNo() {
+		return FatherDepartmentNo;
+	}
+
+
+	public void setFatherDepartmentNo(String fatherDepartmentNo) {
+		FatherDepartmentNo = fatherDepartmentNo;
+	}
+
+
+	public String getFatherDepartmentName() {
+		return FatherDepartmentName;
+	}
+
+
+	public void setFatherDepartmentName(String fatherDepartmentName) {
+		FatherDepartmentName = fatherDepartmentName;
+	}
+
+
+
 	
 }

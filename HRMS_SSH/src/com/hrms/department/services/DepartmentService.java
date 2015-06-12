@@ -14,5 +14,5 @@ public interface DepartmentService {
 	//修改部门信息
 	public Department updateDepartment(Department department);
 	//删除部门信息
-	public void deleteDepartment(Department department);
+	public int deleteDepartment(int DepartmentOid);
 }

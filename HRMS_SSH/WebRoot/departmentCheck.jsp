@@ -31,6 +31,7 @@ session.setAttribute("departmentlist", departmentlist);
     <script src="./js/jquery-2.1.3.min.js"></script>
     <script src="./js/jquery-ui.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    
 	<style>
         * {
             font-family: 'FontAwesome',"Microsoft YaHei" ! important;
@@ -62,31 +63,36 @@ session.setAttribute("departmentlist", departmentlist);
               </tr>
               <%int i = 1; %>
               <%for(Department department : DepartmentList){ %>
+              
               <tr>
-	              <th><%=department.getDepartmentNo() %></th>
-	              <th><%=department.getDepartmentName() %></th>
+	              <th><strong><%=department.getDepartmentNo() %></strong></th>
+	              <th><strong><%=department.getDepartmentName() %></strong></th>
 	              <%if(department.getDepartment()!=null) {%>
-	              <th><%=department.getDepartment().getDepartmentNo() %></th>
-	              <th><%=department.getDepartment().getDepartmentName() %></th>
-	              <%} else{ %>
-	              <th></th>
-	              <th></th>
+	              <th><strong><%=department.getDepartment().getDepartmentNo() %></strong></th>
+	              <th><strong><%=department.getDepartment().getDepartmentName() %></strong></th>
+	              <%}
+	              else{ %>
+	              <th><strong></strong></th>
+	              <th><strong></strong></th>
 	              <%} %>
-	              <th><%=department.getWorkers().size() %></th>
+	              <th><strong><%=department.getWorkers().size() %></strong></th>
              	  <th style="width:10px;">
 				      <form action='UpdateDepartmentImfo'>
 			             <input type='hidden' name='alter' value='<%=department.getDepartmentOid()%>'/>
-			             <button class='crlbut editbut' type='submit'><i class="icon-large icon-pencil"></i></button>
+			             <button class='crlbut editbut' type='submit'  ><i class="icon-large icon-pencil"></i></button>
 			          </form>
 			      </th>
-			      <th style="width:10px;">
-			           <form action=''>
+			      <th style="width:10px;">  
+			           <form action='DepartmentDelete'>
 			             <input type='hidden' name='delete' value='<%=department.getDepartmentOid()%>'/>
-			             <button class='crlbut delbut' type='submit'><i class="icon-large icon-remove"></i></button>
+			             <button class='crlbut delbut' type='submit'  ><i class="icon-large icon-remove"></i></button>
 			           </form>
 		          </th>
 			  </tr>
-			  <%i++; }%>
-         </table>
+			  <%i++; %>
+	            <%
+	            	}
+	             %>
+                </table>
   </body>
 </html>

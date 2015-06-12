@@ -33,9 +33,9 @@ public class DepartmentServiceImpl implements DepartmentService{
 	}
 
 	@Override
-	public void deleteDepartment(Department department) {
+	public int deleteDepartment(int DepartmentOid) {
 		// TODO Auto-generated method stub
-		
+		return departmentdao.deleteDepartment(DepartmentOid);
 	}
 
 	@Override
