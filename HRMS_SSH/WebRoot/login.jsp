@@ -55,6 +55,13 @@ state = (String)session.getAttribute("state");
 						<i class="icon-exclamation-sign icon-large"></i> 登出成功！
 					</div>
 			        <%} %>
+			        <%if(state!=null&&state.equals("LOGINPLEASE")) {%>
+					<%session.setAttribute("state", null); %>
+			        <div class="alert alert-danger alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<i class="icon-remove-sign icon-large"></i> 请先登录。
+					</div>
+					<%} %>
 			       	<%if(state!=null&&state.equals("LOGINERROR")) {%>
 					<%session.setAttribute("state", null); %>
 			        <div class="alert alert-danger alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">

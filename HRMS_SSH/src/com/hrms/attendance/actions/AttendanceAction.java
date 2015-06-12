@@ -98,7 +98,7 @@ public class AttendanceAction extends ActionSupport {
 		Worker worker = new Worker();
 		worker.setWorkerNo(attendWorkerNo);
 		Map session = ActionContext.getContext().getSession();
-		worker = loginService.searchUser(worker);
+		worker = loginService.searchWorker(worker);
 		if(worker==null) {
 			session.put("state", "WORKERNULL");
 			return this.ERROR;

@@ -58,7 +58,11 @@ CREATE TABLE `worker` (
 
 LOCK TABLES `worker` WRITE;
 /*!40000 ALTER TABLE `worker` DISABLE KEYS */;
+<<<<<<< HEAD
+INSERT INTO `worker` VALUES (1,'201201001','王尼玛','男',1,5,'2012-01-01','440303197806013134','1978-06-01','广东深圳','陕西省西安市唐延路25号','AB','群众','中国','汉族','本科','13800138000','123456',0);
+=======
 INSERT INTO `worker` VALUES (1,'201201001','王尼玛','男',1,3,'2012-01-01','440303197806013134','1978-06-01','广东深圳','陕西省西安市唐延路25号','AB','群众','中国','汉族','本科','13800138000','123456',NULL),(2,'201202001','张全蛋','男',1,1,'2012-02-01','440303198807240026','1988-07-24','法国凡尔赛','陕西省西安市唐延路25号','A','团员','中国','汉族','专科','10086100086','123456',0);
+>>>>>>> refs/remotes/choose_remote_name/dev
 /*!40000 ALTER TABLE `worker` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -71,4 +75,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+<<<<<<< HEAD
+-- Dump completed on 2015-06-12 22:08:32
+=======
 -- Dump completed on 2015-06-12 16:09:16
+>>>>>>> refs/remotes/choose_remote_name/dev

@@ -20,10 +20,10 @@ public class LoginAction extends ActionSupport {
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		String result;
 		
-		result = loginService.checkUser(worker);
+		result = loginService.checkWorker(worker);
 		
 		if (result != null && result.equals("CORRECT")) {
-			Worker worker1 = loginService.searchUser(worker);
+			Worker worker1 = loginService.searchWorker(worker);
 			session.put("activeWorker", worker1);
 			return this.SUCCESS;
 		}
