@@ -1,8 +1,12 @@
 package com.hrms.login.dao;
 
+import java.util.List;
+
 import com.hrms.pojo.Worker;
 
 public interface LoginDao {
-	public Worker searchUser(Worker worker);
-	public String checkUser(Worker worker);
+	public List<Worker> showWorker();
+	public Worker searchWorker(Worker worker);
+	public Worker updateWorker(Worker worker);
+	public String checkWorker(Worker worker);
 }

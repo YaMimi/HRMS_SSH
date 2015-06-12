@@ -14,7 +14,14 @@ public class LoginDaoImpl implements LoginDao {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public Worker searchUser(Worker worker) {
+	public List<Worker> showWorker() {
+		String query = "from Worker";
+		List<Worker> workerList = sessionFactory.getCurrentSession().createQuery(query).list();
+		return workerList;
+	}
+	
+	@Override
+	public Worker searchWorker(Worker worker) {
 		String query = "select w.workerOid from Worker w where w.workerNo='" +worker.getWorkerNo()+ "'";
 		List list = sessionFactory.getCurrentSession().createQuery(query).list();
 		
@@ -28,9 +35,15 @@ public class LoginDaoImpl implements LoginDao {
 		}
 		return null;
 	}
+	
+	@Override
+	public Worker updateWorker(Worker worker) {
+		sessionFactory.getCurrentSession().merge(worker);
+		return worker;
+	}
 
 	@Override
-	public String checkUser(Worker worker) {
+	public String checkWorker(Worker worker) {
 		String query = "select w.password from Worker w where w.workerNo='" +worker.getWorkerNo()+ "'";
 		List list = sessionFactory.getCurrentSession().createQuery(query).list();
 		if(!list.isEmpty()) {

@@ -53,6 +53,22 @@
 		</action>
 	</package>
 	
+	<!-- Message Package -->
+	<package name="message" extends="struts-default" namespace="/">
+		<!-- CheckMessageAction -->
+		<action name="CheckMessage" class="MessageAction" method="checkMessage"></action>
+		
+		<!-- ShowMessageAction -->
+		<action name="ShowMessage" class="MessageAction" method="showMessage"></action>
+		
+		<!-- LoginAction -->
+		<action name="NewMessage" class="MessageAction" method="newMessage">
+			<result name="success" type="redirect">/message.jsp</result>
+			<result name="error" type="redirect">/message.jsp</result>
+			<result name="none" type="redirect">/login.jsp</result>
+		</action>
+	</package>
+	
 	<!-- 杨铭    department包 -->
 	<package name="department" extends="struts-default" namespace="/">
 		<!-- 部门信息查询 -->
