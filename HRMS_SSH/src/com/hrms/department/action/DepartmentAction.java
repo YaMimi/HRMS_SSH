@@ -65,13 +65,15 @@ public class DepartmentAction extends ActionSupport{
 						return this.SUCCESS;}
 					else
 						{
+						departmentEdit.setDepartmentOid(null);
 						department1=departmentservice.insertDepartment(departmentEdit);
-						return this.INPUT;
+						return this.SUCCESS;
 						}
 				}
 				else{ 
+					departmentEdit.setDepartmentOid(null);
 					department1=departmentservice.insertDepartment(departmentEdit);
-					return this.INPUT;
+					return this.SUCCESS;
 					}
 				}
 			else{
@@ -88,13 +90,15 @@ public class DepartmentAction extends ActionSupport{
 					return this.SUCCESS;}
 				else
 					{
+					departmentEdit.setDepartmentOid(null);
 					department1=departmentservice.insertDepartment(departmentEdit);
-					return this.INPUT;
+					return this.SUCCESS;
 					}
 			}
 			else{ 
+				departmentEdit.setDepartmentOid(null);
 				department1=departmentservice.insertDepartment(departmentEdit);
-				return this.INPUT;
+				return this.SUCCESS;
 				}
 			}
 			
@@ -109,6 +113,8 @@ public class DepartmentAction extends ActionSupport{
 					String hql = "from Department where DepartmentOid='"+alter+"'";
 					List<Department> departmentlist=departmentservice.searchDepartment(hql);
 					departmentEdit=departmentlist.get(0);
+					System.out.println(departmentEdit.getDepartmentName()+"原部门名称");
+					System.out.println(departmentEdit.getDepartmentNo()+"原部门编号");
 					Map session = ActionContext.getContext().getSession();
 					session.put("departmentlist", departmentlist);
 					ActionContext.getContext().setSession(session);
@@ -259,6 +265,14 @@ public class DepartmentAction extends ActionSupport{
 
 	public void setFatherDepartmentOid(int fatherDepartmentOid) {
 		FatherDepartmentOid = fatherDepartmentOid;
+	}
+
+	public Department getDepartmentEdit() {
+		return departmentEdit;
+	}
+
+	public void setDepartmentEdit(Department departmentEdit) {
+		this.departmentEdit = departmentEdit;
 	}
 
 
