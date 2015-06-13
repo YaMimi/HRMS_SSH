@@ -1,3 +1,4 @@
+<%@page import="com.hrms.page.bean.PageBean"%>
 <%
 /**
 *页面：请假申请和查询界面
@@ -22,6 +23,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 List<Vacation> VacationList = vacationlist;
 vacationlist = null;
 session.setAttribute("vacationlist", vacationlist);
+PageBean pagebean = (PageBean)session.getAttribute("pageBean");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -145,6 +147,47 @@ session.setAttribute("vacationlist", vacationlist);
 						            <%} %>
 						            
 						        </table>
+						        <nav>
+								  <ul class="pagination">
+								    <%if(pagebean.getCurrentPage()==1){ %>
+								    <li>
+								      <a href="#" aria-label="Previous">
+								      	上一页
+								        <span aria-hidden="true">&laquo;</span>
+								      </a>
+								    </li>
+								    <%}else{ %>
+								    <li>
+								      <a href="WorkerVacationSearch.action?page=<%=pagebean.getCurrentPage()-1 %>" aria-label="Previous">
+								      	上一页
+								        <span aria-hidden="true">&laquo;</span>
+								      </a>
+								    </li>
+							        <%} %>
+							        <%for(int j = 1; j <= pagebean.getTotalPage(); j++){ %>
+									    <%if(pagebean.getCurrentPage()==j){ %>
+									    	<li class="active"><a href="WorkerVacationSearch.action?page=<%=j %>"><%=j %></a></li>
+									    <%}else{ %>
+									    	<li><a href="WorkerVacationSearch.action?page=<%=j %>"><%=j %></a></li>
+									    <%} %>
+								    <%} %>
+								    <%if(pagebean.getCurrentPage()!=pagebean.getTotalPage()){ %>
+								    <li>
+								      <a href="WorkerVacationSearch.action?page=<%=pagebean.getCurrentPage()+1 %>" aria-label="Next">
+								        <span aria-hidden="true">&raquo;</span>
+								        	下一页
+								      </a>
+								    </li>
+								    <%}else{ %>
+								    <li>
+								      <a href="#" aria-label="Next">
+								        <span aria-hidden="true">&raquo;</span>
+								        	下一页
+								      </a>
+								    </li>
+								    <%} %>
+								  </ul>
+								</nav>
 							</div>
 						</div>
 					</div>

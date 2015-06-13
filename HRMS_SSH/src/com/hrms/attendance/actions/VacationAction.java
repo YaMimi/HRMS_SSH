@@ -75,10 +75,12 @@ public class VacationAction extends ActionSupport {
 		Worker worker = (Worker)session.get("activeWorker");
 		//查询请假表并且将数据保存到List
 		String hql = "from Vacation v where v.worker.workerOid = " + worker.getWorkerOid();
-		List<Vacation> vacationlist = vacationservice.searchVacation(hql);
+		
+		PageBean pageBean = pageserivce.getPageBean(hql, 4, page);
 		
 		//设置session
-		session.put("vacationlist", vacationlist);
+		session.put("vacationlist", pageBean.getList());
+		session.put("pageBean", pageBean);
 		ActionContext.getContext().setSession(session);
 		return SUCCESS;
 	}
