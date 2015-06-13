@@ -23,7 +23,7 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
             font-family: 'FontAwesome',"Microsoft YaHei" ! important;
         }
     </style>
-    <title>签到查询</title>
+    <title>公告系统</title>
   </head>
   
   <body>

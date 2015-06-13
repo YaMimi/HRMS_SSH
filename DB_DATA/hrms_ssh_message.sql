@@ -34,7 +34,7 @@ CREATE TABLE `message` (
   UNIQUE KEY `MessageOid_UNIQUE` (`MessageOid`),
   KEY `fk_Message_Woker1_idx` (`MessageWorkerOid`),
   CONSTRAINT `fk_Message_Woker1` FOREIGN KEY (`MessageWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` VALUES (1,'2015-06-11','系统公告','系统将于6月14号13-16点进行维护，届时将无法登陆。',1),(2,'2015-06-12','系统公告','请未更新员工ID卡的员工带ID卡到技术部进行更新。否则将无法正常使用。',1),(3,'2015-06-12','部门公告','请人事部员工与周四下午3点与会议三室进行周会。',1);
+INSERT INTO `message` VALUES (1,'2015-06-11','系统公告','系统将于6月14号13-16点进行维护，届时将无法登陆。',1),(2,'2015-06-12','系统公告','请未更新员工ID卡的员工带ID卡到技术部进行更新。否则将无法正常使用。',1),(3,'2015-06-12','部门公告','请人事部员工与周四下午3点与会议三室进行周会。',1),(9,'2015-06-13','凤飞飞','阿萨德发',1);
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,8 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< HEAD
--- Dump completed on 2015-06-12 22:08:33
-=======
--- Dump completed on 2015-06-12 16:09:17
->>>>>>> refs/remotes/choose_remote_name/dev
+-- Dump completed on 2015-06-13 12:39:54

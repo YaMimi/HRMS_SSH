@@ -58,8 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< HEAD
--- Dump completed on 2015-06-12 22:08:32
-=======
--- Dump completed on 2015-06-12 16:09:15
->>>>>>> refs/remotes/choose_remote_name/dev
+-- Dump completed on 2015-06-13 12:39:52

@@ -1,3 +1,4 @@
+<%@page import="com.hrms.page.bean.PageBean"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page import="com.hrms.pojo.*" %>
@@ -15,6 +16,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 List<Attendance> DepartmentAttendanceList = departmentattendancelist;
 departmentattendancelist = null;
 session.setAttribute("departmentattendancelist", departmentattendancelist);
+PageBean pagebean = (PageBean)session.getAttribute("pageBean");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -72,6 +74,49 @@ session.setAttribute("departmentattendancelist", departmentattendancelist);
 		       			<%} %>
 		       		<%} %>
 		        </table>
+		        	<div class="container-fluid">
+						<nav>
+						  <ul class="pagination">
+						    <%if(pagebean.getCurrentPage()==1){ %>
+						    <li>
+						      <a href="#" aria-label="Previous">
+						      	上一页
+						        <span aria-hidden="true">&laquo;</span>
+						      </a>
+						    </li>
+						    <%}else{ %>
+						    <li>
+						      <a href="DepartmentAttendanceSearch.action?page=<%=pagebean.getCurrentPage()-1 %>" aria-label="Previous">
+						      	上一页
+						        <span aria-hidden="true">&laquo;</span>
+						      </a>
+						    </li>
+					        <%} %>
+					        <%for(int j = 1; j <= pagebean.getTotalPage(); j++){ %>
+							    <%if(pagebean.getCurrentPage()==j){ %>
+							    	<li class="active"><a href="DepartmentAttendanceSearch.action?page=<%=j %>"><%=j %></a></li>
+							    <%}else{ %>
+							    	<li><a href="DepartmentAttendanceSearch.action?page=<%=j %>"><%=j %></a></li>
+							    <%} %>
+						    <%} %>
+						    <%if(pagebean.getCurrentPage()!=pagebean.getTotalPage()){ %>
+						    <li>
+						      <a href="DepartmentAttendanceSearch.action?page=<%=pagebean.getCurrentPage()+1 %>" aria-label="Next">
+						        <span aria-hidden="true">&raquo;</span>
+						        	下一页
+						      </a>
+						    </li>
+						    <%}else{ %>
+						    <li>
+						      <a href="#" aria-label="Next">
+						        <span aria-hidden="true">&raquo;</span>
+						        	下一页
+						      </a>
+						    </li>
+						    <%} %>
+						  </ul>
+						</nav>
+					</div>
             </div>
   </body>
 </html>

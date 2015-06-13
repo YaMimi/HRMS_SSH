@@ -49,7 +49,7 @@ CREATE TABLE `worker` (
   UNIQUE KEY `WorkerNo_UNIQUE` (`WorkerNo`),
   KEY `fk_Worker_Department1_idx` (`WorkerDepart`),
   CONSTRAINT `fk_Worker_Department1` FOREIGN KEY (`WorkerDepart`) REFERENCES `department` (`DepartmentOid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -58,11 +58,7 @@ CREATE TABLE `worker` (
 
 LOCK TABLES `worker` WRITE;
 /*!40000 ALTER TABLE `worker` DISABLE KEYS */;
-<<<<<<< HEAD
-INSERT INTO `worker` VALUES (1,'201201001','王尼玛','男',1,5,'2012-01-01','440303197806013134','1978-06-01','广东深圳','陕西省西安市唐延路25号','AB','群众','中国','汉族','本科','13800138000','123456',0);
-=======
-INSERT INTO `worker` VALUES (1,'201201001','王尼玛','男',1,3,'2012-01-01','440303197806013134','1978-06-01','广东深圳','陕西省西安市唐延路25号','AB','群众','中国','汉族','本科','13800138000','123456',NULL),(2,'201202001','张全蛋','男',1,1,'2012-02-01','440303198807240026','1988-07-24','法国凡尔赛','陕西省西安市唐延路25号','A','团员','中国','汉族','专科','10086100086','123456',0);
->>>>>>> refs/remotes/choose_remote_name/dev
+INSERT INTO `worker` VALUES (1,'201201001','王尼玛','男',1,4,'2012-01-01','1215613156','1978-09-07','广东深圳','陕西省','AB','群众','中国','汉族','本科','13800138000','123456',0),(2,'201201002','张全蛋','男',1,1,'2012-01-02','1215613153','1989-06-15','广东深圳','福建省','O','团员','中国','汉族','专科','10086100086','123456',0),(3,'201201003','王蜜桃','男',2,3,'2012-01-03','1235848684','1990-05-20','广东深圳','广东省','A','群众','中国','汉族','本科','10000100000','123456',0);
 /*!40000 ALTER TABLE `worker` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -75,8 +71,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< HEAD
--- Dump completed on 2015-06-12 22:08:32
-=======
--- Dump completed on 2015-06-12 16:09:16
->>>>>>> refs/remotes/choose_remote_name/dev
+-- Dump completed on 2015-06-13 12:39:52

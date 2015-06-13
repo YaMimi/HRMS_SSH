@@ -6,19 +6,20 @@ package com.hrms.attendance.actions;
  */
 import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.util.List;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
 import com.hrms.attendance.services.AttendanceService;
 import com.hrms.login.service.LoginService;
+import com.hrms.page.bean.PageBean;
+import com.hrms.page.service.PageService;
 import com.hrms.pojo.Attendance;
 import com.hrms.pojo.Worker;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.xml.internal.fastinfoset.sax.Properties;
 
 public class AttendanceAction extends ActionSupport {
 	private String Date;
@@ -28,6 +29,9 @@ public class AttendanceAction extends ActionSupport {
 	private AttendanceService attendanceservice;
 	@Resource
 	private LoginService loginService;
+	@Resource
+	private PageService pageserivce;
+	private int page;
 	/**功能：个人考勤查询
 	 * 作者：杨明杰
 	 * 日期：2015-6-9
@@ -81,8 +85,9 @@ public class AttendanceAction extends ActionSupport {
 		//hql语句
 		String hql = "from Attendance a where a.attendanceDate = '" + checkDate +"' and a.worker.department.departmentOid = "+ worker.getDepartment().getDepartmentOid() +
 				" order by attendanceOid desc";
-		List<Attendance> departmentattendancelist = attendanceservice.searchAttendance(hql);
-		session.put("departmentattendancelist", departmentattendancelist);
+		PageBean pageBean = pageserivce.getPageBean(hql, 5, page);
+		session.put("departmentattendancelist", pageBean.getList());
+		session.put("pageBean", pageBean);
 		ActionContext.getContext().setSession(session);
 		return SUCCESS;
 		
@@ -176,6 +181,18 @@ public class AttendanceAction extends ActionSupport {
 	}
 	public void setLoginService(LoginService loginService) {
 		this.loginService = loginService;
+	}
+	public PageService getPageserivce() {
+		return pageserivce;
+	}
+	public void setPageserivce(PageService pageserivce) {
+		this.pageserivce = pageserivce;
+	}
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
 	}
 	
 }
