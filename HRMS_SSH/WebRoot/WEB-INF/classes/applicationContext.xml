@@ -83,4 +83,9 @@
 	<bean id="DepartmentDao" class="com.hrms.department.dao.DepartmentDaoImpl"></bean>
 	<!-- Department Part End -->
 	
+	<!-- 杨明杰    分页部门  开始 -->
+	<bean id="PageService" class="com.hrms.page.service.PageServiceImpl" scope="prototype"></bean>
+	<bean id="PageDao" class="com.hrms.page.dao.PageDaoImpl" scope="prototype"></bean>
+	<!-- 杨明杰    分页部门  结束-->
+	
 </beans>

@@ -36,7 +36,7 @@ CREATE TABLE `vacation` (
   UNIQUE KEY `VacationOid_UNIQUE` (`VacationOid`),
   KEY `fk_Vacation_Worker1_idx` (`VacationWorkerOid`),
   CONSTRAINT `fk_Vacation_Worker1` FOREIGN KEY (`VacationWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,11 +45,7 @@ CREATE TABLE `vacation` (
 
 LOCK TABLES `vacation` WRITE;
 /*!40000 ALTER TABLE `vacation` DISABLE KEYS */;
-<<<<<<< HEAD
-INSERT INTO `vacation` VALUES (1,'2015-06-14','2015-06-15','病假','感冒',1,1),(2,'2015-06-18','2015-06-19','婚假','堂哥结婚',0,1),(3,'2015-06-22','2015-06-26','丧假','祖父过世',0,1),(4,'2015-06-16','2015-06-16','病假','牙痛',0,1);
-=======
-INSERT INTO `vacation` VALUES (1,'2015-06-14','2015-06-15','病假','感冒',0,1),(2,'2015-06-18','2015-06-19','婚假','堂哥结婚',0,1),(3,'2015-06-22','2015-06-26','丧假','祖父过世',0,1),(4,'2015-06-16','2015-06-16','病假','牙痛',0,2);
->>>>>>> refs/remotes/choose_remote_name/dev
+INSERT INTO `vacation` VALUES (1,'2015-06-15','2015-06-15','病假','被锤子手机锤到手',0,2),(2,'2015-06-19','2015-06-19','事假','和李小花约会',0,2),(3,'2015-06-22','2015-06-26','丧假','我舅舅过世了',0,2);
 /*!40000 ALTER TABLE `vacation` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -62,8 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< HEAD
--- Dump completed on 2015-06-12 22:08:33
-=======
--- Dump completed on 2015-06-12 16:09:16
->>>>>>> refs/remotes/choose_remote_name/dev
+-- Dump completed on 2015-06-13 12:39:53

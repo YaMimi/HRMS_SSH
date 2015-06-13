@@ -35,7 +35,7 @@ CREATE TABLE `attendance` (
   UNIQUE KEY `AttendanceOid_UNIQUE` (`AttendanceOid`),
   KEY `fk_Attendance_Worker1_idx` (`AttendanceWorkerOid`),
   CONSTRAINT `fk_Attendance_Worker1` FOREIGN KEY (`AttendanceWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `attendance` (
 
 LOCK TABLES `attendance` WRITE;
 /*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
-INSERT INTO `attendance` VALUES (1,'2015-06-08','09:02:00','18:30:00',1,1),(2,'2015-06-09','09:10:00','18:20:00',1,1),(3,'2015-06-10','08:12:00','18:32:00',1,1),(5,'2015-06-12','08:30:00','17:55:00',1,1),(6,'2015-06-13','09:00:00','18:06:00',1,1),(9,'2015-06-11','09:15:05','09:15:17',1,1),(10,'2015-06-14',NULL,NULL,0,1),(11,'2015-06-15',NULL,NULL,0,1);
+INSERT INTO `attendance` VALUES (1,'2015-06-08','09:02:00','18:30:00',1,1),(2,'2015-06-09','09:10:00','18:20:00',1,1),(3,'2015-06-10','08:12:00','18:32:00',1,1),(5,'2015-06-12','08:30:00','17:55:00',1,1),(6,'2015-06-13','09:00:00','18:06:00',1,1),(9,'2015-06-11','09:15:05','09:15:17',1,1),(10,'2015-06-14',NULL,NULL,0,1),(11,'2015-06-15',NULL,NULL,0,1),(12,'2015-06-13','12:20:48','12:21:04',1,2),(13,'2015-06-13','12:21:26','12:22:12',1,3);
 /*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,8 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< HEAD
--- Dump completed on 2015-06-12 22:08:32
-=======
--- Dump completed on 2015-06-12 16:09:15
->>>>>>> refs/remotes/choose_remote_name/dev
+-- Dump completed on 2015-06-13 12:39:52
