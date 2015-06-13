@@ -37,10 +37,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        }
          out.println("	</select>");
 	--%>
-    <a href="WorkerAdd">注册页面</a><br>
-	<a href="Select">修改页面</a><br>
-	<a href="SelectManager">显示页面</a>
-	<a href="SelectAllWorkersManager">管理页面</a>
+    <a href="workerAdd.jsp">注册页面</a><br><!-- WorkerAdd -->
+	<a href="workerCheck.jsp">修改页面</a><br><!-- Select -->
+	<a href="workerShow.jsp">显示页面</a><!-- SelectManager -->
+	<a href="SelectAllWorkersManager">管理页面</a><!-- SelectAllWorkersManager -->
 	             
   </body>
 </html>

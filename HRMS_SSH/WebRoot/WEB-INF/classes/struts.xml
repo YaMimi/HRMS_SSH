@@ -47,7 +47,7 @@
 		        时间：2015-6-9
 		         功能：用户登录成功之后自动获取部门名称并且显示workerAdd.jsp页面 
 		 -->
-			<result name="success" type="redirect">/test.jsp</result>
+			<result name="success" type="redirect">/navbarSide.jsp</result>
 			<result name="error" type="redirect">/login.jsp</result>
 			<result name="none" type="redirect">/login.jsp</result>
 		</action>

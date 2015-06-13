@@ -32,7 +32,6 @@ public class LoginAction extends ActionSupport {
 		if (result != null && result.equals("CORRECT")) {
 			Worker worker1 = loginService.searchUser(worker);
 			session.put("activeWorker", worker1);
-			
 
 			/*功能：此处是在登录成功时获取数据库 部门名称
 			 * 

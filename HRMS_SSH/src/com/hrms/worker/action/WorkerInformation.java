@@ -30,11 +30,13 @@ public class WorkerInformation extends ActionSupport {
 	 * 功能：添加员工信息
 	 * 
 	 * */
+	//Worker worker = (Worker) ActionContext.getContext().getSession().get("activeWorker");
 	public String addInformation(){
 		int  departmenInteger = 0;
 	     Worker worker_1;
    String hqlDepart="FROM Department";
 ArrayList<Department> department1=workerAddInformationService.SelectAllDepartmen(hqlDepart);
+		
 
 for(int i=0;i<department1.size();i++){
 	if(department1.get(i).getDepartmentName().equals(department.getDepartmentName())){
@@ -185,7 +187,7 @@ department.setDepartmentOid(departmenInteger);
 		ActionContext.getContext().getSession().put("password",listworker.get(0).getPassword());
 		ActionContext.getContext().getSession().put("workeroid",listworker.get(0).getWorkerOid());
         ActionContext.getContext().getSession().put("workerDepartment",workerDepartment);
-		System.out.println(workerDepartment);
+		
 		return "success";
 		
 	}
