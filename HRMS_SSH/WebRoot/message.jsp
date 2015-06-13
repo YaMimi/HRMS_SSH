@@ -1,9 +1,11 @@
+<%@page import="com.hrms.page.bean.PageBean"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page import="com.hrms.pojo.*" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 Worker activeWorker = (Worker)session.getAttribute("activeWorker");
+
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -33,6 +35,7 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
     <s:action name="ShowMessage" executeResult="false" namespace="/"/>
     <%
 	List<Message> messageListFull = (List<Message>)session.getAttribute("messageListFull");
+	PageBean pagebean = (PageBean)session.getAttribute("pageBean");
 	activeWorker = (Worker)session.getAttribute("activeWorker");
 	%>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -82,6 +85,49 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
       		<%} %>
       		<tr><td></td></tr>
       	</table>
+      	<div class="container-fluid">
+			<nav>
+			  <ul class="pagination">
+			    <%if(pagebean.getCurrentPage()==1){ %>
+			    <li>
+			      <a href="#" aria-label="Previous">
+			      	上一页
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>
+			    <%}else{ %>
+			    <li>
+			      <a href="ShowMessage.action?page=<%=pagebean.getCurrentPage()-1 %>" aria-label="Previous">
+			      	上一页
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>
+		        <%} %>
+		        <%for(int j = 1; j <= pagebean.getTotalPage(); j++){ %>
+				    <%if(pagebean.getCurrentPage()==j){ %>
+				    	<li class="active"><a href="ShowMessage.action?page=<%=j %>"><%=j %></a></li>
+				    <%}else{ %>
+				    	<li><a href="ShowMessage.action?page=<%=j %>"><%=j %></a></li>
+				    <%} %>
+			    <%} %>
+			    <%if(pagebean.getCurrentPage()!=pagebean.getTotalPage()){ %>
+			    <li>
+			      <a href="ShowMessage.action?page=<%=pagebean.getCurrentPage()+1 %>" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			        	下一页
+			      </a>
+			    </li>
+			    <%}else{ %>
+			    <li>
+			      <a href="#" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			        	下一页
+			      </a>
+			    </li>
+			    <%} %>
+			  </ul>
+			</nav>
+		</div>
     </div>
   </body>
 </html>

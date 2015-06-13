@@ -59,7 +59,9 @@
 		<action name="CheckMessage" class="MessageAction" method="checkMessage"></action>
 		
 		<!-- ShowMessageAction -->
-		<action name="ShowMessage" class="MessageAction" method="showMessage"></action>
+		<action name="ShowMessage" class="MessageAction" method="showMessage">
+			<result name="success" type="redirect">/message.jsp</result>
+		</action>
 		
 		<!-- LoginAction -->
 		<action name="NewMessage" class="MessageAction" method="newMessage">

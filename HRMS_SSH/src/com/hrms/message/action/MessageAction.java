@@ -8,6 +8,8 @@ import javax.annotation.Resource;
 
 import com.hrms.login.service.LoginService;
 import com.hrms.message.service.MessageService;
+import com.hrms.page.bean.PageBean;
+import com.hrms.page.service.PageService;
 import com.hrms.pojo.Message;
 import com.hrms.pojo.Worker;
 import com.opensymphony.xwork2.ActionContext;
@@ -20,6 +22,10 @@ public class MessageAction extends ActionSupport {
 	MessageService messageService;
 	@Resource
 	LoginService loginService;
+	@Resource
+	private PageService pageserivce;
+	private int page;
+	
 	
 	public String checkMessage() {
 		Map<String, Object> session = ActionContext.getContext().getSession();
@@ -35,8 +41,10 @@ public class MessageAction extends ActionSupport {
 	
 	public String showMessage() {
 		Map<String, Object> session = ActionContext.getContext().getSession();
-		List<Message> messageList = messageService.checkMessage();
-		session.put("messageListFull", messageList);
+		String hql = "from Message order by messageOid desc";
+		PageBean pageBean = pageserivce.getPageBean(hql, 5, page);
+		session.put("messageListFull", pageBean.getList());
+		session.put("pageBean", pageBean);
 		Worker worker = (Worker) session.get("activeWorker");
 		if(worker!=null) {
 			worker = loginService.searchWorker(worker);
@@ -44,7 +52,7 @@ public class MessageAction extends ActionSupport {
 			worker = loginService.updateWorker(worker);
 			session.put("activeWorker", worker);
 		}
-		return null;
+		return SUCCESS;
 	}
 	
 	public String newMessage() {
@@ -97,6 +105,22 @@ public class MessageAction extends ActionSupport {
 
 	public void setLoginService(LoginService loginService) {
 		this.loginService = loginService;
+	}
+
+	public PageService getPageserivce() {
+		return pageserivce;
+	}
+
+	public void setPageserivce(PageService pageserivce) {
+		this.pageserivce = pageserivce;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
 	}
 	
 	
