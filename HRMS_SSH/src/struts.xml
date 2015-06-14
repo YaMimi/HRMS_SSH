@@ -27,6 +27,10 @@
 		<action name="VacationApprove" class="VacationAction" method="vacationApprove">
 			<result name="success" type="redirect">/attendanceVctCheck.jsp</result>
 		</action>
+		
+		<!-- 请假待审批条目数 -->
+		<action name="VacationNum" class="VacationAction" method="getVacationNum"></action>
+		
 		<!-- 签到系统 -->
 		<action name="workerAttendanceInsert" class="AttendanceAction" method="workerAttendanceInsert">
 			<result name="success" type="redirect">/attendanceSubmit.jsp</result>
