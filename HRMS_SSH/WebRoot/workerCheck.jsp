@@ -124,8 +124,10 @@ window.location.href="";
 	        %>
 	              </th>
 	              <th><select name="worker.workerPermission" class="form-control">
-	              <option value="0" <c:if test="${workerPermission ==\'0\'}">selected</c:if>>员工</option>
-	              <option value="1" <c:if test="${workerPermission ==\'1\'}">selected</c:if>>经理</option>
+	              <option value="1" <c:if test="${workerPermission ==\'1\'}">selected</c:if>>普通员工</option>
+	              <option value="2" <c:if test="${workerPermission ==\'2\'}">selected</c:if>>组长</option>
+	              <option value="3" <c:if test="${workerPermission ==\'3\'}">selected</c:if>>部门经理</option>
+	              <option value="4" <c:if test="${workerPermission ==\'4\'}">selected</c:if>>总经理</option>
 	              </select></th>
 	              <th><input type="text" class="form-control " name="worker.workerEntryDate" placeholder="入职时间 " value="${workerEntryDate }" required  style="width: 98%" class="form-control"     onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"></th>
 	            </tr>

@@ -71,7 +71,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            </tr>
 	            <tr>
 	              <th><input type="text" class="form-control " readonly="readonly" name="worker_department" placeholder="部门" value="<%=activeWorker.getDepartment().getDepartmentName() %>" required></th>
-	              <th><input type="text" class="form-control " readonly="readonly" name="worker_permission" placeholder="职称" value="" required></th>
+	              <th><input type="text" class="form-control " readonly="readonly" name="worker_permission" placeholder="职称" value="<%if(activeWorker.getWorkerPermission()==1) {%>普通员工<%}
+	              if(activeWorker.getWorkerPermission()==2) {%>组长<%}
+	               if(activeWorker.getWorkerPermission()==3){%>部门经理<%}
+	               if(activeWorker.getWorkerPermission()==4) {%>总经理<%} %> " required></th>
 	              <th><input type="text" class="form-control " readonly="readonly" name="worker_entrytime" placeholder="入职时间 " value="<%=sdf.format(activeWorker.getWorkerEntryDate()) %>" required></th>
 	            </tr>
 	            <tr>
