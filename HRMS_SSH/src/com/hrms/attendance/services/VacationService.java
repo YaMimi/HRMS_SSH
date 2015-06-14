@@ -9,4 +9,5 @@ public interface VacationService {
 	public Vacation insertVacation(Vacation vacation);
 	public Vacation updateVacation(Vacation vacation);
 	public void deleteVacation(Vacation vacation);
+	public int getVacationNum(String hql);
 }
