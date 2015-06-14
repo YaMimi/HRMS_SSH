@@ -1,12 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page import="com.hrms.pojo.*" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<s:action name="VacationNum" namespace="/"></s:action>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 %>
 <%
-
 SimpleDateFormat HH = new SimpleDateFormat("HH");
 Date date = new Date();
 int hour = Integer.parseInt(HH.format(date));
@@ -57,7 +58,7 @@ case 4 : post = "总经理"; break;
 			           <!-- /.row -->
 			           <div class="row">
 			               <div class="col-lg-4 col-md-4">
-			               <a href="#">
+			               <a href="./message.jsp">
 			                   <div class="panel panel-blue">
 			                       <div class="panel-heading">
 			                           <div class="row">
@@ -70,7 +71,7 @@ case 4 : post = "总经理"; break;
 			                               </div>
 			                           </div>
 			                       </div>
-			                       <a href="#">
+			                       <a href="./message.jsp">
 			                           <div class="panel-footer">
 			                               <span class="pull-left">查看详情</span>
 			                               <span class="pull-right"><i class="icon-circle-arrow-right"></i></span>
@@ -130,7 +131,7 @@ case 4 : post = "总经理"; break;
 			                   </div>
 			               </div>
 			               <%} else {%>
-			               <a href="#">
+			               <a href="./attendanceVctCheck.jsp">
 			               <div class="col-lg-4 col-md-4">
 			                   <div class="panel panel-red">
 			                       <div class="panel-heading">
@@ -139,12 +140,12 @@ case 4 : post = "总经理"; break;
 			                                   <i class="icon-check icon-5x"></i>
 			                               </div>
 			                               <div class="col-xs-9 text-right">
-			                                   <div class="huge">233</div>
+			                                   <div class="huge"><%=session.getAttribute("VacationNum") %></div>
 			                                   <div>待审批条目</div>
 			                               </div>
 			                           </div>
 			                       </div>
-			                       <a href="#">
+			                       <a href="./attendanceVctCheck.jsp">
 			                           <div class="panel-footer">
 			                               <span class="pull-left">查看详情</span>
 			                               <span class="pull-right"><i class="icon-circle-arrow-right"></i></span>

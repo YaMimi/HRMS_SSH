@@ -153,6 +153,19 @@ public class VacationAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	/**
+	 * 方法：获取待审批条目数
+	 * 作者：卢国燊
+	 * 更新时间：2015-6-14
+	 */
+	public String getVacationNum(){
+		Map session = ActionContext.getContext().getSession();
+		Worker worker = (Worker)session.get("activeWorker");
+		String query = "from Vacation where vacationResult='0' and worker.department.departmentOid = '" + worker.getDepartment().getDepartmentOid() +"'";
+		session.put("VacationNum", vacationservice.getVacationNum(query));
+		return null;
+	}
+	
 	public Vacation getVacation() {
 		return vacation;
 	}
