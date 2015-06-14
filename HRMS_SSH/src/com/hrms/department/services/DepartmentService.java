@@ -13,6 +13,8 @@ public interface DepartmentService {
 	public Department insertDepartment(Department department);
 	//修改部门信息
 	public Department updateDepartment(Department department);
+	//删除整个部门信息
+	public Department deleteDepartment(Department department);
 	//删除部门信息
 	public int deleteDepartment(int DepartmentOid);
 }

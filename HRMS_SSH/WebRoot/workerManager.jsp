@@ -1,10 +1,23 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page language="java" import="com.opensymphony.xwork2.ActionContext"%>
-<%@ page language="java" import="com.hrms.pojo.Worker"%>
-<%@ page language="java" import="com.hrms.pojo.Department"%>
+<%@ page language="java" import="com.hrms.pojo.*"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
+ %>
+ 
+  <%
+	            ArrayList<Worker> list=(ArrayList<Worker>)ActionContext.getContext().getSession().get("workers");
+	            ArrayList workerDerpart=(ArrayList)ActionContext.getContext().getSession().get("workerDerpart");
+	            if(list==null&&workerDerpart==null){
+	            	%><s:action name="SelectAllWorkersManager" executeResult="false" namespace="/" /><% 
+	            }
+	            list=(ArrayList<Worker>)ActionContext.getContext().getSession().get("workers");
+	            workerDerpart=(ArrayList)ActionContext.getContext().getSession().get("workerDerpart");
+	             %>
 <!DOCTYPE html>
 <html>
 <head lang="zh-CN">
@@ -62,11 +75,10 @@ window.location.href="";
     <title>主页</title>
 </head>
 <body>
- <%
-	            ArrayList<Worker> list=(ArrayList<Worker>)ActionContext.getContext().getSession().get("workers");
-	            ArrayList workerDerpart=(ArrayList)ActionContext.getContext().getSession().get("workerDerpart");
-	            
-	             %>
+  <%@ include file="navbarTop.jsp"%>
+    <%@ include file="navbarSide.jsp"%>
+  
+
     <div class="container-fluid">
         <div class="row">
             
@@ -108,15 +120,15 @@ window.location.href="";
       <%
 
 for(int i=0;i<list.size();i++)
-out.print("<tr>"+"<td><a href='ShowWorkerformation?workerNo="+list.get(i).getWorkerNo()+"' >"+
-list.get(i).getWorkerNo()+"</a></td>"+
+out.print("<tr>"+"<td>"+list.get(i).getWorkerNo()+"</td>"+
 "<td>"+list.get(i).getWorkerName()+"</td>"+"<td>"+
 list.get(i).getWorkerSex()+"</td>"+
 "<td>"+workerDerpart.get(i)+"</td>"
 +"<td>"+list.get(i).getWorkerEducation()+"</td>"+
-"<td><input type='Button' value='修&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;改' class='btn btn-primary' onclick='send("+list.get(i).getWorkerNo()+ "   )'/><input type='Button' value='删&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除' class='btn btn-primary'  onclick='send_delete("+list.get(i).getWorkerNo()+ ")'/></td>"+"</tr>");
-//<input type='Button' value='删&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除' class='btn btn-primary' onclick=' return send("+list.get(i).getAccount()+ ")'/>
+"<td><input type='Button' value='管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;理' class='btn btn-primary' onclick='send("+list.get(i).getWorkerNo()+ "   )'/></td>"+"</tr>");
+
  %>
+<!--  <input type='Button' value='删&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除' class='btn btn-primary'  onclick='send_delete("+list.get(i).getWorkerNo()+ ")'/> -->
 </tr>
 	             <!--  
 	          <s:iterator value="#request.workerList"  var="list">                

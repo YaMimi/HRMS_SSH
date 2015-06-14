@@ -1,8 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page language="java" import="com.opensymphony.xwork2.ActionContext"%>
-<%@ page language="java" import="com.hrms.pojo.Department"%>
+<%@ page language="java" import="com.hrms.pojo.*"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
+ %>
+<s:action name="WorkerAdd" executeResult="false" namespace="/"/>
 <!DOCTYPE html>
 <html>
 <head lang="zh-CN">
@@ -32,10 +37,10 @@
     <title>主页</title>
 </head>
 <body>
-
-    
-    <div class="container-fluid">
-        <div class="row">
+   
+  
+     <%@ include file="navbarTop.jsp"%>
+    <%@ include file="navbarSide.jsp"%>
             
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <h1 class="page-header">添加员工</h1>
@@ -76,7 +81,12 @@
          out.println("	</select>");
 	        %>
 	              </th>
-	              <th><select name="worker.workerPermission" class="form-control"><option value="0">员工</option><option value="1">经理</option></select></th>
+	              <th><select name="worker.workerPermission" class="form-control">
+	              <option value="1">普通员工</option>
+	              <option value="2">组长</option>
+	              <option value="3">部门经理</option>
+	              <option value="4">总经理</option>
+	              </select></th>
 	              <th><input type="text" class="form-control " name="worker.workerEntryDate" placeholder="入职时间 " value="" required  style="width: 98%" class="form-control"     onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"></th>
 	            </tr>
 	            <tr>
@@ -124,7 +134,6 @@
                 </table>
                 </form>
             </div>
-        </div>
     </div>
 </body>
 </html>

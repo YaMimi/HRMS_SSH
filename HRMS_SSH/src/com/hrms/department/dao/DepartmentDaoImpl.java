@@ -55,4 +55,10 @@ public class DepartmentDaoImpl implements DepartmentDao{
 		return departmentlist;
 	}
 
+	@Override
+	public Department deleteDepartment(Department department) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -1,5 +1,7 @@
 package com.hrms.login.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -12,13 +14,23 @@ public class LoginServiceImpl implements LoginService {
 	LoginDao loginDao;
 	
 	@Override
-	public Worker searchUser(Worker worker) {
-		return loginDao.searchUser(worker);
+	public List<Worker> showWorker() {
+		return loginDao.showWorker();
+	}
+	
+	@Override
+	public Worker searchWorker(Worker worker) {
+		return loginDao.searchWorker(worker);
+	}
+	
+	@Override
+	public Worker updateWorker(Worker worker) {
+		return loginDao.updateWorker(worker);
 	}
 
 	@Override
-	public String checkUser(Worker worker) {
-		return loginDao.checkUser(worker);
+	public String checkWorker(Worker worker) {
+		return loginDao.checkWorker(worker);
 	}
 
 }

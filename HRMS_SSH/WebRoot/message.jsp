@@ -1,0 +1,87 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import="com.hrms.pojo.*" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+Worker activeWorker = (Worker)session.getAttribute("activeWorker");
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <link  href="./css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="./css/font-awesome.min.css" rel="stylesheet"/>
+    <link  href="./css/dashboard.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="./css/jquery-ui.css">
+    <script src="./js/jquery-2.1.3.min.js"></script>
+    <script src="./js/jquery-ui.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+	<style>
+        * {
+            font-family: 'FontAwesome',"Microsoft YaHei" ! important;
+        }
+    </style>
+    <title>公告系统</title>
+  </head>
+  
+  <body>
+  
+  	<%@ include file="navbarTop.jsp"%>
+    <%@ include file="navbarSide.jsp"%>
+    <s:action name="ShowMessage" executeResult="false" namespace="/"/>
+    <%
+	List<Message> messageListFull = (List<Message>)session.getAttribute("messageListFull");
+	activeWorker = (Worker)session.getAttribute("activeWorker");
+	%>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+         <h1 class="page-header">公告系统</h1>
+         <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+         		  发布新公告
+	     </button>
+	     <%if(activeWorker.getWorkerPermission()>2) {%>
+	     <div class="collapse" id="collapseExample">
+		  <div class="well" style="margin-bottom: 0px;">
+		    <form action="NewMessage" method="post">
+		    <input type="text" class="form-control" name="message.messageTitle" maxlength="10" placeholder="公告标题，最大长度10字。" required="required" autofocus="autofocus">
+		    <br>
+		    <textarea class="form-control"  name="message.messageContent" maxlength="50" rows="2" placeholder="公告内容，最大长度50字。" required="required" style="resize: none;"></textarea>
+		    <br>
+		    <div class="col-sm-6" style="padding-left: 0px;">
+		      	<button type="submit" class="btn btn-primary btn-block">确认发布</button>
+		    </div>
+		    <div class="col-sm-6" style="padding-right: 0px;">
+		    	<button type="reset" class="btn btn-default btn-block">重置内容</a>
+		    </div>
+		    <br>
+		    </form>
+		  </div>
+		 </div>
+         <br>
+         <%} %>
+         <table class="table table-hover">
+         <%if(messageListFull!=null) 
+         	for(Message message : messageListFull){ %>
+      		<tr>
+      			<td style="padding-top: 0px;padding-bottom: 15px;">
+					<div class="col-sm-12" style="text-align: left;">
+							<h3><strong><%=message.getMessageTitle() %></strong></h3>
+					</div>
+					<div class="col-sm-12" style="text-align: left; margin-bottom: 5px;">
+							<h4><%=message.getMessageContent() %></h4>
+					</div>
+					<div class="col-sm-9" style="text-align: left;">
+							<i class="icon-user"> <%=message.getWorker().getWorkerName() %></i>
+					</div>
+					<div class="col-sm-3" style="text-align: right;">
+							<i class="icon-time"> <%=simpledateformat.format(message.getMessageDate()) %></i>
+					</div>
+      			</td>
+      		</tr>
+      		<%} %>
+      		<tr><td></td></tr>
+      	</table>
+    </div>
+  </body>
+</html>

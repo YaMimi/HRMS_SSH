@@ -14,6 +14,8 @@ import javax.annotation.Resource;
 
 import com.hrms.attendance.services.AttendanceService;
 import com.hrms.attendance.services.VacationService;
+import com.hrms.page.bean.PageBean;
+import com.hrms.page.service.PageService;
 import com.hrms.pojo.Attendance;
 import com.hrms.pojo.Vacation;
 import com.hrms.pojo.Worker;
@@ -28,6 +30,9 @@ public class VacationAction extends ActionSupport {
 	private VacationService vacationservice;
 	@Resource
 	private AttendanceService attendanceservice;
+	@Resource
+	private PageService pageserivce;
+	private int page;
 	
 	/**
 	 * 方法：请假申请功能
@@ -70,10 +75,12 @@ public class VacationAction extends ActionSupport {
 		Worker worker = (Worker)session.get("activeWorker");
 		//查询请假表并且将数据保存到List
 		String hql = "from Vacation v where v.worker.workerOid = " + worker.getWorkerOid();
-		List<Vacation> vacationlist = vacationservice.searchVacation(hql);
+		
+		PageBean pageBean = pageserivce.getPageBean(hql, 4, page);
 		
 		//设置session
-		session.put("vacationlist", vacationlist);
+		session.put("vacationlist", pageBean.getList());
+		session.put("pageBean", pageBean);
 		ActionContext.getContext().setSession(session);
 		return SUCCESS;
 	}
@@ -90,10 +97,10 @@ public class VacationAction extends ActionSupport {
 		//查询请假表并且将数据保存到List
 		String hql = "from Vacation v where v.worker.department.departmentOid = " + worker.getDepartment().getDepartmentOid() +" and v.worker.workerPermission < "+ worker.getWorkerPermission() +
 				" order by vacationOid desc";
-		List<Vacation> approvevacationlist = vacationservice.searchVacation(hql);
-		
+		PageBean pageBean = pageserivce.getPageBean(hql, 5, page);
 		//设置session
-		session.put("approvevacationlist", approvevacationlist);
+		session.put("approvevacationlist", pageBean.getList());
+		session.put("pageBean", pageBean);
 		ActionContext.getContext().setSession(session);
 		return SUCCESS;
 	}
@@ -182,5 +189,21 @@ public class VacationAction extends ActionSupport {
 
 	public void setAttendanceservice(AttendanceService attendanceservice) {
 		this.attendanceservice = attendanceservice;
+	}
+
+	public PageService getPageserivce() {
+		return pageserivce;
+	}
+
+	public void setPageserivce(PageService pageserivce) {
+		this.pageserivce = pageserivce;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
 	}
 }

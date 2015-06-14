@@ -66,16 +66,16 @@ session.setAttribute("departmentlist", departmentlist);
 		              <th><input type="text" class="form-control" name="department.DepartmentNo " placeholder="新增部门编号 " required></th>
 		              <th><input type="text" class="form-control" name="department.DepartmentName" placeholder="新增部门名称" required></th>
                       <th>
-		              <select name="FatherDepartmentName" class="form-control">
-							  					<option selected='selected'>无</option>
+		              <select name="FatherDepartmentOid" class="form-control">
+							 <option value="0" selected='selected'>无</option>
 			         <%int i = 1; %>
                      <%for(Department department : DepartmentList){ %>
-							  					<option value="<%=department.getDepartmentOid()%>"><%=department.getDepartmentName()%></option>
-							  										  <%i++; %>
+							 <option value="<%=department.getDepartmentOid()%>"><%=department.getDepartmentName()%></option>
+					  <%i++; %>
 	                  <%
 	            	      }
 	                  %> 
-							  				</select></th>
+					 </select></th>
 
 		              <th style="width:10px;"><button class="crlbut editbut" type="submit"><i class="icon-large icon-ok"></i></button></th>	        
 		              

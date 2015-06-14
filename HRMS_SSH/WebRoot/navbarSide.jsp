@@ -4,18 +4,18 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar"> 
-                <li<%if(path.equals("/index.jsp")) {%> class="active"<%} %>><a href="#">　个人首页 </a></li>
+                <li<%if(path.equals("/index.jsp")) {%> class="active"<%} %>><a href="./index.jsp">　个人首页 </a></li>
                 
                 <li><%if(path.equals("/workerCheck.jsp")||path.equals("/workerManager.jsp")||path.equals("/workerAdd.jsp")) {%><a href="#workerSystem" class="nav-header"  data-toggle="collapse" aria-expanded="true"><%} else {%><a href="#workerSystem" class="nav-header collapsed" data-toggle="collapse"><%} %>　信息系统<i class="pull-right icon-sidebar-collapse"></i></a>
                     <%if(path.equals("/workerCheck.jsp")||path.equals("/workerManager.jsp")||path.equals("/workerAdd.jsp")) {%><ul id="workerSystem" class="nav nav-sidebar nav-sec collapse in" aria-expanded="true"><%} else {%><ul id="workerSystem" class="nav nav-sidebar nav-sec collapse"><%} %>
                         <li<%if(path.equals("/workerCheck.jsp")) {%> class="active"<%} %>>
-                            <a href="#">个人信息</a>
+                            <a href="workerShow.jsp">个人信息</a>
                         </li>
                         <li<%if(path.equals("/workerManager.jsp")) {%> class="active"<%} %>>
-                            <a href="#">信息管理</a>
+                            <a href="workerManager.jsp">信息管理</a>
                         </li>
                         <li<%if(path.equals("/workerAdd.jsp")) {%> class="active"<%} %>>
-                            <a href="#">新增员工</a>
+                            <a href="workerAdd.jsp">新增员工</a>
                         </li>
                     </ul>
                 </li>
@@ -85,7 +85,7 @@
                     </ul>
                  </li>
                  
-                 <li<%if(path.equals("/message.jsp")) {%> class="active"<%} %>><a href="#">　公告系统 </a></li>
+                 <li<%if(path.equals("/message.jsp")) {%> class="active"<%} %>><a href="./message.jsp">　公告系统 </a></li>
             </ul>
         </div>
     </div>

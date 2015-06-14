@@ -1,10 +1,15 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page language="java" import="com.opensymphony.xwork2.ActionContext"%>
-<%@ page language="java" import="com.hrms.pojo.Worker"%>
+<%@ page language="java" import="com.hrms.pojo.*"%>
 <%@ page language="java" import="com.hrms.pojo.Department"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
+ %>
+<s:action name="Select" executeResult="false" namespace="/"/>
 <!DOCTYPE html>
 <html>
 <head lang="zh-CN">
@@ -27,13 +32,43 @@
   			$( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd"});
   		});
   	</script>
+	<script type="text/javascript">
 
+ function send(workerNo) {//修改
+window.location.href="ShowUpdateWorkerformation?workerNo="+workerNo; 
+      
+    }
+    
+     function send_delete(workerNo) {//删除
+
+       // window.open(encodeURI(url + "?userName=" + userName));
+        var r=confirm("确定删除吗？");
+           if(r==false){
+       return false;
+         }else{
+
+          window.location.href="DeleteWorker?workerNo="+workerNo; 
+
+alert("删除成功！");
+return true;
+}
+
+    }
+
+function updateManager(workerNo){
+
+window.location.href=""; 
+}
+
+</script>
   	
   	
   	<script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
     <title>主页</title>
 </head>
 <body>
+<%@ include file="navbarTop.jsp"%>
+    <%@ include file="navbarSide.jsp"%>
     <div class="container-fluid">
         <div class="row">
             
@@ -43,9 +78,14 @@
                 <div class="col-sm-8">
                 <label>请填写员工信息然后点击添加员工按钮进行添加操作：</label>
 				</div>
+		
+				
+				<!-- 修改 -->
 				<form action="UpdateWorkerformation" method="post">
 				<div class="col-sm-4">
 				<button class="btn btn-default" type="submit" style="width: 40%; float: right;" ><i class="icon-ok-sign"></i> 确认修改</button>
+				<button class="btn btn-default" type="button" style="width: 40%; float: right;" onclick="send_delete(${workerNo})"><i class="icon-ok-sign"></i> 确认删除</button>
+		
 				</div>
                 </div>
                 <input type="hidden" name="workerOid" value="${workeroid}">
@@ -57,7 +97,7 @@
 	              <th style="padding-left: 21px;"><strong>性别</strong></th>
 	            </tr>
 	            <tr>
-	              <th><input type="text" class="form-control " name="worker.workerName" placeholder="姓名" value="${workername }" required></th>
+	              <th><input type="text" class="form-control " name="worker.workerName" placeholder="姓名" value="${workerName }" required></th>
 	              <th><input type="text" class="form-control " name="worker.workerNo" placeholder="员工号" value="${workerNo }" required readonly="readonly"></th>
 	              <th><select name="worker.workerSex" class="form-control">
 	              <option value="男" <c:if test="${workerSex ==\'男\'}">selected</c:if>>男</option>
@@ -105,7 +145,7 @@
 	              <th style="padding-left: 21px;"><strong>血型</strong></th>
 	            </tr>
 	            <tr>
-	              <th><input type="text" class="form-control " name="worker.workerBirthPlace" placeholder="籍贯 " value="${workerBirthPlace }" required></th>
+	              <th><input type="text" class="form-control " name="worker.workerBirthPlace" placeholder="籍贯 " value="<%=activeWorker.getWorkerBirthPlace() %>" required></th>
 	              <th><input type="text" class="form-control " name="worker.workerAddress" placeholder="地址" value="${workerAddress }" required></th>
 	              <th><input type="text" class="form-control " name="worker.workerBloodType" placeholder="血型" value="${workerBloodType }" required></th>
 	            </tr>

@@ -27,10 +27,10 @@ public class LoginAction extends ActionSupport {
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		String result;
 		
-		result = loginService.checkUser(worker);
+		result = loginService.checkWorker(worker);
 		
 		if (result != null && result.equals("CORRECT")) {
-			Worker worker1 = loginService.searchUser(worker);
+			Worker worker1 = loginService.searchWorker(worker);
 			session.put("activeWorker", worker1);
 
 			/*功能：此处是在登录成功时获取数据库 部门名称

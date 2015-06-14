@@ -13,7 +13,7 @@ import com.hrms.worker.services.WorkerAddInformationService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class WorkerInformation extends ActionSupport {
+public class WorkerInforAction extends ActionSupport {
 
 	private Worker worker;
 	private Department department;
@@ -37,14 +37,13 @@ public class WorkerInformation extends ActionSupport {
    String hqlDepart="FROM Department";
 ArrayList<Department> department1=workerAddInformationService.SelectAllDepartmen(hqlDepart);
 		
-
+Department department2 = null;
 for(int i=0;i<department1.size();i++){
 	if(department1.get(i).getDepartmentName().equals(department.getDepartmentName())){
-		departmenInteger=department1.get(i).getDepartmentOid();
+		department2 = department1.get(i);	
 	}
 }
-department.setDepartmentOid(departmenInteger);
-		worker.setDepartment(department);
+		worker.setDepartment(department2);
 		worker_1=workerAddInformationService.SaveWorkers(worker);
 		if(worker_1==null){
 			return "error";
@@ -94,12 +93,16 @@ department.setDepartmentOid(departmenInteger);
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(listworker.get(0).getWorkerPermission()==0){
-			workerPermission="员工";
+		if(listworker.get(0).getWorkerPermission()==1){
+			workerPermission="普通员工";
+		}else if(listworker.get(0).getWorkerPermission()==2){
+			workerPermission="组长";
+		}else if(listworker.get(0).getWorkerPermission()==3){
+			workerPermission="部门经理";
 		}else{
-			workerPermission="经理";
+			workerPermission="总经理";
 		}
-		ActionContext.getContext().getSession().put("workername", listworker.get(0).getWorkerName());
+		ActionContext.getContext().getSession().put("workerName", listworker.get(0).getWorkerName());
 		ActionContext.getContext().getSession().put("workerNo", listworker.get(0).getWorkerNo());
 		ActionContext.getContext().getSession().put("workerSex",listworker.get(0).getWorkerSex());
 		ActionContext.getContext().getSession().put("workerAge",workerAge);
@@ -151,10 +154,14 @@ department.setDepartmentOid(departmenInteger);
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(listworker.get(0).getWorkerPermission()==0){
-			workerPermission="员工";
+		if(listworker.get(0).getWorkerPermission()==1){
+			workerPermission="普通员工";
+		}else if(listworker.get(0).getWorkerPermission()==2){
+			workerPermission="组长";
+		}else if(listworker.get(0).getWorkerPermission()==3){
+			workerPermission="部门经理";
 		}else{
-			workerPermission="经理";
+			workerPermission="总经理";
 		}
 		int deNo0=Integer.parseInt(listworker.get(0).getDepartment().getDepartmentOid().toString());
 		
@@ -164,11 +171,8 @@ department.setDepartmentOid(departmenInteger);
 				workerDepartment=department1.get(i).getDepartmentName();
 			}
 		}
-			
-	
 		
-		
-		ActionContext.getContext().getSession().put("workername", listworker.get(0).getWorkerName());
+		ActionContext.getContext().getSession().put("workerName", listworker.get(0).getWorkerName());
 		ActionContext.getContext().getSession().put("workerNo", listworker.get(0).getWorkerNo());
 		ActionContext.getContext().getSession().put("workerSex",listworker.get(0).getWorkerSex());
 		ActionContext.getContext().getSession().put("workerAge",workerAge);
