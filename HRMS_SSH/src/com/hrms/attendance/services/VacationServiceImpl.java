@@ -40,5 +40,17 @@ public class VacationServiceImpl implements VacationService {
 		// TODO Auto-generated method stub
 
 	}
+	/* 功能：获取未审批的条目数
+	 * 作者：杨明杰
+	 * 时间：2015-06-14
+	 */
+	@Override
+	public int getVacationNum(String hql) {
+		// TODO Auto-generated method stub
+		int vacationnum = 0;
+		List<Vacation> vacationlist = vacationdao.searchVacation(hql);
+		vacationnum = vacationlist.size();
+		return vacationnum;
+	}
 
 }
