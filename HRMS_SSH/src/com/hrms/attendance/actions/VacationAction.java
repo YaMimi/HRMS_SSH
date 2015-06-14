@@ -77,7 +77,8 @@ public class VacationAction extends ActionSupport {
 		String hql = "from Vacation v where v.worker.workerOid = " + worker.getWorkerOid();
 		
 		PageBean pageBean = pageserivce.getPageBean(hql, 4, page);
-		
+		//hql = "from Vacation where vacationResult = 0";
+		//System.out.println(vacationservice.getVacationNum(hql));
 		//…Ë÷√session
 		session.put("vacationlist", pageBean.getList());
 		session.put("pageBean", pageBean);
