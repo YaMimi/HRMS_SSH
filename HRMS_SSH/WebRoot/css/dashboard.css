@@ -222,6 +222,24 @@ body {
     color: #b52b27;
 }
 
+.panel-blue {
+    border-color: #337ab7;
+}
+
+.panel-blue .panel-heading {
+    border-color: #337ab7;
+    color: #fff;
+    background-color: #337ab7;
+}
+
+.panel-blue a {
+    color: #337ab7;
+}
+
+.panel-blue a:hover {
+    color: #337ab7;
+}
+
 .panel-yellow {
     border-color: #f0ad4e;
 }
@@ -238,4 +256,22 @@ body {
 
 .panel-yellow a:hover {
     color: #df8a13;
+}
+
+.panel-disabled {
+    border-color: #8d8d8d;
+}
+
+.panel-disabled .panel-heading {
+    border-color: #8d8d8d;
+    color: #fff;
+    background-color: #8d8d8d;
+}
+
+.panel-disabled a {
+    color: #8d8d8d;
+}
+
+.panel-disabled a:hover {
+    color: #8d8d8d;
 }
