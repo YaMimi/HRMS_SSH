@@ -36,7 +36,7 @@ CREATE TABLE `vacation` (
   UNIQUE KEY `VacationOid_UNIQUE` (`VacationOid`),
   KEY `fk_Vacation_Worker1_idx` (`VacationWorkerOid`),
   CONSTRAINT `fk_Vacation_Worker1` FOREIGN KEY (`VacationWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `vacation` (
 
 LOCK TABLES `vacation` WRITE;
 /*!40000 ALTER TABLE `vacation` DISABLE KEYS */;
-INSERT INTO `vacation` VALUES (1,'2015-06-15','2015-06-15','病假','被锤子手机锤到手',0,2),(2,'2015-06-19','2015-06-19','事假','和李小花约会',0,2),(3,'2015-06-22','2015-06-26','丧假','我舅舅过世了',0,2);
+INSERT INTO `vacation` VALUES (1,'2015-06-15','2015-06-15','病假','被锤子手机锤到手',0,2),(2,'2015-06-19','2015-06-19','事假','和李小花约会',0,2),(3,'2015-06-22','2015-06-26','丧假','我舅舅过世了',0,2),(4,'2015-06-25','2015-06-25','病假','asdfasdf',0,2),(5,'2015-06-30','2015-06-30','工伤假','sdfasdfasfasdf',0,2);
 /*!40000 ALTER TABLE `vacation` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-13 12:39:53
+-- Dump completed on 2015-06-15 13:11:35

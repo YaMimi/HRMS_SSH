@@ -25,5 +25,8 @@
   <property generated="never" lazy="false" name="ropamount" type="java.lang.Float">
    <column name="ROPAmount" not-null="true" precision="12" scale="0"/>
   </property>
+  <property generated="never" lazy="false" name="rop" type="java.lang.Integer">
+   <column name="ROP" not-null="true"/>
+  </property>
  </class>
 </hibernate-mapping>

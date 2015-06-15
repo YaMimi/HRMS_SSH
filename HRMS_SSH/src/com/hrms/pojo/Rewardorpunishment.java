@@ -16,6 +16,7 @@ public class Rewardorpunishment implements java.io.Serializable {
 	private String roptype;
 	private String ropreason;
 	private Float ropamount;
+	private Integer rop;
 
 	// Constructors
 
@@ -25,12 +26,13 @@ public class Rewardorpunishment implements java.io.Serializable {
 
 	/** full constructor */
 	public Rewardorpunishment(Worker worker, Date ropdate, String roptype,
-			String ropreason, Float ropamount) {
+			String ropreason, Float ropamount, Integer rop) {
 		this.worker = worker;
 		this.ropdate = ropdate;
 		this.roptype = roptype;
 		this.ropreason = ropreason;
 		this.ropamount = ropamount;
+		this.rop = rop;
 	}
 
 	// Property accessors
@@ -81,6 +83,14 @@ public class Rewardorpunishment implements java.io.Serializable {
 
 	public void setRopamount(Float ropamount) {
 		this.ropamount = ropamount;
+	}
+
+	public Integer getRop() {
+		return this.rop;
+	}
+
+	public void setRop(Integer rop) {
+		this.rop = rop;
 	}
 
 }
