@@ -25,11 +25,12 @@ DROP TABLE IF EXISTS `rewardorpunishment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rewardorpunishment` (
-  `ROPOid` int(11) NOT NULL AUTO_INCREMENT,
+  `ROPOid` int(11) NOT NULL,
   `ROPDate` date NOT NULL,
   `ROPType` varchar(45) NOT NULL,
   `ROPReason` varchar(45) NOT NULL,
   `ROPAmount` float NOT NULL DEFAULT '0',
+  `ROP` int(11) NOT NULL,
   `ROPWorkerOid` int(11) NOT NULL,
   PRIMARY KEY (`ROPOid`),
   UNIQUE KEY `ROPOid_UNIQUE` (`ROPOid`),
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-13 12:39:54
+-- Dump completed on 2015-06-15 13:11:36
