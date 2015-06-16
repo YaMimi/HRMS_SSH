@@ -36,7 +36,16 @@ SimpleDateFormat simpledateformat = new SimpleDateFormat("yyyy-MM-dd");
                             </a>
                         </li>
                         <li class="divider"></li>
-                        <%} %>
+                         <%} else { %>
+	                     <li>
+	                            <a href="./message.jsp">
+	                                <div style="text-align: center;">
+	                                    <em>无信息。</em>
+	                                </div>
+	                            </a>
+	                        </li>
+	                     <li class="divider"></li>
+	                     <%} %>
                         <li>
                             <a class="text-center" href="./message.jsp">
                                 <strong>阅读所有信息</strong>
@@ -74,7 +83,16 @@ SimpleDateFormat simpledateformat = new SimpleDateFormat("yyyy-MM-dd");
                             </a>
                         </li>
                         <li class="divider"></li>
-                    <%} %>
+                     <%} else { %>
+                     <li>
+                            <a href="./cultivationCheck.jsp">
+                                <div style="text-align: center;">
+                                    <em>无进行中培训。</em>
+                                </div>
+                            </a>
+                        </li>
+                     <li class="divider"></li>
+                     <%} %>
                         <li>
                             <a class="text-center" href="./cultivationCheck.jsp">
                                 <strong>阅读所有任务</strong>

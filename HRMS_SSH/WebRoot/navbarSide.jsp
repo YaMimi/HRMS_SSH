@@ -25,9 +25,11 @@
                         <li<%if(path.equals("/attendanceCheck.jsp")) {%> class="active"<%} %>>
                             <a href="attendanceCheck.jsp">签到查询</a>
                         </li>
+                        <%if(activeWorker.getWorkerPermission()<4) {%>
                         <li<%if(path.equals("/attendanceVct.jsp")) {%> class="active"<%} %>>
                             <a href="attendanceVct.jsp">请假系统</a>
                         </li>
+                        <%} %>
                         <li<%if(path.equals("/attendanceVctCheck.jsp")) {%> class="active"<%} %>>
                             <a href="attendanceVctCheck.jsp">请假审批</a>
                         </li>

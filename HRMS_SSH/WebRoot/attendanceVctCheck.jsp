@@ -19,7 +19,7 @@ session.setAttribute("approvevacationlist", approvevacationlist);
 PageBean pagebean = (PageBean)session.getAttribute("pageBean");
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
   <head lang="zh-CN">
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -67,18 +67,16 @@ PageBean pagebean = (PageBean)session.getAttribute("pageBean");
 			              <%if(vacation.getVacationResult().toString().equals("0")) {%>
 			              <th><strong>待审核</strong></th>
 			              <th style="width:130px;">
-			              <div class="form-inline"> 
 				              <form action="VacationApprove">
 				              		<input type='hidden' name="vacationOid" value="<%=vacation.getVacationOid() %>"/>
 			            			<input type='hidden' name='vacationresult' value='1'/>
-			            			<button class='btn btn-success' type='submit' style='float:left;width:50%;'>批准</button>
+			            			<button class='btn btn-success' type='submit' style="float:left;width:50%;">批准</button>
 			            	  </form>
 			            	  <form action="VacationApprove">
 			            	  		<input type='hidden' name="vacationOid" value="<%=vacation.getVacationOid() %>"/>
 			            			<input type='hidden' name='vacationresult' value='2'/>
-			            			<button class='btn btn-danger' type='submit' style='float:left;width:50%;'>驳回</button>
+			            			<button class='btn btn-danger' type='submit' style="float:left;width:50%;">驳回</button>
 			            	  </form>
-		            	  </div> 
 		            	  </th>
 			              <%} %>
 						  <%if(vacation.getVacationResult().toString().equals("1")) {%>
