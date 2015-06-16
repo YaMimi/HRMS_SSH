@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -148,6 +148,6 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
             </div>
         </div>
         <%i++; %>
-        <%} %>
+         <%} else { out.print("　无已完成培训。");}%>
   </body>
 </html>
