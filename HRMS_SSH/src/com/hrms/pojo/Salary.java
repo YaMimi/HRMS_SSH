@@ -1,147 +1,137 @@
 package com.hrms.pojo;
 
-
-
 /**
  * Salary entity. @author MyEclipse Persistence Tools
  */
 
-public class Salary  implements java.io.Serializable {
+public class Salary implements java.io.Serializable {
 
+	// Fields
 
-    // Fields    
+	private Integer salaryOid;
+	private Worker worker;
+	private String salaryDate;
+	private Float salaryHourly;
+	private Float salaryStandardTime;
+	private Float salaryActualTime;
+	private Float salaryWeekTime;
+	private Float salaryWeekendTime;
+	private Float salaryHolidayTime;
+	private Float salaryAttendanceReward;
+	private Float salaryTotal;
 
-     private Integer salaryOid;
-     private Worker worker;
-     private String salaryDate;
-     private Integer salaryHourlySalaryOid;
-     private Float salaryStandardTime;
-     private Float salaryActualTime;
-     private Float salaryWeekTime;
-     private Float salaryWeekendTime;
-     private Float salaryHolidayTime;
-     private Float salaryAttendanceReward;
-     private Float salaryTotal;
+	// Constructors
 
+	/** default constructor */
+	public Salary() {
+	}
 
-    // Constructors
+	/** full constructor */
+	public Salary(Worker worker, String salaryDate, Float salaryHourly,
+			Float salaryStandardTime, Float salaryActualTime,
+			Float salaryWeekTime, Float salaryWeekendTime,
+			Float salaryHolidayTime, Float salaryAttendanceReward,
+			Float salaryTotal) {
+		this.worker = worker;
+		this.salaryDate = salaryDate;
+		this.salaryHourly = salaryHourly;
+		this.salaryStandardTime = salaryStandardTime;
+		this.salaryActualTime = salaryActualTime;
+		this.salaryWeekTime = salaryWeekTime;
+		this.salaryWeekendTime = salaryWeekendTime;
+		this.salaryHolidayTime = salaryHolidayTime;
+		this.salaryAttendanceReward = salaryAttendanceReward;
+		this.salaryTotal = salaryTotal;
+	}
 
-    /** default constructor */
-    public Salary() {
-    }
+	// Property accessors
 
-    
-    /** full constructor */
-    public Salary(Worker worker, String salaryDate, Integer salaryHourlySalaryOid, Float salaryStandardTime, Float salaryActualTime, Float salaryWeekTime, Float salaryWeekendTime, Float salaryHolidayTime, Float salaryAttendanceReward, Float salaryTotal) {
-        this.worker = worker;
-        this.salaryDate = salaryDate;
-        this.salaryHourlySalaryOid = salaryHourlySalaryOid;
-        this.salaryStandardTime = salaryStandardTime;
-        this.salaryActualTime = salaryActualTime;
-        this.salaryWeekTime = salaryWeekTime;
-        this.salaryWeekendTime = salaryWeekendTime;
-        this.salaryHolidayTime = salaryHolidayTime;
-        this.salaryAttendanceReward = salaryAttendanceReward;
-        this.salaryTotal = salaryTotal;
-    }
+	public Integer getSalaryOid() {
+		return this.salaryOid;
+	}
 
-   
-    // Property accessors
+	public void setSalaryOid(Integer salaryOid) {
+		this.salaryOid = salaryOid;
+	}
 
-    public Integer getSalaryOid() {
-        return this.salaryOid;
-    }
-    
-    public void setSalaryOid(Integer salaryOid) {
-        this.salaryOid = salaryOid;
-    }
+	public Worker getWorker() {
+		return this.worker;
+	}
 
-    public Worker getWorker() {
-        return this.worker;
-    }
-    
-    public void setWorker(Worker worker) {
-        this.worker = worker;
-    }
+	public void setWorker(Worker worker) {
+		this.worker = worker;
+	}
 
-    public String getSalaryDate() {
-        return this.salaryDate;
-    }
-    
-    public void setSalaryDate(String salaryDate) {
-        this.salaryDate = salaryDate;
-    }
+	public String getSalaryDate() {
+		return this.salaryDate;
+	}
 
-    public Integer getSalaryHourlySalaryOid() {
-        return this.salaryHourlySalaryOid;
-    }
-    
-    public void setSalaryHourlySalaryOid(Integer salaryHourlySalaryOid) {
-        this.salaryHourlySalaryOid = salaryHourlySalaryOid;
-    }
+	public void setSalaryDate(String salaryDate) {
+		this.salaryDate = salaryDate;
+	}
 
-    public Float getSalaryStandardTime() {
-        return this.salaryStandardTime;
-    }
-    
-    public void setSalaryStandardTime(Float salaryStandardTime) {
-        this.salaryStandardTime = salaryStandardTime;
-    }
+	public Float getSalaryHourly() {
+		return this.salaryHourly;
+	}
 
-    public Float getSalaryActualTime() {
-        return this.salaryActualTime;
-    }
-    
-    public void setSalaryActualTime(Float salaryActualTime) {
-        this.salaryActualTime = salaryActualTime;
-    }
+	public void setSalaryHourly(Float salaryHourly) {
+		this.salaryHourly = salaryHourly;
+	}
 
-    public Float getSalaryWeekTime() {
-        return this.salaryWeekTime;
-    }
-    
-    public void setSalaryWeekTime(Float salaryWeekTime) {
-        this.salaryWeekTime = salaryWeekTime;
-    }
+	public Float getSalaryStandardTime() {
+		return this.salaryStandardTime;
+	}
 
-    public Float getSalaryWeekendTime() {
-        return this.salaryWeekendTime;
-    }
-    
-    public void setSalaryWeekendTime(Float salaryWeekendTime) {
-        this.salaryWeekendTime = salaryWeekendTime;
-    }
+	public void setSalaryStandardTime(Float salaryStandardTime) {
+		this.salaryStandardTime = salaryStandardTime;
+	}
 
-    public Float getSalaryHolidayTime() {
-        return this.salaryHolidayTime;
-    }
-    
-    public void setSalaryHolidayTime(Float salaryHolidayTime) {
-        this.salaryHolidayTime = salaryHolidayTime;
-    }
+	public Float getSalaryActualTime() {
+		return this.salaryActualTime;
+	}
 
-    public Float getSalaryAttendanceReward() {
-        return this.salaryAttendanceReward;
-    }
-    
-    public void setSalaryAttendanceReward(Float salaryAttendanceReward) {
-        this.salaryAttendanceReward = salaryAttendanceReward;
-    }
+	public void setSalaryActualTime(Float salaryActualTime) {
+		this.salaryActualTime = salaryActualTime;
+	}
 
-    public Float getSalaryTotal() {
-        return this.salaryTotal;
-    }
-    
-    public void setSalaryTotal(Float salaryTotal) {
-        this.salaryTotal = salaryTotal;
-    }
-   
+	public Float getSalaryWeekTime() {
+		return this.salaryWeekTime;
+	}
 
+	public void setSalaryWeekTime(Float salaryWeekTime) {
+		this.salaryWeekTime = salaryWeekTime;
+	}
 
+	public Float getSalaryWeekendTime() {
+		return this.salaryWeekendTime;
+	}
 
+	public void setSalaryWeekendTime(Float salaryWeekendTime) {
+		this.salaryWeekendTime = salaryWeekendTime;
+	}
 
+	public Float getSalaryHolidayTime() {
+		return this.salaryHolidayTime;
+	}
 
+	public void setSalaryHolidayTime(Float salaryHolidayTime) {
+		this.salaryHolidayTime = salaryHolidayTime;
+	}
 
+	public Float getSalaryAttendanceReward() {
+		return this.salaryAttendanceReward;
+	}
 
+	public void setSalaryAttendanceReward(Float salaryAttendanceReward) {
+		this.salaryAttendanceReward = salaryAttendanceReward;
+	}
+
+	public Float getSalaryTotal() {
+		return this.salaryTotal;
+	}
+
+	public void setSalaryTotal(Float salaryTotal) {
+		this.salaryTotal = salaryTotal;
+	}
 
 }

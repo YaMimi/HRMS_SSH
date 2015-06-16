@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `salary`;
 CREATE TABLE `salary` (
   `SalaryOid` int(11) NOT NULL AUTO_INCREMENT,
   `SalaryDate` varchar(45) NOT NULL,
-  `SalaryHourlySalaryOid` int(11) NOT NULL,
+  `SalaryHourly` float NOT NULL DEFAULT '0',
   `SalaryStandardTime` float NOT NULL DEFAULT '166.4',
   `SalaryActualTime` float NOT NULL DEFAULT '0',
   `SalaryWeekTime` float NOT NULL DEFAULT '0',
@@ -39,7 +39,6 @@ CREATE TABLE `salary` (
   PRIMARY KEY (`SalaryOid`),
   UNIQUE KEY `SalaryOid_UNIQUE` (`SalaryOid`),
   KEY `fk_Salary_Worker1_idx` (`SalaryWorkerOid`),
-  KEY `fk_salary_hourlysalary1_idx` (`SalaryHourlySalaryOid`),
   CONSTRAINT `fk_Salary_Worker1` FOREIGN KEY (`SalaryWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -62,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-17  0:39:51
+-- Dump completed on 2015-06-17  0:53:46

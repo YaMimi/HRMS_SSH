@@ -16,8 +16,8 @@
   <property generated="never" lazy="false" name="salaryDate" type="java.lang.String">
    <column length="45" name="SalaryDate" not-null="true"/>
   </property>
-  <property generated="never" lazy="false" name="salaryHourlySalaryOid" type="java.lang.Integer">
-   <column name="SalaryHourlySalaryOid" not-null="true"/>
+  <property generated="never" lazy="false" name="salaryHourly" type="java.lang.Float">
+   <column name="SalaryHourly" not-null="true" precision="12" scale="0"/>
   </property>
   <property generated="never" lazy="false" name="salaryStandardTime" type="java.lang.Float">
    <column name="SalaryStandardTime" not-null="true" precision="12" scale="0"/>
