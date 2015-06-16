@@ -1,3 +1,4 @@
+<%@page import="com.hrms.worker.action.HrmsToolString"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page language="java" import="com.opensymphony.xwork2.ActionContext"%>
 <%@ page language="java" import="com.hrms.pojo.*"%>
@@ -10,6 +11,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 
   SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+ int workerAge= HrmsToolString.getSubAge(sdf.format(activeWorker.getWorkerBirthDate()), 4, "UTF-8");
+request.setAttribute("workerAge", workerAge);
  %>
  <s:action name="SelectManager" executeResult="false" namespace="/"/>
 <!DOCTYPE html>
@@ -85,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            <tr>
 	              <th><input type="text" class="form-control " readonly="readonly" name="worker_person_id" placeholder="身份证号" value="<%=activeWorker.getWorkerId() %>" required></th>
 	              <th><input type="text" class="form-control " readonly="readonly" name="worker_born" placeholder="出生日期 " value="<%=sdf.format(activeWorker.getWorkerBirthDate()) %>" required></th>
-	              <th><input type="text" class="form-control " readonly="readonly" name="worker_age" placeholder="年龄 " value="" required></th>
+	              <th><input type="text" class="form-control " readonly="readonly" name="worker_age" placeholder="年龄 " value="${workerAge }" required></th>
 	            </tr>
 	            <tr>
 	              <th style="padding-left: 21px;"><strong>籍贯</strong></th>

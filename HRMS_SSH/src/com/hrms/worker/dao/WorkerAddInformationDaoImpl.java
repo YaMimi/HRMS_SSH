@@ -111,5 +111,16 @@ ArrayList<Worker> workers=(ArrayList<Worker>) sessionFactory.getCurrentSession()
 		
 		return list;
 	}
+
+	@Override
+	public ArrayList<Worker> EveryPage(int pageNo, int pageSize) {
+		// TODO Auto-generated method stub
+		String queryString="from Worker";
+		Query queryObject= sessionFactory.getCurrentSession().createQuery(queryString);
+		queryObject.setFirstResult((pageNo-1)*pageSize);
+		queryObject.setMaxResults(pageSize);
+		
+		return (ArrayList<Worker>) queryObject.list();
+	}
 	
 }

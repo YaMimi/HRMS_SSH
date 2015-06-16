@@ -30,7 +30,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			$( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd"});
   		});
   	</script>
-  	
+  		<script type="text/javascript">
+
+ function addWorker() {//修改
+
+alert("对不起，您没有添加员工权限！");      
+    }
+   </script>
   	
   	
   	<script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
@@ -50,7 +56,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<form action="Add" method="post">
 				<div class="col-sm-4">
+				<%if(activeWorker.getWorkerPermission()==4||activeWorker.getWorkerPermission()==3) {%>
 				<button class="btn btn-default" type="submit" style="width: 40%; float: right;"><i class="icon-ok-sign"></i> 添加员工</button>
+				<%}else{%>
+				<button class="btn btn-default" type="button" style="width: 40%; float: right;" onclick="addWorker()"><i class="icon-ok-sign"></i> 添加员工</button>
+				<%}%>
+				
 				</div>
                 </div>
                 <table class="table table-bordered table-hover">

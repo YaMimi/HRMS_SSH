@@ -14,5 +14,6 @@ public interface WorkerAddInformationDao {
     public abstract  ArrayList lWorkersAddDepartment();
     public abstract  int DeleteWorker(String workerNo);
     public abstract  void UpdateWorker(Worker worker);
+    public abstract ArrayList<Worker> EveryPage(int pageNo,int pageSize);
     public abstract  void flush();
 }

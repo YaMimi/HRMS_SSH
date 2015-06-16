@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	</script>
   	<script type="text/javascript">
 
- function send(workerNo) {//修改
+ function send(workerNo) {//管理
 window.location.href="ShowUpdateWorkerformation?workerNo="+workerNo; 
       
     }
@@ -68,6 +68,10 @@ function updateManager(workerNo){
 window.location.href=""; 
 }
 
+function addWorker() {//修改
+
+alert("对不起，只有部门经理或者总经理可以管理员工信息");      
+    }
 </script>
   	
   	
@@ -117,7 +121,7 @@ window.location.href="";
 	            
 	             <tr>
 	         
-      <%
+      <%--
 
 for(int i=0;i<list.size();i++)
 out.print("<tr>"+"<td>"+list.get(i).getWorkerNo()+"</td>"+
@@ -126,35 +130,54 @@ list.get(i).getWorkerSex()+"</td>"+
 "<td>"+workerDerpart.get(i)+"</td>"
 +"<td>"+list.get(i).getWorkerEducation()+"</td>"+
 "<td><input type='Button' value='管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;理' class='btn btn-primary' onclick='send("+list.get(i).getWorkerNo()+ "   )'/></td>"+"</tr>");
-
- %>
+ --%>
 <!--  <input type='Button' value='删&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除' class='btn btn-primary'  onclick='send_delete("+list.get(i).getWorkerNo()+ ")'/> -->
 </tr>
-	             <!--  
-	          <s:iterator value="#request.workerList"  var="list">                
-                <tr>
-                    <td><s:property value="#list.workerName"/></td>
-                    <td><s:property value="#list.workerNo"/></td>
-                    <td><s:property value="#list.workerSex"/></td>
-                    <td></td>
-                     <td><s:property value="#list.workerPermission"/></td>
-                     <td><s:property value="#list.workerEntryDate"/></td>
-                    <td><s:property value="#list.workerId"/></td>
-                    <td><s:property value="#list.workerBirthDate"/></td>
-                    <td></td>
-                     <td><s:property value="#list.workerBirthPlace"/></td>
-                     <td><s:property value="#list.workerAddress"/></td>
-                    <td><s:property value="#list.workerBloodType"/></td>
-                    <td><s:property value="#list.workerPolitical"/></td>
-                    <td><s:property value="#list.workerEthnic"/></td>
-                    <td><s:property value="#list.workerEducation"/></td>
-                    <td><s:property value="#list.workerPhone"/></td>
-                    <td><s:property value="#list.workerNationality"/></td>
-               </tr>
-            </s:iterator>
-            -->
-	            </table>
+
+<%
+for(int i=0;i<list.size();i++){
+out.println("<tr><td>"+list.get(i).getWorkerNo()+"</td>");
+out.println("<td>"+list.get(i).getWorkerName()+"</td>");
+out.println("<td>"+list.get(i).getWorkerSex()+"</td>");
+out.println("<td>"+workerDerpart.get(i)+"</td>");
+out.println("<td>"+list.get(i).getWorkerEducation()+"</td>");
+//if(activeWorker.getWorkerNo().equals(list.get(i).getWorkerNo())){
+if(activeWorker.getWorkerPermission()==3||activeWorker.getWorkerPermission()==4){%>
+<td>
+<input type='Button' value='管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;理' class='btn btn-primary' onclick='send(<%=list.get(i).getWorkerNo()%> )'/>
+</td>
+<% }else if(activeWorker.getWorkerNo().equals(list.get(i).getWorkerNo())){ %>
+<td>
+<input type='Button' value='管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;理' class='btn btn-primary' onclick='send(<%=list.get(i).getWorkerNo()%> )'/>
+</td>
+<%
+}else{%>
+<td>
+<input type='Button' value='管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;理' class='btn btn-primary' onclick='addWorker()' disabled="disabled"/> 
+</td>
+<%
+}
+}
+ %>
+ </table>
+
                 </form>
+                 <center>
+  <ul class="pagination">
+								    <li>
+								      <a href="SelectAllWorkersManager?pageNo=1"  aria-label="Previous">
+								      	上一页
+								        <span aria-hidden="true">&laquo;</span>
+								      </a>
+								    </li>
+								    <li>
+								     <a href="SelectAllWorkersManager.action?pageNo=2" aria-label="Previous">
+								      	下一页
+								        <span aria-hidden="true">&raquo;</span>
+								      </a>
+								    </li>
+								    </ul>
+								    </center>
             </div>
         </div>
     </div>
