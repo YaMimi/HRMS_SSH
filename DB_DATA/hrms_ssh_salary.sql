@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `hrms_ssh` /*!40100 DEFAULT CHARACTER SET utf8 */
 USE `hrms_ssh`;
 -- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: hrms_ssh
+-- Host: 127.0.0.1    Database: hrms_ssh
 -- ------------------------------------------------------
 -- Server version	5.6.21-log
 
@@ -27,16 +27,20 @@ DROP TABLE IF EXISTS `salary`;
 CREATE TABLE `salary` (
   `SalaryOid` int(11) NOT NULL AUTO_INCREMENT,
   `SalaryDate` varchar(45) NOT NULL,
-  `SalaryBased` float NOT NULL DEFAULT '0',
-  `SalaryStandardTime` float NOT NULL DEFAULT '0',
+  `SalaryHourlySalaryOid` int(11) NOT NULL,
+  `SalaryStandardTime` float NOT NULL DEFAULT '166.4',
   `SalaryActualTime` float NOT NULL DEFAULT '0',
+  `SalaryWeekTime` float NOT NULL DEFAULT '0',
   `SalaryWeekendTime` float NOT NULL DEFAULT '0',
   `SalaryHolidayTime` float NOT NULL DEFAULT '0',
+  `SalaryAttendanceReward` float NOT NULL DEFAULT '0',
+  `SalaryTotal` float NOT NULL DEFAULT '0',
   `SalaryWorkerOid` int(11) NOT NULL,
   PRIMARY KEY (`SalaryOid`),
   UNIQUE KEY `SalaryOid_UNIQUE` (`SalaryOid`),
   KEY `fk_Salary_Worker1_idx` (`SalaryWorkerOid`),
-  CONSTRAINT `fk_Salary_Worker1` FOREIGN KEY (`SalaryWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_salary_hourlysalary1_idx` (`SalaryHourlySalaryOid`),
+  CONSTRAINT `fk_Salary_Worker1` FOREIGN KEY (`SalaryWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -58,4 +62,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-16 11:38:24
+-- Dump completed on 2015-06-17  0:39:51

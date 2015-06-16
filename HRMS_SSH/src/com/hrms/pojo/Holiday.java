@@ -2,54 +2,67 @@ package com.hrms.pojo;
 
 import java.util.Date;
 
+
 /**
  * Holiday entity. @author MyEclipse Persistence Tools
  */
 
-public class Holiday implements java.io.Serializable {
+public class Holiday  implements java.io.Serializable {
 
-	// Fields
 
-	private Integer holidayOid;
-	private Date holidayDate;
-	private String holidayContent;
+    // Fields    
 
-	// Constructors
+     private Integer holidayOid;
+     private Date holidayDate;
+     private String holidayContent;
 
-	/** default constructor */
-	public Holiday() {
-	}
 
-	/** full constructor */
-	public Holiday(Date holidayDate, String holidayContent) {
-		this.holidayDate = holidayDate;
-		this.holidayContent = holidayContent;
-	}
+    // Constructors
 
-	// Property accessors
+    /** default constructor */
+    public Holiday() {
+    }
 
-	public Integer getHolidayOid() {
-		return this.holidayOid;
-	}
+    
+    /** full constructor */
+    public Holiday(Date holidayDate, String holidayContent) {
+        this.holidayDate = holidayDate;
+        this.holidayContent = holidayContent;
+    }
 
-	public void setHolidayOid(Integer holidayOid) {
-		this.holidayOid = holidayOid;
-	}
+   
+    // Property accessors
 
-	public Date getHolidayDate() {
-		return this.holidayDate;
-	}
+    public Integer getHolidayOid() {
+        return this.holidayOid;
+    }
+    
+    public void setHolidayOid(Integer holidayOid) {
+        this.holidayOid = holidayOid;
+    }
 
-	public void setHolidayDate(Date holidayDate) {
-		this.holidayDate = holidayDate;
-	}
+    public Date getHolidayDate() {
+        return this.holidayDate;
+    }
+    
+    public void setHolidayDate(Date holidayDate) {
+        this.holidayDate = holidayDate;
+    }
 
-	public String getHolidayContent() {
-		return this.holidayContent;
-	}
+    public String getHolidayContent() {
+        return this.holidayContent;
+    }
+    
+    public void setHolidayContent(String holidayContent) {
+        this.holidayContent = holidayContent;
+    }
+   
 
-	public void setHolidayContent(String holidayContent) {
-		this.holidayContent = holidayContent;
-	}
+
+
+
+
+
+
 
 }

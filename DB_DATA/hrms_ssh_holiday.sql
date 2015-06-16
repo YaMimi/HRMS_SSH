@@ -18,34 +18,28 @@ USE `hrms_ssh`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cultivationperson`
+-- Table structure for table `holiday`
 --
 
-DROP TABLE IF EXISTS `cultivationperson`;
+DROP TABLE IF EXISTS `holiday`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cultivationperson` (
-  `CultivationPersonOid` int(11) NOT NULL AUTO_INCREMENT,
-  `CultivationPersonCultivationOid` int(11) NOT NULL,
-  `CultivationPersonMark` int(11) DEFAULT NULL,
-  `CultivationPersonWorkerOid` int(11) NOT NULL,
-  PRIMARY KEY (`CultivationPersonOid`),
-  UNIQUE KEY `CultivationPersonOid_UNIQUE` (`CultivationPersonOid`),
-  KEY `fk_CultivationPerson_Cultivation_idx` (`CultivationPersonCultivationOid`),
-  KEY `fk_CultivationSign_Woker1_idx` (`CultivationPersonWorkerOid`),
-  CONSTRAINT `fk_CultivationPerson_Cultivation` FOREIGN KEY (`CultivationPersonCultivationOid`) REFERENCES `cultivation` (`CultivationOid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_CultivationPerson_Woker1` FOREIGN KEY (`CultivationPersonWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+CREATE TABLE `holiday` (
+  `HolidayOid` int(11) NOT NULL AUTO_INCREMENT,
+  `HolidayDate` date NOT NULL,
+  `HolidayContent` varchar(45) NOT NULL,
+  PRIMARY KEY (`HolidayOid`),
+  UNIQUE KEY `HolidayOid_UNIQUE` (`HolidayOid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cultivationperson`
+-- Dumping data for table `holiday`
 --
 
-LOCK TABLES `cultivationperson` WRITE;
-/*!40000 ALTER TABLE `cultivationperson` DISABLE KEYS */;
-INSERT INTO `cultivationperson` VALUES (1,1,4,2),(2,2,NULL,2);
-/*!40000 ALTER TABLE `cultivationperson` ENABLE KEYS */;
+LOCK TABLES `holiday` WRITE;
+/*!40000 ALTER TABLE `holiday` DISABLE KEYS */;
+/*!40000 ALTER TABLE `holiday` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -57,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-17  0:39:54
+-- Dump completed on 2015-06-17  0:39:53

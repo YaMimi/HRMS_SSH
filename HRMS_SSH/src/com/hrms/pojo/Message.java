@@ -2,75 +2,87 @@ package com.hrms.pojo;
 
 import java.util.Date;
 
+
 /**
  * Message entity. @author MyEclipse Persistence Tools
  */
 
-public class Message implements java.io.Serializable {
+public class Message  implements java.io.Serializable {
 
-	// Fields
 
-	private Integer messageOid;
-	private Worker worker;
-	private Date messageDate;
-	private String messageTitle;
-	private String messageContent;
+    // Fields    
 
-	// Constructors
+     private Integer messageOid;
+     private Worker worker;
+     private Date messageDate;
+     private String messageTitle;
+     private String messageContent;
 
-	/** default constructor */
-	public Message() {
-	}
 
-	/** full constructor */
-	public Message(Worker worker, Date messageDate, String messageTitle,
-			String messageContent) {
-		this.worker = worker;
-		this.messageDate = messageDate;
-		this.messageTitle = messageTitle;
-		this.messageContent = messageContent;
-	}
+    // Constructors
 
-	// Property accessors
+    /** default constructor */
+    public Message() {
+    }
 
-	public Integer getMessageOid() {
-		return this.messageOid;
-	}
+    
+    /** full constructor */
+    public Message(Worker worker, Date messageDate, String messageTitle, String messageContent) {
+        this.worker = worker;
+        this.messageDate = messageDate;
+        this.messageTitle = messageTitle;
+        this.messageContent = messageContent;
+    }
 
-	public void setMessageOid(Integer messageOid) {
-		this.messageOid = messageOid;
-	}
+   
+    // Property accessors
 
-	public Worker getWorker() {
-		return this.worker;
-	}
+    public Integer getMessageOid() {
+        return this.messageOid;
+    }
+    
+    public void setMessageOid(Integer messageOid) {
+        this.messageOid = messageOid;
+    }
 
-	public void setWorker(Worker worker) {
-		this.worker = worker;
-	}
+    public Worker getWorker() {
+        return this.worker;
+    }
+    
+    public void setWorker(Worker worker) {
+        this.worker = worker;
+    }
 
-	public Date getMessageDate() {
-		return this.messageDate;
-	}
+    public Date getMessageDate() {
+        return this.messageDate;
+    }
+    
+    public void setMessageDate(Date messageDate) {
+        this.messageDate = messageDate;
+    }
 
-	public void setMessageDate(Date messageDate) {
-		this.messageDate = messageDate;
-	}
+    public String getMessageTitle() {
+        return this.messageTitle;
+    }
+    
+    public void setMessageTitle(String messageTitle) {
+        this.messageTitle = messageTitle;
+    }
 
-	public String getMessageTitle() {
-		return this.messageTitle;
-	}
+    public String getMessageContent() {
+        return this.messageContent;
+    }
+    
+    public void setMessageContent(String messageContent) {
+        this.messageContent = messageContent;
+    }
+   
 
-	public void setMessageTitle(String messageTitle) {
-		this.messageTitle = messageTitle;
-	}
 
-	public String getMessageContent() {
-		return this.messageContent;
-	}
 
-	public void setMessageContent(String messageContent) {
-		this.messageContent = messageContent;
-	}
+
+
+
+
 
 }
