@@ -66,11 +66,12 @@ PageBean pagebean = (PageBean)session.getAttribute("pageBean");
 			          	  <%} %>
 			          	  <%if(attendance.getAttendanceState()==1) {%>
 			              <th><%=attendance.getAttendanceOnTime() %></th>
-			              <th><%=attendance.getAttendanceOffTime() %></th>
+			              <th><%if(attendance.getAttendanceOffTime()==null) out.print("未签到"); else out.print(attendance.getAttendanceOffTime());%></th>
 			          	  <%} %>
 			              <%if(Integer.parseInt(attendance.getAttendanceState().toString())==0 ) {%><th>请假</th><%} %>
 			              <%if(Integer.parseInt(attendance.getAttendanceState().toString())==1 ) {%><th>无</th><%} %>
 			            </tr>
+			            <%i++; %>
 		       			<%} %>
 		       		<%} %>
 		        </table>
