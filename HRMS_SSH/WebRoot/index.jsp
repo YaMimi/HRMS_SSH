@@ -82,7 +82,7 @@ case 4 : post = "总经理"; break;
 			               </div>
 			               </a>
 			               
-			               <a href="#">
+			               <a href="./cultivationCheck.jsp">
 			               <div class="col-lg-4 col-md-4">
 			                   <div class="panel panel-green">
 			                       <div class="panel-heading">
@@ -91,12 +91,12 @@ case 4 : post = "总经理"; break;
 			                                   <i class="icon-flag icon-5x"></i>
 			                               </div>
 			                               <div class="col-xs-9 text-right">
-			                                   <div class="huge">12</div>
+			                                   <div class="huge"><%=session.getAttribute("cultivationPersonUNum") %></div>
 			                                   <div>进行中培训</div>
 			                               </div>
 			                           </div>
 			                       </div>
-			                       <a href="#">
+			                       <a href="./cultivationCheck.jsp">
 			                           <div class="panel-footer">
 			                               <span class="pull-left">查看详情</span>
 			                               <span class="pull-right"><i class="icon-circle-arrow-right"></i></span>

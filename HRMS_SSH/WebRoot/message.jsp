@@ -40,10 +40,10 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 	%>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
          <h1 class="page-header">公告系统</h1>
+         <%if(activeWorker.getWorkerPermission()>2) {%>
          <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
          		  发布新公告
 	     </button>
-	     <%if(activeWorker.getWorkerPermission()>2) {%>
 	     <div class="collapse" id="collapseExample">
 		  <div class="well" style="margin-bottom: 0px;">
 		    <form action="NewMessage" method="post">
@@ -64,7 +64,7 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
          <br>
          <%} %>
          <table class="table table-hover">
-         <%if(messageListFull!=null) 
+         <%if(!messageListFull.isEmpty()) 
          	for(Message message : messageListFull){ %>
       		<tr>
       			<td style="padding-top: 0px;padding-bottom: 15px;">
