@@ -25,9 +25,11 @@
                         <li<%if(path.equals("/attendanceCheck.jsp")) {%> class="active"<%} %>>
                             <a href="attendanceCheck.jsp">签到查询</a>
                         </li>
+                        <%if(activeWorker.getWorkerPermission()<4) {%>
                         <li<%if(path.equals("/attendanceVct.jsp")) {%> class="active"<%} %>>
                             <a href="attendanceVct.jsp">请假系统</a>
                         </li>
+                        <%} %>
                         <li<%if(path.equals("/attendanceVctCheck.jsp")) {%> class="active"<%} %>>
                             <a href="attendanceVctCheck.jsp">请假审批</a>
                         </li>
@@ -74,7 +76,7 @@
                  <li><%if(path.equals("/cultivationCheck.jsp")||path.equals("/cultivationManager.jsp")||path.equals("/cultivationAdd.jsp")) {%><a href="#cultivationSystem" class="nav-header"  data-toggle="collapse" aria-expanded="true"><%} else {%><a href="#cultivationSystem" class="nav-header collapsed" data-toggle="collapse"><%} %>　培训系统<i class="pull-right icon-sidebar-collapse"></i></a>
                     <%if(path.equals("/cultivationCheck.jsp")||path.equals("/cultivationManager.jsp")||path.equals("/cultivationAdd.jsp")) {%><ul id="cultivationSystem" class="nav nav-sidebar nav-sec collapse in" aria-expanded="true"><%} else {%><ul id="cultivationSystem" class="nav nav-sidebar nav-sec collapse"><%} %>
                         <li<%if(path.equals("/cultivationCheck.jsp")) {%> class="active"<%} %>>
-                            <a href="#">培训查询</a>
+                            <a href="./cultivationCheck.jsp">培训查询</a>
                         </li>
                         <li<%if(path.equals("/cultivationManager.jsp")) {%> class="active"<%} %>>
                             <a href="#">培训管理</a>

@@ -67,12 +67,22 @@
 			<result name="success" type="redirect">/message.jsp</result>
 		</action>
 		
-		<!-- LoginAction -->
+		<!-- NewMessageAction -->
 		<action name="NewMessage" class="MessageAction" method="newMessage">
 			<result name="success" type="redirect">/message.jsp</result>
 			<result name="error" type="redirect">/message.jsp</result>
 			<result name="none" type="redirect">/login.jsp</result>
 		</action>
+	</package>
+	
+	<!-- CultivationPerson Package -->
+	<package name="cultivationperson" extends="struts-default" namespace="/">
+		<!-- CheckCultivationUnfinishedAction -->
+		<action name="CheckCultivationPersonUnfinished" class="CultivationPersonAction" method="checkCultivationPersonUnfinished"></action>
+		
+		<!-- CheckCultivationFinishedAction -->
+		<action name="CheckCultivationPersonFinished" class="CultivationPersonAction" method="checkCultivationPersonFinished"></action>
+
 	</package>
 	
 	<!-- 杨铭    department包 -->

@@ -22,7 +22,7 @@ List<Department> DepartmentList1 = departmentlist1;
 departmentlist1 = null;
 session.setAttribute("departmentlist1", departmentlist1);
 %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
     <head>
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -44,6 +44,7 @@ session.setAttribute("departmentlist1", departmentlist1);
   
   <body>
   
+  	
   	<%@ include file="navbarTop.jsp"%>
     <%@ include file="navbarSide.jsp"%>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

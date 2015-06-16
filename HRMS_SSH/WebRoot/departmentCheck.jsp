@@ -19,7 +19,7 @@ departmentlist = null;
 session.setAttribute("departmentlist", departmentlist);
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -79,13 +79,13 @@ session.setAttribute("departmentlist", departmentlist);
              	  <th style="width:10px;">
 				      <form action='UpdateDepartmentImfo'>
 			             <input type='hidden' name='alter' value='<%=department.getDepartmentOid()%>'/>
-			             <button class='crlbut editbut' type='submit'  ><i class="icon-large icon-pencil"></i></button>
+			             <button class="crlbut editbut" type="submit"><i class="icon-large icon-pencil"></i></button>
 			          </form>
 			      </th>
-			      <th style="width:10px;">  
+			      <th style="width:10px;">
 			           <form action='DepartmentDelete'>
 			             <input type='hidden' name='delete' value='<%=department.getDepartmentOid()%>'/>
-			             <button class='crlbut delbut' type='submit'  ><i class="icon-large icon-remove"></i></button>
+			             <button class="crlbut delbut" type="submit"><i class="icon-large icon-remove"></i></button>
 			           </form>
 		          </th>
 			  </tr>

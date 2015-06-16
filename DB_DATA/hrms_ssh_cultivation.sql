@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `hrms_ssh` /*!40100 DEFAULT CHARACTER SET utf8 */
 USE `hrms_ssh`;
 -- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: hrms_ssh
+-- Host: localhost    Database: hrms_ssh
 -- ------------------------------------------------------
 -- Server version	5.6.21-log
 
@@ -26,18 +26,18 @@ DROP TABLE IF EXISTS `cultivation`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cultivation` (
   `CultivationOid` int(11) NOT NULL AUTO_INCREMENT,
+  `CultivationProject` varchar(45) NOT NULL,
+  `CultivationType` varchar(45) NOT NULL,
+  `CultivationInstruction` varchar(145) NOT NULL,
+  `CultivationLocation` varchar(45) NOT NULL,
   `CultivationBeginDate` date NOT NULL,
   `CultivationEndDate` date NOT NULL,
-  `CultivationType` varchar(45) NOT NULL,
-  `CultivationProject` varchar(45) NOT NULL,
-  `CultivationInstruction` varchar(45) NOT NULL,
-  `CultivationMark` int(11) DEFAULT NULL,
-  `CultivationWorkerOid` int(11) NOT NULL,
+  `CultivationChargerWorkerOid` int(11) NOT NULL,
   PRIMARY KEY (`CultivationOid`),
   UNIQUE KEY `CultivationOid_UNIQUE` (`CultivationOid`),
-  KEY `fk_Cultivation_Worker1_idx` (`CultivationWorkerOid`),
-  CONSTRAINT `fk_Cultivation_Worker1` FOREIGN KEY (`CultivationWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `fk_Cultivation_Woker1_idx` (`CultivationChargerWorkerOid`),
+  CONSTRAINT `fk_Cultivation_Woker1` FOREIGN KEY (`CultivationChargerWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,6 +46,7 @@ CREATE TABLE `cultivation` (
 
 LOCK TABLES `cultivation` WRITE;
 /*!40000 ALTER TABLE `cultivation` DISABLE KEYS */;
+INSERT INTO `cultivation` VALUES (1,'Java基础编程','编程培训','学会JAR，方便你我他！','会议2室','2015-05-12','2015-06-12',1),(2,'C#基础编程','编程培训','我只过1%的生活！','会议2室','2015-06-12','2015-06-23',1);
 /*!40000 ALTER TABLE `cultivation` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-15 13:11:36
+-- Dump completed on 2015-06-16 11:38:25

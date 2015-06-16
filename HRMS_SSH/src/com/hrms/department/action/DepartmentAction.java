@@ -47,89 +47,91 @@ public class DepartmentAction extends ActionSupport{
 		return SUCCESS;
 		
 	}
-	
-		/*
-		 * 修改部门方法  2015.6.12
-		 * 
-		 * */
-		public String departmentUpdate(){
-			Department department1;
-			String DepartmentNo1=department.getDepartmentNo();
-			String DepartmentName1=department.getDepartmentName();
-			departmentservice.deleteDepartment(departmentEdit.getDepartmentOid());
-			if(FatherDepartmentOid==0){
-				if(DepartmentNo1!=null&&DepartmentName1!=null){
-					if(departmentNoExist(DepartmentNo1)&&departmentNameExist(DepartmentName1)){
-						department1=departmentservice.insertDepartment(department);
-						department=null;
-						return this.SUCCESS;}
-					else
-						{
-						departmentEdit.setDepartmentOid(null);
-						department1=departmentservice.insertDepartment(departmentEdit);
-						return this.SUCCESS;
-						}
-				}
-				else{ 
-					departmentEdit.setDepartmentOid(null);
-					department1=departmentservice.insertDepartment(departmentEdit);
-					return this.SUCCESS;
-					}
-				}
-			else{
-			
-			String hql = "from Department where DepartmentOid='"+FatherDepartmentOid+"'";
-			List<Department> departmentlist=departmentservice.searchDepartment(hql);
-			Department department2=departmentlist.get(0);
-			department.setDepartment(department2);
-			departmentservice.deleteDepartment(departmentEdit.getDepartmentOid());
+	/*
+	 * 修改部门方法  2015.6.12
+	 * 
+	 * */
+	public String departmentUpdate(){
+		Department department1=null;
+		int alter1=Integer.parseInt(alter);
+		String DepartmentNo1=department.getDepartmentNo();
+		String DepartmentName1=department.getDepartmentName();
+		/*departmentservice.deleteDepartment(departmentEdit.getDepartmentOid());*/
+		if(FatherDepartmentOid==0){
 			if(DepartmentNo1!=null&&DepartmentName1!=null){
 				if(departmentNoExist(DepartmentNo1)&&departmentNameExist(DepartmentName1)){
-					department1=departmentservice.insertDepartment(department);
+					String hql1 = "from Department where DepartmentOid='"+alter+"'";
+					List<Department> departmentlist1=departmentservice.searchDepartment(hql1);
+					department=departmentlist1.get(0);
+					department.setDepartment(department1);
+					department.setDepartmentNo(DepartmentNo1);
+					department.setDepartmentName(DepartmentName1);
+					department=departmentservice.updateDepartment(department);	
 					department=null;
 					return this.SUCCESS;}
 				else
 					{
-					departmentEdit.setDepartmentOid(null);
-					department1=departmentservice.insertDepartment(departmentEdit);
+					
 					return this.SUCCESS;
 					}
 			}
 			else{ 
-				departmentEdit.setDepartmentOid(null);
-				department1=departmentservice.insertDepartment(departmentEdit);
+				
 				return this.SUCCESS;
 				}
 			}
-			
+		else{
+		
+		String hql = "from Department where DepartmentOid='"+FatherDepartmentOid+"'";
+		List<Department> departmentlist=departmentservice.searchDepartment(hql);
+		Department department2=departmentlist.get(0);
+		if(DepartmentNo1!=null&&DepartmentName1!=null){
+			if(departmentNoExist(DepartmentNo1)&&departmentNameExist(DepartmentName1)){
+				String hql1 = "from Department where DepartmentOid='"+alter+"'";
+				List<Department> departmentlist1=departmentservice.searchDepartment(hql1);
+				department=departmentlist1.get(0);
+				department.setDepartmentNo(DepartmentNo1);
+				department.setDepartmentName(DepartmentName1);
+				department.setDepartment(department2);
+				department=departmentservice.updateDepartment(department);
+				department=null;
+				return this.SUCCESS;}
+			else
+				{
+				return this.SUCCESS;
+				}
+		}
+		else{ 
+			return this.SUCCESS;
+			}
 		}
 		
+	}
 			/*
 			 * 修改部门读取信息方法  2015.6.11
 			 * 
 			 * */
-				public String UpdateDepartmentImfo(){
-					int alter1=Integer.parseInt(alter);
-					String hql = "from Department where DepartmentOid='"+alter+"'";
-					List<Department> departmentlist=departmentservice.searchDepartment(hql);
-					departmentEdit=departmentlist.get(0);
-					Map session = ActionContext.getContext().getSession();
-					session.put("departmentlist", departmentlist);
-					ActionContext.getContext().setSession(session);
-					
-					
-					String hql1= "from Department ";
-					List<Department> departmentlist1 = departmentservice.searchDepartment(hql1);
-					//Map session1 = ActionContext.getContext().getSession();
-					session.put("departmentlist1", departmentlist1);
-					ActionContext.getContext().setSession(session);
-					
-					
-					return SUCCESS;
-						
-						
-					}
+	public String UpdateDepartmentImfo(){
+		int alter1=Integer.parseInt(alter);
+		String hql = "from Department where DepartmentOid='"+alter+"'";
+		List<Department> departmentlist=departmentservice.searchDepartment(hql);
+		departmentEdit=departmentlist.get(0);
+		Map session = ActionContext.getContext().getSession();
+		session.put("departmentlist", departmentlist);
+		ActionContext.getContext().setSession(session);
 		
+		
+		String hql1= "from Department where DepartmentOid !='"+alter+"'";
+		List<Department> departmentlist1 = departmentservice.searchDepartment(hql1);
+		//Map session1 = ActionContext.getContext().getSession();
+		session.put("departmentlist1", departmentlist1);
+		ActionContext.getContext().setSession(session);
+		
+		
+		return SUCCESS;
+			
+			
+		}
 		
 		/*
 		 * 添加新部门方法  2015.6.11-6.12 完善！
@@ -181,8 +183,17 @@ public class DepartmentAction extends ActionSupport{
 		 * */
 		public String DepartmentDelete(){
 			int delete1=Integer.parseInt(delete);
+			Department department1;
+			String hql = "from Department where DepartmentOid='"+delete+"'";
+			List<Department> departmentlist=departmentservice.searchDepartment(hql);
+			department1=departmentlist.get(0);
+			if(department1.getWorkers().size()==0){
 			departmentservice.deleteDepartment(delete1);
 			return SUCCESS;
+			}
+			else{
+				return SUCCESS;
+			}
 			
 		}
 		
@@ -194,7 +205,7 @@ public class DepartmentAction extends ActionSupport{
 		public boolean departmentNoExist(String departmentNo){
 			Map session = ActionContext.getContext().getSession();
 			boolean flag=false;
-			String hql = "from Department where DepartmentNo='"+departmentNo+"'";
+			String hql = "from Department where DepartmentNo='"+departmentNo+"'and DepartmentOid!='"+alter+"'";
 				List<Department> departmentlist=departmentservice.searchDepartment(hql);
 				if(departmentlist.size()==0){
 					flag=true;
@@ -202,7 +213,7 @@ public class DepartmentAction extends ActionSupport{
 				return flag;
 		}
 		
-		
+
 		/*
 		 * 检查部门名称是否存在  2015.6.11
 		 * 
@@ -210,14 +221,13 @@ public class DepartmentAction extends ActionSupport{
 		public boolean departmentNameExist(String departmentName){
 			Map session = ActionContext.getContext().getSession();
 			boolean flag=false;
-			String hql = "from Department where DepartmentName='"+departmentName+"'";
+			String hql = "from Department where DepartmentName='"+departmentName+"'and DepartmentOid!='"+alter+"'";
 				List<Department> departmentlist=departmentservice.searchDepartment(hql);
 				if(departmentlist.size()==0){
 					flag=true;
 				}
 				return flag;
 			}
-	
 
 	public String getAlter() {
 			return alter;

@@ -19,7 +19,7 @@ session.setAttribute("departmentattendancelist", departmentattendancelist);
 PageBean pagebean = (PageBean)session.getAttribute("pageBean");
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
   <head lang="zh-CN">
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
