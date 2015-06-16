@@ -44,7 +44,8 @@
 				<value>com/hrms/pojo/Cultivation.hbm.xml</value>
 				<value>com/hrms/pojo/Attendance.hbm.xml</value>
 				<value>com/hrms/pojo/Message.hbm.xml</value>
-			</list>
+				<value>com/hrms/pojo/Cultivationperson.hbm.xml</value>
+				<value>com/hrms/pojo/Cultivationsign.hbm.xml</value></list>
 		</property></bean>
 	
 	<bean id="txManager"
@@ -76,6 +77,12 @@
 	<bean id="MessageService" class="com.hrms.message.service.MessageServiceImpl"></bean>
 	<bean id="MessageDao" class="com.hrms.message.dao.MessageDaoImpl"></bean>
 	<!-- Message Part End -->
+	
+	<!-- CultivationPerson Part Begin -->
+	<bean id="CultivationPersonAction" class="com.hrms.cultivationPerson.action.CultivationPersonAction"></bean>
+	<bean id="CultivationPersonService" class="com.hrms.cultivationPerson.service.CultivationPersonServiceImpl"></bean>
+	<bean id="CultivationPersonDao" class="com.hrms.cultivationPerson.dao.CultivationPersonDaoImpl"></bean>
+	<!-- Cultivation Part End -->
 	
 	<!-- 杨铭  Department Part Begin -->
 	<bean id="DepartmentAction" class="com.hrms.department.action.DepartmentAction"></bean>

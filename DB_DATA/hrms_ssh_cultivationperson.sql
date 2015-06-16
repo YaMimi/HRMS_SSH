@@ -18,34 +18,34 @@ USE `hrms_ssh`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `rewardorpunishment`
+-- Table structure for table `cultivationperson`
 --
 
-DROP TABLE IF EXISTS `rewardorpunishment`;
+DROP TABLE IF EXISTS `cultivationperson`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `rewardorpunishment` (
-  `ROPOid` int(11) NOT NULL,
-  `ROPDate` date NOT NULL,
-  `ROPType` varchar(45) NOT NULL,
-  `ROPReason` varchar(45) NOT NULL,
-  `ROPAmount` float NOT NULL DEFAULT '0',
-  `ROP` int(11) NOT NULL,
-  `ROPWorkerOid` int(11) NOT NULL,
-  PRIMARY KEY (`ROPOid`),
-  UNIQUE KEY `ROPOid_UNIQUE` (`ROPOid`),
-  KEY `fk_RewardOrPunishment_Worker1_idx` (`ROPWorkerOid`),
-  CONSTRAINT `fk_RewardOrPunishment_Worker1` FOREIGN KEY (`ROPWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `cultivationperson` (
+  `CultivationPersonOid` int(11) NOT NULL AUTO_INCREMENT,
+  `CultivationPersonCultivationOid` int(11) NOT NULL,
+  `CultivationPersonMark` int(11) DEFAULT NULL,
+  `CultivationPersonWorkerOid` int(11) NOT NULL,
+  PRIMARY KEY (`CultivationPersonOid`),
+  UNIQUE KEY `CultivationPersonOid_UNIQUE` (`CultivationPersonOid`),
+  KEY `fk_CultivationPerson_Cultivation_idx` (`CultivationPersonCultivationOid`),
+  KEY `fk_CultivationSign_Woker1_idx` (`CultivationPersonWorkerOid`),
+  CONSTRAINT `fk_CultivationPerson_Cultivation` FOREIGN KEY (`CultivationPersonCultivationOid`) REFERENCES `cultivation` (`CultivationOid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_CultivationPerson_Woker1` FOREIGN KEY (`CultivationPersonWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `rewardorpunishment`
+-- Dumping data for table `cultivationperson`
 --
 
-LOCK TABLES `rewardorpunishment` WRITE;
-/*!40000 ALTER TABLE `rewardorpunishment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rewardorpunishment` ENABLE KEYS */;
+LOCK TABLES `cultivationperson` WRITE;
+/*!40000 ALTER TABLE `cultivationperson` DISABLE KEYS */;
+INSERT INTO `cultivationperson` VALUES (1,1,4,2),(2,2,NULL,2);
+/*!40000 ALTER TABLE `cultivationperson` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
