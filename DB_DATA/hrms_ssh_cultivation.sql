@@ -46,7 +46,7 @@ CREATE TABLE `cultivation` (
 
 LOCK TABLES `cultivation` WRITE;
 /*!40000 ALTER TABLE `cultivation` DISABLE KEYS */;
-INSERT INTO `cultivation` VALUES (1,'Java基础编程','编程培训','学会JAR，方便你我他！','会议2室','2015-05-12','2015-06-12',1),(2,'C#基础编程','编程培训','我只过1%的生活！','会议2室','2015-06-22','2015-06-23',1);
+INSERT INTO `cultivation` VALUES (1,'Java基础编程','编程培训','学会JAR，方便你我他！','会议2室','2015-05-12','2015-06-12',1),(2,'C#基础编程','编程培训','我只过1%的生活！','会议2室','2015-06-12','2015-06-23',1);
 /*!40000 ALTER TABLE `cultivation` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-16 10:55:08
+-- Dump completed on 2015-06-16 11:38:25

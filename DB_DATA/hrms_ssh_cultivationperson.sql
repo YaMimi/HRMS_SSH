@@ -35,7 +35,7 @@ CREATE TABLE `cultivationperson` (
   KEY `fk_CultivationSign_Woker1_idx` (`CultivationPersonWorkerOid`),
   CONSTRAINT `fk_CultivationPerson_Cultivation` FOREIGN KEY (`CultivationPersonCultivationOid`) REFERENCES `cultivation` (`CultivationOid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_CultivationPerson_Woker1` FOREIGN KEY (`CultivationPersonWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `cultivationperson` (
 
 LOCK TABLES `cultivationperson` WRITE;
 /*!40000 ALTER TABLE `cultivationperson` DISABLE KEYS */;
-INSERT INTO `cultivationperson` VALUES (1,1,4,2);
+INSERT INTO `cultivationperson` VALUES (1,1,4,2),(2,2,NULL,2);
 /*!40000 ALTER TABLE `cultivationperson` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-16 10:55:08
+-- Dump completed on 2015-06-16 11:38:25

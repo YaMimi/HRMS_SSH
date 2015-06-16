@@ -44,7 +44,7 @@ CREATE TABLE `cultivationsign` (
 
 LOCK TABLES `cultivationsign` WRITE;
 /*!40000 ALTER TABLE `cultivationsign` DISABLE KEYS */;
-INSERT INTO `cultivationsign` VALUES (1,1,2,1),(2,2,2,NULL);
+INSERT INTO `cultivationsign` VALUES (1,1,2,1),(2,2,2,1);
 /*!40000 ALTER TABLE `cultivationsign` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-16 10:55:08
+-- Dump completed on 2015-06-16 11:38:24
