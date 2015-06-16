@@ -32,8 +32,9 @@ public class DepartmentDaoImpl implements DepartmentDao{
 
 	@Override
 	public Department updateDepartment(Department department) {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO Auto-generated method stub		
+		sessionFactory.getCurrentSession().merge(department);
+		return department;
 	}
 
 	@Override
