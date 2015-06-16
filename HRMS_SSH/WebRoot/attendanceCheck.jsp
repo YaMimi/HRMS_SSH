@@ -76,7 +76,7 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
 	          	  <%} %>
 	          	  <%if(attendance.getAttendanceState()==1) {%>
 	              <th><%=attendance.getAttendanceOnTime() %></th>
-	              <th><%=attendance.getAttendanceOffTime() %></th>
+	              <th><%if(attendance.getAttendanceOffTime()==null) out.print("未签到"); else out.print(attendance.getAttendanceOffTime());%></th>
 	              <th>无请假</th>
 	          	  <%} %>
 	          </tr>
@@ -116,7 +116,7 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
 		          	  <%} %>
 		          	  <%if(attendance.getAttendanceState()==1) {%>
 		              <th><%=attendance.getAttendanceOnTime() %></th>
-		              <th><%=attendance.getAttendanceOffTime() %></th>
+		              <th><%if(attendance.getAttendanceOffTime()==null) out.print("未签到"); else out.print(attendance.getAttendanceOffTime());%></th>
 		          	  <%} %>
 		              <th><%if(attendance.getAttendanceState()==0)out.print("请假中"); else out.print("无请假"); %></th>
 	              </tr>
