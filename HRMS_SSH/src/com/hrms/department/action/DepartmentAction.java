@@ -52,7 +52,7 @@ public class DepartmentAction extends ActionSupport{
 	 * 
 	 * */
 	public String departmentUpdate(){
-		Department department1;
+		Department department1=null;
 		int alter1=Integer.parseInt(alter);
 		String DepartmentNo1=department.getDepartmentNo();
 		String DepartmentName1=department.getDepartmentName();
@@ -63,7 +63,7 @@ public class DepartmentAction extends ActionSupport{
 					String hql1 = "from Department where DepartmentOid='"+alter+"'";
 					List<Department> departmentlist1=departmentservice.searchDepartment(hql1);
 					department=departmentlist1.get(0);
-					
+					department.setDepartment(department1);
 					department.setDepartmentNo(DepartmentNo1);
 					department.setDepartmentName(DepartmentName1);
 					department=departmentservice.updateDepartment(department);	
@@ -183,8 +183,17 @@ public class DepartmentAction extends ActionSupport{
 		 * */
 		public String DepartmentDelete(){
 			int delete1=Integer.parseInt(delete);
+			Department department1;
+			String hql = "from Department where DepartmentOid='"+delete+"'";
+			List<Department> departmentlist=departmentservice.searchDepartment(hql);
+			department1=departmentlist.get(0);
+			if(department1.getWorkers().size()==0){
 			departmentservice.deleteDepartment(delete1);
 			return SUCCESS;
+			}
+			else{
+				return SUCCESS;
+			}
 			
 		}
 		
