@@ -2,96 +2,107 @@ package com.hrms.pojo;
 
 import java.util.Date;
 
+
 /**
  * Vacation entity. @author MyEclipse Persistence Tools
  */
 
-public class Vacation implements java.io.Serializable {
+public class Vacation  implements java.io.Serializable {
 
-	// Fields
 
-	private Integer vacationOid;
-	private Worker worker;
-	private Date vacationStartDate;
-	private Date vacationEndDate;
-	private String vacationType;
-	private String vacationReason;
-	private Integer vacationResult;
+    // Fields    
 
-	// Constructors
+     private Integer vacationOid;
+     private Worker worker;
+     private Date vacationStartDate;
+     private Date vacationEndDate;
+     private String vacationType;
+     private String vacationReason;
+     private Integer vacationResult;
 
-	/** default constructor */
-	public Vacation() {
-	}
 
-	/** full constructor */
-	public Vacation(Worker worker, Date vacationStartDate,
-			Date vacationEndDate, String vacationType, String vacationReason,
-			Integer vacationResult) {
-		this.worker = worker;
-		this.vacationStartDate = vacationStartDate;
-		this.vacationEndDate = vacationEndDate;
-		this.vacationType = vacationType;
-		this.vacationReason = vacationReason;
-		this.vacationResult = vacationResult;
-	}
+    // Constructors
 
-	// Property accessors
+    /** default constructor */
+    public Vacation() {
+    }
 
-	public Integer getVacationOid() {
-		return this.vacationOid;
-	}
+    
+    /** full constructor */
+    public Vacation(Worker worker, Date vacationStartDate, Date vacationEndDate, String vacationType, String vacationReason, Integer vacationResult) {
+        this.worker = worker;
+        this.vacationStartDate = vacationStartDate;
+        this.vacationEndDate = vacationEndDate;
+        this.vacationType = vacationType;
+        this.vacationReason = vacationReason;
+        this.vacationResult = vacationResult;
+    }
 
-	public void setVacationOid(Integer vacationOid) {
-		this.vacationOid = vacationOid;
-	}
+   
+    // Property accessors
 
-	public Worker getWorker() {
-		return this.worker;
-	}
+    public Integer getVacationOid() {
+        return this.vacationOid;
+    }
+    
+    public void setVacationOid(Integer vacationOid) {
+        this.vacationOid = vacationOid;
+    }
 
-	public void setWorker(Worker worker) {
-		this.worker = worker;
-	}
+    public Worker getWorker() {
+        return this.worker;
+    }
+    
+    public void setWorker(Worker worker) {
+        this.worker = worker;
+    }
 
-	public Date getVacationStartDate() {
-		return this.vacationStartDate;
-	}
+    public Date getVacationStartDate() {
+        return this.vacationStartDate;
+    }
+    
+    public void setVacationStartDate(Date vacationStartDate) {
+        this.vacationStartDate = vacationStartDate;
+    }
 
-	public void setVacationStartDate(Date vacationStartDate) {
-		this.vacationStartDate = vacationStartDate;
-	}
+    public Date getVacationEndDate() {
+        return this.vacationEndDate;
+    }
+    
+    public void setVacationEndDate(Date vacationEndDate) {
+        this.vacationEndDate = vacationEndDate;
+    }
 
-	public Date getVacationEndDate() {
-		return this.vacationEndDate;
-	}
+    public String getVacationType() {
+        return this.vacationType;
+    }
+    
+    public void setVacationType(String vacationType) {
+        this.vacationType = vacationType;
+    }
 
-	public void setVacationEndDate(Date vacationEndDate) {
-		this.vacationEndDate = vacationEndDate;
-	}
+    public String getVacationReason() {
+        return this.vacationReason;
+    }
+    
+    public void setVacationReason(String vacationReason) {
+        this.vacationReason = vacationReason;
+    }
 
-	public String getVacationType() {
-		return this.vacationType;
-	}
+    public Integer getVacationResult() {
+        return this.vacationResult;
+    }
+    
+    public void setVacationResult(Integer vacationResult) {
+        this.vacationResult = vacationResult;
+    }
+   
 
-	public void setVacationType(String vacationType) {
-		this.vacationType = vacationType;
-	}
 
-	public String getVacationReason() {
-		return this.vacationReason;
-	}
 
-	public void setVacationReason(String vacationReason) {
-		this.vacationReason = vacationReason;
-	}
 
-	public Integer getVacationResult() {
-		return this.vacationResult;
-	}
 
-	public void setVacationResult(Integer vacationResult) {
-		this.vacationResult = vacationResult;
-	}
+
+
 
 }

@@ -1,120 +1,150 @@
 package com.hrms.pojo;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 
 /**
  * Cultivation entity. @author MyEclipse Persistence Tools
  */
 
-public class Cultivation implements java.io.Serializable {
+public class Cultivation  implements java.io.Serializable {
 
-	// Fields
 
-	private Integer cultivationOid;
-	private Worker worker;
-	private Date cultivationBeginDate;
-	private Date cultivationEndDate;
-	private String cultivationType;
-	private String cultivationProject;
-	private String cultivationInstruction;
-	private Integer cultivationMark;
+    // Fields    
 
-	// Constructors
+     private Integer cultivationOid;
+     private Worker worker;
+     private String cultivationProject;
+     private String cultivationType;
+     private String cultivationInstruction;
+     private String cultivationLocation;
+     private Date cultivationBeginDate;
+     private Date cultivationEndDate;
+     private Set cultivationpersons = new HashSet(0);
+     private Set cultivationsigns = new HashSet(0);
 
-	/** default constructor */
-	public Cultivation() {
-	}
+
+    // Constructors
+
+    /** default constructor */
+    public Cultivation() {
+    }
 
 	/** minimal constructor */
-	public Cultivation(Worker worker, Date cultivationBeginDate,
-			Date cultivationEndDate, String cultivationType,
-			String cultivationProject, String cultivationInstruction) {
-		this.worker = worker;
-		this.cultivationBeginDate = cultivationBeginDate;
-		this.cultivationEndDate = cultivationEndDate;
-		this.cultivationType = cultivationType;
-		this.cultivationProject = cultivationProject;
-		this.cultivationInstruction = cultivationInstruction;
-	}
+    public Cultivation(Worker worker, String cultivationProject, String cultivationType, String cultivationInstruction, String cultivationLocation, Date cultivationBeginDate, Date cultivationEndDate) {
+        this.worker = worker;
+        this.cultivationProject = cultivationProject;
+        this.cultivationType = cultivationType;
+        this.cultivationInstruction = cultivationInstruction;
+        this.cultivationLocation = cultivationLocation;
+        this.cultivationBeginDate = cultivationBeginDate;
+        this.cultivationEndDate = cultivationEndDate;
+    }
+    
+    /** full constructor */
+    public Cultivation(Worker worker, String cultivationProject, String cultivationType, String cultivationInstruction, String cultivationLocation, Date cultivationBeginDate, Date cultivationEndDate, Set cultivationpersons, Set cultivationsigns) {
+        this.worker = worker;
+        this.cultivationProject = cultivationProject;
+        this.cultivationType = cultivationType;
+        this.cultivationInstruction = cultivationInstruction;
+        this.cultivationLocation = cultivationLocation;
+        this.cultivationBeginDate = cultivationBeginDate;
+        this.cultivationEndDate = cultivationEndDate;
+        this.cultivationpersons = cultivationpersons;
+        this.cultivationsigns = cultivationsigns;
+    }
 
-	/** full constructor */
-	public Cultivation(Worker worker, Date cultivationBeginDate,
-			Date cultivationEndDate, String cultivationType,
-			String cultivationProject, String cultivationInstruction,
-			Integer cultivationMark) {
-		this.worker = worker;
-		this.cultivationBeginDate = cultivationBeginDate;
-		this.cultivationEndDate = cultivationEndDate;
-		this.cultivationType = cultivationType;
-		this.cultivationProject = cultivationProject;
-		this.cultivationInstruction = cultivationInstruction;
-		this.cultivationMark = cultivationMark;
-	}
+   
+    // Property accessors
 
-	// Property accessors
+    public Integer getCultivationOid() {
+        return this.cultivationOid;
+    }
+    
+    public void setCultivationOid(Integer cultivationOid) {
+        this.cultivationOid = cultivationOid;
+    }
 
-	public Integer getCultivationOid() {
-		return this.cultivationOid;
-	}
+    public Worker getWorker() {
+        return this.worker;
+    }
+    
+    public void setWorker(Worker worker) {
+        this.worker = worker;
+    }
 
-	public void setCultivationOid(Integer cultivationOid) {
-		this.cultivationOid = cultivationOid;
-	}
+    public String getCultivationProject() {
+        return this.cultivationProject;
+    }
+    
+    public void setCultivationProject(String cultivationProject) {
+        this.cultivationProject = cultivationProject;
+    }
 
-	public Worker getWorker() {
-		return this.worker;
-	}
+    public String getCultivationType() {
+        return this.cultivationType;
+    }
+    
+    public void setCultivationType(String cultivationType) {
+        this.cultivationType = cultivationType;
+    }
 
-	public void setWorker(Worker worker) {
-		this.worker = worker;
-	}
+    public String getCultivationInstruction() {
+        return this.cultivationInstruction;
+    }
+    
+    public void setCultivationInstruction(String cultivationInstruction) {
+        this.cultivationInstruction = cultivationInstruction;
+    }
 
-	public Date getCultivationBeginDate() {
-		return this.cultivationBeginDate;
-	}
+    public String getCultivationLocation() {
+        return this.cultivationLocation;
+    }
+    
+    public void setCultivationLocation(String cultivationLocation) {
+        this.cultivationLocation = cultivationLocation;
+    }
 
-	public void setCultivationBeginDate(Date cultivationBeginDate) {
-		this.cultivationBeginDate = cultivationBeginDate;
-	}
+    public Date getCultivationBeginDate() {
+        return this.cultivationBeginDate;
+    }
+    
+    public void setCultivationBeginDate(Date cultivationBeginDate) {
+        this.cultivationBeginDate = cultivationBeginDate;
+    }
 
-	public Date getCultivationEndDate() {
-		return this.cultivationEndDate;
-	}
+    public Date getCultivationEndDate() {
+        return this.cultivationEndDate;
+    }
+    
+    public void setCultivationEndDate(Date cultivationEndDate) {
+        this.cultivationEndDate = cultivationEndDate;
+    }
 
-	public void setCultivationEndDate(Date cultivationEndDate) {
-		this.cultivationEndDate = cultivationEndDate;
-	}
+    public Set getCultivationpersons() {
+        return this.cultivationpersons;
+    }
+    
+    public void setCultivationpersons(Set cultivationpersons) {
+        this.cultivationpersons = cultivationpersons;
+    }
 
-	public String getCultivationType() {
-		return this.cultivationType;
-	}
+    public Set getCultivationsigns() {
+        return this.cultivationsigns;
+    }
+    
+    public void setCultivationsigns(Set cultivationsigns) {
+        this.cultivationsigns = cultivationsigns;
+    }
+   
 
-	public void setCultivationType(String cultivationType) {
-		this.cultivationType = cultivationType;
-	}
 
-	public String getCultivationProject() {
-		return this.cultivationProject;
-	}
 
-	public void setCultivationProject(String cultivationProject) {
-		this.cultivationProject = cultivationProject;
-	}
 
-	public String getCultivationInstruction() {
-		return this.cultivationInstruction;
-	}
 
-	public void setCultivationInstruction(String cultivationInstruction) {
-		this.cultivationInstruction = cultivationInstruction;
-	}
 
-	public Integer getCultivationMark() {
-		return this.cultivationMark;
-	}
 
-	public void setCultivationMark(Integer cultivationMark) {
-		this.cultivationMark = cultivationMark;
-	}
 
 }

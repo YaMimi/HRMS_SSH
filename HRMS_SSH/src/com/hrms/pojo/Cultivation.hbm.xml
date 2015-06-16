@@ -11,25 +11,37 @@
    <generator class="native"/>
   </id>
   <many-to-one class="com.hrms.pojo.Worker" fetch="select" name="worker">
-   <column name="CultivationWorkerOid" not-null="true"/>
+   <column name="CultivationChargerWorkerOid" not-null="true"/>
   </many-to-one>
+  <property generated="never" lazy="false" name="cultivationProject" type="java.lang.String">
+   <column length="45" name="CultivationProject" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="cultivationType" type="java.lang.String">
+   <column length="45" name="CultivationType" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="cultivationInstruction" type="java.lang.String">
+   <column length="145" name="CultivationInstruction" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="cultivationLocation" type="java.lang.String">
+   <column length="45" name="CultivationLocation" not-null="true"/>
+  </property>
   <property generated="never" lazy="false" name="cultivationBeginDate" type="java.util.Date">
    <column length="10" name="CultivationBeginDate" not-null="true"/>
   </property>
   <property generated="never" lazy="false" name="cultivationEndDate" type="java.util.Date">
    <column length="10" name="CultivationEndDate" not-null="true"/>
   </property>
-  <property generated="never" lazy="false" name="cultivationType" type="java.lang.String">
-   <column length="45" name="CultivationType" not-null="true"/>
-  </property>
-  <property generated="never" lazy="false" name="cultivationProject" type="java.lang.String">
-   <column length="45" name="CultivationProject" not-null="true"/>
-  </property>
-  <property generated="never" lazy="false" name="cultivationInstruction" type="java.lang.String">
-   <column length="45" name="CultivationInstruction" not-null="true"/>
-  </property>
-  <property generated="never" lazy="false" name="cultivationMark" type="java.lang.Integer">
-   <column name="CultivationMark"/>
-  </property>
+  <set inverse="true" name="cultivationpersons" sort="unsorted">
+   <key>
+    <column name="CultivationPersonCultivationOid" not-null="true"/>
+   </key>
+   <one-to-many class="com.hrms.pojo.Cultivationperson"/>
+  </set>
+  <set inverse="true" name="cultivationsigns" sort="unsorted">
+   <key>
+    <column name="CultivationSignCultivationOid" not-null="true"/>
+   </key>
+   <one-to-many class="com.hrms.pojo.Cultivationsign"/>
+  </set>
  </class>
 </hibernate-mapping>
