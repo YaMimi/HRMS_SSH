@@ -44,6 +44,7 @@ session.setAttribute("departmentlist1", departmentlist1);
   
   <body>
   
+  	
   	<%@ include file="navbarTop.jsp"%>
     <%@ include file="navbarSide.jsp"%>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
