@@ -3,103 +3,94 @@ package com.hrms.pojo;
 import java.sql.Time;
 import java.util.Date;
 
-
 /**
  * Attendance entity. @author MyEclipse Persistence Tools
  */
 
-public class Attendance  implements java.io.Serializable {
+public class Attendance implements java.io.Serializable {
 
+	// Fields
 
-    // Fields    
+	private Integer attendanceOid;
+	private Worker worker;
+	private Date attendanceDate;
+	private Time attendanceOnTime;
+	private Time attendanceOffTime;
+	private Integer attendanceState;
 
-     private Integer attendanceOid;
-     private Worker worker;
-     private Date attendanceDate;
-     private Time attendanceOnTime;
-     private Time attendanceOffTime;
-     private Integer attendanceState;
+	// Constructors
 
-
-    // Constructors
-
-    /** default constructor */
-    public Attendance() {
-    }
+	/** default constructor */
+	public Attendance() {
+	}
 
 	/** minimal constructor */
-    public Attendance(Worker worker, Date attendanceDate, Integer attendanceState) {
-        this.worker = worker;
-        this.attendanceDate = attendanceDate;
-        this.attendanceState = attendanceState;
-    }
-    
-    /** full constructor */
-    public Attendance(Worker worker, Date attendanceDate, Time attendanceOnTime, Time attendanceOffTime, Integer attendanceState) {
-        this.worker = worker;
-        this.attendanceDate = attendanceDate;
-        this.attendanceOnTime = attendanceOnTime;
-        this.attendanceOffTime = attendanceOffTime;
-        this.attendanceState = attendanceState;
-    }
+	public Attendance(Worker worker, Date attendanceDate,
+			Integer attendanceState) {
+		this.worker = worker;
+		this.attendanceDate = attendanceDate;
+		this.attendanceState = attendanceState;
+	}
 
-   
-    // Property accessors
+	/** full constructor */
+	public Attendance(Worker worker, Date attendanceDate,
+			Time attendanceOnTime, Time attendanceOffTime,
+			Integer attendanceState) {
+		this.worker = worker;
+		this.attendanceDate = attendanceDate;
+		this.attendanceOnTime = attendanceOnTime;
+		this.attendanceOffTime = attendanceOffTime;
+		this.attendanceState = attendanceState;
+	}
 
-    public Integer getAttendanceOid() {
-        return this.attendanceOid;
-    }
-    
-    public void setAttendanceOid(Integer attendanceOid) {
-        this.attendanceOid = attendanceOid;
-    }
+	// Property accessors
 
-    public Worker getWorker() {
-        return this.worker;
-    }
-    
-    public void setWorker(Worker worker) {
-        this.worker = worker;
-    }
+	public Integer getAttendanceOid() {
+		return this.attendanceOid;
+	}
 
-    public Date getAttendanceDate() {
-        return this.attendanceDate;
-    }
-    
-    public void setAttendanceDate(Date attendanceDate) {
-        this.attendanceDate = attendanceDate;
-    }
+	public void setAttendanceOid(Integer attendanceOid) {
+		this.attendanceOid = attendanceOid;
+	}
 
-    public Time getAttendanceOnTime() {
-        return this.attendanceOnTime;
-    }
-    
-    public void setAttendanceOnTime(Time attendanceOnTime) {
-        this.attendanceOnTime = attendanceOnTime;
-    }
+	public Worker getWorker() {
+		return this.worker;
+	}
 
-    public Time getAttendanceOffTime() {
-        return this.attendanceOffTime;
-    }
-    
-    public void setAttendanceOffTime(Time attendanceOffTime) {
-        this.attendanceOffTime = attendanceOffTime;
-    }
+	public void setWorker(Worker worker) {
+		this.worker = worker;
+	}
 
-    public Integer getAttendanceState() {
-        return this.attendanceState;
-    }
-    
-    public void setAttendanceState(Integer attendanceState) {
-        this.attendanceState = attendanceState;
-    }
-   
+	public Date getAttendanceDate() {
+		return this.attendanceDate;
+	}
 
+	public void setAttendanceDate(Date attendanceDate) {
+		this.attendanceDate = attendanceDate;
+	}
 
+	public Time getAttendanceOnTime() {
+		return this.attendanceOnTime;
+	}
 
+	public void setAttendanceOnTime(Time attendanceOnTime) {
+		this.attendanceOnTime = attendanceOnTime;
+	}
 
+	public Time getAttendanceOffTime() {
+		return this.attendanceOffTime;
+	}
 
+	public void setAttendanceOffTime(Time attendanceOffTime) {
+		this.attendanceOffTime = attendanceOffTime;
+	}
 
+	public Integer getAttendanceState() {
+		return this.attendanceState;
+	}
 
+	public void setAttendanceState(Integer attendanceState) {
+		this.attendanceState = attendanceState;
+	}
 
 }

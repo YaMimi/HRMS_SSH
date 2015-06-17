@@ -110,6 +110,9 @@ PageBean pagebean = (PageBean)session.getAttribute("pageBean");
   					  			if(session.getAttribute("status").toString().equals("1")){
   					  				out.print("<div class='alert alert-success' style='margin-bottom:0px;' role='alert'><i class='icon-ok-sign' aria-hidden='true'></i> 申请成功，请等待审核！</div>");
   					  				session.setAttribute("status",null);
+  					  			}else if(session.getAttribute("status").toString().equals("2")){
+  					  				out.print("<div class='alert alert-danger' style='margin-bottom:0px;' role='alert'><i class='icon-minus-sign' aria-hidden='true'></i> 申请失败，申请日期不合理！</div>");
+  					  				session.setAttribute("status",null);
   					  			}
   					  		}
   					  		 %>
