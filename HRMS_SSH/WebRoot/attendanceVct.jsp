@@ -1,4 +1,5 @@
 <%@page import="com.hrms.page.bean.PageBean"%>
+<%@ include file="loginCheck.jsp"%>
 <%
 /**
 *页面：请假申请和查询界面

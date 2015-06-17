@@ -55,6 +55,11 @@
 		<action name="Logout" class="LoginAction" method="logout">
 			<result name="success" type="redirect">/login.jsp</result>
 		</action>
+		
+		<!-- LoginJumpingAction -->
+		<action name="LoginJumping" class="LoginAction" method="loginJumping">
+			<result name="login" type="redirect">/login.jsp</result>
+		</action>
 	</package>
 	
 	<!-- Message Package -->

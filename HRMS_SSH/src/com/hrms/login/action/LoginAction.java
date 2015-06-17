@@ -63,6 +63,14 @@ public class LoginAction extends ActionSupport {
 		session.put("state", "LOGOUTSUCCESS");
 		return this.SUCCESS;
 	}
+	
+	public String loginJumping() {
+		
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		session.clear();
+		session.put("state", "LOGINPLEASE");
+		return this.LOGIN;
+	}
 
 	public WorkerAddInformationService getWorkerAddInformationService() {
 		return workerAddInformationService;

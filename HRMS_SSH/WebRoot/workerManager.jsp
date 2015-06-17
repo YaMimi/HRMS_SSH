@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="loginCheck.jsp"%>
 <%@ page language="java" import="com.opensymphony.xwork2.ActionContext"%>
 <%@ page language="java" import="com.hrms.pojo.*"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
