@@ -18,38 +18,28 @@ USE `hrms_ssh`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `salary`
+-- Table structure for table `holiday`
 --
 
-DROP TABLE IF EXISTS `salary`;
+DROP TABLE IF EXISTS `holiday`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `salary` (
-  `SalaryOid` int(11) NOT NULL AUTO_INCREMENT,
-  `SalaryDate` varchar(45) NOT NULL,
-  `SalaryHourly` float NOT NULL DEFAULT '0',
-  `SalaryStandardTime` float NOT NULL DEFAULT '166.4',
-  `SalaryActualTime` float NOT NULL DEFAULT '0',
-  `SalaryWeekTime` float NOT NULL DEFAULT '0',
-  `SalaryWeekendTime` float NOT NULL DEFAULT '0',
-  `SalaryHolidayTime` float NOT NULL DEFAULT '0',
-  `SalaryAttendanceReward` float NOT NULL DEFAULT '0',
-  `SalaryTotal` float NOT NULL DEFAULT '0',
-  `SalaryWorkerOid` int(11) NOT NULL,
-  PRIMARY KEY (`SalaryOid`),
-  UNIQUE KEY `SalaryOid_UNIQUE` (`SalaryOid`),
-  KEY `fk_Salary_Worker1_idx` (`SalaryWorkerOid`),
-  CONSTRAINT `fk_Salary_Worker1` FOREIGN KEY (`SalaryWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE `holiday` (
+  `HolidayOid` int(11) NOT NULL AUTO_INCREMENT,
+  `HolidayDate` date NOT NULL,
+  `HolidayContent` varchar(45) NOT NULL,
+  PRIMARY KEY (`HolidayOid`),
+  UNIQUE KEY `HolidayOid_UNIQUE` (`HolidayOid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `salary`
+-- Dumping data for table `holiday`
 --
 
-LOCK TABLES `salary` WRITE;
-/*!40000 ALTER TABLE `salary` DISABLE KEYS */;
-/*!40000 ALTER TABLE `salary` ENABLE KEYS */;
+LOCK TABLES `holiday` WRITE;
+/*!40000 ALTER TABLE `holiday` DISABLE KEYS */;
+/*!40000 ALTER TABLE `holiday` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -61,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-17  0:53:46
+-- Dump completed on 2015-06-17  0:53:48
