@@ -36,6 +36,14 @@ List<Holiday> holidays = (List<Holiday>)session.getAttribute("holidays");
   				   $( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd"});
   				   $( "#datepicker_end" ).datepicker({dateFormat: "yy-mm-dd"});
   				});
+  		$("form").submit(function(e){
+		  var frm = $("#frm");
+		  var action = "CheckSalary";
+		  frm.attr("action",action);  
+		});
+		$("tr").click(function(){
+		  $("form").submit();
+		});
   	</script>
     <title>发布假期</title>
   </head>
@@ -95,6 +103,9 @@ List<Holiday> holidays = (List<Holiday>)session.getAttribute("holidays");
 		            <%int i = 1; %>
 		            <%for(Holiday holiday : holidays){ %>
 		            <tr>
+			            <form id="frm">
+			            	<input type="hidden" value="<%=holiday.getHolidayOid() %>" />
+			            </form>
 		              <th><%=i %></th>
 		              <th><%=sdf.format(holiday.getHolidayDate()) %></th>
 		              <th><%=holiday.getHolidayContent() %></th>
