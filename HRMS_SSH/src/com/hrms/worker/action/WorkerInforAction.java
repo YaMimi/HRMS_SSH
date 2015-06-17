@@ -20,10 +20,24 @@ public class WorkerInforAction extends ActionSupport {
 	private Department department;
 	private String worker_no;
 	private String workerOid;
+	private String password1;
+	private String password2;
+	
 	@Resource
 	private WorkerAddInformationService workerAddInformationService;
 	
 	
+	
+	/*编者：徐新院
+	 * 时间：2015年6月16日
+	 * 功能：修改员工密码
+	 * */
+	public String updatePassword(){
+		System.out.println(password1);
+		System.out.println(password2);
+		return SUCCESS;
+		
+	}
 	
 	
 	/*编者：徐新院
@@ -270,6 +284,26 @@ for(int i=0;i<department1.size();i++){
 
 	public void setWorkerOid(String workerOid) {
 		this.workerOid = workerOid;
+	}
+
+
+	public String getPassword1() {
+		return password1;
+	}
+
+
+	public void setPassword1(String password1) {
+		this.password1 = password1;
+	}
+
+
+	public String getPassword2() {
+		return password2;
+	}
+
+
+	public void setPassword2(String password2) {
+		this.password2 = password2;
 	}
 
 	

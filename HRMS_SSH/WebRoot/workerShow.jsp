@@ -37,7 +37,15 @@ request.setAttribute("workerAge", workerAge);
   			$( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd"});
   		});
   	</script>
-  	
+  	<!-- 点击修改面貌连接后弹出修改框页面 -->
+  	<script type="text/javascript" language="javascript">
+function opena(){
+window.open('test.jsp','newIDFRAME','height=300,width=500,top=200,left=400,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no,resizable:no')
+}
+function Close(){
+window.close();
+}
+</script>
   	
   	
   	<script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
@@ -52,8 +60,8 @@ request.setAttribute("workerAge", workerAge);
             
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <h1 class="page-header">个人信息</h1>
-                
                 <i>以下您的全部个人信息：<abbr title="如果您发现自己的信息登记有误或者出现了改动，请到人事部进行修改。">信息有误？</abbr></i><br><br>
+                 <a href="#" onclick="opena()">修改密码</a>
                 <form class="form-horizontal">
                 <table class="table table-bordered table-hover">
 				<tr>
