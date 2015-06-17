@@ -70,12 +70,6 @@
    </key>
    <one-to-many class="com.hrms.pojo.Vacation"/>
   </set>
-  <set inverse="true" name="cultivationsigns" sort="unsorted">
-   <key>
-    <column name="CultivationSignWorkerOid" not-null="true"/>
-   </key>
-   <one-to-many class="com.hrms.pojo.Cultivationsign"/>
-  </set>
   <set inverse="true" name="rewardorpunishments" sort="unsorted">
    <key>
     <column name="ROPWorkerOid" not-null="true"/>
