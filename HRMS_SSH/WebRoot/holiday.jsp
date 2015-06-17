@@ -33,8 +33,8 @@ List<Holiday> holidays = (List<Holiday>)session.getAttribute("holidays");
     </style>
     <script>
   		$(function() {
-  				   $( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd"});
-  				   $( "#datepicker_end" ).datepicker({dateFormat: "yy-mm-dd"});
+  				   $( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd", minDate:"-0D"});
+  				   $( "#datepicker_end" ).datepicker({dateFormat: "yy-mm-dd", minDate:"-0D"});
   				});
   		$("form").submit(function(e){
 		  var frm = $("#frm");

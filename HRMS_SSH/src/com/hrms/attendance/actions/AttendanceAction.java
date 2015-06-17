@@ -13,11 +13,15 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import com.hrms.attendance.services.AttendanceService;
+import com.hrms.holiday.service.HolidayService;
 import com.hrms.login.service.LoginService;
 import com.hrms.page.bean.PageBean;
 import com.hrms.page.service.PageService;
 import com.hrms.pojo.Attendance;
+import com.hrms.pojo.Holiday;
+import com.hrms.pojo.Salary;
 import com.hrms.pojo.Worker;
+import com.hrms.salary.service.SalaryService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -29,6 +33,10 @@ public class AttendanceAction extends ActionSupport {
 	private AttendanceService attendanceservice;
 	@Resource
 	private LoginService loginService;
+	@Resource
+	private SalaryService salaryService;
+	@Resource
+	private HolidayService holidayService;
 	@Resource
 	private PageService pageserivce;
 	private int page;
@@ -103,6 +111,7 @@ public class AttendanceAction extends ActionSupport {
 		Worker worker = new Worker();
 		worker.setWorkerNo(attendWorkerNo);
 		Map session = ActionContext.getContext().getSession();
+		//判断是否存在这个员工
 		worker = loginService.searchWorker(worker);
 		if(worker==null) {
 			session.put("state", "WORKERNULL");
@@ -110,29 +119,65 @@ public class AttendanceAction extends ActionSupport {
 		}
 		Date date = new Date();
 		Time time = new Time(date.getTime());
-		
+		//创建新考勤对象
 		attendance = new Attendance();
+		//设置考勤日期
 		attendance.setAttendanceDate(date);
+		//设置考勤员工
 		attendance.setWorker(worker);
-		
+		//查询当前用户在数据库是否已经签到
 		attendance1 = attendanceservice.searchAttendance(attendance);
-		if(attendance1==null) {
-			attendance.setAttendanceState(1);
+		if(attendance1==null) {//没有与今天相同的考勤
+			//设置考勤状态
+			//获取当日假日信息
+			String hql = "from Holiday where HolidayDate like '"+ date +"' order by HolidayDate asc";
+			List<Holiday> holidays = holidayService.searchHolidays(hql);
+			//取出假日日期
+			Holiday holiday = holidays.get(0);
+			if(holiday==null){
+				if(holiday.getHolidayDate().compareTo(date)==0){
+					attendance.setAttendanceState(3);
+				}
+			}else if(date.getDay()==0||date.getDay()==6){
+				attendance.setAttendanceState(2);
+			}else{
+				attendance.setAttendanceState(1);
+			}
+			//设置考勤上班时间
 			attendance.setAttendanceOnTime(time);
-			if(attendanceservice.insertAttendance(attendance)!=null) {
+			//判断插入新的考勤是否成功
+			if(attendanceservice.insertAttendance(attendance)!=null) {//成功
 				session.put("state", "ATTENDSUCCESS");
 				return this.SUCCESS;
 			}
-			else {
+			else {//失败
 				session.put("state", "ATTENDFAILED");
 				return this.ERROR;
 			}
-		} else {
-			if(attendance1.getAttendanceState()!=0) {
-				if(attendance1.getAttendanceOffTime()==null) {
+		} else {//当天已有考勤
+			if(attendance1.getAttendanceState()!=0) {//当天考勤不为请假
+				if(attendance1.getAttendanceOffTime()==null) {//下班还未签到
+					//设置工时
+					//判断当年当月工资记录是否已经存在
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+					String hql = "from Salary s where s.worker.workerOid = "+ worker.getWorkerOid() +" and salaryDate like '"+ sdf.format(date) +"%' order by salaryOid desc";
+					List<Salary> salarys = salaryService.searchSalary(hql);
+					//得到工资记录
+					Salary salary = salarys.get(0);
+					//判断是否改变年月
+					if(sdf.format(date).compareTo(sdf.format(salary.getSalaryDate())) ==0 ){
+						
+					}
+					if(attendance1.getAttendanceState()==3){//假日加班工时
+						
+					}else if(attendance1.getAttendanceState()==2){//双休加班工时
+						
+					}else if(attendance1.getAttendanceState()==1){//工作日工时
+						
+					}
 					attendance = attendance1;
 					attendance.setAttendanceOffTime(time);
-					if(attendanceservice.updateAttendance(attendance)!=null) {
+					if(attendanceservice.updateAttendance(attendance)!=null) {//更新下班签到成功
 						session.put("state", "ATTENDSUCCESS");
 						return this.SUCCESS;
 					}
@@ -141,11 +186,12 @@ public class AttendanceAction extends ActionSupport {
 						return this.ERROR;
 					}
 				}
-			} else {
+			} else {//今天请假
 				session.put("state", "INVACATION");
 				return this.ERROR;
 			}
 		}
+		//当日已经签到次数已满
 		session.put("state", "ATTENDALREADY");
 		return this.ERROR;
 	}
@@ -193,6 +239,12 @@ public class AttendanceAction extends ActionSupport {
 	}
 	public void setPage(int page) {
 		this.page = page;
+	}
+	public SalaryService getSalaryService() {
+		return salaryService;
+	}
+	public void setSalaryService(SalaryService salaryService) {
+		this.salaryService = salaryService;
 	}
 	
 }

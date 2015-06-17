@@ -13,8 +13,8 @@
   <many-to-one class="com.hrms.pojo.Worker" fetch="select" name="worker">
    <column name="SalaryWorkerOid" not-null="true"/>
   </many-to-one>
-  <property generated="never" lazy="false" name="salaryDate" type="java.lang.String">
-   <column length="45" name="SalaryDate" not-null="true"/>
+  <property generated="never" lazy="false" name="salaryDate" type="java.util.Date">
+   <column length="10" name="SalaryDate" not-null="true"/>
   </property>
   <property generated="never" lazy="false" name="salaryHourly" type="java.lang.Float">
    <column name="SalaryHourly" not-null="true" precision="12" scale="0"/>

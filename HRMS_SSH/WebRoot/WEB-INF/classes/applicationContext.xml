@@ -106,5 +106,11 @@
 	<bean id="HolidayService" class="com.hrms.holiday.service.HolidayServiceImpl" scope="prototype"></bean>
 	<bean id="HolidayDao" class="com.hrms.holiday.dao.HolidayDaoImpl" scope="prototype"></bean>
 	<!-- 杨明杰    发布假期  结束-->
+	
+	<!-- 杨明杰  工资管理  开始 -->
+	<bean id="SalaryAction" class="com.hrms.salary.action.SalaryAction" scope="prototype"></bean>
+	<bean id="SalaryService" class="com.hrms.salary.service.SalaryServiceImpl" scope="prototype"></bean>
+	<bean id="SalaryDao" class="com.hrms.salary.dao.SalaryDaoImpl" scope="prototype"></bean>
+	<!-- 杨明杰   工资管理  结束-->
 
 </beans>

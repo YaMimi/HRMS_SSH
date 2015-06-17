@@ -1,5 +1,7 @@
 package com.hrms.pojo;
 
+import java.util.Date;
+
 /**
  * Salary entity. @author MyEclipse Persistence Tools
  */
@@ -10,7 +12,7 @@ public class Salary implements java.io.Serializable {
 
 	private Integer salaryOid;
 	private Worker worker;
-	private String salaryDate;
+	private Date salaryDate;
 	private Float salaryHourly;
 	private Float salaryStandardTime;
 	private Float salaryActualTime;
@@ -27,7 +29,7 @@ public class Salary implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Salary(Worker worker, String salaryDate, Float salaryHourly,
+	public Salary(Worker worker, Date salaryDate, Float salaryHourly,
 			Float salaryStandardTime, Float salaryActualTime,
 			Float salaryWeekTime, Float salaryWeekendTime,
 			Float salaryHolidayTime, Float salaryAttendanceReward,
@@ -62,11 +64,11 @@ public class Salary implements java.io.Serializable {
 		this.worker = worker;
 	}
 
-	public String getSalaryDate() {
+	public Date getSalaryDate() {
 		return this.salaryDate;
 	}
 
-	public void setSalaryDate(String salaryDate) {
+	public void setSalaryDate(Date salaryDate) {
 		this.salaryDate = salaryDate;
 	}
 
