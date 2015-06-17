@@ -104,5 +104,11 @@
 	<bean id="PageService" class="com.hrms.page.service.PageServiceImpl" scope="prototype"></bean>
 	<bean id="PageDao" class="com.hrms.page.dao.PageDaoImpl" scope="prototype"></bean>
 	<!-- 杨明杰    分页部门  结束-->
+	
+	<!-- 杨明杰   发布假期  开始 -->
+	<bean id="HolidayAction" class="com.hrms.holiday.action.HolidayAction" scope="prototype"></bean>
+	<bean id="HolidayService" class="com.hrms.holiday.service.HolidayServiceImpl" scope="prototype"></bean>
+	<bean id="HolidayDao" class="com.hrms.holiday.dao.HolidayDaoImpl" scope="prototype"></bean>
+	<!-- 杨明杰    发布假期  结束-->
 
 </beans>

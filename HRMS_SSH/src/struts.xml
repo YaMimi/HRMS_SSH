@@ -122,6 +122,13 @@
 
 	</package>
 	
+	<!-- 杨明杰  假期Action -->
+	<package name="holiday" extends="struts-default" namespace="/">
+		<action name="CreateHoliday" class="HolidayAction" method="createHoliday">
+			<result name="success" type="redirect">/holiday.jsp</result>
+		</action>
+	</package>
+	<!-- 杨明杰  假期Action -->
 	
 	<!-- 徐新院                  功能：员工信息添加 -->
 	<package name="worker" extends="struts-default" namespace="/">

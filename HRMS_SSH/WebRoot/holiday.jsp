@@ -21,7 +21,6 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     <link rel="stylesheet" type="text/css" href="./css/jquery-ui.css">
     <script src="./js/jquery-2.1.3.min.js"></script>
     <script src="./js/jquery-ui.js"></script>
-    <script src="./js/clndr.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     
 	<style>
@@ -47,34 +46,37 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
          <div class="panel panel-default">
 			<div class="panel-heading">新建假期</div>
 			<div class="panel-body">
-			<div style="padding-right: 15px; padding-left: 15px;">
-			  	<div class="form-horizontal">
-				  	<form action="" method="post">
-				  		<div class="form-group form-inline">
-				  			<input id="datepicker_start" class="form-control" type="text" name="" style="width:40%" placeholder="假日起始时间" required>
-		  					<!--<input type="date" class="form-control"  name="" style="width:40%">-->
-		  					<label for="apply_start" class="control-label" style="width:10%">至</label>
-		  					<input id="datepicker_end" class="form-control pull-right" type="text" name="" style="width:40%" placeholder="假日结束时间" required>
-		  					<!-- <input type="date" class="form-control pull-right" style="width:40%">-->
-				  		</div>
-				  		<div class="form-group ">
-				  			<textarea class="form-control" rows="3" name="" placeholder="假日内容" required  autofocus></textarea>
-				  		</div>
-				  		<div class="form-group form-inline ">
-				  			<button class="btn btn-primary" type="submit" style="width:65%;">提交创建</button>
-				  			<button class="btn btn-danger pull-right" type="reset" style="width:30%;">重置</button>
-				  		</div>
-				  	</form>
+				<div style="padding-right: 15px; padding-left: 15px;">
+				  	<div class="form-horizontal">
+					  	<form action="CreateHoliday" method="post">
+					  		<div class="form-group form-inline">
+					  			<input id="datepicker_start" class="form-control" type="text" name="holidaystart" style="width:40%" placeholder="假日起始时间" required>
+			  					<!--<input type="date" class="form-control"  name="" style="width:40%">-->
+			  					<label for="apply_start" class="control-label" style="width:10%">至</label>
+			  					<input id="datepicker_end" class="form-control pull-right" type="text" name="holidayend" style="width:40%" placeholder="假日结束时间" required>
+			  					<!-- <input type="date" class="form-control pull-right" style="width:40%">-->
+					  		</div>
+					  		<div class="form-group ">
+					  			<textarea class="form-control" rows="3" name="holidayContent" placeholder="假日内容" required  autofocus></textarea>
+					  		</div>
+					  		<div class="form-group form-inline ">
+					  			<button class="btn btn-primary" type="submit" style="width:65%;">提交创建</button>
+					  			<button class="btn btn-danger pull-right" type="reset" style="width:30%;">重置</button>
+					  		</div>
+					  	</form>
+				  	</div>
 			  	</div>
-			  	</div>
-			  	<%-- <%
-			  		if(session.getAttribute("status")!=null){
-			  			if(session.getAttribute("status").toString().equals("1")){
-			  				out.print("<div class='alert alert-success' style='margin-bottom:0px;' role='alert'><i class='icon-ok-sign' aria-hidden='true'></i> 申请成功，请等待审核！</div>");
-			  				session.setAttribute("status",null);
+			  	<%
+			  		if(session.getAttribute("holidaycreatestate")!=null){
+			  			if(Integer.parseInt(session.getAttribute("holidaycreatestate").toString())==1){
+			  				out.print("<div class='alert alert-success' style='margin-bottom:0px;' role='alert'><i class='icon-ok-sign' aria-hidden='true'></i> 创建假期成功！</div>");
+			  				session.setAttribute("holidaycreatestate",null);
+			  			}else if(Integer.parseInt(session.getAttribute("holidaycreatestate").toString())==2){
+			  				out.print("<div class='alert alert-danger' style='margin-bottom:0px;' role='alert'><i class='icon-minus-sign' aria-hidden='true'></i> 创建假期失败，日期不合理！</div>");
+			  				session.setAttribute("holidaycreatestate",null);
 			  			}
 			  		}
-			  		 %> --%>
+			  		 %> 
 			</div>
 		</div>
     </div>
