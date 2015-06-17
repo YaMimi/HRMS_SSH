@@ -32,7 +32,6 @@ public class Worker implements java.io.Serializable {
 	private String password;
 	private Integer workerUnreadMessage;
 	private Set vacations = new HashSet(0);
-	private Set cultivationsigns = new HashSet(0);
 	private Set rewardorpunishments = new HashSet(0);
 	private Set salaries = new HashSet(0);
 	private Set cultivationpersons = new HashSet(0);
@@ -81,9 +80,8 @@ public class Worker implements java.io.Serializable {
 			String workerPolitical, String workerNationality,
 			String workerEthnic, String workerEducation, String workerPhone,
 			String password, Integer workerUnreadMessage, Set vacations,
-			Set cultivationsigns, Set rewardorpunishments, Set salaries,
-			Set cultivationpersons, Set messages, Set cultivations,
-			Set attendances) {
+			Set rewardorpunishments, Set salaries, Set cultivationpersons,
+			Set messages, Set cultivations, Set attendances) {
 		this.department = department;
 		this.workerNo = workerNo;
 		this.workerName = workerName;
@@ -103,7 +101,6 @@ public class Worker implements java.io.Serializable {
 		this.password = password;
 		this.workerUnreadMessage = workerUnreadMessage;
 		this.vacations = vacations;
-		this.cultivationsigns = cultivationsigns;
 		this.rewardorpunishments = rewardorpunishments;
 		this.salaries = salaries;
 		this.cultivationpersons = cultivationpersons;
@@ -272,14 +269,6 @@ public class Worker implements java.io.Serializable {
 
 	public void setVacations(Set vacations) {
 		this.vacations = vacations;
-	}
-
-	public Set getCultivationsigns() {
-		return this.cultivationsigns;
-	}
-
-	public void setCultivationsigns(Set cultivationsigns) {
-		this.cultivationsigns = cultivationsigns;
 	}
 
 	public Set getRewardorpunishments() {
