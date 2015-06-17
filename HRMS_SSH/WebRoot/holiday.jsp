@@ -2,12 +2,14 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="com.opensymphony.xwork2.ActionContext"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<s:action name="SearchHoliday" executeResult="false" namespace="/"></s:action>
 <%
 Worker activeWorker = (Worker)session.getAttribute("activeWorker");
-
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+List<Holiday> holidays = (List<Holiday>)session.getAttribute("holidays");
 %>
 
 <!DOCTYPE html>
@@ -77,6 +79,28 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			  			}
 			  		}
 			  		 %> 
+			</div>
+		</div>
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">今年假日信息</div>
+			<div class="panel-body ">
+			  	<table class="table table-bordered table-hover">
+		            <tr>
+		              <th><strong>#</strong></th>
+		              <th><strong>假日日期</strong></th>
+		              <th><strong>假日信息</strong></th>
+		            </tr>
+		            <%int i = 1; %>
+		            <%for(Holiday holiday : holidays){ %>
+		            <tr>
+		              <th><%=i %></th>
+		              <th><%=sdf.format(holiday.getHolidayDate()) %></th>
+		              <th><%=holiday.getHolidayContent() %></th>
+		            </tr>
+		            <%i++; %>
+		            <%} %>
+		        </table>
 			</div>
 		</div>
     </div>

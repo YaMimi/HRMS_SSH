@@ -1,6 +1,8 @@
 package com.hrms.holiday.action;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -17,6 +19,11 @@ public class HolidayAction extends ActionSupport {
 	@Resource
 	private HolidayService holidayService;
 	
+	/*
+	 * 功能：创建新的假日信息
+	 * 作者：杨明杰
+	 * 日期：2015-06-17
+	 */
 	public String createHoliday(){
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		if(holidayend.compareTo(holidaystart)>=0){
@@ -27,6 +34,23 @@ public class HolidayAction extends ActionSupport {
 			session.put("holidaycreatestate", 2);
 			return SUCCESS;
 		}
+	}
+	
+	/*
+	 * 功能：获取今年的假日信息
+	 * 作者：杨明杰
+	 * 日期：2015-06-17
+	 */
+	public String searchHoliday(){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+		Date date = new Date();
+		String dateYear = sdf.format(date);
+		String hql = "from Holiday where HolidayDate like '"+dateYear+"%' order by HolidayDate asc";
+		List<Holiday> holidays = holidayService.searchHolidays(hql);
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		session.put("holidays", holidays);
+		return SUCCESS;
+		
 	}
 	
 	public Date getHolidaystart() {
