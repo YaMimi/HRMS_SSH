@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="loginCheck.jsp"%>
 <%@ page import="com.hrms.pojo.*" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <s:action name="VacationNum" namespace="/"></s:action>

@@ -1,4 +1,5 @@
 <%@page import="com.hrms.pojo.*"%>
+<%@ include file="loginCheck.jsp"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="com.opensymphony.xwork2.ActionContext"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
