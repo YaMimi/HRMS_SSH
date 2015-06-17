@@ -1,4 +1,5 @@
 <%@page import="com.hrms.page.bean.PageBean"%>
+<%@ include file="loginCheck.jsp"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page import="com.hrms.pojo.*" %>
