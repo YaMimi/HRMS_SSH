@@ -74,7 +74,7 @@ public class VacationAction extends ActionSupport {
 		Map session = ActionContext.getContext().getSession();
 		Worker worker = (Worker)session.get("activeWorker");
 		//查询请假表并且将数据保存到List
-		String hql = "from Vacation v where v.worker.workerOid = " + worker.getWorkerOid();
+		String hql = "from Vacation v where v.worker.workerOid = " + worker.getWorkerOid() + " order by vacationOid desc";
 		
 		PageBean pageBean = pageserivce.getPageBean(hql, 4, page);
 		//hql = "from Vacation where vacationResult = 0";
