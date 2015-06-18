@@ -9,10 +9,10 @@
                 <li><%if(path.equals("/workerShow.jsp")||path.equals("/attendanceCheck.jsp")||path.equals("/attendanceVct.jsp")) {%><a href="#workerSystem" class="nav-header"  data-toggle="collapse" aria-expanded="true"><%} else {%><a href="#workerSystem" class="nav-header collapsed" data-toggle="collapse"><%} %>　个人信息<i class="pull-right icon-sidebar-collapse"></i></a>
                     <%if(path.equals("/workerShow.jsp")||path.equals("/attendanceCheck.jsp")||path.equals("/attendanceVct.jsp")) {%><ul id="workerSystem" class="nav nav-sidebar nav-sec collapse in" aria-expanded="true"><%} else {%><ul id="workerSystem" class="nav nav-sidebar nav-sec collapse"><%} %>
                         <li<%if(path.equals("/workerShow.jsp")) {%> class="active"<%} %>>
-                            <a href="workerShow.jsp">我的信息</a>
+                            <a href="./workerShow.jsp">我的信息</a>
                         </li>
-                        <li<%if(path.equals("")) {%> class="active"<%} %>>
-                            <a href="#">我的工资</a>
+                        <li<%if(path.equals("/salaryCheck.jsp")) {%> class="active"<%} %>>
+                            <a href="./salaryCheck.jsp">我的工资</a>
                         </li>
                         <li<%if(path.equals("")) {%> class="active"<%} %>>
                             <a href="#">我的培训</a>
@@ -48,7 +48,7 @@
                 
 				<li<%if(path.equals("")) {%> class="active"<%} %>><a href="#">　部门维护 </a></li>
                  
-                <li<%if(path.equals("")) {%> class="active"<%} %>><a href="#">　工资维护 </a></li>
+                <li<%if(path.equals("/salaryManager.jsp")) {%> class="active"<%} %>><a href="./salaryManager.jsp">　工资维护 </a></li>
                  
                 <li<%if(path.equals("")) {%> class="active"<%} %>><a href="#">　培训维护 </a></li>
                  

@@ -12,7 +12,11 @@ public class SalaryAction extends ActionSupport {
 	private SalaryService salaryService;
 	
 	
-	
+	public String checkSalary(){
+		
+		return SUCCESS;
+		
+	}
 	
 	
 	public Salary getSalary() {
