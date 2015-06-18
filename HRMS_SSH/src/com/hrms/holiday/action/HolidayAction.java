@@ -53,6 +53,10 @@ public class HolidayAction extends ActionSupport {
 		
 	}
 	
+	public String checkSalary(){
+		return SUCCESS;
+	}
+	
 	public Date getHolidaystart() {
 		return holidaystart;
 	}

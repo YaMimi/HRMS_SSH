@@ -21,6 +21,12 @@
 		</property>
 		<property name="username" value="root"></property>
 		<property name="password" value="123456"></property>
+		 <property name="testOnBorrow" value="true"></property>
+		  <property name="testOnReturn" value="true"></property>
+		  <property name="testWhileIdle" value="true"></property>
+		   <property name="validationQuery" value="SELECT 1"></property>
+		   <property name="timeBetweenEvictionRunsMillis" value="30000"></property>
+		   <property name="minEvictableIdleTimeMillis" value="600000"></property>
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
@@ -106,5 +112,11 @@
 	<bean id="HolidayService" class="com.hrms.holiday.service.HolidayServiceImpl" scope="prototype"></bean>
 	<bean id="HolidayDao" class="com.hrms.holiday.dao.HolidayDaoImpl" scope="prototype"></bean>
 	<!-- 杨明杰    发布假期  结束-->
+	
+	<!-- 杨明杰  工资管理  开始 -->
+	<bean id="SalaryAction" class="com.hrms.salary.action.SalaryAction" scope="prototype"></bean>
+	<bean id="SalaryService" class="com.hrms.salary.service.SalaryServiceImpl" scope="prototype"></bean>
+	<bean id="SalaryDao" class="com.hrms.salary.dao.SalaryDaoImpl" scope="prototype"></bean>
+	<!-- 杨明杰   工资管理  结束-->
 
 </beans>

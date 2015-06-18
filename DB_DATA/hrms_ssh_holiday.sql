@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `hrms_ssh` /*!40100 DEFAULT CHARACTER SET utf8 */
 USE `hrms_ssh`;
 -- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: hrms_ssh
+-- Host: 127.0.0.1    Database: hrms_ssh
 -- ------------------------------------------------------
 -- Server version	5.6.21-log
 
@@ -30,7 +30,7 @@ CREATE TABLE `holiday` (
   `HolidayContent` varchar(45) NOT NULL,
   PRIMARY KEY (`HolidayOid`),
   UNIQUE KEY `HolidayOid_UNIQUE` (`HolidayOid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `holiday` (
 
 LOCK TABLES `holiday` WRITE;
 /*!40000 ALTER TABLE `holiday` DISABLE KEYS */;
+INSERT INTO `holiday` VALUES (1,'2015-06-19','端午节放假'),(2,'2015-06-20','端午节放假'),(3,'2015-06-21','端午节放假');
 /*!40000 ALTER TABLE `holiday` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-17 15:18:24
+-- Dump completed on 2015-06-18 14:01:03
