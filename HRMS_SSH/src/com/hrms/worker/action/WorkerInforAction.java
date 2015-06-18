@@ -33,8 +33,21 @@ public class WorkerInforAction extends ActionSupport {
 	 * 功能：修改员工密码
 	 * */
 	public String updatePassword(){
-		System.out.println(password1);
-		System.out.println(password2);
+		int result=0;
+		int workeroid=Integer.parseInt(workerOid);
+		String sql = "from Worker where WorkerOid='" +1+ "'";
+		ArrayList<Worker> listworker=workerAddInformationService.SelectCurrentWorkers(sql);
+		if(worker.getPassword().equals(listworker.get(0).getPassword())){
+			result=workerAddInformationService.updateWorkerPassword(worker,password1,workeroid);
+		}else{
+			ActionContext.getContext().getSession().put("oldPassword","不相等");
+		}
+	 if(result!=0){
+		 ActionContext.getContext().getSession().put("successPassword","修改成功");
+	 }
+			 
+	
+		
 		return SUCCESS;
 		
 	}
@@ -146,7 +159,6 @@ for(int i=0;i<department1.size();i++){
 			}else{
 				workerPermission="总经理";
 			}
-			
 		session.put("listworker", listworker);
 		ActionContext.getContext().setSession(session);
 		 ActionContext.getContext().getSession().put("department",department1);

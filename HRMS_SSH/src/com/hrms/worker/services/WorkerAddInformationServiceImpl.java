@@ -66,6 +66,11 @@ public class WorkerAddInformationServiceImpl implements WorkerAddInformationServ
 	public ArrayList<Worker> EveryPage(int pageNo, int pageSize) {
 		// TODO Auto-generated method stub
 		return workerAddInformationDao.EveryPage(pageNo, pageSize);
+	}
+
+	@Override
+	public int updateWorkerPassword(Worker worker,String newPassword,int workerOid) {
+		return workerAddInformationDao.updateWorkerPassword(worker, newPassword,workerOid);
 	} 
 	
 	

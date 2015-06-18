@@ -61,7 +61,6 @@ window.close();
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <h1 class="page-header">个人信息</h1>
                 <i>以下您的全部个人信息：<abbr title="如果您发现自己的信息登记有误或者出现了改动，请到人事部进行修改。">信息有误？</abbr></i><br><br>
-                 <a href="#" onclick="opena()">修改密码</a>
                 <form class="form-horizontal">
                 <table class="table table-bordered table-hover">
 				<tr>

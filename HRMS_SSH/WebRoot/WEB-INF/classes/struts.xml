@@ -175,7 +175,7 @@
 		
 		<!-- 修改密码 -->
 		<action name="UpdatePassword" class="WorkerAddInformationAction" method="updatePassword">
-			<result name="success" type="redirect">/workerShow.jsp</result>
+			<result name="success" type="redirect">/workerChangePassword.jsp</result>
 		</action>
 	</package>
 </struts>    
