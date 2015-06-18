@@ -152,11 +152,12 @@ public class AttendanceAction extends ActionSupport {
 			attendance.setAttendanceOnTime(time);
 			//判断插入新的考勤是否成功
 			if(attendanceservice.insertAttendance(attendance)!=null) {//成功
-				
+				attendance=null;
 				session.put("state", "ATTENDSUCCESS");
 				return this.SUCCESS;
 			}
 			else {//失败
+				attendance=null;
 				session.put("state", "ATTENDFAILED");
 				return this.ERROR;
 			}
@@ -188,10 +189,12 @@ public class AttendanceAction extends ActionSupport {
 					attendance = attendance1;
 					attendance.setAttendanceOffTime(time);
 					if(attendanceservice.updateAttendance(attendance)!=null) {//更新下班签到成功
+						attendance=null;
 						session.put("state", "ATTENDSUCCESS");
 						return this.SUCCESS;
 					}
 					else {
+						attendance=null;
 						session.put("state", "ATTENDFAILED");
 						return this.ERROR;
 					}
