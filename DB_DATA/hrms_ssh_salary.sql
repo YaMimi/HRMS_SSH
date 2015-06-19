@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `salary`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `salary` (
   `SalaryOid` int(11) NOT NULL AUTO_INCREMENT,
-  `SalaryDate` varchar(45) NOT NULL,
+  `SalaryDate` date NOT NULL,
   `SalaryHourly` float NOT NULL DEFAULT '0',
   `SalaryStandardTime` float NOT NULL DEFAULT '166.4',
   `SalaryActualTime` float NOT NULL DEFAULT '0',
@@ -34,13 +34,14 @@ CREATE TABLE `salary` (
   `SalaryWeekendTime` float NOT NULL DEFAULT '0',
   `SalaryHolidayTime` float NOT NULL DEFAULT '0',
   `SalaryAttendanceReward` float NOT NULL DEFAULT '0',
+  `SalaryROP` float NOT NULL DEFAULT '0',
   `SalaryTotal` float NOT NULL DEFAULT '0',
   `SalaryWorkerOid` int(11) NOT NULL,
   PRIMARY KEY (`SalaryOid`),
   UNIQUE KEY `SalaryOid_UNIQUE` (`SalaryOid`),
   KEY `fk_Salary_Worker1_idx` (`SalaryWorkerOid`),
   CONSTRAINT `fk_Salary_Worker1` FOREIGN KEY (`SalaryWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,6 +50,7 @@ CREATE TABLE `salary` (
 
 LOCK TABLES `salary` WRITE;
 /*!40000 ALTER TABLE `salary` DISABLE KEYS */;
+INSERT INTO `salary` VALUES (2,'2015-06-17',30,166.4,8.13333,4.01667,0.0333333,0.05,0,0,0,1),(11,'2015-06-26',15,166.4,4,0,0,0,0,0,0,2);
 /*!40000 ALTER TABLE `salary` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -61,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-17  0:53:46
+-- Dump completed on 2015-06-18 14:01:01

@@ -55,6 +55,11 @@
 		<action name="Logout" class="LoginAction" method="logout">
 			<result name="success" type="redirect">/login.jsp</result>
 		</action>
+		
+		<!-- LoginJumpingAction -->
+		<action name="LoginJumping" class="LoginAction" method="loginJumping">
+			<result name="login" type="redirect">/login.jsp</result>
+		</action>
 	</package>
 	
 	<!-- Message Package -->
@@ -122,6 +127,18 @@
 
 	</package>
 	
+	<!-- 杨明杰  假期Action -->
+	<package name="holiday" extends="struts-default" namespace="/">
+		<!-- 创建假日 -->
+		<action name="CreateHoliday" class="HolidayAction" method="createHoliday">
+			<result name="success" type="redirect">/holiday.jsp</result>
+		</action>
+		<!-- 获取今年的假日 -->
+		<action name="SearchHoliday" class="HolidayAction" method="searchHoliday">
+			<result name="success" type="redirect">/holiday.jsp</result>
+		</action>
+	</package>
+	<!-- 杨明杰  假期Action -->
 	
 	<!-- 徐新院                  功能：员工信息添加 -->
 	<package name="worker" extends="struts-default" namespace="/">
@@ -178,4 +195,13 @@
 			<result name="success" type="redirect">/workerChangePassword.jsp</result>
 		</action>
 	</package>
+	
+	<!-- 杨明杰  工资Action -->
+	<package name="saraly" extends="struts-default" namespace="/">
+		<!-- 个人工资查询 -->
+		<action name="CheckSalary" class="SalaryAction" method="checkSalary">
+			<result name="success" type="redirect">/salaryCheck.jsp</result>
+		</action>
+	</package>
+	<!-- 杨明杰  工资Action -->
 </struts>    

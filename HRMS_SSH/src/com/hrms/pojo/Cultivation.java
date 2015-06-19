@@ -21,7 +21,6 @@ public class Cultivation implements java.io.Serializable {
 	private Date cultivationBeginDate;
 	private Date cultivationEndDate;
 	private Set cultivationpersons = new HashSet(0);
-	private Set cultivationsigns = new HashSet(0);
 
 	// Constructors
 
@@ -47,8 +46,7 @@ public class Cultivation implements java.io.Serializable {
 	public Cultivation(Worker worker, String cultivationProject,
 			String cultivationType, String cultivationInstruction,
 			String cultivationLocation, Date cultivationBeginDate,
-			Date cultivationEndDate, Set cultivationpersons,
-			Set cultivationsigns) {
+			Date cultivationEndDate, Set cultivationpersons) {
 		this.worker = worker;
 		this.cultivationProject = cultivationProject;
 		this.cultivationType = cultivationType;
@@ -57,7 +55,6 @@ public class Cultivation implements java.io.Serializable {
 		this.cultivationBeginDate = cultivationBeginDate;
 		this.cultivationEndDate = cultivationEndDate;
 		this.cultivationpersons = cultivationpersons;
-		this.cultivationsigns = cultivationsigns;
 	}
 
 	// Property accessors
@@ -132,14 +129,6 @@ public class Cultivation implements java.io.Serializable {
 
 	public void setCultivationpersons(Set cultivationpersons) {
 		this.cultivationpersons = cultivationpersons;
-	}
-
-	public Set getCultivationsigns() {
-		return this.cultivationsigns;
-	}
-
-	public void setCultivationsigns(Set cultivationsigns) {
-		this.cultivationsigns = cultivationsigns;
 	}
 
 }
