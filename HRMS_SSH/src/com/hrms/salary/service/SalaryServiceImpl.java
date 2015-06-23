@@ -67,6 +67,7 @@ public class SalaryServiceImpl implements SalaryService {
 		salary.setSalaryAttendanceReward((float) 0);
 		salary.setSalaryRop((float) 0);
 		salary.setSalaryTotal((float) 0);
+		salary.setSalaryResult(0);
 		salary.setWorker(worker);
 		salarydao.insertSalary(salary);
 	}

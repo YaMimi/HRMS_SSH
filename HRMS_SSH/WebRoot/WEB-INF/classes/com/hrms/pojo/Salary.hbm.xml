@@ -43,5 +43,8 @@
   <property generated="never" lazy="false" name="salaryTotal" type="java.lang.Float">
    <column name="SalaryTotal" not-null="true" precision="12" scale="0"/>
   </property>
+  <property generated="never" lazy="false" name="salaryResult" type="java.lang.Integer">
+   <column name="SalaryResult" not-null="true"/>
+  </property>
  </class>
 </hibernate-mapping>

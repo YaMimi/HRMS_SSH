@@ -12,7 +12,7 @@
                             <a href="./workerShow.jsp">我的信息</a>
                         </li>
                         <li<%if(path.equals("/salaryCheck.jsp")) {%> class="active"<%} %>>
-                            <a href="./salaryCheck.jsp">我的工资</a>
+                            <a href="SearchSalaryDate">我的工资</a>
                         </li>
                         <li<%if(path.equals("")) {%> class="active"<%} %>>
                             <a href="#">我的培训</a>
@@ -48,7 +48,7 @@
                 
 				<li<%if(path.equals("")) {%> class="active"<%} %>><a href="#">　部门维护 </a></li>
                  
-                <li<%if(path.equals("/salaryManager.jsp")) {%> class="active"<%} %>><a href="./salaryManager.jsp">　工资维护 </a></li>
+                <li<%if(path.equals("/salaryManager.jsp")) {%> class="active"<%} %>><a href="IntiAllSalary">　工资维护 </a></li>
                  
                 <li<%if(path.equals("")) {%> class="active"<%} %>><a href="#">　培训维护 </a></li>
                  

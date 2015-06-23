@@ -91,9 +91,9 @@
 	<!-- Cultivation Part End -->
 	
 	<!-- 杨铭  Department Part Begin -->
-	<bean id="DepartmentAction" class="com.hrms.department.action.DepartmentAction"></bean>
-	<bean id="DepartmentService" class="com.hrms.department.services.DepartmentServiceImpl"></bean>
-	<bean id="DepartmentDao" class="com.hrms.department.dao.DepartmentDaoImpl"></bean>
+	<bean id="DepartmentAction" class="com.hrms.department.action.DepartmentAction"  scope="prototype"></bean>
+	<bean id="DepartmentService" class="com.hrms.department.services.DepartmentServiceImpl"  scope="prototype"></bean>
+	<bean id="DepartmentDao" class="com.hrms.department.dao.DepartmentDaoImpl"  scope="prototype"></bean>
 	<!-- Department Part End -->
 	
 	<!-- Worker Information add Begin -->

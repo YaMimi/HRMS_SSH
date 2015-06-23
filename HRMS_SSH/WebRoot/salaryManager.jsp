@@ -6,6 +6,13 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 Worker activeWorker = (Worker)session.getAttribute("activeWorker");
+List<Department> departmentlistdown = (List<Department>)session.getAttribute("departmentlistdown");
+List<Date> allsalarysdate = (List<Date>)session.getAttribute("allsalarysdate");
+List<Salary> allsalarys = (List<Salary>)session.getAttribute("allsalarys");
+String nowsalarydepartment = (String)session.getAttribute("nowsalarydepartment");
+Date nowsalarydate = (Date)session.getAttribute("nowsalarydate");
+SimpleDateFormat year = new SimpleDateFormat("yyyy");
+SimpleDateFormat month = new SimpleDateFormat("MM");
 %>
 
 
@@ -35,42 +42,38 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
     <%@ include file="navbarSide.jsp"%>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
        <h1 class="page-header">工资结算
-       <form class="form-inline pull-right">
+       <form action="CheckDepartmentSalary" method="post" class="form-inline pull-right">
        <div class="input-group">
        <div class="input-group-addon" style="width: 20px;">部门</div>
-           <select class="form-control">
-           	  <option>全部</option>
-              <option>人事部</option>
-              <option>行政部</option>
-              <option>生产部</option>
-              <option>财务部</option>
-              <option>销售部</option>
+           <select name="department" class="form-control">
+           	  <option value="%" <%if(nowsalarydepartment.equals("全部") ){ %>selected<%} %>>全部</option>
+              <%for(Department department : departmentlistdown){ %>
+              	<option value="<%=department.getDepartmentName() %>" <%if(nowsalarydepartment.equals(department.getDepartmentName()) ){ %>selected<%} %>><%=department.getDepartmentName() %></option>
+              <%} %>
            </select>
            </div>
               <div class="input-group">
-                 <select name="" class="form-control">
-                    <option value="">2011</option>
-                    <option value="">2012</option>
-                    <option value="">2013</option>
-                    <option value="">2014</option>
-                    <option value="">2015</option>
+                 <select name="year" class="form-control">
+                 <%for(Date salarydate : allsalarysdate){ %>
+                 	<option value="<%=year.format(salarydate) %>" <%if(year.format(nowsalarydate).equals(year.format(salarydate))){ %>selected<%} %>><%=year.format(salarydate) %></option>
+                 <%} %>
                  </select>
                  <div class="input-group-addon" style="width: 15px;">年</div>
               </div>
              <div class="input-group">
-               <select name="" class="form-control">
-                  <option value="">01</option>
-                  <option value="">02</option>
-                  <option value="">03</option>
-                  <option value="">04</option>
-                  <option value="">05</option>
-                  <option value="">06</option>
-                  <option value="">07</option>
-                  <option value="">08</option>
-                  <option value="">09</option>
-                  <option value="">10</option>
-                  <option value="">11</option>
-                  <option value="">12</option>
+               <select name="month" class="form-control">
+                  <option value="01" <%if(month.format(nowsalarydate).equals("01")){ %>selected<%} %>>01</option>
+                  <option value="02" <%if(month.format(nowsalarydate).equals("02")){ %>selected<%} %>>02</option>
+                  <option value="03" <%if(month.format(nowsalarydate).equals("03")){ %>selected<%} %>>03</option>
+                  <option value="04" <%if(month.format(nowsalarydate).equals("04")){ %>selected<%} %>>04</option>
+                  <option value="05" <%if(month.format(nowsalarydate).equals("05")){ %>selected<%} %>>05</option>
+                  <option value="06" <%if(month.format(nowsalarydate).equals("06")){ %>selected<%} %>>06</option>
+                  <option value="07" <%if(month.format(nowsalarydate).equals("07")){ %>selected<%} %>>07</option>
+                  <option value="08" <%if(month.format(nowsalarydate).equals("08")){ %>selected<%} %>>08</option>
+                  <option value="09" <%if(month.format(nowsalarydate).equals("09")){ %>selected<%} %>>09</option>
+                  <option value="10" <%if(month.format(nowsalarydate).equals("10")){ %>selected<%} %>>10</option>
+                  <option value="11" <%if(month.format(nowsalarydate).equals("11")){ %>selected<%} %>>11</option>
+                  <option value="12" <%if(month.format(nowsalarydate).equals("12")){ %>selected<%} %>>12</option>
                </select>
                <div class="input-group-addon" style="width: 15px;">月</div>
              </div>
@@ -78,6 +81,8 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
        </form>
        </h1>
        
+       <%if(session.getAttribute("allsalarys")!=null) {%>
+       	<%if(!allsalarys.isEmpty()) {%>
         <div class="container-fluid">
           <div class="row">
             <div class="panel panel-default" style="margin-bottom:3px;">
@@ -86,30 +91,37 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
                       <div class="row">
                       <label class="col-sm-3 control-label" style="margin-bottom:0px;">姓名</label>
                       <label class="col-sm-3 control-label" style="margin-bottom:0px;">职务</label>
-                      <label class="col-sm-3 control-label" style="margin-bottom:0px;">时薪</label>
+                      <label class="col-sm-3 control-label" style="margin-bottom:0px;">标准时薪</label>
                       <label class="col-sm-3 control-label" style="margin-bottom:0px;">当月工资</label>
                       </div>
                 </h4>
               </div>
             </div>
-
+            
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <%int i = 1; %>
+			<%for(Salary salary : allsalarys){ %>
             <div class="panel panel-default" style="margin-bottom:3px;">
-              <div class="panel-heading" role="tab" id="headingOne">
+              <div class="panel-heading" role="tab" id="heading<%=i%>">
                 <h4 class="panel-title"  style="cursor:hand">
-                  <a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=i %>" aria-expanded="true" aria-controls="collapse<%=i %>">
                       <div class="row">
-                      <label class="col-sm-3 control-label" style="margin-bottom:0px;">王尼玛</label>
-                      <label class="col-sm-3 control-label" style="margin-bottom:0px;">总经理</label>
-                      <label class="col-sm-3 control-label" style="margin-bottom:0px;">￥100.00</label>
-                      <label class="col-sm-3 control-label" style="margin-bottom:0px;">￥2000.00</label>
+                      <label class="col-sm-3 control-label" style="margin-bottom:0px;"><%=salary.getWorker().getWorkerName() %></label>
+                      <%if(salary.getWorker().getWorkerPermission()==1){ %><label class="col-sm-3 control-label" style="margin-bottom:0px;">普通员工</label><%} %>
+                      <%if(salary.getWorker().getWorkerPermission()==2){ %><label class="col-sm-3 control-label" style="margin-bottom:0px;">组长</label><%} %>
+                      <%if(salary.getWorker().getWorkerPermission()==3){ %><label class="col-sm-3 control-label" style="margin-bottom:0px;">部门经理</label><%} %>
+                      <%if(salary.getWorker().getWorkerPermission()==4){ %><label class="col-sm-3 control-label" style="margin-bottom:0px;">总经理</label><%} %>
+                      <label class="col-sm-3 control-label" style="margin-bottom:0px;">￥<%=salary.getSalaryHourly() %></label>
+                      <label class="col-sm-3 control-label" style="margin-bottom:0px;">￥<%=salary.getTotalSalary() %></label>
                       </div>
                   </a>
                 </h4>
               </div>
-              <div id="collapseOne" class="panel-body collapse " role="tabpanel" aria-expanded="false" aria-labelledby="headingOne">
+              
+              <div id="collapse<%=i %>" class="panel-body collapse" role="tabpanel" aria-expanded="false" aria-labelledby="heading<%=i%>">
                 <div class="input-group" style="width: 100%;margin-bottom: 20px;">
                   <div class="input-group-addon" style="width:50px;">总工资 ￥</div>
-                  <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
+                  <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getTotalSalary());} %>" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
                 </div>
 				<form>
                 <div class="panel panel-info">
@@ -118,52 +130,41 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
                     <table  class="table table-bordered" style="margin-bottom:0px;">
                       <tr>
                         <th>
-                          <label style="font-size:18px;margin-bottom: 0px;">标准时薪</label>
-                        </th>
-                        <th>
-                          <label style="font-size:18px;margin-bottom: 0px;">额定工资</label>
-                        </th>
-                        <th>
-                          <label style="font-size:18px;margin-bottom: 0px;">实际工资</label>
-                        </th>
-                      </tr>
-                      <tr>
-                        <th>
                           <div class="input-group">
-                            <div class="input-group-addon" style="width: 150px;">标准工资  ￥</div>
-                            <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" >
+                            <div class="input-group-addon" style="width: 150px;">标准工时  H</div>
+                            <input type="text" class="form-control" value="<%if(salary!=null){out.print("8.0");} %>" placeholder="0.00" style="background-color: #FFFFFF;" readonly >
                           </div>
                         </th>
                         <th>
                           <div class="input-group">
-                            <div class="input-group-addon" style="width: 150px;">￥</div>
-                            <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
+                            <div class="input-group-addon" style="width: 150px;">额定工时  H</div>
+                            <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getSalaryStandardTime());} %>" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
                           </div>
                         </th>
                         <th>
                           <div class="input-group">
-                            <div class="input-group-addon" style="width: 150px;">￥</div>
-                            <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
+                            <div class="input-group-addon" style="width: 150px;">实际工时  H</div>
+                            <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getSalaryActualTime());} %>" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
                           </div>
                         </th>
                       </tr>
                       <tr>
                         <th>
                           <div class="input-group">
-                            <div class="input-group-addon" style="width: 150px;">￥</div>
-                            <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" >
+                            <div class="input-group-addon" style="width: 150px;">标准时薪  ￥</div>
+                            <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getSalaryHourly());} %>" placeholder="0.00" style="background-color: #FFFFFF;" >
                           </div>
                         </th>
                         <th>
                           <div class="input-group">
-                            <div class="input-group-addon" style="width: 150px;">￥</div>
-                            <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
+                            <div class="input-group-addon" style="width: 150px;">额定工资  ￥</div>
+                            <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getStandardSalary());} %>" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
                           </div>
                         </th>
                         <th>
                           <div class="input-group">
-                            <div class="input-group-addon" style="width: 150px;">￥</div>
-                            <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
+                            <div class="input-group-addon" style="width: 150px;">实际工资  ￥</div>
+                            <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getActualSalary());} %>" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
                           </div>
                         </th>
                       </tr>
@@ -172,102 +173,91 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
                 </div>
 
                 <div class="panel panel-success">
-                  <div class="panel-heading">加班工资</div>
-                  <div class="panel-body" style="padding: 0px;">
-                    <table  class="table table-bordered" style="margin-bottom:0px;">
-                      <tr>
-                        <th>
-                          <label style="font-size:18px;margin-bottom: 0px;">工作日加班工资</label>
-                        </th>
-                        <th>
-                          <label style="font-size:18px;margin-bottom: 0px;">双休加班工资</label>
-                        </th>
-                        <th>
-                          <label style="font-size:18px;margin-bottom: 0px;">假期加班工资</label>
-                        </th>
-                      </tr>
-                      <tr>
-                        <th>
-                          <div class="input-group">
-                            <div class="input-group-addon" style="width: 150px;">￥</div>
-                            <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
-                          </div>
-                        </th>
-                        <th>
-                          <div class="input-group">
-                            <div class="input-group-addon" style="width: 150px;">￥</div>
-                            <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
-                          </div>
-                        </th>
-                        <th>
-                          <div class="input-group">
-                            <div class="input-group-addon" style="width: 150px;">￥</div>
-                            <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
-                          </div>
-                        </th>
-                      </tr>
-                      <tr>
-                        <th>
-                          <div class="input-group">
-                            <div class="input-group-addon" style="width: 150px;">￥</div>
-                            <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" >
-                          </div>
-                        </th>
-                        <th>
-                          <div class="input-group">
-                            <div class="input-group-addon" style="width: 150px;">￥</div>
-                            <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
-                          </div>
-                        </th>
-                        <th>
-                          <div class="input-group">
-                            <div class="input-group-addon" style="width: 150px;">￥</div>
-                            <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
-                          </div>
-                        </th>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-
-                <div class="panel panel-danger">
-                  <div class="panel-heading">奖罚工资</div>
-                  <div class="panel-body" style="padding: 0px;">
-                    <table  class="table table-bordered" style="margin-bottom:0px;">
-                      <tr>
-                        <th>
-                          <label style="font-size:18px;margin-bottom: 0px;">全勤工资</label>
-                        </th>
-                        <th>
-                          <label style="font-size:18px;margin-bottom: 0px;">奖罚工资</label>
-                        </th>
-                      </tr>
-                      <tr>
-                        <th>
-                          <div class="input-group">
-                            <div class="input-group-addon" style="width: 150px;">￥</div>
-                            <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
-                          </div>
-                        </th>
-                        <th>
-                          <div class="input-group">
-                            <div class="input-group-addon" style="width: 150px;">￥</div>
-                            <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
-                          </div>
-                        </th>
-                      </tr>
-                    </table>
+	              <div class="panel-heading">加班工资</div>
+	              <div class="panel-body" style="padding: 0px;">
+	                <table  class="table table-bordered" style="margin-bottom:0px;">
+	                   <tr>
+	                     <th>
+	                       <div class="input-group">
+	                         <div class="input-group-addon" style="width: 150px;">工作日加班工时  H</div>
+	                         <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getSalaryWeekTime());} %>" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
+	                       </div>
+	                     </th>
+	                     <th>
+	                       <div class="input-group">
+	                         <div class="input-group-addon" style="width: 150px;">双休加班工时  H</div>
+	                         <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getSalaryWeekendTime());} %>" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
+	                       </div>
+	                     </th>
+	                     <th>
+	                       <div class="input-group">
+	                         <div class="input-group-addon" style="width: 150px;">假期加班工时  H</div>
+	                         <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getSalaryHolidayTime());} %>" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
+	                       </div>
+	                     </th>
+	                   </tr>
+	                   <tr>
+	                     <th>
+	                       <div class="input-group">
+	                         <div class="input-group-addon" style="width: 150px;">工作日加班工资  ￥</div>
+	                         <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getWeekSalary());} %>" placeholder="0.00" style="background-color: #FFFFFF;" readonly >
+	                       </div>
+	                     </th>
+	                     <th>
+	                       <div class="input-group">
+	                         <div class="input-group-addon" style="width: 150px;">双休加班工资  ￥</div>
+	                         <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getWeekendSalary());} %>" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
+	                       </div>
+	                     </th>
+	                     <th>
+	                       <div class="input-group">
+	                         <div class="input-group-addon" style="width: 150px;">假期加班工资  ￥</div>
+	                         <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getHolidaySalary());} %>" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
+	                       </div>
+	                     </th>
+	                   </tr>
+	                 </table>
+	              </div>
+	            </div>
+	
+	            <div class="panel panel-danger" >
+	              <div class="panel-heading">奖罚工资</div>
+	              <div class="panel-body" style="padding: 0px;">
+	                <table  class="table table-bordered" style="margin-bottom:0px;">
+	                   <tr>
+	                     <th>
+	                       <div class="input-group">
+	                         <div class="input-group-addon" style="width: 150px;">全勤奖励  ￥</div>
+	                         <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getSalaryAttendanceReward());} %>" placeholder="0.00" style="background-color: #FFFFFF;width: 350px;" readonly>
+	                       </div>
+	                     </th>
+	                     <th>
+	                       <div class="input-group">
+	                         <div class="input-group-addon" style="width: 150px;">奖罚工资  ￥</div>
+	                         <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getSalaryRop());} %>" placeholder="0.00" style="background-color: #FFFFFF;width: 350px;" readonly>
+	                       </div>
+	                     </th>
+	                   </tr>
+	                 </table>
                   </div>
                 </div>
                 
-                <div style="margin-bottom: 0px;">
-                	<button class="btn btn-primary btn-block" type="submit">确认核对</button>
+                <div style="margin-bottom:0px;">
+	               	<button class="btn btn-primary btn-block" style="width: 50%; float: left;" type="submit">确认修改</button>
+	               	<button class="btn btn-success btn-block" style="width: 50%;" >确认结算</button>
                 </div>
                 </form>
               </div>
+              </div>
+            <% i++;} %>
+            <%}else{ %>
+            	<div class="alert alert-danger alert-dismissible" role="alert">改日期无工资记录</div>
+            <%} %>
+          <%} %>
+          
             </div>
           </div>
-        </div> 
+        </div>
       </div>
   </body>
 </html>

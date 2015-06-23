@@ -204,6 +204,18 @@
 		<action name="CheckSalary" class="SalaryAction" method="checkSalary">
 			<result name="success" type="redirect">/salaryCheck.jsp</result>
 		</action>
+		<!-- 个人工资表日期 -->
+		<action name="SearchSalaryDate" class="SalaryAction" method="searchSalaryDate">
+			<result name="success" type="redirect">/salaryCheck.jsp</result>
+		</action>
+		<!-- 工资维护初始化 -->
+		<action name="IntiAllSalary" class="SalaryAction" method="intiAllSalary">
+			<result name="success" type="redirect">/salaryManager.jsp</result>
+		</action>
+		<!-- 工资维护查询 -->
+		<action name="CheckDepartmentSalary" class="SalaryAction" method="checkDepartmentSalary">
+			<result name="success" type="redirect">/salaryManager.jsp</result>
+		</action>
 	</package>
 	<!-- 杨明杰  工资Action -->
 </struts>    
