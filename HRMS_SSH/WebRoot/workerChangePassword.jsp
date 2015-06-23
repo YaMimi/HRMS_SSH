@@ -23,11 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="./js/jquery-2.1.3.min.js"></script>
     <script src="plugin/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <style>
-        * {
-            font-family: 'FontAwesome',"Microsoft YaHei" ! important;
-        }
-    </style>
     <script>
   		$(function() {
   			$( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd"});

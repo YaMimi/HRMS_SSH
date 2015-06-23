@@ -30,11 +30,6 @@ PageBean pagebean = (PageBean)session.getAttribute("pageBean");
     <link  href="css/dashboard.css" rel="stylesheet"/>
     <script src="./js/jquery-2.1.3.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <style>
-        * {
-            font-family: 'FontAwesome',"Microsoft YaHei" ! important;
-        }
-    </style>
     <title>部门考勤</title>
   </head>
   

@@ -40,11 +40,6 @@ case 4 : post = "总经理"; break;
     <link  href="css/dashboard.css" rel="stylesheet"/>
     <script src="./js/jquery-2.1.3.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <style>
-        * {
-            font-family: 'FontAwesome',"Microsoft YaHei" ! important;
-        }
-    </style>
     <title>主页</title>
   </head>
   <body>

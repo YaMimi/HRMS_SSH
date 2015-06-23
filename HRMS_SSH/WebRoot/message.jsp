@@ -21,11 +21,6 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
     <script src="./js/jquery-2.1.3.min.js"></script>
     <script src="./js/jquery-ui.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-	<style>
-        * {
-            font-family: 'FontAwesome',"Microsoft YaHei" ! important;
-        }
-    </style>
     <title>公告系统</title>
   </head>
   
