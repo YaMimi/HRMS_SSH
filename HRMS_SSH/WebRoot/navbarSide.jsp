@@ -50,11 +50,14 @@
                             <a href="workerAdd.jsp">　员工添加</a>
                         </li>
                         <%} %>
+                   <%if(activeWorker.getWorkerPermission()>2) {%>
                 <li<%if(path.equals("/workerManager.jsp")) {%> class="active"<%} %>><a href="workerManager.jsp">　员工维护 </a></li>
-                
+                <%}else{ %>
+                  <li<%if(path.equals("/workerManager.jsp")) {%> class="active"<%} %>><a href="workerManager.jsp">　信息维护 </a></li>
+                <%} %>
 				<li<%if(path.equals("")) {%> class="active"<%} %>><a href="#">　部门维护 </a></li>
                  
-                <li<%if(path.equals("")) {%> class="active"<%} %>><a href="#">　工资维护 </a></li>
+                <li<%if(path.equals("/salaryCheck.jsp")) {%> class="active"<%} %>><a href="salaryCheck.jsp">　工资维护 </a></li>
                  
                 <li<%if(path.equals("")) {%> class="active"<%} %>><a href="#">　培训维护 </a></li>
                  

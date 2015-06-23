@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.3//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.3.dtd"> 
+<validators>
+    <field name="worker">
+       <field-validator>
+          <param name="context">add</param>
+          <param name="appendPrefix">true</param>
+          <message>提示信息：</message>
+       </field-validator>
+    </field>
+</validators>

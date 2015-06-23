@@ -73,10 +73,11 @@ for(int i=0;i<department1.size();i++){
 
 		worker.setDepartment(department2);
 		worker_1=workerAddInformationService.SaveWorkers(worker);
-		if(worker_1==null){
-			return "error";
+		if(worker_1!=null){
+			ActionContext.getContext().getSession().put("successAdd","Ìí¼Ó³É¹¦");
+			return "success";
 		}
-		return "success";
+		return "error";
 
 	}
 	
@@ -317,6 +318,7 @@ for(int i=0;i<department1.size();i++){
 	public void setPassword2(String password2) {
 		this.password2 = password2;
 	}
+
 
 	
 

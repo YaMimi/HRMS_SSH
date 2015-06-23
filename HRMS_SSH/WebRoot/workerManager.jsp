@@ -99,7 +99,7 @@ alert("对不起，只有部门经理或者总经理可以管理员工信息");
       
 				<form action="SelectAllWorkersManager" method="post">
 				<div class="col-sm-8">  <div class="col-sm-8">
-                <label>请填写员工信息然后点击添加员工按钮进行添加操作：</label>
+                <label>普通员工登录成功之后点击管理按钮可以查看自己的信息</label>
 				</div>
 				<button class="btn btn-success" type="submit" style="width: 40%; float: right;"><i class="icon-ok-sign"></i> 查询全部</button>
 				</div>
@@ -163,7 +163,7 @@ if(activeWorker.getWorkerPermission()==3||activeWorker.getWorkerPermission()==4)
  </table>
 
                 </form>
-                 <center>
+                                <center>
   <ul class="pagination">
 								    <li>
 								      <a href="SelectAllWorkersManager?pageNo=1"  aria-label="Previous">
