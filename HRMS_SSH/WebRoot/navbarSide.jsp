@@ -6,8 +6,8 @@
             <ul class="nav nav-sidebar"> 
                 <li<%if(path.equals("/index.jsp")) {%> class="active"<%} %>><a href="./index.jsp">　个人首页 </a></li>
                 
-                <li><%if(path.equals("/workerShow.jsp")||path.equals("/attendanceCheck.jsp")||path.equals("/attendanceVct.jsp")) {%><a href="#workerSystem" class="nav-header"  data-toggle="collapse" aria-expanded="true"><%} else {%><a href="#workerSystem" class="nav-header collapsed" data-toggle="collapse"><%} %>　个人信息<i class="pull-right icon-sidebar-collapse"></i></a>
-                    <%if(path.equals("/workerShow.jsp")||path.equals("/attendanceCheck.jsp")||path.equals("/attendanceVct.jsp")) {%><ul id="workerSystem" class="nav nav-sidebar nav-sec collapse in" aria-expanded="true"><%} else {%><ul id="workerSystem" class="nav nav-sidebar nav-sec collapse"><%} %>
+                <li><%if(path.equals("/workerShow.jsp")||path.equals("/attendanceCheck.jsp")||path.equals("/attendanceVct.jsp")||path.equals("/workerChangePassword.jsp")) {%><a href="#workerSystem" class="nav-header"  data-toggle="collapse" aria-expanded="true"><%} else {%><a href="#workerSystem" class="nav-header collapsed" data-toggle="collapse"><%} %>　个人信息<i class="pull-right icon-sidebar-collapse"></i></a>
+                    <%if(path.equals("/workerShow.jsp")||path.equals("/attendanceCheck.jsp")||path.equals("/attendanceVct.jsp")||path.equals("/workerChangePassword.jsp")) {%><ul id="workerSystem" class="nav nav-sidebar nav-sec collapse in" aria-expanded="true"><%} else {%><ul id="workerSystem" class="nav nav-sidebar nav-sec collapse"><%} %>
                         <li<%if(path.equals("/workerShow.jsp")) {%> class="active"<%} %>>
                             <a href="workerShow.jsp">我的信息</a>
                         </li>
@@ -25,8 +25,9 @@
                             <a href="./attendanceVct.jsp">我的请假</a>
                         </li>
                         <%//} %>
-                        <li<%if(path.equals("")) {%> class="active"<%} %>>
-                            <a href="#">修改密码</a>
+                        
+                        <li<%if(path.equals("/workerChangePassword.jsp")) {%> class="active"<%} %>>
+                            <a href="workerChangePassword.jsp">修改密码</a>
                         </li>
                     </ul>
                 </li>
@@ -44,11 +45,19 @@
                     </ul>
                 </li>
                 
-                <li<%if(path.equals("")) {%> class="active"<%} %>><a href="#">　员工维护 </a></li>
-                
+                        <%if(activeWorker.getWorkerPermission()>2) {%>
+                         <li<%if(path.equals("/workerAdd.jsp")) {%> class="active"<%} %>>
+                            <a href="workerAdd.jsp">　员工添加</a>
+                        </li>
+                        <%} %>
+                   <%if(activeWorker.getWorkerPermission()>2) {%>
+                <li<%if(path.equals("/workerManager.jsp")) {%> class="active"<%} %>><a href="workerManager.jsp">　员工维护 </a></li>
+                <%}else{ %>
+                  <li<%if(path.equals("/workerManager.jsp")) {%> class="active"<%} %>><a href="workerManager.jsp">　信息维护 </a></li>
+                <%} %>
 				<li<%if(path.equals("")) {%> class="active"<%} %>><a href="#">　部门维护 </a></li>
                  
-                <li<%if(path.equals("")) {%> class="active"<%} %>><a href="#">　工资维护 </a></li>
+                <li<%if(path.equals("/salaryCheck.jsp")) {%> class="active"<%} %>><a href="salaryCheck.jsp">　工资维护 </a></li>
                  
                 <li<%if(path.equals("")) {%> class="active"<%} %>><a href="#">　培训维护 </a></li>
                  
