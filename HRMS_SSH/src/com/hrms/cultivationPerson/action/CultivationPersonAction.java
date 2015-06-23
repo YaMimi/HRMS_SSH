@@ -17,6 +17,7 @@ public class CultivationPersonAction extends ActionSupport {
 	private Cultivationperson cultivationPerson;
 	private String cultivationOid;
 	private String cultivationPersonOid;
+	private String cultivationPersonMark;
 	
 	@Resource
 	CultivationPersonService cultivationPersonService;
@@ -38,6 +39,16 @@ public class CultivationPersonAction extends ActionSupport {
 		cp.setWorker(w);
 		
 		cultivationPersonService.insertCultivation(cp);
+		cp = null;
+		
+		return this.SUCCESS;
+	}
+	
+	public String rankCultivationPerson() {
+		
+		Cultivationperson cp = cultivationPersonService.findCultivation(Integer.parseInt(cultivationPersonOid));
+		cp.setCultivationPersonMark(Integer.parseInt(cultivationPersonMark));
+		cultivationPersonService.editCultivation(cp);
 		cp = null;
 		
 		return this.SUCCESS;
@@ -82,6 +93,14 @@ public class CultivationPersonAction extends ActionSupport {
 
 	public void setCultivationService(CultivationService cultivationService) {
 		this.cultivationService = cultivationService;
+	}
+
+	public String getCultivationPersonMark() {
+		return cultivationPersonMark;
+	}
+
+	public void setCultivationPersonMark(String cultivationPersonMark) {
+		this.cultivationPersonMark = cultivationPersonMark;
 	}
 	
 }

@@ -21,7 +21,19 @@ public class CultivationPersonDaoImpl implements CultivationPersonDao {
 	}
 	
 	@Override
+	public Cultivationperson editCultivation(Cultivationperson cultivation) {
+		sessionFactory.getCurrentSession().merge(cultivation);
+		return cultivation;
+	}
+	
+	@Override
+	public Cultivationperson findCultivation(int oid) {
+		Cultivationperson c = (Cultivationperson) sessionFactory.getCurrentSession().get(Cultivationperson.class, oid);
+		return c;
+	}
+	
+	@Override
 	public void deleteCultivation(int oid) {
-		sessionFactory.getCurrentSession().delete(sessionFactory.getCurrentSession().get(Cultivationperson.class, oid));
+		sessionFactory.getCurrentSession().delete(findCultivation(oid));
 	}
 }

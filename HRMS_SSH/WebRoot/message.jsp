@@ -53,7 +53,7 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 		    <div class="col-sm-6" style="padding-right: 0px;">
 		    	<button type="reset" class="btn btn-default btn-block">重置内容</a>
 		    </div>
-		    <br>
+		    <br><br>
 		    </form>
 		  </div>
 		 </div>
