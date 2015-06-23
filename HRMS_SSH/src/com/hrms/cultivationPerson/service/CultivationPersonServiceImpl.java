@@ -14,20 +14,15 @@ public class CultivationPersonServiceImpl implements CultivationPersonService {
 
 	@Resource
 	CultivationPersonDao cultivationPersonDao;
-	
-	@Override
-	public List<Cultivationperson> checkCultivationUnfinished(Worker worker) {
-		return cultivationPersonDao.checkCultivationUnfinished(worker);
-	}
-
-	@Override
-	public List<Cultivationperson> checkCultivationFinished(Worker worker) {
-		return cultivationPersonDao.checkCultivationFinished(worker);
-	}
 
 	@Override
 	public Cultivationperson insertCultivation(Cultivationperson cultivation) {
 		return cultivationPersonDao.insertCultivation(cultivation);
+	}
+	
+	@Override
+	public void deleteCultivation(int oid){
+		cultivationPersonDao.deleteCultivation(oid);
 	}
 
 }

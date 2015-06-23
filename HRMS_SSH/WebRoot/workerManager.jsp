@@ -31,11 +31,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="./js/jquery-2.1.3.min.js"></script>
     <script src="plugin/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <style>
-        * {
-            font-family: 'FontAwesome',"Microsoft YaHei" ! important;
-        }
-    </style>
     <script>
   		$(function() {
   			$( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd"});
@@ -93,7 +88,7 @@ alert("对不起，只有部门经理或者总经理可以管理员工信息");
                   <div class="col-sm-4">
                 <form action="ResearchWorker">
 			      <input type="text" name="worker_no" class="form-control" id="exampleInputAmount" placeholder="请从输入一个员工的编号开始：" style="width: 80%;float: left;">
-				  <button type="submit" class="btn btn-primary" style="width: 40px;float: left;"><i class="icon-search"></i></button>
+				  <button type="submit" class="btn btn-primary" style="width: 40px;float: left;"><i class="fa fa-search"></i></button>
 				</form>
 				</div>
       
@@ -101,7 +96,7 @@ alert("对不起，只有部门经理或者总经理可以管理员工信息");
 				<div class="col-sm-8">  <div class="col-sm-8">
                 <label>普通员工登录成功之后点击管理按钮可以查看自己的信息</label>
 				</div>
-				<button class="btn btn-success" type="submit" style="width: 40%; float: right;"><i class="icon-ok-sign"></i> 查询全部</button>
+				<button class="btn btn-success" type="submit" style="width: 40%; float: right;"><i class="fa-check"></i> 查询全部</button>
 				</div>
                 </div>
                 <table class="table table-bordered table-hover">

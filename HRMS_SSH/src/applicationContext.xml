@@ -84,6 +84,12 @@
 	<bean id="MessageDao" class="com.hrms.message.dao.MessageDaoImpl"></bean>
 	<!-- Message Part End -->
 	
+	<!-- Cultivation Part Begin -->
+	<bean id="CultivationAction" class="com.hrms.cultivation.action.CultivationAction"></bean>
+	<bean id="CultivationService" class="com.hrms.cultivation.service.CultivationServiceImpl"></bean>
+	<bean id="CultivationDao" class="com.hrms.cultivation.dao.CultivationDaoImpl"></bean>
+	<!-- Cultivation Part End -->
+	
 	<!-- CultivationPerson Part Begin -->
 	<bean id="CultivationPersonAction" class="com.hrms.cultivationPerson.action.CultivationPersonAction"></bean>
 	<bean id="CultivationPersonService" class="com.hrms.cultivationPerson.service.CultivationPersonServiceImpl"></bean>
