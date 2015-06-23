@@ -63,9 +63,9 @@ public class WorkerAddInformationServiceImpl implements WorkerAddInformationServ
 	}
 
 	@Override
-	public ArrayList<Worker> EveryPage(int pageNo, int pageSize) {
+	public ArrayList<Worker> EveryPage(String sql,int pageNo, int pageSize) {
 		// TODO Auto-generated method stub
-		return workerAddInformationDao.EveryPage(pageNo, pageSize);
+		return workerAddInformationDao.EveryPage(sql,pageNo, pageSize);
 	}
 
 	@Override

@@ -46,7 +46,7 @@ alert("对不起，您没有添加员工权限！");
 <body>
    
   
-     <%@ include file="navbarTop.jsp"%>
+     <br><br><%@ include file="navbarTop.jsp"%>
     <%@ include file="navbarSide.jsp"%>
             
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -64,12 +64,12 @@ alert("对不起，您没有添加员工权限！");
                </script>
               <% }%>
               
-				<form action="Add" method="post">
+				<form action="Add" method="post" onsubmit="return checkValidate()">
 				<div class="col-sm-4">
 				<%if(activeWorker.getWorkerPermission()==4||activeWorker.getWorkerPermission()==3) {%>
-				<button class="btn btn-default" type="submit" style="width: 40%; float: right;"><i class="icon-ok-sign"></i> 添加员工</button>
+				<button class="btn btn-default" type="submit" style="width: 40%; float: right;"><i class="icon-ok-sign" ></i> 添加员工</button>
 				<%}else{%>
-				<button class="btn btn-default" type="button" style="width: 40%; float: right;" onclick="addWorker()"><i class="icon-ok-sign"></i> 添加员工</button>
+				<button class="btn btn-default" type="button" style="width: 40%; float: right;" onclick="addWorker()"><i class="icon-ok-sign" ></i> 添加员工</button>
 				<%}%>
 				
 				</div>
@@ -116,7 +116,7 @@ alert("对不起，您没有添加员工权限！");
 	              <th style="padding-left: 21px;"><strong>年龄</strong></th>
 	            </tr>
 	            <tr>
-	              <th><input type="text" class="form-control " name="worker.workerId" placeholder="身份证号" value="" required></th>
+	              <th><input type="text" class="form-control " name="worker.workerId" id="workerId" placeholder="身份证号" value="" required></th>
 	              <th><input type="text" class="form-control " name="worker.workerBirthDate" placeholder="出生日期 " value="" required  style="width: 98%" class="form-control"     onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"></th>
 	              <th><input type="text" class="form-control " name="worker.workerAge" placeholder="年龄 " value="0" required></th>
 	            </tr>
@@ -241,7 +241,7 @@ alert("对不起，您没有添加员工权限！");
 	              <th style="padding-left: 21px;"><strong>密码</strong></th>
 	            </tr>
 	            <tr>
-	              <th><input type="text" class="form-control " name="worker.workerPhone" placeholder="电话 " value="" required></th>
+	              <th><input type="text" class="form-control " name="worker.workerPhone" id="workerPhone" placeholder="电话 " value="" required></th>
 	              <th>
 	              <select name="worker.workerNationality" class="form-control">
 	              <option value="中国">中国</option>
@@ -268,5 +268,43 @@ alert("对不起，您没有添加员工权限！");
                 </form>
             </div>
     </div>
+      <script  type="text/javascript">
+      function checkValidate(){
+      var workerPhone=document.getElementById("workerPhone").value;
+      var card=document.getElementById("workerId").value;
+    var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
+   if(reg.test(card) === false)  
+   {  
+       alert("身份证输入不合法");  
+         document.getElementById("workerId").value="";
+           document.getElementById("workerId").focus();
+       return  false;  
+   }  
+      
+        if(workerPhone.length==0)
+        {
+           alert("请输入手机号码！");
+           document.getElementById("workerPhone").value="";
+           document.getElementById("workerPhone").focus();
+           return false;
+        }    
+        if(workerPhone.length!=11)
+        {
+            alert("请输入有效的手机号码！");
+            document.getElementById("workerPhone").value="";
+            document.getElementById("workerPhone").focus();
+            return false;
+        }
+        var myreg = /^(((13[0-9]{1})|159|153)+\d{8})$/;
+        if(!myreg.test(workerPhone))
+        {
+            alert("请输入有效的手机号码");
+            document.getElementById("workerPhone").value="";
+            document.getElementById("workerPhone").focus();
+            return false;
+        }
+        
+      }
+      	</script>
 </body>
 </html>

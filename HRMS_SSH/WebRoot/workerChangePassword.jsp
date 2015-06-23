@@ -72,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          <table class="table table-bordered table-hover">
 				<tr>
 	              <th style="padding-left: 21px;"><strong>旧密码</strong></th>
-	              <th><input type="password" class="form-control " style="width: 100%; float: center;"name="worker.password" placeholder="旧密码" value="" required></th>
+	              <th><input type="password" class="form-control " style="width: 100%; float: center;"name="worker.password" id="password" placeholder="旧密码" value="" required></th>
 	           </tr>
 	            <tr>
 	              <th style="padding-left: 21px;"></i>新密码</strong></th>
@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var password1=updatepassword.password1.value;
 			var password2=updatepassword.password2.value;
 				 if(password1.length<6){
-				alert("密码长度必须大于6位");  
+				alert("密码长度必须大于6位"+Password);  
                             return false;  
 				}else if(password1.length>8){
 				alert("密码长度不能大于8位");  

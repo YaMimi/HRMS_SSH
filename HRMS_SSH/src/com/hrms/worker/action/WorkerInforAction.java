@@ -185,10 +185,9 @@ for(int i=0;i<department1.size();i++){
 		}else{
 			pageNo=Integer.parseInt(request.getParameter("pageNo"));
 		}
-		
-		//ArrayList<Worker>workers=workerAddInformationService.SelectAllWorkers(sql);
-		ArrayList<Worker>workers=workerAddInformationService.EveryPage(pageNo, 5);
-		ActionContext.getContext().getSession().put("workers", workers);
+		Worker activeWorker = (Worker)ActionContext.getContext().getSession().get("activeWorker");
+	    ArrayList<Worker>workers=workerAddInformationService.EveryPage(sql,pageNo, 5);	
+	    ActionContext.getContext().getSession().put("workers", workers);
 		ArrayList workerDerpart=workerAddInformationService.lWorkersAddDepartment();
 		ActionContext.getContext().getSession().put("workerDerpart", workerDerpart);
 		return "success";

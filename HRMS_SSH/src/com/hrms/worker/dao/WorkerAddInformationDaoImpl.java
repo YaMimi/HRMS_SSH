@@ -113,10 +113,10 @@ ArrayList<Worker> workers=(ArrayList<Worker>) sessionFactory.getCurrentSession()
 	}
 
 	@Override
-	public ArrayList<Worker> EveryPage(int pageNo, int pageSize) {
+	public ArrayList<Worker> EveryPage(String sql,int pageNo, int pageSize) {
 		// TODO Auto-generated method stub
-		String queryString="from Worker";
-		Query queryObject= sessionFactory.getCurrentSession().createQuery(queryString);
+		//String queryString="from Worker";
+		Query queryObject= sessionFactory.getCurrentSession().createQuery(sql);
 		queryObject.setFirstResult((pageNo-1)*pageSize);
 		queryObject.setMaxResults(pageSize);
 		
