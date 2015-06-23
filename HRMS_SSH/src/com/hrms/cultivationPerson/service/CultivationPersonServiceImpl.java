@@ -21,6 +21,16 @@ public class CultivationPersonServiceImpl implements CultivationPersonService {
 	}
 	
 	@Override
+	public Cultivationperson editCultivation(Cultivationperson cultivation) {
+		return cultivationPersonDao.editCultivation(cultivation);
+	}
+	
+	@Override
+	public Cultivationperson findCultivation(int oid) {
+		return cultivationPersonDao.findCultivation(oid);
+	}
+	
+	@Override
 	public void deleteCultivation(int oid){
 		cultivationPersonDao.deleteCultivation(oid);
 	}

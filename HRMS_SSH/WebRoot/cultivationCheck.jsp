@@ -62,7 +62,7 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 			          	<%=cultivationperson.getCultivation().getCultivationProject() %>
 			        </a>
 			        <a data-toggle="collapse" href="#collapse<%=i %>" aria-expanded="false" class="collapsed" style="float:right">
-			          <%=(int)percent %>%
+			          <%if(cultivationperson.getCultivationPersonMark()==null) out.print((int)percent+"%"); else out.print(returnMark(cultivationperson.getCultivationPersonMark()));%>
 			        </a>
 		      	</h4>
             </div>
@@ -138,7 +138,7 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 			          	<%=cultivationperson.getCultivation().getCultivationProject() %>
 			        </a>
 			        <a data-toggle="collapse" href="#collapse<%=i %>" aria-expanded="false" class="collapsed" style="float:right">
-			          	即将开始
+			        	<%if(cultivationperson.getCultivationPersonMark()==null) out.print("即将开始"); else out.print(returnMark(cultivationperson.getCultivationPersonMark()));%>
 			        </a>
 		      	</h4>
             </div>

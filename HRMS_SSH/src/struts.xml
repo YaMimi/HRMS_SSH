@@ -85,18 +85,29 @@
 		<!-- ShowCultivationAction -->
 		<action name="ShowCultivation" class="CultivationAction" method="showCultivation"></action>
 		
+		<!-- NewCultivationPersonAction -->
+		<action name="NewCultivation" class="CultivationAction" method="newCultivation">
+			<result name="success" type="redirect">/cultivation.jsp</result>
+			<result name="error" type="redirect">/cultivation.jsp</result>
+		</action>
+		
 	</package>
 	
 	<!-- CultivationPerson Package -->
 	<package name="cultivationperson" extends="struts-default" namespace="/">
-		<!-- deleteCultivationPersonAction -->
+		<!-- DeleteCultivationPersonAction -->
 		<action name="DeleteCultivationPerson" class="CultivationPersonAction" method="deleteCultivationPerson">
 			<result name="success" type="redirect">/cultivationCheck.jsp</result>
 		</action>
 		
-		<!-- newCultivationPersonAction -->
+		<!-- NewCultivationPersonAction -->
 		<action name="NewCultivationPerson" class="CultivationPersonAction" method="newCultivationPerson">
 			<result name="success" type="redirect">/cultivationCheck.jsp</result>
+		</action>
+		
+		<!-- RankCultivationPersonAction -->
+		<action name="RankCultivationPerson" class="CultivationPersonAction" method="rankCultivationPerson">
+			<result name="success" type="redirect">/cultivation.jsp</result>
 		</action>
 
 	</package>
