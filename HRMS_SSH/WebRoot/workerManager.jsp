@@ -89,7 +89,7 @@ window.location.href="";
                   <div class="col-sm-4">
                 <form action="ResearchWorker">
 			      <input type="text" name="worker_no" class="form-control" id="exampleInputAmount" placeholder="请从输入一个员工的编号开始：" style="width: 80%;float: left;">
-				  <button type="submit" class="btn btn-primary" style="width: 40px;float: left;"><i class="icon-search"></i></button>
+				  <button type="submit" class="btn btn-primary" style="width: 40px;float: left;"><i class="fa fa-search"></i></button>
 				</form>
 				</div>
       
@@ -97,7 +97,7 @@ window.location.href="";
 				<div class="col-sm-8">  <div class="col-sm-8">
                 <label>请填写员工信息然后点击添加员工按钮进行添加操作：</label>
 				</div>
-				<button class="btn btn-success" type="submit" style="width: 40%; float: right;"><i class="icon-ok-sign"></i> 查询全部</button>
+				<button class="btn btn-success" type="submit" style="width: 40%; float: right;"><i class="fa-check"></i> 查询全部</button>
 				</div>
                 </div>
                 <table class="table table-bordered table-hover">

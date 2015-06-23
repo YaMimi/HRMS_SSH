@@ -84,8 +84,8 @@ window.location.href="";
 				<!-- 修改 -->
 				<form action="UpdateWorkerformation" method="post">
 				<div class="col-sm-4">
-				<button class="btn btn-default" type="submit" style="width: 40%; float: right;" ><i class="icon-ok-sign"></i> 确认修改</button>
-				<button class="btn btn-default" type="button" style="width: 40%; float: right;" onclick="send_delete(${workerNo})"><i class="icon-ok-sign"></i> 确认删除</button>
+				<button class="btn btn-default" type="submit" style="width: 40%; float: right;" ><i class="fa fa-check"></i> 确认修改</button>
+				<button class="btn btn-default" type="button" style="width: 40%; float: right;" onclick="send_delete(${workerNo})"><i class="fa fa-check"></i> 确认删除</button>
 		
 				</div>
                 </div>

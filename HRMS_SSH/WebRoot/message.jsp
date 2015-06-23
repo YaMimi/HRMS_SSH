@@ -76,10 +76,10 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 							<h4><%=message.getMessageContent() %></h4>
 					</div>
 					<div class="col-sm-9" style="text-align: left;">
-							<i class="icon-user"> <%=message.getWorker().getWorkerName() %></i>
+							<i class="fa fa-user"> <%=message.getWorker().getWorkerName() %></i>
 					</div>
 					<div class="col-sm-3" style="text-align: right;">
-							<i class="icon-time"> <%=simpledateformat.format(message.getMessageDate()) %></i>
+							<i class="fa fa-clock-o"> <%=simpledateformat.format(message.getMessageDate()) %></i>
 					</div>
       			</td>
       		</tr>

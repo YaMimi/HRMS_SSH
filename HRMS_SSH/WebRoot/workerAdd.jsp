@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<form action="Add" method="post">
 				<div class="col-sm-4">
-				<button class="btn btn-default" type="submit" style="width: 40%; float: right;"><i class="icon-ok-sign"></i> 添加员工</button>
+				<button class="btn btn-default" type="submit" style="width: 40%; float: right;"><i class="fa fa-check"></i> 添加员工</button>
 				</div>
                 </div>
                 <table class="table table-bordered table-hover">

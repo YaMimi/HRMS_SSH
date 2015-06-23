@@ -52,8 +52,8 @@ session.setAttribute("departmentlist", departmentlist);
                 <table class="table" style="width:500px;">
 	                <tr>
 	                		<th>功能简介</th>
-						    <th><i class="icon-ok-sign"></i> 保存新增</th>
-						    <th><i class="icon-repeat"></i> 重置表单</th>
+						    <th><i class="fa fa-check"></i> 保存新增</th>
+						    <th><i class="fa fa-repeat"></i> 重置表单</th>
 				    </tr>
 			    </table>
                 <table class="table table-bordered table-hover">
@@ -79,9 +79,9 @@ session.setAttribute("departmentlist", departmentlist);
 	                  %> 
 					 </select></th>
 
-		              <th style="width:10px;"><button class="crlbut editbut" type="submit"><i class="icon-large icon-ok"></i></button></th>	        
+		              <th style="width:10px;"><button class="crlbut editbut" type="submit"><i class="fa fa-check fa-lg"></i></button></th>	        
 		              
-		              <th style="width:10px;"><button class="crlbut delbut" type="reset"><i class="icon-large icon-repeat"></i></button></th>
+		              <th style="width:10px;"><button class="crlbut delbut" type="reset"><i class="fa fa-repeat fa-lg"></i></button></th>
 		            </tr>
                  </form>
                 </table>

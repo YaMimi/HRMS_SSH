@@ -6,6 +6,11 @@
 body {
     padding-top: 50px;
 }
+
+* {
+    font-family: 'FontAwesome',"Microsoft YaHei" ! important;
+}
+
 .div-mid {
     position: absolute;
     width: 600px;

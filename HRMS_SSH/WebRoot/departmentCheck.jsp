@@ -50,8 +50,8 @@ session.setAttribute("departmentlist", departmentlist);
          <table class="table" style="width:500px;">
 	             <tr>
 	                <th>功能简介</th>
-				    <th><i class="icon-pencil"></i> 修改该部门信息</th>
-				    <th><i class="icon-remove"></i> 删除该部门（谨慎使用）</th>
+				    <th><i class="fa fa-pencil"></i> 修改该部门信息</th>
+				    <th><i class="fa fa-remove"></i> 删除该部门（谨慎使用）</th>
 				 </tr> </table>
             <table class="table table-bordered table-hover" >
               <tr>
@@ -80,13 +80,13 @@ session.setAttribute("departmentlist", departmentlist);
              	  <th style="width:10px;">
 				      <form action='UpdateDepartmentImfo'>
 			             <input type='hidden' name='alter' value='<%=department.getDepartmentOid()%>'/>
-			             <button class="crlbut editbut" type="submit"><i class="icon-large icon-pencil"></i></button>
+			             <button class="crlbut editbut" type="submit"><i class="fa fa-pencil fa-lg"></i></button>
 			          </form>
 			      </th>
 			      <th style="width:10px;">
 			           <form action='DepartmentDelete'>
 			             <input type='hidden' name='delete' value='<%=department.getDepartmentOid()%>'/>
-			             <button class="crlbut delbut" type="submit"><i class="icon-large icon-remove"></i></button>
+			             <button class="crlbut delbut" type="submit"><i class="fa fa-remove fa-lg"></i></button>
 			           </form>
 		          </th>
 			  </tr>

@@ -80,13 +80,24 @@
 		</action>
 	</package>
 	
+	<!-- Cultivation Package -->
+	<package name="cultivation" extends="struts-default" namespace="/">
+		<!-- ShowCultivationAction -->
+		<action name="ShowCultivation" class="CultivationAction" method="showCultivation"></action>
+		
+	</package>
+	
 	<!-- CultivationPerson Package -->
 	<package name="cultivationperson" extends="struts-default" namespace="/">
-		<!-- CheckCultivationUnfinishedAction -->
-		<action name="CheckCultivationPersonUnfinished" class="CultivationPersonAction" method="checkCultivationPersonUnfinished"></action>
+		<!-- deleteCultivationPersonAction -->
+		<action name="DeleteCultivationPerson" class="CultivationPersonAction" method="deleteCultivationPerson">
+			<result name="success" type="redirect">/cultivationCheck.jsp</result>
+		</action>
 		
-		<!-- CheckCultivationFinishedAction -->
-		<action name="CheckCultivationPersonFinished" class="CultivationPersonAction" method="checkCultivationPersonFinished"></action>
+		<!-- newCultivationPersonAction -->
+		<action name="NewCultivationPerson" class="CultivationPersonAction" method="newCultivationPerson">
+			<result name="success" type="redirect">/cultivationCheck.jsp</result>
+		</action>
 
 	</package>
 	

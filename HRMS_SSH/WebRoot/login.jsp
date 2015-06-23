@@ -30,7 +30,7 @@ state = (String)session.getAttribute("state");
                     <img src="img/title.png">
 			        <div class="alert alert-danger alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
 			        	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<i class="icon-remove-sign icon-large"></i> 你已登录！请先<a class="alert-link" href="Logout"> 登出系统。</a>
+						<i class="fa fa-remove-sign fa-large"></i> 你已登录！请先<a class="alert-link" href="Logout"> 登出系统。</a>
 					</div>
                     <input type="text" name="username" class="form-control" style="margin-bottom: 5px;" placeholder="当前账号：<%=activeWorker.getWorkerNo() %>" disabled="disabled">
                     <a class="btn btn-lg btn-primary btn-block" href="./index.jsp">返回首页</a>
@@ -52,28 +52,28 @@ state = (String)session.getAttribute("state");
 					<%session.setAttribute("state", null); %>
 			        <div class="alert alert-success alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
 			        	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<i class="icon-exclamation-sign icon-large"></i> 登出成功！
+						<i class="fa fa-exclamation-sign fa-large"></i> 登出成功！
 					</div>
 			        <%} %>
 			        <%if(state!=null&&state.equals("LOGINPLEASE")) {%>
 					<%session.setAttribute("state", null); %>
 			        <div class="alert alert-danger alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<i class="icon-remove-sign icon-large"></i> 请先登录。
+						<i class="fa fa-remove-sign fa-large"></i> 请先登录。
 					</div>
 					<%} %>
 			       	<%if(state!=null&&state.equals("LOGINERROR")) {%>
 					<%session.setAttribute("state", null); %>
 			        <div class="alert alert-danger alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<i class="icon-remove-sign icon-large"></i> 密码错误，请检查后重新输入。
+						<i class="fa fa-remove-sign fa-large"></i> 密码错误，请检查后重新输入。
 					</div>
 					<%} %>
 					<%if(state!=null&&state.equals("LOGINEMPTY")) {%>
 					<%session.setAttribute("state", null); %>
 			        <div class="alert alert-danger alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<i class="icon-remove-sign icon-large"></i> 用户名为空，请检查后重新输入。
+						<i class="fa fa-remove-sign fa-large"></i> 用户名为空，请检查后重新输入。
 					</div>
 					<%} %>
                     <label for="inputEmail" class="sr-only">员工号</label>

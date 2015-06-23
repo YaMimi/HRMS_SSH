@@ -55,8 +55,8 @@ session.setAttribute("departmentlist1", departmentlist1);
                 <table class="table" style="width:500px;">
 	                <tr>
 	                		<th>功能简介</th>
-						    <th><i class="icon-ok-sign"></i> 保存修改</th>
-						    <th><i class="icon-remove-sign"></i> 放弃修改</th>
+						    <th><i class="fa fa-check"></i> 保存修改</th>
+						    <th><i class="fa fa-times"></i> 放弃修改</th>
 				    </tr>
 			    </table>
                 <table class="table table-bordered table-hover">
@@ -106,10 +106,10 @@ session.setAttribute("departmentlist1", departmentlist1);
 		               <%}%>
 		               
 			             <input type='hidden' name='alter' value='<%=department.getDepartmentOid()%>'/>
-		              <th style="width:10px;"><button class="crlbut editbut" type="submit"><i class="icon-large icon-ok"></i></button></th>
+		              <th style="width:10px;"><button class="crlbut editbut" type="submit"><i class="fa fa-check fa-lg"></i></button></th>
 		              </form>  
 		              <%}%>
-			          <th style="width:10px;"><button class="crlbut delbut"><a class="delbut" href="departmentCheck.jsp"><i class="icon-large icon-remove"></i></a></button></th>
+			          <th style="width:10px;"><button class="crlbut delbut"><a class="delbut" href="departmentCheck.jsp"><i class="fa fa-times fa-lg"></i></a></button></th>
 		            </tr>
 	            </table>
   </body>

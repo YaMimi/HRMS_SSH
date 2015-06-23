@@ -64,7 +64,7 @@ case 4 : post = "总经理"; break;
 			                       <div class="panel-heading">
 			                           <div class="row">
 			                               <div class="col-xs-3">
-			                                   <i class="icon-envelope icon-5x"></i>
+			                                   <i class="fa fa-envelope fa-5x"></i>
 			                               </div>
 			                               <div class="col-xs-9 text-right">
 			                                   <div class="huge"><%=activeWorker.getWorkerUnreadMessage() %></div>
@@ -75,7 +75,7 @@ case 4 : post = "总经理"; break;
 			                       <a href="./message.jsp">
 			                           <div class="panel-footer">
 			                               <span class="pull-left">查看详情</span>
-			                               <span class="pull-right"><i class="icon-circle-arrow-right"></i></span>
+			                               <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 			                               <div class="clearfix"></div>
 			                           </div>
 			                       </a>
@@ -89,10 +89,10 @@ case 4 : post = "总经理"; break;
 			                       <div class="panel-heading">
 			                           <div class="row">
 			                               <div class="col-xs-3">
-			                                   <i class="icon-flag icon-5x"></i>
+			                                   <i class="fa fa-flag fa-5x"></i>
 			                               </div>
 			                               <div class="col-xs-9 text-right">
-			                                   <div class="huge"><%=session.getAttribute("cultivationPersonUNum") %></div>
+			                                   <div class="huge"><%=cultivationPersonListNum %></div>
 			                                   <div>进行中培训</div>
 			                               </div>
 			                           </div>
@@ -100,7 +100,7 @@ case 4 : post = "总经理"; break;
 			                       <a href="./cultivationCheck.jsp">
 			                           <div class="panel-footer">
 			                               <span class="pull-left">查看详情</span>
-			                               <span class="pull-right"><i class="icon-circle-arrow-right"></i></span>
+			                               <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 			                               <div class="clearfix"></div>
 			                           </div>
 			                       </a>
@@ -114,7 +114,7 @@ case 4 : post = "总经理"; break;
 			                       <div class="panel-heading">
 			                           <div class="row">
 			                               <div class="col-xs-3">
-			                                   <i class="icon-check icon-5x"></i>
+			                                   <i class="fa fa-check fa-5x"></i>
 			                               </div>
 			                               <div class="col-xs-9 text-right">
 			                                   <div class="huge">-</div>
@@ -125,7 +125,7 @@ case 4 : post = "总经理"; break;
 			                       <a>
 			                           <div class="panel-footer">
 			                               <span class="pull-left">查看详情</span>
-			                               <span class="pull-right"><i class="icon-circle-arrow-right"></i></span>
+			                               <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 			                               <div class="clearfix"></div>
 			                           </div>
 			                       </a>
@@ -138,7 +138,7 @@ case 4 : post = "总经理"; break;
 			                       <div class="panel-heading">
 			                           <div class="row">
 			                               <div class="col-xs-3">
-			                                   <i class="icon-check icon-5x"></i>
+			                                   <i class="fa fa-check fa-5x"></i>
 			                               </div>
 			                               <div class="col-xs-9 text-right">
 			                                   <div class="huge"><%=session.getAttribute("VacationNum") %></div>
@@ -149,7 +149,7 @@ case 4 : post = "总经理"; break;
 			                       <a href="./attendanceVctCheck.jsp">
 			                           <div class="panel-footer">
 			                               <span class="pull-left">查看详情</span>
-			                               <span class="pull-right"><i class="icon-circle-arrow-right"></i></span>
+			                               <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 			                               <div class="clearfix"></div>
 			                           </div>
 			                       </a>
