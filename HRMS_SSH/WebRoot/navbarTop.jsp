@@ -3,11 +3,10 @@
 <%@ page import="com.hrms.pojo.*"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <s:action name="CheckMessage" executeResult="false" namespace="/"/>
-<s:action name="CheckCultivationPersonUnfinished" executeResult="false" namespace="/"/>
 <%
-List<Message> messageList = (List<Message>)session.getAttribute("messageList");
-List<Cultivationperson> cultivationPersonUList = (List<Cultivationperson>)session.getAttribute("cultivationPersonUList");
 activeWorker = (Worker)session.getAttribute("activeWorker");
+List<Message> messageList = (List<Message>)session.getAttribute("messageList");
+Set<Cultivationperson> cultivationPersonList = activeWorker.getCultivationpersons();
 SimpleDateFormat simpledateformat = new SimpleDateFormat("yyyy-MM-dd");
 %>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -18,7 +17,7 @@ SimpleDateFormat simpledateformat = new SimpleDateFormat("yyyy-MM-dd");
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right  ">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-large icon-envelope"></i> <%if(activeWorker.getWorkerUnreadMessage()!=null&&activeWorker.getWorkerUnreadMessage()>0) {%><sup><span class="badge" style="background-color: #E61A42;"><%=activeWorker.getWorkerUnreadMessage() %></span></sup><%} else {%><i class="icon-large icon-caret-down"></i><%} %></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-lg fa-bullhorn"></i> <%if(activeWorker.getWorkerUnreadMessage()!=null&&activeWorker.getWorkerUnreadMessage()>0) {%><sup><span class="badge" style="background-color: #E61A42;"><%=activeWorker.getWorkerUnreadMessage() %></span></sup><%} else {%><i class="fa fa-lg fa-caret-down"></i><%} %></a>
                     <ul class="dropdown-menu dropdown-messages" style="width: 400px;">
                     <%if(!messageList.isEmpty())
                     	for(Message message : messageList){ %>
@@ -40,7 +39,7 @@ SimpleDateFormat simpledateformat = new SimpleDateFormat("yyyy-MM-dd");
 	                     <li>
 	                            <a href="./message.jsp">
 	                                <div style="text-align: center;">
-	                                    <em>无信息。</em>
+	                                    <em>无公告。</em>
 	                                </div>
 	                            </a>
 	                        </li>
@@ -48,8 +47,8 @@ SimpleDateFormat simpledateformat = new SimpleDateFormat("yyyy-MM-dd");
 	                     <%} %>
                         <li>
                             <a class="text-center" href="./message.jsp">
-                                <strong>阅读所有信息</strong>
-                                <i class="icon-angle-right"></i>
+                                <strong>阅读所有公告</strong>
+                                <i class="fa-angle-right"></i>
                             </a>
                         </li>
                     </ul>
@@ -57,17 +56,20 @@ SimpleDateFormat simpledateformat = new SimpleDateFormat("yyyy-MM-dd");
                 </li>
                 
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-large icon-flag"></i>  <i class="icon-large icon-sort-down"></i></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-lg fa-flag"></i>  <i class="fa fa-lg fa-caret-down"></i></a>
                     <ul class="dropdown-menu dropdown-messages" style="width: 400px;">
                     <%
-                    if(!cultivationPersonUList.isEmpty())
-       				for(Cultivationperson cultivationperson : cultivationPersonUList) {
+                    int cultivationPersonListNum = 0;
+                    if(!cultivationPersonList.isEmpty())
+        			for(Cultivationperson cultivationperson : cultivationPersonList) {
         			%>
         			<%
 			        Date nowdate = new Date();
 			        long time1 = nowdate.getTime() - cultivationperson.getCultivation().getCultivationBeginDate().getTime();
 			        long time2 = cultivationperson.getCultivation().getCultivationEndDate().getTime() - cultivationperson.getCultivation().getCultivationBeginDate().getTime();
 			        double percent = (double)time1/time2*100;
+			        if(percent>100||percent<0) continue;
+			        cultivationPersonListNum++;
 			        %>
                         <li>
                             <a href="./cultivationCheck.jsp">
@@ -83,7 +85,7 @@ SimpleDateFormat simpledateformat = new SimpleDateFormat("yyyy-MM-dd");
                             </a>
                         </li>
                         <li class="divider"></li>
-                     <%} else { %>
+                     <%} if(cultivationPersonListNum==0) { %>
                      <li>
                             <a href="./cultivationCheck.jsp">
                                 <div style="text-align: center;">
@@ -95,8 +97,8 @@ SimpleDateFormat simpledateformat = new SimpleDateFormat("yyyy-MM-dd");
                      <%} %>
                         <li>
                             <a class="text-center" href="./cultivationCheck.jsp">
-                                <strong>阅读所有任务</strong>
-                                <i class="icon-angle-right"></i>
+                                <strong>查看所有培训</strong>
+                                <i class="fa-angle-right"></i>
                             </a>
                         </li>
                         
@@ -105,14 +107,14 @@ SimpleDateFormat simpledateformat = new SimpleDateFormat("yyyy-MM-dd");
                 </li>
                 
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-large icon-user"></i> <i class="icon-large icon-caret-down"></i></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-lg fa-user"></i> <i class="fa fa-lg fa-caret-down"></i></a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="icon-user"></i> <%=activeWorker.getWorkerName() %></a> 
+                        <li><a href="#"><i class="fa fa-user"></i> <%=activeWorker.getWorkerName() %></a> 
                         </li>
-                        <li><a href="#" data-toggle="modal" data-target="#aboutModal"><i class="icon-info-sign"></i> 关于</a>
+                        <li><a href="#" data-toggle="modal" data-target="#aboutModal"><i class="fa fa-info-circle"></i> 关于</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="Logout"><i class="icon-signout"></i> 登出系统</a>
+                        <li><a href="Logout"><i class="fa fa-sign-out"></i> 登出系统</a>
                         </li>
                     </ul>
                 </li>

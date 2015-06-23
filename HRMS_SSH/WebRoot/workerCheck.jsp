@@ -33,12 +33,6 @@ session.setAttribute("workerlist", workerlist);
     <link rel="stylesheet" type="text/css" href="plugin/jquery-ui-1.11.4.custom/jquery-ui.css">
     <script src="./js/jquery-2.1.3.min.js"></script>
     <script src="plugin/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <style>
-        * {
-            font-family: 'FontAwesome',"Microsoft YaHei" ! important;
-        }
-    </style>
     <script>
   		$(function() {
   			$( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd"});
@@ -93,6 +87,7 @@ alert("对不起，您没有权限删除个人信息！");
 				<!-- 修改 Select-->
 				<form action="UpdateWorkerformation" method="post">
 				<div class="col-sm-4">
+
 				<%
 	               for(Worker worker : WorkerList){ 
 	               request.setAttribute("workerBirthPlace", worker.getWorkerBirthPlace());
@@ -102,19 +97,18 @@ alert("对不起，您没有权限删除个人信息！");
 	               request.setAttribute("workerEducation", worker.getWorkerEducation());
 	               request.setAttribute("workerNationality", worker.getWorkerNationality());
 	               %>
-				<button class="btn btn-default" type="submit" style="width: 40%; float: right;" ><i class="icon-ok-sign"></i> 确认修改</button>
+				<button class="btn btn-default" type="submit" style="width: 40%; float: right;" ><i class="fa fa-check"></i> 确认修改</button>
 				<%
 				if(activeWorker.getWorkerPermission()==3||activeWorker.getWorkerPermission()==4){
 				 %>
-				 <button class="btn btn-default" type="button" style="width: 40%; float: right;" onclick="send_delete(<%=worker.getWorkerNo()%>)"><i class="icon-ok-sign"></i> 确认删除</button>
+				 <button class="btn btn-default" type="button" style="width: 40%; float: right;" onclick="send_delete(<%=worker.getWorkerNo()%>)"><i class="fa fa-check"></i> 确认删除</button>
 				 <%}else{%>
-				 <button class="btn btn-default" type="button" style="width: 40%; float: right;" onclick="DeleteManager()"><i class="icon-ok-sign"></i> 确认删除</button>
+				 <button class="btn btn-default" type="button" style="width: 40%; float: right;" onclick="DeleteManager()"><i class="fa fa-check"></i> 确认删除</button>
 				 <%} %>
-				
+
 				</div>
                 </div>
                 
-	              
                 <input type="hidden" name="workerOid" value="<%=worker.getWorkerOid()%>">
                 <table class="table table-bordered table-hover">
                 
@@ -179,7 +173,7 @@ alert("对不起，您没有权限删除个人信息！");
 	            </tr>
 	            <tr>
 	              <th><input type="text" class="form-control " name="worker.workerId" placeholder="身份证号" value="<%=worker.getWorkerId()%>" required></th>
-	             <th><input type="text" class="form-control " name="worker.workerBirthDate" placeholder="出生日期 " value="<%=sdf.format(worker.getWorkerBirthDate())%>" required  style="width: 98%" class="form-control"     onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"></th>
+	              <th><input type="text" class="form-control " name="worker.workerBirthDate" placeholder="出生日期 " value="<%=sdf.format(worker.getWorkerBirthDate())%>" required  style="width: 98%" class="form-control" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'});" ></th>
 	              <th><input type="text" class="form-control " name="worker.workerAge" placeholder="年龄 " value="${workerAge }" required></th>
 	            </tr>
 	            <tr>

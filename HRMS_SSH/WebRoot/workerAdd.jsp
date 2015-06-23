@@ -21,11 +21,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="./js/jquery-2.1.3.min.js"></script>
     <script src="plugin/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <style>
-        * {
-            font-family: 'FontAwesome',"Microsoft YaHei" ! important;
-        }
-    </style>
     <script>
   		$(function() {
   			$( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd"});
@@ -66,12 +61,14 @@ alert("对不起，您没有添加员工权限！");
               
 				<form action="Add" method="post" onsubmit="return checkValidate()">
 				<div class="col-sm-4">
+
 				<%if(activeWorker.getWorkerPermission()==4||activeWorker.getWorkerPermission()==3) {%>
-				<button class="btn btn-default" type="submit" style="width: 40%; float: right;"><i class="icon-ok-sign" ></i> 添加员工</button>
+				<button class="btn btn-default" type="submit" style="width: 40%; float: right;"><i class="fa fa-check"></i> 添加员工</button>
 				<%}else{%>
-				<button class="btn btn-default" type="button" style="width: 40%; float: right;" onclick="addWorker()"><i class="icon-ok-sign" ></i> 添加员工</button>
+				<button class="btn btn-default" type="button" style="width: 40%; float: right;" onclick="addWorker()"><i class="fa fa-check"></i> 添加员工</button>
 				<%}%>
 				
+
 				</div>
                 </div>
                 <table class="table table-bordered table-hover">

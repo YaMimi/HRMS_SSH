@@ -45,11 +45,6 @@ PageBean pagebean = (PageBean)session.getAttribute("pageBean");
   				   $( "#datepicker_end" ).datepicker({dateFormat: "yy-mm-dd", minDate:"-0D"});
   				});
   	</script>
-    <style>
-        * {
-            font-family: 'FontAwesome',"Microsoft YaHei" ! important;
-        }
-    </style>
     <title>请假系统</title>
 
   </head>

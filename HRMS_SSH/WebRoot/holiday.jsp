@@ -25,12 +25,6 @@ List<Holiday> holidays = (List<Holiday>)session.getAttribute("holidays");
     <script src="./js/jquery-2.1.3.min.js"></script>
     <script src="./js/jquery-ui.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    
-	<style>
-        * {
-            font-family: 'FontAwesome',"Microsoft YaHei" ! important;
-        }
-    </style>
     <script>
   		$(function() {
   				   $( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd", minDate:"-0D"});

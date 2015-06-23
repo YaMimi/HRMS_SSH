@@ -32,12 +32,7 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
     <script src="./js/jquery-2.1.3.min.js"></script>
     <script src="./js/jquery-ui.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-	<style>
-        * {
-            font-family: 'FontAwesome',"Microsoft YaHei" ! important;
-        }
-    </style>
-    <title>公告系统</title>
+    <title>我的培训</title>
   </head>
   
   <body>
@@ -45,18 +40,20 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
   	<%@ include file="navbarTop.jsp"%>
     <%@ include file="navbarSide.jsp"%>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-		<h1 class="page-header">培训查询</h1>
+		<h1 class="page-header">我的培训</h1>
 		<h2 class="sub-header">进行中培训</h2>
 		<%int i = 1;%>
-		<s:action name="CheckCultivationPersonUnfinished" executeResult="false" namespace="/"/>
+		<%int listNum = 0; %>
 		<%
-		if(!cultivationPersonUList.isEmpty())
-        for(Cultivationperson cultivationperson : cultivationPersonUList) {%>
+		if(!cultivationPersonList.isEmpty())
+        for(Cultivationperson cultivationperson : cultivationPersonList) {%>
         <%
         Date date = new Date();
         long time1 = date.getTime() - cultivationperson.getCultivation().getCultivationBeginDate().getTime();
         long time2 = cultivationperson.getCultivation().getCultivationEndDate().getTime() - cultivationperson.getCultivation().getCultivationBeginDate().getTime();
         double percent = (double)time1/time2*100;
+        if(percent>100||percent<0) continue;
+        listNum++;
         %>
 		<div class="panel panel-default">
             <div class="panel-heading">
@@ -65,7 +62,7 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 			          	<%=cultivationperson.getCultivation().getCultivationProject() %>
 			        </a>
 			        <a data-toggle="collapse" href="#collapse<%=i %>" aria-expanded="false" class="collapsed" style="float:right">
-			          <%=(int)percent %>%
+			          <%if(cultivationperson.getCultivationPersonMark()==null) out.print((int)percent+"%"); else out.print(returnMark(cultivationperson.getCultivationPersonMark()));%>
 			        </a>
 		      	</h4>
             </div>
@@ -77,23 +74,40 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 							<p><%=simpledateformat.format(cultivationperson.getCultivation().getCultivationBeginDate()) %>~<%=simpledateformat.format(cultivationperson.getCultivation().getCultivationEndDate()) %></p>
 		                </div>
 					</div>
-					<div class="col-sm-4" style="padding-right: 0px;">
+					<div class="col-sm-3" style="padding-right: 0px;">
 						<div class="well" style="margin-bottom: 15px;">
 		                    <h4>培训类型</h4>
 							<p><%=cultivationperson.getCultivation().getCultivationType() %></p>
 		                </div>
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-3" style="padding-right: 0px;">
 						<div class="well" style="margin-bottom: 15px;">
 		                    <h4>培训地点</h4>
 							<p><%=cultivationperson.getCultivation().getCultivationLocation() %></p>
 		                </div>
 					</div>
+					<div class="col-sm-2">
+						<div class="well" style="margin-bottom: 15px;">
+		                    <h4>负责人</h4>
+							<p><%=cultivationperson.getCultivation().getWorker().getWorkerName() %></p>
+		                </div>
+					</div>
 				</div>
-				<div class="well" style="margin-bottom: 0px;">
+				<%if(cultivationperson.getCultivationPersonMark()==null) {%>
+                <div class="well">
                     <h4>培训说明</h4>
                     <p><%=cultivationperson.getCultivation().getCultivationInstruction() %></p>
                 </div>
+                <form action="DeleteCultivationPerson" method="post">
+                <input type="hidden" name=cultivationPersonOid value="<%=cultivationperson.getCultivationPersonOid() %>">
+                <button type="submit" class="btn btn-outline btn-danger btn-block" style="margin-bottom: 0px;">退出培训</button>
+                </form>
+                <%} else {%>
+                <div class="well" style="margin-bottom: 0px;">
+                    <h4>培训说明</h4>
+                    <p><%=cultivationperson.getCultivation().getCultivationInstruction() %></p>
+                </div>
+                <%} %>
             </div>
             <div class="panel-footer">
             <div class="progress progress-striped active" style="margin-bottom: 0px;">
@@ -101,15 +115,22 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
             </div>
 			</div>
         </div>
-        <%i++; %>
-        <%} else { out.print("　无进行中培训。");}%>
-		
-		<h2 class="sub-header">已完成培训</h2>
-		<s:action name="CheckCultivationPersonFinished" executeResult="false" namespace="/"/>
+        <%i++;}
+        if(listNum==0) { out.print("　无进行中培训。");}%>
+        
+        <h2 class="sub-header">未开始培训</h2>
 		<%
-		List<Cultivationperson> cultivationPersonList = (List<Cultivationperson>)session.getAttribute("cultivationPersonList");
+		listNum = 0;
 		if(!cultivationPersonList.isEmpty())
         for(Cultivationperson cultivationperson : cultivationPersonList) {%>
+        <%
+        Date date = new Date();
+        long time1 = date.getTime() - cultivationperson.getCultivation().getCultivationBeginDate().getTime();
+        long time2 = cultivationperson.getCultivation().getCultivationEndDate().getTime() - cultivationperson.getCultivation().getCultivationBeginDate().getTime();
+        double percent = (double)time1/time2*100;
+        if(percent>0) continue;
+        listNum++;
+        %>
 		<div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
@@ -117,7 +138,7 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 			          	<%=cultivationperson.getCultivation().getCultivationProject() %>
 			        </a>
 			        <a data-toggle="collapse" href="#collapse<%=i %>" aria-expanded="false" class="collapsed" style="float:right">
-			          	<%=returnMark(cultivationperson.getCultivationPersonMark()) %>
+			        	<%if(cultivationperson.getCultivationPersonMark()==null) out.print("即将开始"); else out.print(returnMark(cultivationperson.getCultivationPersonMark()));%>
 			        </a>
 		      	</h4>
             </div>
@@ -129,26 +150,114 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 							<p><%=simpledateformat.format(cultivationperson.getCultivation().getCultivationBeginDate()) %>~<%=simpledateformat.format(cultivationperson.getCultivation().getCultivationEndDate()) %></p>
 		                </div>
 					</div>
-					<div class="col-sm-4" style="padding-right: 0px;">
+					<div class="col-sm-3" style="padding-right: 0px;">
 						<div class="well" style="margin-bottom: 15px;">
 		                    <h4>培训类型</h4>
 							<p><%=cultivationperson.getCultivation().getCultivationType() %></p>
 		                </div>
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-3" style="padding-right: 0px;">
 						<div class="well" style="margin-bottom: 15px;">
 		                    <h4>培训地点</h4>
 							<p><%=cultivationperson.getCultivation().getCultivationLocation() %></p>
 		                </div>
 					</div>
+					<div class="col-sm-2">
+						<div class="well" style="margin-bottom: 15px;">
+		                    <h4>负责人</h4>
+							<p><%=cultivationperson.getCultivation().getWorker().getWorkerName() %></p>
+		                </div>
+					</div>
 				</div>
-				<div class="well" style="margin-bottom: 0px;">
+				<%if(cultivationperson.getCultivationPersonMark()==null) {%>
+                <div class="well">
                     <h4>培训说明</h4>
                     <p><%=cultivationperson.getCultivation().getCultivationInstruction() %></p>
                 </div>
+                <form action="DeleteCultivationPerson" method="post">
+                <input type="hidden" name=cultivationPersonOid value="<%=cultivationperson.getCultivationPersonOid() %>">
+                <button type="submit" class="btn btn-outline btn-danger btn-block" style="margin-bottom: 0px;">退出培训</button>
+                </form>
+                <%} else {%>
+                <div class="well" style="margin-bottom: 0px;">
+                    <h4>培训说明</h4>
+                    <p><%=cultivationperson.getCultivation().getCultivationInstruction() %></p>
+                </div>
+                <%} %>
             </div>
         </div>
-        <%i++; %>
-         <%} else { out.print("　无已完成培训。");}%>
+        <%i++;}
+        if(listNum==0) { out.print("　无未开始培训。");}%>
+		
+		<h2 class="sub-header">已完成培训</h2>
+		<%
+		listNum = 0;
+		if(!cultivationPersonList.isEmpty())
+        for(Cultivationperson cultivationperson : cultivationPersonList) {%>
+        <%
+        Date date = new Date();
+        long time1 = date.getTime() - cultivationperson.getCultivation().getCultivationBeginDate().getTime();
+        long time2 = cultivationperson.getCultivation().getCultivationEndDate().getTime() - cultivationperson.getCultivation().getCultivationBeginDate().getTime();
+        double percent = (double)time1/time2*100;
+        if(percent<100) continue;
+        listNum++;
+        %>
+		<div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+			        <a data-toggle="collapse" href="#collapse<%=i %>" aria-expanded="false" class="collapsed">
+			          	<%=cultivationperson.getCultivation().getCultivationProject() %>
+			        </a>
+			        <a data-toggle="collapse" href="#collapse<%=i %>" aria-expanded="false" class="collapsed" style="float:right">
+			          	<%if(cultivationperson.getCultivationPersonMark()!=null) out.print(returnMark(cultivationperson.getCultivationPersonMark())); else out.print("未评分"); %>
+			        </a>
+		      	</h4>
+            </div>
+            <div class="panel-body collapse" id="collapse<%=i %>" aria-expanded="false" style="height: 30px;">
+				<div class="row">
+					<div class="col-sm-4" style="padding-right: 0px;">
+						<div class="well" style="margin-bottom: 15px;">
+		                    <h4>培训时间</h4>
+							<p><%=simpledateformat.format(cultivationperson.getCultivation().getCultivationBeginDate()) %>~<%=simpledateformat.format(cultivationperson.getCultivation().getCultivationEndDate()) %></p>
+		                </div>
+					</div>
+					<div class="col-sm-3" style="padding-right: 0px;">
+						<div class="well" style="margin-bottom: 15px;">
+		                    <h4>培训类型</h4>
+							<p><%=cultivationperson.getCultivation().getCultivationType() %></p>
+		                </div>
+					</div>
+					<div class="col-sm-3" style="padding-right: 0px;">
+						<div class="well" style="margin-bottom: 15px;">
+		                    <h4>培训地点</h4>
+							<p><%=cultivationperson.getCultivation().getCultivationLocation() %></p>
+		                </div>
+					</div>
+					<div class="col-sm-2">
+						<div class="well" style="margin-bottom: 15px;">
+		                    <h4>负责人</h4>
+							<p><%=cultivationperson.getCultivation().getWorker().getWorkerName() %></p>
+		                </div>
+					</div>
+				</div>
+                <%if(cultivationperson.getCultivationPersonMark()==null) {%>
+                <div class="well">
+                    <h4>培训说明</h4>
+                    <p><%=cultivationperson.getCultivation().getCultivationInstruction() %></p>
+                </div>
+                <form action="DeleteCultivationPerson" method="post">
+                <input type="hidden" name=cultivationPersonOid value="<%=cultivationperson.getCultivationPersonOid() %>">
+                <button type="submit" class="btn btn-outline btn-danger btn-block" style="margin-bottom: 0px;">退出培训</button>
+                </form>
+                <%} else {%>
+                <div class="well" style="margin-bottom: 0px;">
+                    <h4>培训说明</h4>
+                    <p><%=cultivationperson.getCultivation().getCultivationInstruction() %></p>
+                </div>
+                <%} %>
+            </div>
+        </div>
+        <%i++;}
+        if(listNum==0) { out.print("　无已完成培训。");}%>
   </body>
 </html>
