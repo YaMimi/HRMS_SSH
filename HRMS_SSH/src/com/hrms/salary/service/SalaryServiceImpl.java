@@ -25,18 +25,6 @@ public class SalaryServiceImpl implements SalaryService {
 	}
 
 	@Override
-	public Salary insertSalary(String hql) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Salary updateSalary(String hql) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void deleteSalary(Salary salary) {
 		// TODO Auto-generated method stub
 
@@ -67,6 +55,7 @@ public class SalaryServiceImpl implements SalaryService {
 		salary.setSalaryAttendanceReward((float) 0);
 		salary.setSalaryRop((float) 0);
 		salary.setSalaryTotal((float) 0);
+		salary.setSalaryResult(0);
 		salary.setWorker(worker);
 		salarydao.insertSalary(salary);
 	}
@@ -151,6 +140,25 @@ public class SalaryServiceImpl implements SalaryService {
 		salary.setSalaryWeekendTime(salaryWeekendTime);
 		salarydao.updateSalary(salary);
 		salarydao.updateSalary(salary);
+	}
+
+	@Override
+	public Salary searchSalary(Integer salaryOid) {
+		return salarydao.searchSalary(salaryOid);
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Salary insertSalary(Salary salary) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Salary updateSalary(Salary salary) {
+		// TODO Auto-generated method stub
+		return salarydao.updateSalary(salary);
 	}
 
 }

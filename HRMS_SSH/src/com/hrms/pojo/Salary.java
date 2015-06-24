@@ -22,6 +22,7 @@ public class Salary implements java.io.Serializable {
 	private Float salaryAttendanceReward;
 	private Float salaryRop;
 	private Float salaryTotal;
+	private Integer salaryResult;
 
 	// Constructors
 
@@ -34,7 +35,7 @@ public class Salary implements java.io.Serializable {
 			Float salaryStandardTime, Float salaryActualTime,
 			Float salaryWeekTime, Float salaryWeekendTime,
 			Float salaryHolidayTime, Float salaryAttendanceReward,
-			Float salaryRop, Float salaryTotal) {
+			Float salaryRop, Float salaryTotal, Integer salaryResult) {
 		this.worker = worker;
 		this.salaryDate = salaryDate;
 		this.salaryHourly = salaryHourly;
@@ -46,6 +47,7 @@ public class Salary implements java.io.Serializable {
 		this.salaryAttendanceReward = salaryAttendanceReward;
 		this.salaryRop = salaryRop;
 		this.salaryTotal = salaryTotal;
+		this.salaryResult = salaryResult;
 	}
 
 	// Property accessors
@@ -144,6 +146,80 @@ public class Salary implements java.io.Serializable {
 
 	public void setSalaryTotal(Float salaryTotal) {
 		this.salaryTotal = salaryTotal;
+	}
+
+	public Integer getSalaryResult() {
+		return this.salaryResult;
+	}
+
+	public void setSalaryResult(Integer salaryResult) {
+		this.salaryResult = salaryResult;
+	}
+	
+	/*
+	 * 总工资
+	 */
+	public float getTotalSalary(){
+		return getActualSalary()+getWeekSalary()+getWeekendSalary()+getHolidaySalary()+getAttendanceRewardSalary()+getRopSalary();
+	}
+	
+	/*
+	 * 额定工资
+	 */
+	public float getStandardSalary(){
+		return this.salaryStandardTime*this.salaryHourly;
+		
+	}
+	
+	/*
+	 * 实际工资
+	 */
+	public float getActualSalary(){
+		return this.salaryActualTime*this.salaryHourly;
+		
+	}
+	
+	/*
+	 * 工作日加班工资
+	 */
+	public float getWeekSalary(){
+		return (float) (1.5*this.salaryWeekTime*this.salaryHourly);
+		
+	}
+	
+	/*
+	 * 双休加班工资
+	 */
+	public float getWeekendSalary(){
+		return (float) (2.0*this.salaryWeekendTime*this.salaryHourly);
+		
+	}
+	
+	/*
+	 * 假日加班工资
+	 */
+	public float getHolidaySalary(){
+		return (float) (3.0*this.salaryHolidayTime*this.salaryHourly);
+		
+	}
+	
+	/*
+	 * 全勤奖励
+	 */
+	public float getAttendanceRewardSalary(){
+		if(this.salaryActualTime>this.salaryStandardTime){
+			return (float) (this.salaryHourly*40.0);
+		}else{
+			return (float) 0.0;
+		}
+	}
+	
+	/*
+	 * 奖罚工资
+	 */
+	public float getRopSalary(){
+		return this.salaryRop;
+		
 	}
 
 }

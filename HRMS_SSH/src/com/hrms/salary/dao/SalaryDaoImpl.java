@@ -31,7 +31,7 @@ public class SalaryDaoImpl implements SalaryDao {
 	public Salary updateSalary(Salary salary) {
 		// TODO Auto-generated method stub
 		sessionFactory.getCurrentSession().merge(salary);
-		return null;
+		return salary;
 	}
 
 	@Override
