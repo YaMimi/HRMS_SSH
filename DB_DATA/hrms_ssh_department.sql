@@ -33,7 +33,7 @@ CREATE TABLE `department` (
   UNIQUE KEY `DepartmentOid_UNIQUE` (`DepartmentOid`),
   KEY `fk_Department_Department_idx` (`FatherDepartmentOid`),
   CONSTRAINT `fk_Department_Department` FOREIGN KEY (`FatherDepartmentOid`) REFERENCES `department` (`DepartmentOid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `department` (
 
 LOCK TABLES `department` WRITE;
 /*!40000 ALTER TABLE `department` DISABLE KEYS */;
-INSERT INTO `department` VALUES (1,'01','行政部',NULL),(2,'02','人事部',1);
+INSERT INTO `department` VALUES (1,'01','行政部',NULL),(2,'02','人事部',1),(3,'03','学习部',2),(4,'04','管理部',3);
 /*!40000 ALTER TABLE `department` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-23 14:04:16
+-- Dump completed on 2015-06-24 17:43:34

@@ -16,17 +16,14 @@
   <property generated="never" lazy="false" name="ropdate" type="java.util.Date">
    <column length="10" name="ROPDate" not-null="true"/>
   </property>
-  <property generated="never" lazy="false" name="roptype" type="java.lang.String">
-   <column length="45" name="ROPType" not-null="true"/>
+  <property generated="never" lazy="false" name="rop" type="java.lang.Integer">
+   <column name="ROP" not-null="true"/>
   </property>
   <property generated="never" lazy="false" name="ropreason" type="java.lang.String">
    <column length="45" name="ROPReason" not-null="true"/>
   </property>
   <property generated="never" lazy="false" name="ropamount" type="java.lang.Float">
    <column name="ROPAmount" not-null="true" precision="12" scale="0"/>
-  </property>
-  <property generated="never" lazy="false" name="rop" type="java.lang.Integer">
-   <column name="ROP" not-null="true"/>
   </property>
  </class>
 </hibernate-mapping>

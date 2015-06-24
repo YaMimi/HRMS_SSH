@@ -27,10 +27,9 @@ DROP TABLE IF EXISTS `rewardorpunishment`;
 CREATE TABLE `rewardorpunishment` (
   `ROPOid` int(11) NOT NULL,
   `ROPDate` date NOT NULL,
-  `ROPType` varchar(45) NOT NULL,
+  `ROP` int(11) NOT NULL,
   `ROPReason` varchar(45) NOT NULL,
   `ROPAmount` float NOT NULL DEFAULT '0',
-  `ROP` int(11) NOT NULL,
   `ROPWorkerOid` int(11) NOT NULL,
   PRIMARY KEY (`ROPOid`),
   UNIQUE KEY `ROPOid_UNIQUE` (`ROPOid`),
@@ -57,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-23 14:04:17
+-- Dump completed on 2015-06-24 17:43:35

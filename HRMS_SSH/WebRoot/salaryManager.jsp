@@ -121,6 +121,7 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
               
               <form id="from<%=i %>">
               <div id="collapse<%=i %>" class="panel-body collapse" role="tabpanel" aria-expanded="false" aria-labelledby="heading<%=i%>">
+                <h4 class="page-header">工资明细</h4>
                 <div class="input-group" style="width: 100%;margin-bottom: 20px;">
                   <div class="input-group-addon" style="width:50px;">总工资 ￥</div>
                   <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getTotalSalary());} %>" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
@@ -241,22 +242,52 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
 	                     </th>
 	                   </tr>
 	                 </table>
+	                 
+	                 <h4 class="page-header" style="margin-bottom:0px;margin-top: 10px;">奖惩明细</h4>
+		                <table  class="table table-bordered" >
+		                   <tr>
+		                     <th>奖惩日期</th>
+		                     <th>奖/惩</th>
+		                     <th>奖惩类型</th>
+		                     <th>奖惩原因</th>
+		                     <th>奖惩金额</th>
+		                   </tr>
+		                   <tr>
+		                     <th>2015-06-05</th>
+		                     <th>惩罚</th>
+		                     <th>损坏公物</th>
+		                     <th>打破公司花瓶</th>
+		                     <th style="width: 180px;">
+		                       <div class="input-group">
+		                         <div class="input-group-addon" >￥</div>
+		                         <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
+		                       </div>
+		                     </th>
+		                   </tr>
+		               </table>
                   </div>
+		            
                 </div>
+                
+                
+                
                 
                 <%if(salary.getSalaryResult()==0){ %>
                 <div style="margin-bottom:0px;">
                 	<input type="hidden" name="salary.salaryOid" value="<%=salary.getSalaryOid() %>">
+                	<button class="btn btn-info btn-block" type="button" data-toggle="modal" data-target="#myModal<%=i %>">添加奖惩记录</button>
 	               	<button class="btn btn-primary btn-block" style="width: 50%; float: left;" type="submit" onclick="alter<%=i %>();">确认修改</button>
-	               	<button class="btn btn-success btn-block" style="width: 50%;" type="submit" onclick="save<%=i %>();">确认结算</button>
+	               	<button class="btn btn-success btn-block" style="width: 50%; " type="submit" onclick="save<%=i %>();">确认结算</button>
+	               	
                 </div>
+                
+                
+				
                 <%}else if(salary.getSalaryResult()==1){ %>
                 <div style="margin-bottom:0px;">
 	               	<button class="btn btn-danger btn-block " disabled>改工资已经结算</button>
                 </div>
                 <%} %>
-                
-                
                 
                 <!-- JS -->
                 <script type="text/javascript">
@@ -271,10 +302,60 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
 						document.getElementById("from<%=i %>").submit();
 				  };
 			    </script>
+			    <script>
+  				$(function() {
+  				   $( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd", minDate:"-0D"});
+  				   $( "#datepicker_end" ).datepicker({dateFormat: "yy-mm-dd", minDate:"-0D"});
+  				});
+  				</script>
 			    <!-- JS -->
-			    
+			      
               </div>
               </form>
+              <!-- Modal Begin-->
+                <div class="modal fade" id="myModal<%=i %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				   <div class="modal-dialog">
+				      <div class="modal-content">
+				         <div class="modal-header">
+				            <button type="button" class="close" 
+				               data-dismiss="modal" aria-hidden="true">
+				                  &times;
+				            </button>
+				            <h4 class="modal-title" id="myModalLabel"> 模态框（Modal）标题</h4>
+				         </div>
+				         <form action="" method="post">
+					         <div class="modal-body"> 
+					         	<div class="form-group form-inline">
+							      <div class="radio">
+									  <label>
+									    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+									    奖励
+									  </label>
+									</div>
+									<div class="radio">
+									  <label>
+									    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+									    惩罚
+									  </label>
+									</div>
+							    </div>
+							    <div class="form-group form-inline">
+						  			<input id="datepicker_start" class="form-control" type="text" name="" style="width:40%" placeholder="奖惩日期" required>
+						  		</div>
+						  		<div class="form-group ">
+						  			<textarea class="form-control" rows="3" name="" placeholder="奖惩原因" required  autofocus></textarea>
+						  		</div>
+						  		
+					         </div>
+					         <div class="modal-footer">
+					            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					            <button type="button" class="btn btn-primary">提交更改</button>
+					         </div>
+				         </form>
+				      </div><!-- /.modal-content -->
+				   </div><!-- /.modal -->
+				</div>
+			  <!-- Modal End-->
               </div>
             <% i++;} %>
             </div>
