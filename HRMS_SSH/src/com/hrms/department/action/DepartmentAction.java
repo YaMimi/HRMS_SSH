@@ -228,6 +228,8 @@ public class DepartmentAction extends ActionSupport{
 				}
 				return flag;
 			}
+		
+	
 
 	public String getAlter() {
 			return alter;

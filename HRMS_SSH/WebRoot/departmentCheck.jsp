@@ -3,12 +3,14 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="com.opensymphony.xwork2.ActionContext"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page autoFlush="true" buffer="3000kb"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 List<Department> departmentlist = (List<Department>)session.getAttribute("departmentlist");
 if(departmentlist==null)
 {
-	%><jsp:forward page="/DepartmentSearch"/><% 
+	%><s:action name="DepartmentSearch" ></s:action><% 
 }
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -56,6 +58,7 @@ session.setAttribute("departmentlist", departmentlist);
 	              <th><strong>部门人数</strong></th>
 	              <th colspan="2"><strong>操作</strong></th>
               </tr>
+              <%if(DepartmentList!=null) {%>
               <%int i = 1; %>
               <%for(Department department : DepartmentList){ %>
               
@@ -88,6 +91,7 @@ session.setAttribute("departmentlist", departmentlist);
 	            <%
 	            	}
 	             %>
+	             <%} %>
                 </table>
   </body>
 </html>

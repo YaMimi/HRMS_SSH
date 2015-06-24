@@ -75,6 +75,16 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
 	              <th><%if(attendance.getAttendanceOffTime()==null) out.print("未签到"); else out.print(attendance.getAttendanceOffTime());%></th>
 	              <th>无请假</th>
 	          	  <%} %>
+	          	  <%if(attendance.getAttendanceState()==2) {%>
+	              <th><%=attendance.getAttendanceOnTime() %></th>
+	              <th><%if(attendance.getAttendanceOffTime()==null) out.print("未签到"); else out.print(attendance.getAttendanceOffTime());%></th>
+	              <th>双休加班</th>
+	          	  <%} %>
+	          	  <%if(attendance.getAttendanceState()==3) {%>
+	              <th><%=attendance.getAttendanceOnTime() %></th>
+	              <th><%if(attendance.getAttendanceOffTime()==null) out.print("未签到"); else out.print(attendance.getAttendanceOffTime());%></th>
+	              <th>假日加班</th>
+	          	  <%} %>
 	          </tr>
               <%i++; %>
               <%if(i>5){i=1;break;} %>
@@ -114,7 +124,15 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
 		              <th><%=attendance.getAttendanceOnTime() %></th>
 		              <th><%if(attendance.getAttendanceOffTime()==null) out.print("未签到"); else out.print(attendance.getAttendanceOffTime());%></th>
 		          	  <%} %>
-		              <th><%if(attendance.getAttendanceState()==0)out.print("请假中"); else out.print("无请假"); %></th>
+		          	  <%if(attendance.getAttendanceState()==2) {%>
+		              <th><%=attendance.getAttendanceOnTime() %></th>
+		              <th><%if(attendance.getAttendanceOffTime()==null) out.print("未签到"); else out.print(attendance.getAttendanceOffTime());%></th>
+		          	  <%} %>
+		          	  <%if(attendance.getAttendanceState()==3) {%>
+		              <th><%=attendance.getAttendanceOnTime() %></th>
+		              <th><%if(attendance.getAttendanceOffTime()==null) out.print("未签到"); else out.print(attendance.getAttendanceOffTime());%></th>
+		          	  <%} %>
+		              <th><%if(attendance.getAttendanceState()==0)out.print("请假中");else if(attendance.getAttendanceState()==2)out.print("双休加班"); else if(attendance.getAttendanceState()==3)out.print("假日加班"); else out.print("无请假"); %></th>
 	              </tr>
 	              <%i++; %>
 	             <% } %>
