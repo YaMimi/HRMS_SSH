@@ -6,8 +6,8 @@ import com.hrms.pojo.Cultivationperson;
 import com.hrms.pojo.Worker;
 
 public interface CultivationPersonService {
-	public List<Cultivationperson> checkCultivationUnfinished(Worker worker);
-	public List<Cultivationperson> checkCultivationFinished(Worker worker);
 	public Cultivationperson insertCultivation(Cultivationperson cultivation);
-	
+	public Cultivationperson editCultivation(Cultivationperson cultivation);
+	public Cultivationperson findCultivation(int oid);
+	public void deleteCultivation(int oid);
 }

@@ -80,13 +80,35 @@
 		</action>
 	</package>
 	
+	<!-- Cultivation Package -->
+	<package name="cultivation" extends="struts-default" namespace="/">
+		<!-- ShowCultivationAction -->
+		<action name="ShowCultivation" class="CultivationAction" method="showCultivation"></action>
+		
+		<!-- NewCultivationPersonAction -->
+		<action name="NewCultivation" class="CultivationAction" method="newCultivation">
+			<result name="success" type="redirect">/cultivation.jsp</result>
+			<result name="error" type="redirect">/cultivation.jsp</result>
+		</action>
+		
+	</package>
+	
 	<!-- CultivationPerson Package -->
 	<package name="cultivationperson" extends="struts-default" namespace="/">
-		<!-- CheckCultivationUnfinishedAction -->
-		<action name="CheckCultivationPersonUnfinished" class="CultivationPersonAction" method="checkCultivationPersonUnfinished"></action>
+		<!-- DeleteCultivationPersonAction -->
+		<action name="DeleteCultivationPerson" class="CultivationPersonAction" method="deleteCultivationPerson">
+			<result name="success" type="redirect">/cultivationCheck.jsp</result>
+		</action>
 		
-		<!-- CheckCultivationFinishedAction -->
-		<action name="CheckCultivationPersonFinished" class="CultivationPersonAction" method="checkCultivationPersonFinished"></action>
+		<!-- NewCultivationPersonAction -->
+		<action name="NewCultivationPerson" class="CultivationPersonAction" method="newCultivationPerson">
+			<result name="success" type="redirect">/cultivationCheck.jsp</result>
+		</action>
+		
+		<!-- RankCultivationPersonAction -->
+		<action name="RankCultivationPerson" class="CultivationPersonAction" method="rankCultivationPerson">
+			<result name="success" type="redirect">/cultivation.jsp</result>
+		</action>
 
 	</package>
 	
@@ -142,29 +164,29 @@
 	
 	<!-- 徐新院                  功能：员工信息添加 -->
 	<package name="worker" extends="struts-default" namespace="/">
-	<!-- 员工信息添加 -->
+	<!-- 在workerAdd.jsp页面点击添加按钮进行信息的添加 -->
 		<action name="Add" class="WorkerAddInformationAction" method="addInformation">
 			<result name="success" type="redirect">/workerAdd.jsp</result>
 			<result name="error" type="redirect">/workerAdd.jsp</result>
 		</action>
 		
-		<!-- 在添加员工信息页面自动显示员工编号 -->
+		<!-- 根据数据库中员工的数量自动生成员工编号,并且显示添加员工信息页面workerAdd.jsp  -->
           <action name="WorkerAdd" class="WorkerAddInformationAction" method="InitWorkerAdd">
 			<result name="success" type="redirect">/workerAdd.jsp</result>
 		</action>
 		
-		<!-- 员工信息修改 -->
+		<!-- 登录成功之后获取登录账号初始化员工界面信息 -->
 		<action name="Select" class="WorkerAddInformationAction" method="InitnInformation">
 			<result name="success" type="redirect">/workerCheck.jsp</result>
 		</action>
 		
-		<!-- 在所有员工表中点击超链接后修改员工信息 -->
+		<!-- 在workerManager.jsp页面点击管理按钮之后显示对应员工的信息修改删除页面-->
 		<action name="ShowUpdateWorkerformation" class="WorkerAddInformationAction" method="ShowWorkerformation">
 			<result name="success" type="redirect">/workerCheck.jsp</result>
 		</action>
 		
 		
-		<!-- 修改相应员工信息 -->
+		<!-- 修改员工信息 -->
 		<action name="UpdateWorkerformation" class="WorkerAddInformationAction" method="UpdateInformation">
 			<result name="success" type="redirect">/workerCheck.jsp</result>
 		</action>
@@ -175,26 +197,24 @@
 			<result name="success" type="redirect">/workerShow.jsp</result>
 		</action>
 		
-		<!-- 信息管理界面 -->
+		<!-- 查询数据库中所有的员工信息，可以进行分页显示workerManager.jsp  -->
 			<action name="SelectAllWorkersManager" class="WorkerAddInformationAction" method="SelectAllWorkers">
 			<result name="success" type="redirect">/workerManager.jsp</result>
 		</action>
-		<!-- 信息管理页面输入员工编号进行查询 -->
+		<!-- 在workerManager.jsp页面进行精确查询 -->
 		<action name="ResearchWorker" class="WorkerAddInformationAction" method="ResearchWorker">
 			<result name="success" type="redirect">/workerManager.jsp</result>
 		</action>
 		
-		
-		<!--在所有员工表中点击超链接后显示员工全部信息 -->
-		<action name="ShowWorkerformation" class="WorkerAddInformationAction" method="ShowWorkerformation">
-			<result name="success" type="redirect">/workerShow.jsp</result>
-		</action>
-		
-		
-		<!--在所有员工表中点击超链接后删除相应员工信息 -->
+		<!--选择要删除的人员的信息进行删除 -->
 		<action name="DeleteWorker" class="WorkerAddInformationAction" method="DeleteWorkerInformation">
 			<result name="success" type="redirect">/workerManager.jsp</result>
 			<result name="fail" type="redirect">/workerManager.jsp</result>
+		</action>
+		
+		<!-- 修改密码 -->
+		<action name="UpdatePassword" class="WorkerAddInformationAction" method="updatePassword">
+			<result name="success" type="redirect">/workerChangePassword.jsp</result>
 		</action>
 	</package>
 	

@@ -1,11 +1,12 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ include file="loginCheck.jsp"%>
-<%@ page import="com.hrms.pojo.*" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-
+<%@ page language="java" import="com.opensymphony.xwork2.ActionContext"%>
+<%@ page language="java" import="com.hrms.pojo.*"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
 Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 List<Date> salarysdate = (List<Date>)session.getAttribute("salarysdate");
 Salary salary = (Salary)session.getAttribute("salary");
@@ -13,6 +14,7 @@ Date nowpersonalsalarydate = (Date)session.getAttribute("nowpersonalsalarydate")
 SimpleDateFormat year = new SimpleDateFormat("yyyy");
 SimpleDateFormat month = new SimpleDateFormat("MM");
 %>
+
 
 <!DOCTYPE html>
 <html>
@@ -198,5 +200,6 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
             </div>
 
         </div>
+
   </body>
 </html>

@@ -26,15 +26,15 @@ state = (String)session.getAttribute("state");
             </div>
             <%if(activeWorker!=null) {%>
             <div class="div-mid-login">
-            	<form class="form-signin" action="Logout" method="post">
+            	<form class="form-signin" action="Logout" method="post" onsubmit="logout()">
                     <img src="img/title.png">
 			        <div class="alert alert-danger alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
 			        	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<i class="icon-remove-sign icon-large"></i> 你已登录！请先<a class="alert-link" href="Logout"> 登出系统。</a>
+						<i class="fa fa-times-circle fa-large"></i> 你已登录！请先<a class="alert-link" href="Logout"> 登出系统。</a>
 					</div>
                     <input type="text" name="username" class="form-control" style="margin-bottom: 5px;" placeholder="当前账号：<%=activeWorker.getWorkerNo() %>" disabled="disabled">
                     <a class="btn btn-lg btn-primary btn-block" href="./index.jsp">返回首页</a>
-                    <button class="btn btn-lg btn-danger btn-block" onclick="logout()" id="logoutButton" data-loading-text="正在登出..." type="submit" autocomplete="off">登出系统</button>
+                    <button class="btn btn-lg btn-danger btn-block" id="logoutButton" data-loading-text="正在登出..." type="submit" autocomplete="off">登出系统</button>
                     <script>
 					  function logout() {
 					      var btn = $("#logoutButton");
@@ -46,34 +46,34 @@ state = (String)session.getAttribute("state");
        		</div>
             <%} else {%>
             <div class="div-mid-login">
-                <form class="form-signin" action="Login" method="post">
+                <form class="form-signin" action="Login" method="post" onsubmit="login()">
                     <img src="img/title.png">
                     <%if(state!=null&&state.equals("LOGOUTSUCCESS")) {%>
 					<%session.setAttribute("state", null); %>
 			        <div class="alert alert-success alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
 			        	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<i class="icon-exclamation-sign icon-large"></i> 登出成功！
+						<i class="fa fa-check-circle fa-large"></i> 登出成功！
 					</div>
 			        <%} %>
 			        <%if(state!=null&&state.equals("LOGINPLEASE")) {%>
 					<%session.setAttribute("state", null); %>
 			        <div class="alert alert-danger alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<i class="icon-remove-sign icon-large"></i> 请先登录。
+						<i class="fa fa-times-circle fa-large"></i> 请先登录。
 					</div>
 					<%} %>
 			       	<%if(state!=null&&state.equals("LOGINERROR")) {%>
 					<%session.setAttribute("state", null); %>
 			        <div class="alert alert-danger alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<i class="icon-remove-sign icon-large"></i> 密码错误，请检查后重新输入。
+						<i class="fa fa-times-circle fa-large"></i> 密码错误，请检查后重新输入。
 					</div>
 					<%} %>
 					<%if(state!=null&&state.equals("LOGINEMPTY")) {%>
 					<%session.setAttribute("state", null); %>
 			        <div class="alert alert-danger alert-dismissible" style="margin-top:0px; margin-bottom: 5px;" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<i class="icon-remove-sign icon-large"></i> 用户名为空，请检查后重新输入。
+						<i class="fa fa-times-circle fa-large"></i> 用户名为空，请检查后重新输入。
 					</div>
 					<%} %>
                     <label for="inputEmail" class="sr-only">员工号</label>
@@ -88,7 +88,7 @@ state = (String)session.getAttribute("state");
                         <u><abbr title="如果您忘记了自己的登录密码，请带证件到人事部进行修改。">忘记密码？</abbr></u>
                         </label>
                     </div>
-                    <button class="btn btn-lg btn-primary btn-block" onclick="login()" id="loginButton" data-loading-text="正在登录..." type="submit" autocomplete="off">登录</button>
+                    <button class="btn btn-lg btn-primary btn-block" id="loginButton" data-loading-text="正在登录..." type="submit" autocomplete="off">登录</button>
                     <script>
 					  function login() {
 					      var btn = $("#loginButton");

@@ -21,11 +21,6 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
     <script src="./js/jquery-2.1.3.min.js"></script>
     <script src="./js/jquery-ui.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-	<style>
-        * {
-            font-family: 'FontAwesome',"Microsoft YaHei" ! important;
-        }
-    </style>
     <title>公告系统</title>
   </head>
   
@@ -58,7 +53,7 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 		    <div class="col-sm-6" style="padding-right: 0px;">
 		    	<button type="reset" class="btn btn-default btn-block">重置内容</a>
 		    </div>
-		    <br>
+		    <br><br>
 		    </form>
 		  </div>
 		 </div>
@@ -76,10 +71,10 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 							<h4><%=message.getMessageContent() %></h4>
 					</div>
 					<div class="col-sm-9" style="text-align: left;">
-							<i class="icon-user"> <%=message.getWorker().getWorkerName() %></i>
+							<i class="fa fa-user"> <%=message.getWorker().getWorkerName() %></i>
 					</div>
 					<div class="col-sm-3" style="text-align: right;">
-							<i class="icon-time"> <%=simpledateformat.format(message.getMessageDate()) %></i>
+							<i class="fa fa-clock-o"> <%=simpledateformat.format(message.getMessageDate()) %></i>
 					</div>
       			</td>
       		</tr>

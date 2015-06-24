@@ -32,11 +32,6 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
     <script src="./js/jquery-2.1.3.min.js"></script>
     <script src="./js/jquery-ui.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-	<style>
-        * {
-            font-family: 'FontAwesome',"Microsoft YaHei" ! important;
-        }
-    </style>
     <script>
   		$(function() {
   			$( "#datepicker_start" ).datepicker({
@@ -96,7 +91,7 @@ List<Attendance> AttendanceListDate = (List<Attendance>)session.getAttribute("at
 			      <input id="datepicker_start" type="text" class="form-control" name="Date" style="width:291px">
 			    </div>
 			  </div>
-			  <button type="submit" class="btn btn-primary"><i class="icon-search"></i></button>
+			  <button type="submit" class="btn btn-primary"><i class="fa fa-search fa-lg"></i></button>
 			</form>
 			<br>
 			<table class="table table-bordered table-hover">

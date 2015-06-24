@@ -1,3 +1,4 @@
+<%@page import="com.hrms.worker.action.HrmsToolString"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="loginCheck.jsp"%>
 <%@ page language="java" import="com.opensymphony.xwork2.ActionContext"%>
@@ -11,6 +12,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 
   SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+ int workerAge= HrmsToolString.getSubAge(sdf.format(activeWorker.getWorkerBirthDate()), 4, "UTF-8");
+request.setAttribute("workerAge", workerAge);
  %>
  <s:action name="SelectManager" executeResult="false" namespace="/"/>
 <!DOCTYPE html>
@@ -25,17 +28,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="./js/jquery-2.1.3.min.js"></script>
     <script src="plugin/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <style>
-        * {
-            font-family: 'FontAwesome',"Microsoft YaHei" ! important;
-        }
-    </style>
     <script>
   		$(function() {
   			$( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd"});
   		});
   	</script>
-  	
+  	<!-- 点击修改面貌连接后弹出修改框页面 -->
+  	<script type="text/javascript" language="javascript">
+function opena(){
+window.open('test.jsp','newIDFRAME','height=300,width=500,top=200,left=400,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no,resizable:no')
+}
+function Close(){
+window.close();
+}
+</script>
   	
   	
   	<script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
@@ -50,7 +56,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <h1 class="page-header">个人信息</h1>
-                
                 <i>以下您的全部个人信息：<abbr title="如果您发现自己的信息登记有误或者出现了改动，请到人事部进行修改。">信息有误？</abbr></i><br><br>
                 <form class="form-horizontal">
                 <table class="table table-bordered table-hover">
@@ -86,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            <tr>
 	              <th><input type="text" class="form-control " readonly="readonly" name="worker_person_id" placeholder="身份证号" value="<%=activeWorker.getWorkerId() %>" required></th>
 	              <th><input type="text" class="form-control " readonly="readonly" name="worker_born" placeholder="出生日期 " value="<%=sdf.format(activeWorker.getWorkerBirthDate()) %>" required></th>
-	              <th><input type="text" class="form-control " readonly="readonly" name="worker_age" placeholder="年龄 " value="" required></th>
+	              <th><input type="text" class="form-control " readonly="readonly" name="worker_age" placeholder="年龄 " value="${workerAge }" required></th>
 	            </tr>
 	            <tr>
 	              <th style="padding-left: 21px;"><strong>籍贯</strong></th>

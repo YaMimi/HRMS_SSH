@@ -111,5 +111,34 @@ ArrayList<Worker> workers=(ArrayList<Worker>) sessionFactory.getCurrentSession()
 		
 		return list;
 	}
+
+	@Override
+	public ArrayList<Worker> EveryPage(int pageNo, int pageSize) {
+		// TODO Auto-generated method stub
+		String queryString="from Worker";
+		Query queryObject= sessionFactory.getCurrentSession().createQuery(queryString);
+		queryObject.setFirstResult((pageNo-1)*pageSize);
+		queryObject.setMaxResults(pageSize);
+		
+		return (ArrayList<Worker>) queryObject.list();
+	}
+
+	@Override
+	public int updateWorkerPassword(Worker worker,String newPassword,int workerOid) {
+		// TODO Auto-generated method stub
+		int result;
+		Worker worker1=(Worker)sessionFactory.getCurrentSession().get(Worker.class, workerOid);
+		//if(worker1.getPassword().equals(worker.getPassword())){//如果相等则修改
+		String sql="UPDATE Worker SET Password=? WHERE WorkerOid=?";
+		if(worker.getPassword().equals(worker1.getPassword())){
+		Query query=sessionFactory.getCurrentSession().createQuery(sql);
+		query.setString(0, newPassword);
+		query.setInteger(1,workerOid );
+		result=query.executeUpdate();
+		}else{
+			result=0;
+		}
+		return result;
+	}
 	
 }
