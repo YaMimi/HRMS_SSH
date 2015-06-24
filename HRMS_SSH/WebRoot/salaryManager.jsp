@@ -42,7 +42,7 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
     <%@ include file="navbarSide.jsp"%>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
        <h1 class="page-header">工资结算
-       <form action="CheckDepartmentSalary" method="post" class="form-inline pull-right">
+       <form action="CheckDepartmentSalary" method="post" class="form-inline pull-right" >
        <div class="input-group">
        <div class="input-group-addon" style="width: 20px;">部门</div>
            <select name="department" class="form-control">
@@ -99,11 +99,12 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
             </div>
             
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            
             <%int i = 1; %>
 			<%for(Salary salary : allsalarys){ %>
             <div class="panel panel-default" style="margin-bottom:3px;">
               <div class="panel-heading" role="tab" id="heading<%=i%>">
-                <h4 class="panel-title"  style="cursor:hand">
+                <h4 class="panel-title" >
                   <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=i %>" aria-expanded="true" aria-controls="collapse<%=i %>">
                       <div class="row">
                       <label class="col-sm-3 control-label" style="margin-bottom:0px;"><%=salary.getWorker().getWorkerName() %></label>
@@ -118,12 +119,13 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
                 </h4>
               </div>
               
+              <form id="from<%=i %>">
               <div id="collapse<%=i %>" class="panel-body collapse" role="tabpanel" aria-expanded="false" aria-labelledby="heading<%=i%>">
                 <div class="input-group" style="width: 100%;margin-bottom: 20px;">
                   <div class="input-group-addon" style="width:50px;">总工资 ￥</div>
                   <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getTotalSalary());} %>" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
                 </div>
-				<form>
+				
                 <div class="panel panel-info">
                   <div class="panel-heading">基本工资</div>
                   <div class="panel-body" style="padding: 0px;">
@@ -152,7 +154,7 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
                         <th>
                           <div class="input-group">
                             <div class="input-group-addon" style="width: 150px;">标准时薪  ￥</div>
-                            <input type="text" class="form-control" value="<%if(salary!=null){out.print(salary.getSalaryHourly());} %>" placeholder="0.00" style="background-color: #FFFFFF;" >
+                            <input type="text" class="form-control" name="salaryhourly" value="<%if(salary!=null){out.print(salary.getSalaryHourly());} %>" placeholder="0.00" style="background-color: #FFFFFF;" >
                           </div>
                         </th>
                         <th>
@@ -220,7 +222,7 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
 	              </div>
 	            </div>
 	
-	            <div class="panel panel-danger" >
+	            <div class="panel panel-danger" style="margin-bottom:10px;">
 	              <div class="panel-heading">奖罚工资</div>
 	              <div class="panel-body" style="padding: 0px;">
 	                <table  class="table table-bordered" style="margin-bottom:0px;">
@@ -242,22 +244,50 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
                   </div>
                 </div>
                 
+                <%if(salary.getSalaryResult()==0){ %>
                 <div style="margin-bottom:0px;">
-	               	<button class="btn btn-primary btn-block" style="width: 50%; float: left;" type="submit">确认修改</button>
-	               	<button class="btn btn-success btn-block" style="width: 50%;" >确认结算</button>
+                	<input type="hidden" name="salary.salaryOid" value="<%=salary.getSalaryOid() %>">
+	               	<button class="btn btn-primary btn-block" style="width: 50%; float: left;" type="submit" onclick="alter<%=i %>();">确认修改</button>
+	               	<button class="btn btn-success btn-block" style="width: 50%;" type="submit" onclick="save<%=i %>();">确认结算</button>
                 </div>
-                </form>
+                <%}else if(salary.getSalaryResult()==1){ %>
+                <div style="margin-bottom:0px;">
+	               	<button class="btn btn-danger btn-block " disabled>改工资已经结算</button>
+                </div>
+                <%} %>
+                
+                
+                
+                <!-- JS -->
+                <script type="text/javascript">
+				  	function alter<%=i %>(){ 
+						document.getElementById("from<%=i %>").action="AlterSalary";
+						document.getElementById("from<%=i %>").submit();
+					};
+			    </script>
+			    <script type="text/javascript">
+			  	  function save<%=i %>(){
+						document.getElementById("from<%=i %>").action="SaveSalary";
+						document.getElementById("from<%=i %>").submit();
+				  };
+			    </script>
+			    <!-- JS -->
+			    
               </div>
+              </form>
               </div>
             <% i++;} %>
+            </div>
             <%}else{ %>
             	<div class="alert alert-danger alert-dismissible" role="alert">改日期无工资记录</div>
             <%} %>
           <%} %>
-          
+          	</div>
             </div>
           </div>
         </div>
       </div>
   </body>
+  
+  
 </html>

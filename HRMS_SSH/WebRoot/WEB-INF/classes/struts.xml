@@ -216,6 +216,14 @@
 		<action name="CheckDepartmentSalary" class="SalaryAction" method="checkDepartmentSalary">
 			<result name="success" type="redirect">/salaryManager.jsp</result>
 		</action>
+		<!-- 工资维护修改 -->
+		<action name="AlterSalary" class="SalaryAction" method="alterSalary">
+			<result name="success" type="redirect">/salaryManager.jsp</result>
+		</action>
+		<!-- 工资维护结算 -->
+		<action name="SaveSalary" class="SalaryAction" method="saveSalary">
+			<result name="success" type="redirect">/salaryManager.jsp</result>
+		</action>
 	</package>
 	<!-- 杨明杰  工资Action -->
 </struts>    

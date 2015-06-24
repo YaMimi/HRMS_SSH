@@ -22,6 +22,7 @@ public class SalaryAction extends ActionSupport {
 	private String month;
 	private String department;
 	private Salary salary;
+	private float salaryhourly;
 	@Resource
 	private SalaryService salaryService;
 	@Resource
@@ -173,6 +174,70 @@ public class SalaryAction extends ActionSupport {
 		
 	}
 	
+	/*
+	 * 功能：修改工资标准时薪
+	 * 作者：杨明杰
+	 * 日期：6月23日
+	 */
+	public String alterSalary(){
+		//System.out.println(salary.getSalaryOid());
+		//System.out.println(salaryhourly);
+		Salary s = salaryService.searchSalary(salary.getSalaryOid());
+		//System.out.println(s.getSalaryHourly());
+		s.setSalaryHourly(salaryhourly);
+		//System.out.println(s.getSalaryHourly());
+		salaryService.updateSalary(s);
+		//System.out.println(s.getSalaryResult()); 
+		salary=null;
+		
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		String department = (String) session.get("nowsalarydepartment");//部门
+		Date date = (Date) session.get("nowsalarydate");//日期
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+		String hql = "";
+		if(department.equals("全部")){
+			hql = "from Salary s where salaryDate like '"+ sdf.format(date) +"%' order by s.worker.workerPermission desc";
+		}else{
+			hql = "from Salary s where salaryDate like '"+ sdf.format(date) +"%' and s.worker.department.departmentName = '"+ department +"' order by s.worker.workerPermission desc";
+		}
+		List<Salary> allsalarys = salaryService.searchSalary(hql);
+		session.put("allsalarys", allsalarys);
+		
+		return SUCCESS;
+		
+	}
+	
+	/*
+	 * 功能：结算工资并写入数据库
+	 * 作者：杨明杰
+	 * 日期：6月23日
+	 */
+	public String saveSalary(){
+		//System.out.println(salary.getSalaryOid());
+		//System.out.println(salaryhourly);
+		Salary s = salaryService.searchSalary(salary.getSalaryOid());
+		s.setSalaryResult(1);
+		s.setSalaryTotal(s.getTotalSalary());
+		s.setSalaryAttendanceReward(s.getAttendanceRewardSalary());
+		s.setSalaryRop(s.getSalaryRop());
+		salaryService.updateSalary(s);
+		
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		String department = (String) session.get("nowsalarydepartment");//部门
+		Date date = (Date) session.get("nowsalarydate");//日期
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+		String hql = "";
+		if(department.equals("全部")){
+			hql = "from Salary s where salaryDate like '"+ sdf.format(date) +"%' order by s.worker.workerPermission desc";
+		}else{
+			hql = "from Salary s where salaryDate like '"+ sdf.format(date) +"%' and s.worker.department.departmentName = '"+ department +"' order by s.worker.workerPermission desc";
+		}
+		List<Salary> allsalarys = salaryService.searchSalary(hql);
+		session.put("allsalarys", allsalarys);
+		
+		return SUCCESS;
+		
+	}
 	
 	public String getYear() {
 		return year;
@@ -217,6 +282,14 @@ public class SalaryAction extends ActionSupport {
 
 	public void setDepartmentService(DepartmentService departmentService) {
 		this.departmentService = departmentService;
+	}
+
+	public float getSalaryhourly() {
+		return salaryhourly;
+	}
+
+	public void setSalaryhourly(float salaryhourly) {
+		this.salaryhourly = salaryhourly;
 	}
 	
 }
