@@ -124,5 +124,11 @@
 	<bean id="SalaryService" class="com.hrms.salary.service.SalaryServiceImpl" scope="prototype"></bean>
 	<bean id="SalaryDao" class="com.hrms.salary.dao.SalaryDaoImpl" scope="prototype"></bean>
 	<!-- 杨明杰   工资管理  结束-->
+	
+	<!-- 杨明杰  奖惩管理  开始 -->
+	<bean id="ROPAction" class="com.hrms.rop.action.ROPAction" scope="prototype"></bean>
+	<bean id="ROPService" class="com.hrms.rop.service.ROPServiceImpl" scope="prototype"></bean>
+	<bean id="ROPDao" class="com.hrms.rop.dao.ROPDaoImpl" scope="prototype"></bean>
+	<!-- 杨明杰   奖惩管理  结束-->
 
 </beans>

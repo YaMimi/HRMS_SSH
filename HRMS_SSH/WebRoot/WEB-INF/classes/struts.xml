@@ -247,4 +247,17 @@
 		</action>
 	</package>
 	<!-- 杨明杰  工资Action -->
+	
+	<!-- 杨明杰  奖惩Action -->
+	<package name="ROP" extends="struts-default" namespace="/">
+		<!-- 创建奖惩 -->
+		<action name="CreateROP" class="ROPAction" method="createROP">
+			<result name="success" type="redirect">/salaryManager.jsp</result>
+		</action>
+		<!-- 删除奖惩 -->
+		<action name="DeleteROP" class="ROPAction" method="deleteROP">
+			<result name="success" type="redirect">/salaryManager.jsp</result>
+		</action>
+	</package>
+	<!-- 杨明杰  奖惩Action -->
 </struts>    

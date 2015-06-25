@@ -11,11 +11,14 @@ import javax.annotation.Resource;
 
 import com.hrms.department.services.DepartmentService;
 import com.hrms.pojo.Department;
+import com.hrms.pojo.Rewardorpunishment;
 import com.hrms.pojo.Salary;
 import com.hrms.pojo.Worker;
+import com.hrms.rop.service.ROPService;
 import com.hrms.salary.service.SalaryService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.org.apache.regexp.internal.RE;
 
 public class SalaryAction extends ActionSupport {
 	private String year;
@@ -27,6 +30,8 @@ public class SalaryAction extends ActionSupport {
 	private SalaryService salaryService;
 	@Resource
 	private DepartmentService departmentService;
+	@Resource
+	private ROPService ropService;
 	
 	/*
 	 * 功能：根据年月查找个人工资信息
@@ -59,6 +64,12 @@ public class SalaryAction extends ActionSupport {
 			System.out.println("Output NowPersonalDate is ERROR !");
 		}
 		session.put("nowpersonalsalarydate", date);
+		
+		Date nowpersonaldate = (Date)session.get("nowpersonalsalarydate");
+		hql = "from Rewardorpunishment where ropdate like '"+sdf.format(nowpersonaldate) +"%'";
+		List<Rewardorpunishment> ROPpersonallist = ropService.searchROP(hql);
+		session.put("ROPpersonallist", ROPpersonallist);//奖罚
+		
 		return SUCCESS;
 		
 	}
@@ -91,6 +102,12 @@ public class SalaryAction extends ActionSupport {
 		Date date = new Date();
 		//System.out.println(date);
 		session.put("nowpersonalsalarydate", date);
+		
+		sdf = new SimpleDateFormat("yyyy-MM");
+		Date nowpersonaldate = (Date)session.get("nowpersonalsalarydate");
+		hql = "from Rewardorpunishment where ropdate like '"+sdf.format(nowpersonaldate) +"%'";
+		List<Rewardorpunishment> ROPpersonallist = ropService.searchROP(hql);
+		session.put("ROPpersonallist", ROPpersonallist);//奖罚
 		
 		return SUCCESS;
 		
@@ -125,7 +142,11 @@ public class SalaryAction extends ActionSupport {
 		hql = "from Salary s where salaryDate like '"+sdf.format(date) +"%' order by s.worker.workerPermission desc";
 		allsalarys = salaryService.searchSalary(hql);
 		session.put("allsalarys", allsalarys);
-		
+		//奖惩列表
+		hql = "from Rewardorpunishment where ropdate like '"+sdf.format(date) +"%'";
+		List<Rewardorpunishment> ROPlist = ropService.searchROP(hql);
+		//if(!ROPlist.isEmpty()){System.out.println("is not Empty");}else{System.out.println("is Empty");}
+		session.put("ROPlist", ROPlist);//奖罚
 		session.put("nowsalarydepartment", "全部");//部门
 		session.put("nowsalarydate", date);//日期
 		
@@ -170,6 +191,12 @@ public class SalaryAction extends ActionSupport {
 		}
 		
 		session.put("nowsalarydate", date);//日期
+		
+		Date nowdate = (Date)session.get("nowsalarydate");
+		hql = "from Rewardorpunishment where ropdate like '"+sdf.format(nowdate) +"%'";
+		List<Rewardorpunishment> ROPlist = ropService.searchROP(hql);
+		session.put("ROPlist", ROPlist);//奖罚
+		
 		return SUCCESS;
 		
 	}
@@ -290,6 +317,14 @@ public class SalaryAction extends ActionSupport {
 
 	public void setSalaryhourly(float salaryhourly) {
 		this.salaryhourly = salaryhourly;
+	}
+
+	public ROPService getRopService() {
+		return ropService;
+	}
+
+	public void setRopService(ROPService ropService) {
+		this.ropService = ropService;
 	}
 	
 }

@@ -11,8 +11,10 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
 List<Date> salarysdate = (List<Date>)session.getAttribute("salarysdate");
 Salary salary = (Salary)session.getAttribute("salary");
 Date nowpersonalsalarydate = (Date)session.getAttribute("nowpersonalsalarydate");
+List<Rewardorpunishment> ROPpersonallist = (List<Rewardorpunishment>)session.getAttribute("ROPpersonallist");
 SimpleDateFormat year = new SimpleDateFormat("yyyy");
 SimpleDateFormat month = new SimpleDateFormat("MM");
+SimpleDateFormat ROPdate = new SimpleDateFormat("yyyy-MM-dd");
 %>
 
 
@@ -196,6 +198,32 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
                      </th>
                    </tr>
                  </table>
+                 
+                 <h4 class="page-header" style="margin-bottom:0px;margin-top: 10px;">奖惩明细</h4>
+	                <table  class="table table-bordered" >
+	                   <tr>
+	                     <th>奖惩日期</th>
+	                     <th>奖/惩</th>
+	                     <th>奖惩原因</th>
+	                     <th>奖惩金额</th>
+	                   </tr>
+	                   <%for(Rewardorpunishment ROP : ROPpersonallist) {%>
+	                   <%if(ROP.getWorker().getWorkerOid().equals(salary.getWorker().getWorkerOid())){ %>
+	                   <tr>
+	                     <th><%=ROPdate.format(ROP.getRopdate()) %></th>
+	                     <%if(ROP.getRop()==0) {%><th>惩罚</th><%} %>
+	                     <%if(ROP.getRop()==1) {%><th>奖励</th><%} %>
+	                     <th><%=ROP.getRopreason() %></th>
+	                     <th style="width: 180px;">
+	                       <div class="input-group">
+	                         <div class="input-group-addon" >￥</div>
+	                         <input type="text" class="form-control" value="<%=ROP.getRopamount() %>" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
+	                       </div>
+	                     </th>
+	                   </tr>
+	                   <%} %>
+	                   <%} %>
+	               </table>
               </div>
             </div>
 

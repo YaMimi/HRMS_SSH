@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `rewardorpunishment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rewardorpunishment` (
-  `ROPOid` int(11) NOT NULL,
+  `ROPOid` int(11) NOT NULL AUTO_INCREMENT,
   `ROPDate` date NOT NULL,
   `ROP` int(11) NOT NULL,
   `ROPReason` varchar(45) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `rewardorpunishment` (
   UNIQUE KEY `ROPOid_UNIQUE` (`ROPOid`),
   KEY `fk_RewardOrPunishment_Worker1_idx` (`ROPWorkerOid`),
   CONSTRAINT `fk_RewardOrPunishment_Worker1` FOREIGN KEY (`ROPWorkerOid`) REFERENCES `worker` (`WorkerOid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,6 +44,7 @@ CREATE TABLE `rewardorpunishment` (
 
 LOCK TABLES `rewardorpunishment` WRITE;
 /*!40000 ALTER TABLE `rewardorpunishment` DISABLE KEYS */;
+INSERT INTO `rewardorpunishment` VALUES (3,'2015-06-25',0,'上班和张小花聊天',-123,2),(4,'2015-06-26',1,'优秀的质检员',500,2),(5,'2015-06-27',0,'质检不合格',-66,2),(6,'2015-06-26',0,'减肥失败',-200,1),(7,'2015-06-25',1,'业绩优秀',500,1);
 /*!40000 ALTER TABLE `rewardorpunishment` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-24 17:43:35
+-- Dump completed on 2015-06-25 13:40:30
