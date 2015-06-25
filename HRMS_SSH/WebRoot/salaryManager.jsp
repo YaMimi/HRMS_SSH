@@ -11,8 +11,10 @@ List<Date> allsalarysdate = (List<Date>)session.getAttribute("allsalarysdate");
 List<Salary> allsalarys = (List<Salary>)session.getAttribute("allsalarys");
 String nowsalarydepartment = (String)session.getAttribute("nowsalarydepartment");
 Date nowsalarydate = (Date)session.getAttribute("nowsalarydate");
+List<Rewardorpunishment> ROPlist = (List<Rewardorpunishment>)session.getAttribute("ROPlist");
 SimpleDateFormat year = new SimpleDateFormat("yyyy");
 SimpleDateFormat month = new SimpleDateFormat("MM");
+SimpleDateFormat ROPdate = new SimpleDateFormat("yyyy-MM-dd");
 %>
 
 
@@ -222,7 +224,8 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
 	                 </table>
 	              </div>
 	            </div>
-	
+				</form>
+				
 	            <div class="panel panel-danger" style="margin-bottom:10px;">
 	              <div class="panel-heading">奖罚工资</div>
 	              <div class="panel-body" style="padding: 0px;">
@@ -248,22 +251,34 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
 		                   <tr>
 		                     <th>奖惩日期</th>
 		                     <th>奖/惩</th>
-		                     <th>奖惩类型</th>
 		                     <th>奖惩原因</th>
 		                     <th>奖惩金额</th>
+		                     <%if(salary.getSalaryResult()==0){ %><th>删除</th><%} %>
 		                   </tr>
+		                   <%for(Rewardorpunishment ROP : ROPlist) {%>
+		                   <%if(ROP.getWorker().getWorkerOid().equals(salary.getWorker().getWorkerOid())){ %>
 		                   <tr>
-		                     <th>2015-06-05</th>
-		                     <th>惩罚</th>
-		                     <th>损坏公物</th>
-		                     <th>打破公司花瓶</th>
+		                     <th><%=ROPdate.format(ROP.getRopdate()) %></th>
+		                     <%if(ROP.getRop()==0) {%><th>惩罚</th><%} %>
+		                     <%if(ROP.getRop()==1) {%><th>奖励</th><%} %>
+		                     <th><%=ROP.getRopreason() %></th>
 		                     <th style="width: 180px;">
 		                       <div class="input-group">
 		                         <div class="input-group-addon" >￥</div>
-		                         <input type="text" class="form-control" value="" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
+		                         <input type="text" class="form-control" value="<%=ROP.getRopamount() %>" placeholder="0.00" style="background-color: #FFFFFF;" readonly>
 		                       </div>
 		                     </th>
+		                     <%if(salary.getSalaryResult()==0){ %>
+							 	<th style="width:10px;">
+							           <form action="DeleteROP">
+							             <input type='hidden' name='ropoid' value='<%=ROP.getRopoid()%>'/>
+							             <button class="crlbut delbut" type="submit"><i class="fa fa-remove fa-lg"></i></button>
+							           </form>
+						          </th>
+							 <%} %>
 		                   </tr>
+		                   <%} %>
+		                   <%} %>
 		               </table>
                   </div>
 		            
@@ -285,7 +300,7 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
 				
                 <%}else if(salary.getSalaryResult()==1){ %>
                 <div style="margin-bottom:0px;">
-	               	<button class="btn btn-danger btn-block " disabled>改工资已经结算</button>
+	               	<button class="btn btn-danger btn-block " disabled>该工资已经结算</button>
                 </div>
                 <%} %>
                 
@@ -304,14 +319,13 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
 			    </script>
 			    <script>
   				$(function() {
-  				   $( "#datepicker_start" ).datepicker({dateFormat: "yy-mm-dd", minDate:"-0D"});
-  				   $( "#datepicker_end" ).datepicker({dateFormat: "yy-mm-dd", minDate:"-0D"});
+  				   $( "#datepicker_start<%=i %>" ).datepicker({dateFormat: "yy-mm-dd", minDate:"-0D"});
   				});
   				</script>
 			    <!-- JS -->
 			      
               </div>
-              </form>
+              
               <!-- Modal Begin-->
                 <div class="modal fade" id="myModal<%=i %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				   <div class="modal-dialog">
@@ -321,35 +335,37 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
 				               data-dismiss="modal" aria-hidden="true">
 				                  &times;
 				            </button>
-				            <h4 class="modal-title" id="myModalLabel"> 模态框（Modal）标题</h4>
+				            <h4 class="modal-title" id="myModalLabel"> 创建奖惩记录</h4>
 				         </div>
-				         <form action="" method="post">
+				         <form action="CreateROP" method="post">
 					         <div class="modal-body"> 
-					         	<div class="form-group form-inline">
-							      <div class="radio">
-									  <label>
-									    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+					         	<div class="form-group">
+							      <div class="btn-group" data-toggle="buttons">
+									  <label class="btn btn-primary active">
+									    <input type="radio" name="Rop.rop"  value="1" checked>
 									    奖励
 									  </label>
-									</div>
-									<div class="radio">
-									  <label>
-									    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+									  <label class="btn btn-primary">
+									    <input type="radio" name="Rop.rop"  value="0">
 									    惩罚
 									  </label>
 									</div>
 							    </div>
-							    <div class="form-group form-inline">
-						  			<input id="datepicker_start" class="form-control" type="text" name="" style="width:40%" placeholder="奖惩日期" required>
+							    <div class="form-group">
+						  			<input id="datepicker_start<%=i %>" class="form-control" type="text" name="Rop.ropdate" placeholder="奖惩日期" required>
+						  		</div>
+						  		<div class="form-group">
+						  			<input class="form-control" type="text" name="Rop.ropamount" placeholder="奖惩金额" required>
 						  		</div>
 						  		<div class="form-group ">
-						  			<textarea class="form-control" rows="3" name="" placeholder="奖惩原因" required  autofocus></textarea>
+						  			<textarea class="form-control" rows="3" name="Rop.ropreason" placeholder="奖惩原因" required  autofocus></textarea>
 						  		</div>
 						  		
 					         </div>
 					         <div class="modal-footer">
+					         	<input type="hidden" name="salaryOid" value="<%=salary.getSalaryOid() %>">
 					            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-					            <button type="button" class="btn btn-primary">提交更改</button>
+					            <button type="submit" class="btn btn-primary">创建奖惩</button>
 					         </div>
 				         </form>
 				      </div><!-- /.modal-content -->
@@ -360,7 +376,7 @@ SimpleDateFormat month = new SimpleDateFormat("MM");
             <% i++;} %>
             </div>
             <%}else{ %>
-            	<div class="alert alert-danger alert-dismissible" role="alert">改日期无工资记录</div>
+            	<div class="alert alert-danger alert-dismissible" role="alert">该日期无工资记录</div>
             <%} %>
           <%} %>
           	</div>
