@@ -20,6 +20,7 @@ public class Salary implements java.io.Serializable {
 	private Float salaryWeekendTime;
 	private Float salaryHolidayTime;
 	private Float salaryAttendanceReward;
+	private Float salaryRop;
 	private Float salaryTotal;
 
 	// Constructors
@@ -33,7 +34,7 @@ public class Salary implements java.io.Serializable {
 			Float salaryStandardTime, Float salaryActualTime,
 			Float salaryWeekTime, Float salaryWeekendTime,
 			Float salaryHolidayTime, Float salaryAttendanceReward,
-			Float salaryTotal) {
+			Float salaryRop, Float salaryTotal) {
 		this.worker = worker;
 		this.salaryDate = salaryDate;
 		this.salaryHourly = salaryHourly;
@@ -43,6 +44,7 @@ public class Salary implements java.io.Serializable {
 		this.salaryWeekendTime = salaryWeekendTime;
 		this.salaryHolidayTime = salaryHolidayTime;
 		this.salaryAttendanceReward = salaryAttendanceReward;
+		this.salaryRop = salaryRop;
 		this.salaryTotal = salaryTotal;
 	}
 
@@ -126,6 +128,14 @@ public class Salary implements java.io.Serializable {
 
 	public void setSalaryAttendanceReward(Float salaryAttendanceReward) {
 		this.salaryAttendanceReward = salaryAttendanceReward;
+	}
+
+	public Float getSalaryRop() {
+		return this.salaryRop;
+	}
+
+	public void setSalaryRop(Float salaryRop) {
+		this.salaryRop = salaryRop;
 	}
 
 	public Float getSalaryTotal() {

@@ -24,7 +24,7 @@ public class SalaryDaoImpl implements SalaryDao {
 	public Salary insertSalary(Salary salary) {
 		// TODO Auto-generated method stub
 		sessionFactory.getCurrentSession().persist(salary);
-		return null;
+		return salary;
 	}
 
 	@Override

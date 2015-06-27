@@ -37,6 +37,9 @@
   <property generated="never" lazy="false" name="salaryAttendanceReward" type="java.lang.Float">
    <column name="SalaryAttendanceReward" not-null="true" precision="12" scale="0"/>
   </property>
+  <property generated="never" lazy="false" name="salaryRop" type="java.lang.Float">
+   <column name="SalaryROP" not-null="true" precision="12" scale="0"/>
+  </property>
   <property generated="never" lazy="false" name="salaryTotal" type="java.lang.Float">
    <column name="SalaryTotal" not-null="true" precision="12" scale="0"/>
   </property>
