@@ -63,26 +63,26 @@ alert("对不起，您没有添加员工权限！");
 				<div class="col-sm-4">
 
 				<%if(activeWorker.getWorkerPermission()==4||activeWorker.getWorkerPermission()==3) {%>
-				<button class="btn btn-default" type="submit" style="width: 40%; float: right;"><i class="fa fa-check"></i> 添加员工</button>
+				<button  class='btn btn-primary' type="submit" style="width: 40%; float: right;"><i class="fa fa-check"></i> 添加员工</button>
 				<%}else{%>
-				<button class="btn btn-default" type="button" style="width: 40%; float: right;" onclick="addWorker()"><i class="fa fa-check"></i> 添加员工</button>
+				<button class='btn btn-primary' type="button" style="width: 40%; float: right;" onclick="addWorker()"><i class="fa fa-check"></i> 添加员工</button>
 				<%}%>
 				
 
 				</div>
                 </div>
                 <table class="table table-bordered table-hover">
-				<tr>
+				<tr style="background-color: #EED5D2;">
 	              <th style="padding-left: 21px;"><strong>姓名</strong></th>
 	              <th style="padding-left: 21px;"></i>员工号</strong></th>
 	              <th style="padding-left: 21px;"><strong>性别</strong></th>
 	            </tr>
 	            <tr>
-	              <th><input type="text" class="form-control " name="worker.workerName" placeholder="姓名" value="" required></th>
+	              <th><input type="text" class="form-control " name="worker.workerName" placeholder="姓名" value="" required  ></th>
 	              <th><input type="text" class="form-control " name="worker.workerNo" placeholder="员工号" value="${WorkerAdmiNo }" readonly="readonly" required></th>
 	              <th><select name="worker.workerSex" class="form-control"><option value="男" >男</option><option value="女" >女</option></select></th>
 	            </tr>
-	            <tr>
+	            <tr style="background-color: #E0FFFF;">
 	              <th style="padding-left: 21px;"><strong>部门</strong></th>
 	              <th style="padding-left: 21px;"><strong>职称</strong></th>
 	              <th style="padding-left: 21px;"><strong>入职时间</strong></th>
@@ -107,7 +107,7 @@ alert("对不起，您没有添加员工权限！");
 	              </select></th>
 	              <th><input type="text" class="form-control " name="worker.workerEntryDate" placeholder="入职时间 " value="" required  style="width: 98%" class="form-control"     onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"></th>
 	            </tr>
-	            <tr>
+	            <tr style="background-color: #EED5D2;">
 	              <th style="padding-left: 21px;"><strong>身份证号</strong></th>
 	              <th style="padding-left: 21px;"><strong>出生日期</strong></th>
 	              <th style="padding-left: 21px;"><strong>年龄</strong></th>
@@ -117,7 +117,7 @@ alert("对不起，您没有添加员工权限！");
 	              <th><input type="text" class="form-control " name="worker.workerBirthDate" placeholder="出生日期 " value="" required  style="width: 98%" class="form-control"     onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"></th>
 	              <th><input type="text" class="form-control " name="worker.workerAge" placeholder="年龄 " value="0" required></th>
 	            </tr>
-	            <tr>
+	            <tr style="background-color: #E0FFFF;">
 	              <th style="padding-left: 21px;"><strong>籍贯</strong></th>
 	              <th style="padding-left: 21px;"><strong>地址</strong></th>
 	              <th style="padding-left: 21px;"><strong>血型</strong></th>
@@ -170,7 +170,7 @@ alert("对不起，您没有添加员工权限！");
 	            </tr>
 	            <tr>
 	            </tr>
-	            <tr>
+	            <tr style="background-color:#EED5D2;">
 	              <th style="padding-left: 21px;"><strong>政治面貌</strong></th>
 	              <th style="padding-left: 21px;"><strong>民族</strong></th>
 	              <th style="padding-left: 21px;"><strong>教育水平</strong></th>
@@ -232,7 +232,7 @@ alert("对不起，您没有添加员工权限！");
 	              </select>
 	              </th>
 	            </tr>
-	            <tr>
+	            <tr style="background-color: #E0FFFF;">
 	              <th style="padding-left: 21px;"><strong>电话</strong></th>
 	              <th style="padding-left: 21px;"><strong>国籍</strong></th>
 	              <th style="padding-left: 21px;"><strong>密码</strong></th>

@@ -59,7 +59,7 @@ window.close();
                 <i>以下您的全部个人信息：<abbr title="如果您发现自己的信息登记有误或者出现了改动，请到人事部进行修改。">信息有误？</abbr></i><br><br>
                 <form class="form-horizontal">
                 <table class="table table-bordered table-hover">
-				<tr>
+				<tr style="background-color: #EED5D2;">
 	              <th style="padding-left: 21px;"><strong>姓名</strong></th>
 	              <th style="padding-left: 21px;"></i>员工号</strong></th>
 	              <th style="padding-left: 21px;"><strong>性别</strong></th>
@@ -69,7 +69,7 @@ window.close();
 	              <th><input type="text" class="form-control " readonly="readonly" name="worker_account" placeholder="员工号" value="<%=activeWorker.getWorkerNo() %>" required></th>
 	              <th><input type="text" class="form-control " readonly="readonly" name="worker_sex" placeholder="性别" value=" <%=activeWorker.getWorkerSex() %>" required></th>
 	            </tr>
-	            <tr>
+	            <tr style="background-color: #E0FFFF;">
 	              <th style="padding-left: 21px;"><strong>部门</strong></th>
 	              <th style="padding-left: 21px;"><strong>职称</strong></th>
 	              <th style="padding-left: 21px;"><strong>入职时间</strong></th>
@@ -83,7 +83,7 @@ window.close();
 	               if(activeWorker.getWorkerPermission()==4) {%>总经理<%} %> " required></th>
 	              <th><input type="text" class="form-control " readonly="readonly" name="worker_entrytime" placeholder="入职时间 " value="<%=sdf.format(activeWorker.getWorkerEntryDate()) %>" required></th>
 	            </tr>
-	            <tr>
+	            <tr style="background-color: #EED5D2;">
 	              <th style="padding-left: 21px;"><strong>身份证号</strong></th>
 	              <th style="padding-left: 21px;"><strong>出生日期</strong></th>
 	              <th style="padding-left: 21px;"><strong>年龄</strong></th>
@@ -93,7 +93,7 @@ window.close();
 	              <th><input type="text" class="form-control " readonly="readonly" name="worker_born" placeholder="出生日期 " value="<%=sdf.format(activeWorker.getWorkerBirthDate()) %>" required></th>
 	              <th><input type="text" class="form-control " readonly="readonly" name="worker_age" placeholder="年龄 " value="${workerAge }" required></th>
 	            </tr>
-	            <tr>
+	            <tr style="background-color: #E0FFFF;">
 	              <th style="padding-left: 21px;"><strong>籍贯</strong></th>
 	              <th style="padding-left: 21px;"><strong>地址</strong></th>
 	              <th style="padding-left: 21px;"><strong>血型</strong></th>
@@ -105,7 +105,7 @@ window.close();
 	            </tr>
 	            <tr>
 	            </tr>
-	            <tr>
+	            <tr style="background-color: #EED5D2;">
 	              <th style="padding-left: 21px;"><strong>政治面貌</strong></th>
 	              <th style="padding-left: 21px;"><strong>民族</strong></th>
 	              <th style="padding-left: 21px;"><strong>教育水平</strong></th>
@@ -115,7 +115,7 @@ window.close();
 	              <th><input type="text" class="form-control " readonly="readonly" name="worker_nationality" placeholder="民族 " value="<%=activeWorker.getWorkerEthnic() %>" required></th>
 	              <th><input type="text" class="form-control " readonly="readonly" name="worker_education" placeholder="教育水平 " value="<%=activeWorker.getWorkerEducation()%>" required></th>
 	            </tr>
-	            <tr>
+	            <tr style="background-color: #E0FFFF;">
 	              <th style="padding-left: 21px;"><strong>电话</strong></th>
 	              <th style="padding-left: 21px;"><strong>国籍</strong></th>
 	              <th style="padding-left: 21px;"><strong>密码</strong></th>

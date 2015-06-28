@@ -114,6 +114,7 @@
 	
 	<!-- 杨铭    department包 -->
 	<package name="department" extends="struts-default" namespace="/">
+		
 		<!-- 部门信息查询 -->
 		<action name="DepartmentSearch" class="DepartmentAction" method="DepartmentSearch">
 			<result name="success" type="redirect">/departmentCheck.jsp</result>
@@ -224,6 +225,39 @@
 		<action name="CheckSalary" class="SalaryAction" method="checkSalary">
 			<result name="success" type="redirect">/salaryCheck.jsp</result>
 		</action>
+		<!-- 个人工资表日期 -->
+		<action name="SearchSalaryDate" class="SalaryAction" method="searchSalaryDate">
+			<result name="success" type="redirect">/salaryCheck.jsp</result>
+		</action>
+		<!-- 工资维护初始化 -->
+		<action name="IntiAllSalary" class="SalaryAction" method="intiAllSalary">
+			<result name="success" type="redirect">/salaryManager.jsp</result>
+		</action>
+		<!-- 工资维护查询 -->
+		<action name="CheckDepartmentSalary" class="SalaryAction" method="checkDepartmentSalary">
+			<result name="success" type="redirect">/salaryManager.jsp</result>
+		</action>
+		<!-- 工资维护修改 -->
+		<action name="AlterSalary" class="SalaryAction" method="alterSalary">
+			<result name="success" type="redirect">/salaryManager.jsp</result>
+		</action>
+		<!-- 工资维护结算 -->
+		<action name="SaveSalary" class="SalaryAction" method="saveSalary">
+			<result name="success" type="redirect">/salaryManager.jsp</result>
+		</action>
 	</package>
 	<!-- 杨明杰  工资Action -->
+	
+	<!-- 杨明杰  奖惩Action -->
+	<package name="ROP" extends="struts-default" namespace="/">
+		<!-- 创建奖惩 -->
+		<action name="CreateROP" class="ROPAction" method="createROP">
+			<result name="success" type="redirect">/salaryManager.jsp</result>
+		</action>
+		<!-- 删除奖惩 -->
+		<action name="DeleteROP" class="ROPAction" method="deleteROP">
+			<result name="success" type="redirect">/salaryManager.jsp</result>
+		</action>
+	</package>
+	<!-- 杨明杰  奖惩Action -->
 </struts>    

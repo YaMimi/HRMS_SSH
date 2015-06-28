@@ -92,7 +92,9 @@ for(int i=0;i<department1.size();i++){
 		String sql="from Worker";
 		ArrayList<Worker> workers=workerAddInformationService.SelectAllWorkers(sql);
 		int num=workers.size();
-		int WorkerAdmiNo=Integer.parseInt(HrmsToolString.randomAccount(num+1));
+		Worker activeWorker = (Worker)ActionContext.getContext().getSession().get("activeWorker");
+		
+		int WorkerAdmiNo=Integer.parseInt(HrmsToolString.randomAccount(num+1,activeWorker.getDepartment().getDepartmentNo()));
 		for(int i=0;i<workers.size();i++){
 			if(workers.get(i).getWorkerNo().equals(""+WorkerAdmiNo)){
 				WorkerAdmiNo=WorkerAdmiNo+1;
@@ -246,7 +248,7 @@ for(int i=0;i<department1.size();i++){
 		worker.setWorkerOid(workerOID);
 		workerAddInformationService.UpdateWorker(worker);
 		workerAddInformationService.flush();
-		//InitnInformation();
+		
 			return "success";
 		}
 	

@@ -99,7 +99,7 @@ alert("对不起，只有部门经理或者总经理可以管理员工信息");
 				</div>
                 </div>
                 <table class="table table-bordered table-hover">
-				<tr>
+				<tr  style="background-color: #E8E8E8;">
 				  <th style="padding-left: 21px;"></i>员工号</strong></th>
 	              <th style="padding-left: 21px;"><strong>姓名</strong></th>
 	              <th style="padding-left: 21px;"><strong>性别</strong></th>
@@ -116,7 +116,7 @@ alert("对不起，只有部门经理或者总经理可以管理员工信息");
 <%
 for(int i=0;i<list.size();i++){
 if(list.get(i).getDepartment().getDepartmentName().equals(activeWorker.getDepartment().getDepartmentName().toString())){
-out.println("<tr><td>"+list.get(i).getWorkerNo()+"</td>");
+out.println("<tr ><td>"+list.get(i).getWorkerNo()+"</td>");
 out.println("<td>"+list.get(i).getWorkerName()+"</td>");
 out.println("<td>"+list.get(i).getWorkerSex()+"</td>");
 out.println("<td>"+list.get(i).getDepartment().getDepartmentName()+"</td>");
@@ -142,7 +142,7 @@ if(activeWorker.getWorkerPermission()==3||activeWorker.getWorkerPermission()==4)
  </table>
 
                 </form>
-                                <center>
+                                <center >
   <ul class="pagination">
 								    <li>
 								      <a href="SelectAllWorkersManager?pageNo=1"  aria-label="Previous">

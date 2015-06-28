@@ -20,7 +20,7 @@
 			value="jdbc:mysql://localhost:3306/hrms_ssh">
 		</property>
 		<property name="username" value="root"></property>
-		<property name="password" value="1234"></property>
+		<property name="password" value="123456"></property>
 		 <property name="testOnBorrow" value="true"></property>
 		  <property name="testOnReturn" value="true"></property>
 		  <property name="testWhileIdle" value="true"></property>
@@ -97,9 +97,9 @@
 	<!-- Cultivation Part End -->
 	
 	<!-- 杨铭  Department Part Begin -->
-	<bean id="DepartmentAction" class="com.hrms.department.action.DepartmentAction"></bean>
-	<bean id="DepartmentService" class="com.hrms.department.services.DepartmentServiceImpl"></bean>
-	<bean id="DepartmentDao" class="com.hrms.department.dao.DepartmentDaoImpl"></bean>
+	<bean id="DepartmentAction" class="com.hrms.department.action.DepartmentAction"  scope="prototype"></bean>
+	<bean id="DepartmentService" class="com.hrms.department.services.DepartmentServiceImpl"  scope="prototype"></bean>
+	<bean id="DepartmentDao" class="com.hrms.department.dao.DepartmentDaoImpl"  scope="prototype"></bean>
 	<!-- Department Part End -->
 	
 	<!-- Worker Information add Begin -->
@@ -124,5 +124,11 @@
 	<bean id="SalaryService" class="com.hrms.salary.service.SalaryServiceImpl" scope="prototype"></bean>
 	<bean id="SalaryDao" class="com.hrms.salary.dao.SalaryDaoImpl" scope="prototype"></bean>
 	<!-- 杨明杰   工资管理  结束-->
+	
+	<!-- 杨明杰  奖惩管理  开始 -->
+	<bean id="ROPAction" class="com.hrms.rop.action.ROPAction" scope="prototype"></bean>
+	<bean id="ROPService" class="com.hrms.rop.service.ROPServiceImpl" scope="prototype"></bean>
+	<bean id="ROPDao" class="com.hrms.rop.dao.ROPDaoImpl" scope="prototype"></bean>
+	<!-- 杨明杰   奖惩管理  结束-->
 
 </beans>
