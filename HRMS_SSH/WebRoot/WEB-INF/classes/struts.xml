@@ -40,6 +40,10 @@
 		<action name="DepartmentAttendanceSearch" class="AttendanceAction" method="departmentAttendanceSearch">
 			<result name="success" type="redirect">/attendanceDepartment.jsp</result>
 		</action>
+		<!-- 部门日期考勤查询 -->
+		<action name="DateSearchDepartmentAttendance" class="AttendanceAction" method="dateSearchDepartmentAttendance">
+			<result name="success" type="redirect">/attendanceDepartment.jsp</result>
+		</action>
 	</package>
 
 	<!-- Login Package -->
