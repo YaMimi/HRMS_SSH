@@ -6,6 +6,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 Worker activeWorker = (Worker)session.getAttribute("activeWorker");
+String state = (String)session.getAttribute("state");
 
 %>
 
@@ -37,9 +38,24 @@ Worker activeWorker = (Worker)session.getAttribute("activeWorker");
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
          <h1 class="page-header">公告系统</h1>
          <%if(activeWorker.getWorkerPermission()>2) {%>
+         <%if(state==null) {%>
+		 <%session.setAttribute("state", null); %>
          <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
          		  发布新公告
 	     </button>
+	     <%} %>
+	     <%if(state!=null&&state.equals("SENDMSGFAILED")) {%>
+		 <%session.setAttribute("state", null); %>
+		 <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+			 <i class="fa fa-times-circle"> 发布失败！请检查输入是否有误</i>
+	     </button>
+		 <%} %>
+		 <%if(state!=null&&state.equals("SENDMSGSUCCESS")) {%>
+		 <%session.setAttribute("state", null); %>
+		 <button class="btn btn-success btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+			 <i class="fa fa-check-circle"> 发布成功！</i>
+	     </button>
+		 <%} %>
 	     <div class="collapse" id="collapseExample">
 		  <div class="well" style="margin-bottom: 0px;">
 		    <form action="NewMessage" method="post">

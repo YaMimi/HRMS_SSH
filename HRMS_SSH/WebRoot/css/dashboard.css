@@ -147,7 +147,20 @@ body {
     margin-right: -20px; /* Rewrite this for collapse */
     margin-left: 20px;
 }
+.div-dep {
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	height: 37px;
+	margin-bottom: 0px;
+	padding:0px 15px;
+}
+.div-hd.collapsed > i.icon-dep-collapse:before {
+    content: "\f196";
+}
 
+.div-hd > i.icon-dep-collapse:before {
+    content: "\f147";
+}
 
 /*
  * Main content

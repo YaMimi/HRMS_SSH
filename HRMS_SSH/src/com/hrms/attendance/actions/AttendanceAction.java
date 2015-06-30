@@ -27,6 +27,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class AttendanceAction extends ActionSupport {
 	private String Date;
+	private String DateDepartment;
 	private Attendance attendance;
 	private String attendWorkerNo;
 	@Resource
@@ -94,7 +95,13 @@ public class AttendanceAction extends ActionSupport {
 		String hql = "from Attendance a where a.attendanceDate = '" + checkDate +"' and a.worker.department.departmentOid = "+ worker.getDepartment().getDepartmentOid() +
 				" order by attendanceOid desc";
 		PageBean pageBean = pageserivce.getPageBean(hql, 5, page);
+		//获取当前部门的人
+		hql = "from Worker w where w.department.departmentOid = "+ worker.getDepartment().getDepartmentOid() +
+				" order by workerOid desc";
+		List<Worker> workers = (List<Worker>)loginService.searchWorkers(hql);
+		
 		session.put("departmentattendancelist", pageBean.getList());
+		session.put("departmentworkers", workers);
 		session.put("pageBean", pageBean);
 		ActionContext.getContext().setSession(session);
 		return SUCCESS;
@@ -209,6 +216,30 @@ public class AttendanceAction extends ActionSupport {
 		return this.ERROR;
 	}
 	
+	/*
+	 * 功能：部门考勤查询
+	 * 作者：杨明杰
+	 * 日期：6月28日
+	 */
+	public String dateSearchDepartmentAttendance(){
+		//System.out.println(DateDepartment);
+		if(!DateDepartment.equals("")){
+		Map session = ActionContext.getContext().getSession();
+		Worker worker = (Worker)session.get("activeWorker");
+		String hql = "from Attendance a where a.worker.department.departmentOid = "+worker.getDepartment().getDepartmentOid()+" and attendanceDate = '"+DateDepartment+"' order by attendanceDate desc";
+		List<Attendance> departmentattendancelistdate = attendanceservice.searchAttendance(hql);
+//		for(Attendance a : departmentattendancelistdate){
+//			System.out.println(a.getWorker().getWorkerName());
+//		}
+		if(departmentattendancelistdate.size()>0){
+			session.put("departmentattendancelistdate", departmentattendancelistdate);
+		}
+		ActionContext.getContext().setSession(session);
+		}
+		return SUCCESS;
+		
+	}
+	
 	public String getDate() {
 		return Date;
 	}
@@ -258,6 +289,18 @@ public class AttendanceAction extends ActionSupport {
 	}
 	public void setSalaryService(SalaryService salaryService) {
 		this.salaryService = salaryService;
+	}
+	public String getDateDepartment() {
+		return DateDepartment;
+	}
+	public void setDateDepartment(String dateDepartment) {
+		DateDepartment = dateDepartment;
+	}
+	public HolidayService getHolidayService() {
+		return holidayService;
+	}
+	public void setHolidayService(HolidayService holidayService) {
+		this.holidayService = holidayService;
 	}
 	
 }
