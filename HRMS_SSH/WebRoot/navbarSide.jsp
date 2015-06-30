@@ -6,8 +6,8 @@
             <ul class="nav nav-sidebar"> 
                 <li<%if(path.equals("/index.jsp")) {%> class="active"<%} %>><a href="./index.jsp">　个人首页 </a></li>
                 
-                <li><%if(path.equals("/workerShow.jsp")||path.equals("/cultivationCheck.jsp")||path.equals("/attendanceCheck.jsp")||path.equals("/attendanceVct.jsp")||path.equals("/workerChangePassword.jsp")) {%><a href="#workerSystem" class="nav-header"  data-toggle="collapse" aria-expanded="true"><%} else {%><a href="#workerSystem" class="nav-header collapsed" data-toggle="collapse"><%} %>　个人信息<i class="pull-right fa icon-sidebar-collapse"></i></a>
-                    <%if(path.equals("/workerShow.jsp")||path.equals("/cultivationCheck.jsp")||path.equals("/attendanceCheck.jsp")||path.equals("/attendanceVct.jsp")||path.equals("/workerChangePassword.jsp")) {%><ul id="workerSystem" class="nav nav-sidebar nav-sec collapse in" aria-expanded="true"><%} else {%><ul id="workerSystem" class="nav nav-sidebar nav-sec collapse"><%} %>
+                <li><%if(path.equals("/workerShow.jsp")||path.equals("/cultivationCheck.jsp")||path.equals("/attendanceCheck.jsp")||path.equals("/attendanceVct.jsp")||path.equals("/workerChangePassword.jsp")||path.equals("/salaryCheck.jsp")) {%><a href="#workerSystem" class="nav-header"  data-toggle="collapse" aria-expanded="true"><%} else {%><a href="#workerSystem" class="nav-header collapsed" data-toggle="collapse"><%} %>　个人信息<i class="pull-right fa icon-sidebar-collapse"></i></a>
+                    <%if(path.equals("/workerShow.jsp")||path.equals("/cultivationCheck.jsp")||path.equals("/attendanceCheck.jsp")||path.equals("/attendanceVct.jsp")||path.equals("/workerChangePassword.jsp")||path.equals("/salaryCheck.jsp")) {%><ul id="workerSystem" class="nav nav-sidebar nav-sec collapse in" aria-expanded="true"><%} else {%><ul id="workerSystem" class="nav nav-sidebar nav-sec collapse"><%} %>
 
                         <li<%if(path.equals("/workerShow.jsp")) {%> class="active"<%} %>>
                             <a href="./workerShow.jsp">我的信息</a>

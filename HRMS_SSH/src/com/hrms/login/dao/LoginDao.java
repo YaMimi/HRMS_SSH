@@ -9,4 +9,5 @@ public interface LoginDao {
 	public Worker searchWorker(Worker worker);
 	public Worker updateWorker(Worker worker);
 	public String checkWorker(Worker worker);
+	public List<Worker> searchWorkers(String hql);
 }

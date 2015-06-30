@@ -21,6 +21,12 @@ public class LoginDaoImpl implements LoginDao {
 	}
 	
 	@Override
+	public List<Worker> searchWorkers(String hql) {
+		List<Worker> workerList = sessionFactory.getCurrentSession().createQuery(hql).list();
+		return workerList;
+	}
+	
+	@Override
 	public Worker searchWorker(Worker worker) {
 		String query = "select w.workerOid from Worker w where w.workerNo='" +worker.getWorkerNo()+ "'";
 		List list = sessionFactory.getCurrentSession().createQuery(query).list();

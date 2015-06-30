@@ -19,6 +19,11 @@ public class LoginServiceImpl implements LoginService {
 	}
 	
 	@Override
+	public List<Worker> searchWorkers(String hql) {
+		return loginDao.searchWorkers(hql);
+	}
+	
+	@Override
 	public Worker searchWorker(Worker worker) {
 		return loginDao.searchWorker(worker);
 	}
