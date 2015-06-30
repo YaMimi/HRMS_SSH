@@ -65,7 +65,10 @@ function DeleteManager(){
 
 alert("对不起，您没有权限删除个人信息！");
 }
+function SuccessUpdate(){
 
+alert("信息修改成功！");
+}
 </script>
   	
   	<script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
@@ -85,7 +88,7 @@ alert("对不起，您没有权限删除个人信息！");
                 <label>请完善员工或者个人信息点击删除或者修改按钮操作：</label>
 				</div>
 				<!-- 修改 Select-->
-				<form action="UpdateWorkerformation" method="post">
+				<form action="UpdateWorkerformation" method="post" onsubmit="return checkValidate()">
 				<div class="col-sm-4">
 
 				<%
@@ -97,13 +100,13 @@ alert("对不起，您没有权限删除个人信息！");
 	               request.setAttribute("workerEducation", worker.getWorkerEducation());
 	               request.setAttribute("workerNationality", worker.getWorkerNationality());
 	               %>
-				<button class="btn btn-default" type="submit" style="width: 40%; float: right;" ><i class="fa fa-check"></i> 确认修改</button>
+				<button class='btn btn-primary' type="submit" style="width: 40%; float: right;" ><i class="fa fa-check"></i> 确认修改</button>
 				<%
 				if(activeWorker.getWorkerPermission()==3||activeWorker.getWorkerPermission()==4){
 				 %>
-				 <button class="btn btn-default" type="button" style="width: 40%; float: right;" onclick="send_delete(<%=worker.getWorkerNo()%>)"><i class="fa fa-check"></i> 确认删除</button>
+				 <button  type="button" class='btn btn-primary' style="width: 40%; float: right;background-color: #B22222;" onclick="send_delete(<%=worker.getWorkerNo()%>)"><i class="fa fa-check"></i> 确认删除</button>
 				 <%}else{%>
-				 <button class="btn btn-default" type="button" style="width: 40%; float: right;" onclick="DeleteManager()"><i class="fa fa-check"></i> 确认删除</button>
+				 <button  type="button" class='btn btn-primary' style="width: 40%; float: right;background-color: #B22222;" onclick="DeleteManager()"><i class="fa fa-check"></i> 确认删除</button>
 				 <%} %>
 
 				</div>
@@ -112,7 +115,7 @@ alert("对不起，您没有权限删除个人信息！");
                 <input type="hidden" name="workerOid" value="<%=worker.getWorkerOid()%>">
                 <table class="table table-bordered table-hover">
                 
-				<tr>
+				<tr style="background-color: #EED5D2;">
 	              <th style="padding-left: 21px;"><strong>姓名</strong></th>
 	              <th style="padding-left: 21px;"></i>员工号</strong></th>
 	              <th style="padding-left: 21px;"><strong>性别</strong></th>
@@ -127,7 +130,7 @@ alert("对不起，您没有权限删除个人信息！");
 	              </select></th>
 	            </tr>
 	             
-	            <tr>
+	            <tr style="background-color:#E0FFFF;">
 	              <th style="padding-left: 21px;"><strong>部门</strong></th>
 	              <th style="padding-left: 21px;"><strong>职称</strong></th>
 	              <th style="padding-left: 21px;"><strong>入职时间</strong></th>
@@ -166,17 +169,17 @@ alert("对不起，您没有权限删除个人信息！");
 	              </th>
 	              <th><input type="text" class="form-control " name="worker.workerEntryDate" placeholder="入职时间 " value="<%=sdf.format(worker.getWorkerEntryDate())%>" required  style="width: 98%" class="form-control"     onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"></th>
 	            </tr>
-	            <tr>
+	            <tr style="background-color:  #EED5D2;">
 	              <th style="padding-left: 21px;"><strong>身份证号</strong></th>
 	              <th style="padding-left: 21px;"><strong>出生日期</strong></th>
 	              <th style="padding-left: 21px;"><strong>年龄</strong></th>
 	            </tr>
 	            <tr>
-	              <th><input type="text" class="form-control " name="worker.workerId" placeholder="身份证号" value="<%=worker.getWorkerId()%>" required></th>
+	              <th><input type="text" class="form-control " name="worker.workerId" placeholder="身份证号" id="workerId"  value="<%=worker.getWorkerId()%>" required></th>
 	              <th><input type="text" class="form-control " name="worker.workerBirthDate" placeholder="出生日期 " value="<%=sdf.format(worker.getWorkerBirthDate())%>" required  style="width: 98%" class="form-control" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'});" ></th>
 	              <th><input type="text" class="form-control " name="worker.workerAge" placeholder="年龄 " value="${workerAge }" required></th>
 	            </tr>
-	            <tr>
+	            <tr style="background-color: #E0FFFF;">
 	              <th style="padding-left: 21px;"><strong>籍贯</strong></th>
 	              <th style="padding-left: 21px;"><strong>地址</strong></th>
 	              <th style="padding-left: 21px;"><strong>血型</strong></th>
@@ -227,7 +230,7 @@ alert("对不起，您没有权限删除个人信息！");
 	              </select>
 	              </th>
 	            </tr>
-	            <tr>
+	            <tr style="background-color:  #EED5D2;">
 	              <th style="padding-left: 21px;"><strong>政治面貌</strong></th>
 	              <th style="padding-left: 21px;"><strong>民族</strong></th>
 	              <th style="padding-left: 21px;"><strong>教育水平</strong></th>
@@ -289,13 +292,13 @@ alert("对不起，您没有权限删除个人信息！");
 	              </select>
 	              </th>
 	            </tr>
-	            <tr>
+	            <tr  style="background-color: #E0FFFF;">
 	              <th style="padding-left: 21px;"><strong>电话</strong></th>
 	              <th style="padding-left: 21px;"><strong>国籍</strong></th>
 	              <th style="padding-left: 21px;"><strong>密码</strong></th>
 	            </tr>
 	            <tr>
-	              <th><input type="text" class="form-control " name="worker.workerPhone" placeholder="电话 " value="<%=worker.getWorkerPhone()%>" required></th>
+	              <th><input type="text" class="form-control " name="worker.workerPhone" placeholder="电话 " id="workerPhone" value="<%=worker.getWorkerPhone()%>" required></th>
 	              <th>
 	               <select name="worker.workerNationality" class="form-control">
 	              <option value="中国"<c:if test="${workerNationality ==\'中国\'}">selected</c:if>>中国</option>
@@ -325,5 +328,43 @@ alert("对不起，您没有权限删除个人信息！");
             </div>
         </div>
     </div>
+     <script  type="text/javascript">
+      function checkValidate(){
+      var workerPhone=document.getElementById("workerPhone").value;
+      var card=document.getElementById("workerId").value;
+    var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
+   if(reg.test(card) === false)  
+   {  
+       alert("身份证输入不合法");  
+         document.getElementById("workerId").value="";
+           document.getElementById("workerId").focus();
+       return  false;  
+   }  
+      
+        if(workerPhone.length==0)
+        {
+           alert("请输入手机号码！");
+           document.getElementById("workerPhone").value="";
+           document.getElementById("workerPhone").focus();
+           return false;
+        }    
+        if(workerPhone.length!=11)
+        {
+            alert("请输入有效的手机号码！");
+            document.getElementById("workerPhone").value="";
+            document.getElementById("workerPhone").focus();
+            return false;
+        }
+        var myreg = /^(((13[0-9]{1})|159|153)+\d{8})$/;
+        if(!myreg.test(workerPhone))
+        {
+            alert("请输入有效的手机号码");
+            document.getElementById("workerPhone").value="";
+            document.getElementById("workerPhone").focus();
+            return false;
+        }
+        
+      }
+      	</script>
 </body>
 </html>

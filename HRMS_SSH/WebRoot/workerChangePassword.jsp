@@ -65,28 +65,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<form action="UpdatePassword"  method="post" name="updatepassword" onsubmit="return checkReg(this);">
 	      <input type="hidden" value="<%=activeWorker.getWorkerOid() %>" name="workerOid">
 	          <table class="table table-bordered table-hover">
-				<tr>
+				<tr style="background-color: #CDC9C9;">
 	              <th style="padding-left: 21px;"><strong>旧密码</strong></th>
-	              <th><input type="password" class="form-control " style="width: 100%; float: center;"name="worker.password" placeholder="旧密码" value="" required></th>
+	              <th><input type="password" class="form-control " style="width: 100%; float: center;"name="worker.password" id="password" placeholder="旧密码" value="" required></th>
 	           </tr>
-	            <tr>
+	            <tr style="background-color: #FFE4C4;">
 	              <th style="padding-left: 21px;"></i>新密码</strong></th>
 	              <th><input type="password" class="form-control " style="width: 100%; float: center;"name="password1" placeholder="新密码" value="" required></th>
 	           </tr>
+	           <tr style="background-color: #FFE4C4;">
 	              <th style="padding-left: 21px;"><strong>确认密码</strong></th>
 	              <th><input type="password" class="form-control " style="width: 100%; float: center;"name="password2" placeholder="确认密码" value="" required></th>
 	            </tr>
 	            </table>
 	            <center>
-	            <button class="btn btn-default" type="submit" style="width: 20%; float: center;"><i class="icon-ok-sign"></i> 确认</button>
-	            <button class="btn btn-default" type="reset" style="width: 20%; float:center;"><i class="icon-ok-sign" "></i> 重置</button>
+	            <button class='btn btn-primary' type="submit" style="width: 20%; float: center;"><i class="icon-ok-sign"></i> 确认</button>
+	            <button class='btn btn-primary' type="reset" style="width: 20%; float:center;"><i class="icon-ok-sign" "></i> 重置</button>
 	           </center>
                 </form>
              </div>
       <br><br><br><br><br><br>
      	<div class="col-md-6" style="width: 30%; float:left;">
 						<div class="panel panel-default">
-							<div class="panel-heading">注意事项</div>
+							<div class="panel-heading"style="background-color: #FF0000;">注意事项</div>
 							<div class="panel-body ">
 							  <ul class="pagination" style="color: red;">
 							  <li >①密码长度不能小于6位并且大于8位</li><br>
@@ -103,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var password1=updatepassword.password1.value;
 			var password2=updatepassword.password2.value;
 				 if(password1.length<6){
-				alert("密码长度必须大于6位");  
+				alert("密码长度必须大于6位"+Password);  
                             return false;  
 				}else if(password1.length>8){
 				alert("密码长度不能大于8位");  

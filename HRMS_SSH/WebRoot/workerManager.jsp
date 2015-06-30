@@ -77,7 +77,6 @@ alert("对不起，只有部门经理或者总经理可以管理员工信息");
 <body>
   <%@ include file="navbarTop.jsp"%>
     <%@ include file="navbarSide.jsp"%>
-  
 
     <div class="container-fluid">
         <div class="row">
@@ -100,7 +99,7 @@ alert("对不起，只有部门经理或者总经理可以管理员工信息");
 				</div>
                 </div>
                 <table class="table table-bordered table-hover">
-				<tr>
+				<tr  style="background-color: #E8E8E8;">
 				  <th style="padding-left: 21px;"></i>员工号</strong></th>
 	              <th style="padding-left: 21px;"><strong>姓名</strong></th>
 	              <th style="padding-left: 21px;"><strong>性别</strong></th>
@@ -108,34 +107,19 @@ alert("对不起，只有部门经理或者总经理可以管理员工信息");
 	              <th style="padding-left: 21px;"><strong>教育水平</strong></th>
 	              
 	            </tr>
-	            <%--
-	            ArrayList list=(ArrayList)ActionContext.getContext().getSession().get("workers");
-	            request.setAttribute("workerList", list);
-	            
-	             --%>
 	             
 	            
 	             <tr>
 	         
-      <%--
-
-for(int i=0;i<list.size();i++)
-out.print("<tr>"+"<td>"+list.get(i).getWorkerNo()+"</td>"+
-"<td>"+list.get(i).getWorkerName()+"</td>"+"<td>"+
-list.get(i).getWorkerSex()+"</td>"+
-"<td>"+workerDerpart.get(i)+"</td>"
-+"<td>"+list.get(i).getWorkerEducation()+"</td>"+
-"<td><input type='Button' value='管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;理' class='btn btn-primary' onclick='send("+list.get(i).getWorkerNo()+ "   )'/></td>"+"</tr>");
- --%>
-<!--  <input type='Button' value='删&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除' class='btn btn-primary'  onclick='send_delete("+list.get(i).getWorkerNo()+ ")'/> -->
 </tr>
-
+<!-- workerDerpart.get(i)activeWorker -->
 <%
 for(int i=0;i<list.size();i++){
-out.println("<tr><td>"+list.get(i).getWorkerNo()+"</td>");
+if(list.get(i).getDepartment().getDepartmentName().equals(activeWorker.getDepartment().getDepartmentName().toString())){
+out.println("<tr ><td>"+list.get(i).getWorkerNo()+"</td>");
 out.println("<td>"+list.get(i).getWorkerName()+"</td>");
 out.println("<td>"+list.get(i).getWorkerSex()+"</td>");
-out.println("<td>"+workerDerpart.get(i)+"</td>");
+out.println("<td>"+list.get(i).getDepartment().getDepartmentName()+"</td>");
 out.println("<td>"+list.get(i).getWorkerEducation()+"</td>");
 //if(activeWorker.getWorkerNo().equals(list.get(i).getWorkerNo())){
 if(activeWorker.getWorkerPermission()==3||activeWorker.getWorkerPermission()==4){%>
@@ -153,12 +137,12 @@ if(activeWorker.getWorkerPermission()==3||activeWorker.getWorkerPermission()==4)
 </td>
 <%
 }
-}
+}}
  %>
  </table>
 
                 </form>
-                                <center>
+                                <center >
   <ul class="pagination">
 								    <li>
 								      <a href="SelectAllWorkersManager?pageNo=1"  aria-label="Previous">
