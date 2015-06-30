@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `hrms_ssh` /*!40100 DEFAULT CHARACTER SET utf8 */
 USE `hrms_ssh`;
 -- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: hrms_ssh
+-- Host: localhost    Database: hrms_ssh
 -- ------------------------------------------------------
 -- Server version	5.6.21-log
 
@@ -33,7 +33,7 @@ CREATE TABLE `department` (
   UNIQUE KEY `DepartmentOid_UNIQUE` (`DepartmentOid`),
   KEY `fk_Department_Department_idx` (`FatherDepartmentOid`),
   CONSTRAINT `fk_Department_Department` FOREIGN KEY (`FatherDepartmentOid`) REFERENCES `department` (`DepartmentOid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `department` (
 
 LOCK TABLES `department` WRITE;
 /*!40000 ALTER TABLE `department` DISABLE KEYS */;
-INSERT INTO `department` VALUES (1,'01','行政部',NULL),(2,'02','人事部',1),(3,'03','学习部',2),(4,'04','管理部',3);
+INSERT INTO `department` VALUES (1,'01','行政部',NULL),(2,'02','人事部',1),(3,'03','财务部',1),(4,'04','运营部',NULL),(5,'05','海外运营部',4),(6,'06','本土运营部',4),(7,'07','庶务部',NULL),(8,'08','海外宣传部',5),(9,'09','本土宣传部',6);
 /*!40000 ALTER TABLE `department` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-25 13:40:29
+-- Dump completed on 2015-06-30 15:28:42

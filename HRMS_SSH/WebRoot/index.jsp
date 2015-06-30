@@ -59,11 +59,11 @@ case 4 : post = "总经理"; break;
 			                       <div class="panel-heading">
 			                           <div class="row">
 			                               <div class="col-xs-3">
-			                                   <i class="fa fa-envelope fa-5x"></i>
+			                                   <i class="fa fa-bullhorn fa-5x"></i>
 			                               </div>
 			                               <div class="col-xs-9 text-right">
 			                                   <div class="huge"><%=activeWorker.getWorkerUnreadMessage() %></div>
-			                                   <div>未读信息</div>
+			                                   <div>未读公告</div>
 			                               </div>
 			                           </div>
 			                       </div>

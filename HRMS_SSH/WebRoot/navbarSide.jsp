@@ -56,7 +56,7 @@
                 <%}else{ %>
                   <li<%if(path.equals("/workerManager.jsp")) {%> class="active"<%} %>><a href="workerManager.jsp">　信息维护 </a></li>
                 <%} %>
-				<li<%if(path.equals("")) {%> class="active"<%} %>><a href="#">　部门维护 </a></li>
+				<li<%if(path.equals("/department.jsp")) {%> class="active"<%} %>><a href="./department.jsp">　部门维护 </a></li>
 
                 <li<%if(path.equals("/salaryManager.jsp")) {%> class="active"<%} %>><a href="IntiAllSalary">　工资维护 </a></li>
              
