@@ -228,12 +228,11 @@ public class AttendanceAction extends ActionSupport {
 		Worker worker = (Worker)session.get("activeWorker");
 		String hql = "from Attendance a where a.worker.department.departmentOid = "+worker.getDepartment().getDepartmentOid()+" and attendanceDate = '"+DateDepartment+"' order by attendanceDate desc";
 		List<Attendance> departmentattendancelistdate = attendanceservice.searchAttendance(hql);
-//		for(Attendance a : departmentattendancelistdate){
-//			System.out.println(a.getWorker().getWorkerName());
-//		}
-		if(departmentattendancelistdate.size()>0){
-			session.put("departmentattendancelistdate", departmentattendancelistdate);
+		for(Attendance a : departmentattendancelistdate){
+			System.out.println(a.getAttendanceDate());
 		}
+		session.put("departmentattendancelistdate", departmentattendancelistdate);
+		session.put("DateDepartment", DateDepartment);
 		ActionContext.getContext().setSession(session);
 		}
 		return SUCCESS;

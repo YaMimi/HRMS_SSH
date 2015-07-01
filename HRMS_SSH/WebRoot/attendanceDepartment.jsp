@@ -140,8 +140,8 @@ PageBean pagebean = (PageBean)session.getAttribute("pageBean");
 					    </li>
 					    <%}else{ %>
 					    <li>
-					      <a href="#" aria-label="Next">
-					        <span aria-hidden="true">&raquo;</span>
+					      <a href="#" aria-label="Next" >
+					        <span aria-hidden="true" >&raquo;</span>
 					        	下一页
 					      </a>
 					    </li>
@@ -176,7 +176,7 @@ PageBean pagebean = (PageBean)session.getAttribute("pageBean");
 		       				<tr>
 				              <th><%=ii %></th>
 				              <th><%=worker.getWorkerName() %></th>
-				              <%if(DepartmentAttendanceList.size()>0) {%>
+				              <%if(departmentattendancelistdate.size()>0) {%>
 					              <%for(Attendance attendance : departmentattendancelistdate){ %>
 					              <%int j = 1; %>
 					              <%if(worker.getWorkerOid().equals(attendance.getWorker().getWorkerOid())){ %>
@@ -196,7 +196,7 @@ PageBean pagebean = (PageBean)session.getAttribute("pageBean");
 					              <%break;} %>
 					              
 					              <%if(j == departmentattendancelistdate.size()){ %>
-					              	    <th><%=sdf.format(currtdate) %></th>
+					              	    <th><%=session.getAttribute("DateDepartment").toString() %></th>
 						              	<th>无签到</th>
 						              	<th>无签到</th>
 						              	<th></th>
@@ -205,7 +205,7 @@ PageBean pagebean = (PageBean)session.getAttribute("pageBean");
 					              <%} %>
 					              	
 				          	  <%}else{ %>
-				          	  	<th><%=sdf.format(currtdate) %></th>
+				          	  	<th><%=session.getAttribute("DateDepartment").toString() %></th>
 				              	<th>无签到</th>
 				              	<th>无签到</th>
 				              	<th></th>
