@@ -58,7 +58,7 @@ public class DepartmentAction extends ActionSupport{
 		String DepartmentName1=department.getDepartmentName();
 		/*departmentservice.deleteDepartment(departmentEdit.getDepartmentOid());*/
 		if(FatherDepartmentOid==0){
-			if(DepartmentNo1!=null&&DepartmentName1!=null){
+			if(!DepartmentNo1.equals("") &&!DepartmentName1.equals("")){
 				if(departmentNoExist(DepartmentNo1)&&departmentNameExist(DepartmentName1)){
 					String hql1 = "from Department where DepartmentOid='"+alter+"'";
 					List<Department> departmentlist1=departmentservice.searchDepartment(hql1);
@@ -85,7 +85,7 @@ public class DepartmentAction extends ActionSupport{
 		String hql = "from Department where DepartmentOid='"+FatherDepartmentOid+"'";
 		List<Department> departmentlist=departmentservice.searchDepartment(hql);
 		Department department2=departmentlist.get(0);
-		if(DepartmentNo1!=null&&DepartmentName1!=null){
+		if(!DepartmentNo1.equals("") &&!DepartmentName1.equals("")){
 			if(departmentNoExist(DepartmentNo1)&&departmentNameExist(DepartmentName1)){
 				String hql1 = "from Department where DepartmentOid='"+alter+"'";
 				List<Department> departmentlist1=departmentservice.searchDepartment(hql1);
@@ -111,7 +111,7 @@ public class DepartmentAction extends ActionSupport{
 			 * 修改部门读取信息方法  2015.6.11
 			 * 
 			 * */
-	public String UpdateDepartmentImfo(){
+/*	public String UpdateDepartmentImfo(){
 		int alter1=Integer.parseInt(alter);
 		String hql = "from Department where DepartmentOid='"+alter+"'";
 		List<Department> departmentlist=departmentservice.searchDepartment(hql);
@@ -131,7 +131,7 @@ public class DepartmentAction extends ActionSupport{
 		return SUCCESS;
 			
 			
-		}
+		}*/
 		
 		/*
 		 * 添加新部门方法  2015.6.11-6.12 完善！
@@ -143,7 +143,7 @@ public class DepartmentAction extends ActionSupport{
 			String DepartmentName1=department.getDepartmentName();
 			if(FatherDepartmentOid==0){
 				
-				if(DepartmentNo1!=null&&DepartmentName1!=null){
+				if(!DepartmentNo1.equals("") &&!DepartmentName1.equals("")){
 					if(departmentNoExist(DepartmentNo1)&&departmentNameExist(DepartmentName1)){
 						department1=departmentservice.insertDepartment(department);
 						department=null;
@@ -163,7 +163,7 @@ public class DepartmentAction extends ActionSupport{
 			List<Department> departmentlist=departmentservice.searchDepartment(hql);
 			Department department2=departmentlist.get(0);
 			department.setDepartment(department2);
-			if(DepartmentNo1!=null&&DepartmentName1!=null){
+			if(!DepartmentNo1.equals("") &&!DepartmentName1.equals("")){
 				if(departmentNoExist(DepartmentNo1)&&departmentNameExist(DepartmentName1)){
 					department1=departmentservice.insertDepartment(department);
 					department=null;
