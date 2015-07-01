@@ -72,7 +72,7 @@ alert("信息修改成功！");
 </script>
   	
   	<script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
-    <title>主页</title>
+    <title>修改信息</title>
 </head>
 <body>
     <%@ include file="navbarTop.jsp"%>
