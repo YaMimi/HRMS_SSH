@@ -1,3 +1,7 @@
 eclipse.preferences.version=1
 validator.Checked=/
+<<<<<<< HEAD
+validator.Unchecked=
+=======
 validator.Unchecked=WebRoot/salaryManager.jsp,WebRoot/salaryCheck.jsp,WebRoot/attendanceDepartment.jsp
+>>>>>>> branch 'dev' of https://github.com/HRMSDevelp/HRMS_SSH-1.git

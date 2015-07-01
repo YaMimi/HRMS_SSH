@@ -36,7 +36,7 @@ alert("对不起，您没有添加员工权限！");
   	
   	
   	<script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
-    <title>主页</title>
+    <title>添加员工信息</title>
 </head>
 <body>
    
@@ -61,7 +61,6 @@ alert("对不起，您没有添加员工权限！");
               
 				<form action="Add" method="post" onsubmit="return checkValidate()">
 				<div class="col-sm-4">
-
 				<%if(activeWorker.getWorkerPermission()==4||activeWorker.getWorkerPermission()==3) {%>
 				<button  class='btn btn-primary' type="submit" style="width: 40%; float: right;"><i class="fa fa-check"></i> 添加员工</button>
 				<%}else{%>
@@ -114,8 +113,8 @@ alert("对不起，您没有添加员工权限！");
 	            </tr>
 	            <tr>
 	              <th><input type="text" class="form-control " name="worker.workerId" id="workerId" placeholder="身份证号" value="" required></th>
-	              <th><input type="text" class="form-control " name="worker.workerBirthDate" placeholder="出生日期 " value="" required  style="width: 98%" class="form-control"     onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"></th>
-	              <th><input type="text" class="form-control " name="worker.workerAge" placeholder="年龄 " value="0" required></th>
+	              <th><input type="text" class="form-control " name="worker.workerBirthDate" id="workerBirthDate"  placeholder="出生日期 " onchange="CalAge()" value="" required  style="width: 98%" class="form-control"     onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"></th>
+	              <th><input type="text" class="form-control " name="worker.workerAge" id="workerAge" placeholder="年龄 "  value="0" required></th>
 	            </tr>
 	            <tr style="background-color: #E0FFFF;">
 	              <th style="padding-left: 21px;"><strong>籍贯</strong></th>
@@ -265,6 +264,7 @@ alert("对不起，您没有添加员工权限！");
                 </form>
             </div>
     </div>
+   
       <script  type="text/javascript">
       function checkValidate(){
       var workerPhone=document.getElementById("workerPhone").value;
@@ -302,6 +302,14 @@ alert("对不起，您没有添加员工权限！");
         }
         
       }
+      
+        function CalAge(){
+          var workerBirthDate=document.getElementById("workerBirthDate").value;
+          var nowData=new Date();
+          var newm=nowData.getFullYear()-workerBirthDate.substr(0,4);
+           document.getElementById("workerAge").value=newm;
+        }
       	</script>
+      	
 </body>
 </html>

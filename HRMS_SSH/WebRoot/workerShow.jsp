@@ -45,7 +45,7 @@ window.close();
   	
   	
   	<script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
-    <title>主页</title>
+    <title>员工信息</title>
 </head>
 <body>
     <%@ include file="navbarTop.jsp"%>

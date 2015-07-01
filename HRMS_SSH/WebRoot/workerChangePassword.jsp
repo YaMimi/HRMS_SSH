@@ -90,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="panel-heading"style="background-color: #FF0000;">注意事项</div>
 							<div class="panel-body ">
 							  <ul class="pagination" style="color: red;">
-							  <li >①密码长度不能小于6位并且大于8位</li><br>
+							  <li >①密码长度不能小于6位或者大于8位</li><br>
 							  <li>②必须旧密码有效才可修改</li><br>
 							  </ul>
 							</div>

@@ -1,3 +1,4 @@
+<%@page import="com.hrms.page.bean.PageBean"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="loginCheck.jsp"%>
 <%@ page language="java" import="com.opensymphony.xwork2.ActionContext"%>
@@ -18,6 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            }
 	            list=(ArrayList<Worker>)ActionContext.getContext().getSession().get("workers");
 	            workerDerpart=(ArrayList)ActionContext.getContext().getSession().get("workerDerpart");
+	            PageBean pagebean = (PageBean)session.getAttribute("pageBean");
 	             %>
 <!DOCTYPE html>
 <html>
@@ -72,7 +74,7 @@ alert("对不起，只有部门经理或者总经理可以管理员工信息");
   	
   	
   	<script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
-    <title>主页</title>
+    <title>管理信息</title>
 </head>
 <body>
   <%@ include file="navbarTop.jsp"%>
@@ -144,18 +146,43 @@ if(activeWorker.getWorkerPermission()==3||activeWorker.getWorkerPermission()==4)
                 </form>
                                 <center >
   <ul class="pagination">
-								    <li>
-								      <a href="SelectAllWorkersManager?pageNo=1"  aria-label="Previous">
-								      	上一页
-								        <span aria-hidden="true">&laquo;</span>
-								      </a>
-								    </li>
-								    <li>
-								     <a href="SelectAllWorkersManager.action?pageNo=2" aria-label="Previous">
-								      	下一页
-								        <span aria-hidden="true">&raquo;</span>
-								      </a>
-								    </li>
+                        <%if(pagebean.getCurrentPage()==1){ %>
+					    <li>
+					      <a href="#" aria-label="Previous">
+					      	上一页
+					        <span aria-hidden="true">&laquo;</span>
+					      </a>
+					    </li>
+					    <%}else{ %>
+					    <li>
+					      <a href="SelectAllWorkersManager?pageNo=<%=pagebean.getCurrentPage()-1 %>" aria-label="Previous">
+					      	上一页
+					        <span aria-hidden="true">&laquo;</span>
+					      </a>
+					    </li>
+				        <%} %>
+				        <%for(int j = 1; j <= pagebean.getTotalPage(); j++){ %>
+						    <%if(pagebean.getCurrentPage()==j){ %>
+						    	<li class="active"><a href="SelectAllWorkersManager?pageNo=<%=j %>"><%=j %></a></li>
+						    <%}else{ %>
+						    	<li><a href="SelectAllWorkersManager?pageNo=<%=j %>"><%=j %></a></li>
+						    <%} %>
+					    <%} %>
+					    <%if(pagebean.getCurrentPage()!=pagebean.getTotalPage()){ %>
+					    <li>
+					      <a href="SelectAllWorkersManager?pageNo=<%=pagebean.getCurrentPage()+1 %>" aria-label="Next">
+					        <span aria-hidden="true">&raquo;</span>
+					        	下一页
+					      </a>
+					    </li>
+					    <%}else{ %>
+					    <li>
+					      <a href="#" aria-label="Next">
+					        <span aria-hidden="true">&raquo;</span>
+					        	下一页
+					      </a>
+					    </li>
+					    <%} %>
 								    </ul>
 								    </center>
             </div>

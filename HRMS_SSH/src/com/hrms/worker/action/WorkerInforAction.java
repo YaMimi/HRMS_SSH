@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.hrms.page.bean.PageBean;
+import com.hrms.page.service.PageService;
 import com.hrms.pojo.Department;
 import com.hrms.pojo.Worker;
 import com.hrms.worker.services.WorkerAddInformationService;
@@ -22,7 +24,9 @@ public class WorkerInforAction extends ActionSupport {
 	private String workerOid;
 	private String password1;
 	private String password2;
-	
+	private int  pageNo;
+	@Resource
+	private PageService pageserivce;
 	@Resource
 	private WorkerAddInformationService workerAddInformationService;
 	
@@ -179,9 +183,10 @@ for(int i=0;i<department1.size();i++){
 	 * success
 	 * */
 	public String SelectAllWorkers(){
+		Map session = ActionContext.getContext().getSession();
 		String sql="from Worker";
 		HttpServletRequest request = ServletActionContext.getRequest();
-		int  pageNo;
+		
 		if(request.getParameter("pageNo")==null){
 			pageNo=1;
 		}else{
@@ -190,6 +195,11 @@ for(int i=0;i<department1.size();i++){
 		Worker activeWorker = (Worker)ActionContext.getContext().getSession().get("activeWorker");
 	    ArrayList<Worker>workers=workerAddInformationService.EveryPage(sql,pageNo, 5);	
 	    ActionContext.getContext().getSession().put("workers", workers);
+	    
+	    PageBean pageBean = pageserivce.getPageBean(sql, 5, pageNo);
+	    session.put("workerlist", pageBean.getList());
+		session.put("pageBean", pageBean);
+		ActionContext.getContext().setSession(session);
 		ArrayList workerDerpart=workerAddInformationService.lWorkersAddDepartment();
 		ActionContext.getContext().getSession().put("workerDerpart", workerDerpart);
 		return "success";
@@ -318,6 +328,26 @@ for(int i=0;i<department1.size();i++){
 
 	public void setPassword2(String password2) {
 		this.password2 = password2;
+	}
+
+
+	public int getPageNo() {
+		return pageNo;
+	}
+
+
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
+	}
+
+
+	public PageService getPageserivce() {
+		return pageserivce;
+	}
+
+
+	public void setPageserivce(PageService pageserivce) {
+		this.pageserivce = pageserivce;
 	}
 
 
