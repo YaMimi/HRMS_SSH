@@ -139,6 +139,7 @@ public class SalaryAction extends ActionSupport {
 		}
 		
 		session.put("allsalarysdate", salarysdate);
+		sdf = new SimpleDateFormat("yyyy-MM");
 		hql = "from Salary s where salaryDate like '"+sdf.format(date) +"%' order by s.worker.workerPermission desc";
 		allsalarys = salaryService.searchSalary(hql);
 		session.put("allsalarys", allsalarys);

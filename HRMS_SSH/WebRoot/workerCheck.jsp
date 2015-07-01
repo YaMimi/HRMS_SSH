@@ -75,7 +75,7 @@ alert("信息修改成功！");
     <title>主页</title>
 </head>
 <body>
-<%@ include file="navbarTop.jsp"%>
+    <%@ include file="navbarTop.jsp"%>
     <%@ include file="navbarSide.jsp"%>
      
     <div class="container-fluid">
